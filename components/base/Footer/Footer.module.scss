@@ -1,0 +1,25 @@
+.footer{
+    margin-top: auto;
+    margin-left: 0;
+    margin-right: 0;
+    @media (min-width: 768px) {
+        padding: 0px 170px;
+    }
+    background-color: #070714;
+}
+
+.socialLogo{
+    width: 22px;
+    cursor: pointer;
+    fill: white;
+    margin-right: 15px;
+}
+
+.footerLink{
+    margin: 0px 15px;
+    font-size: 12px;
+}
+
+.footerCopyright{
+    font-size: 10px;
+}
