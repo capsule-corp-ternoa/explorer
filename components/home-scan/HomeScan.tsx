@@ -149,9 +149,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </table>
                             </div>
                         </div>
-                        <div className="col-sm-6">
+                        {/* <div className="col-sm-6">
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <Footer />               
