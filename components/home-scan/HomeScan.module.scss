@@ -1,6 +1,9 @@
+@import "styles/color";
+
 .main {
     margin-left: 170px;
     margin-right: 170px;
+    margin-bottom: 100px;
 }
 
 .searchForm {
@@ -18,7 +21,7 @@
                 linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
     background-origin: border-box;
     background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px #00001e inset;
+    box-shadow: 2px 1000px 1px $black-blue inset;
     border-radius: 10px;
 }
 
@@ -42,7 +45,7 @@
                 linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
     background-origin: border-box;
     background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px #00001e inset;
+    box-shadow: 2px 1000px 1px $semi-blue inset;
     border-radius: 25px;
     @media (min-width: 768px) {
         width: 65%;
@@ -86,7 +89,7 @@
 }
 
 .block {
-    background-color: #14142e;
+    background-color: $semi-blue;
     border-radius: 20px;
 }
 

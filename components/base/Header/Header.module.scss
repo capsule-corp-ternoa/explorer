@@ -1,3 +1,5 @@
+@import "styles/color";
+
 .header{
     display: flex;
     align-items: center;
@@ -7,7 +9,7 @@
     @media (min-width: 768px) {
         padding: 0 170px;
     }
-    background-color: #070714;
+    background-color: $black-blue;
 }
 
 .logo{
@@ -19,7 +21,7 @@
 
 .hamburger{
     cursor: pointer;
-    fill: white;
+    fill: $white;
     &:hover {
         fill: #14FFC6;
     }
@@ -38,7 +40,7 @@
                 linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
     background-origin: border-box;
     background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px #00001e inset;
+    box-shadow: 2px 1000px 1px $semi-blue inset;
     border-radius: 25px;
     @media (min-width: 768px) {
         width: 65%;

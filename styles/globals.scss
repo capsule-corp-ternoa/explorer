@@ -44,6 +44,7 @@
 
 // IMPORT SCSS
 @import "custom";
+@import "color";
 
 // GLOBAL CSS
 html,
@@ -69,5 +70,5 @@ a {
   height: auto;
   width: 100%;
   overflow: auto;
-  background-color: #070714;
+  background-color: $black-blue;
 }
