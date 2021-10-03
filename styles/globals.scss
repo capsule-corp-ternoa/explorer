@@ -72,3 +72,97 @@ a {
   overflow: auto;
   background-color: $black-blue;
 }
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-items-center {
+  align-items: center;
+}
+
+.flex-items-start {
+  align-items: flex-start;
+}
+
+.flex-items-end {
+  align-items: flex-end;
+}
+
+.flex-cont-start {
+  justify-content: flex-start;
+}
+
+.flex-cont-center {
+  justify-content: center;
+}
+
+.flex-cont-end {
+  justify-content: flex-end;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cursor-point {
+  cursor: pointer;
+}
+
+.recharts-cartesian-axis-tick {    
+  font-family: "Airbnb Cereal App Bold";
+  font-weight: 700;
+
+  text {
+    fill: #B2B2B2!important;
+    font-size: 16px;
+    @media (max-width: 1024px) {
+      font-size: 12px;
+    }
+  }
+}
+
+.display-block {
+  display: block!important;
+}
+.table-mobile-body {
+  tr {
+    display: table;
+    width: 100%;
+    position: relative;
+  }
+}
+@media (max-width: 1024px) {
+  .table-mobile-header {
+    display: table;
+    // table-layout: fixed;
+    width: 100%;
+  }
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}

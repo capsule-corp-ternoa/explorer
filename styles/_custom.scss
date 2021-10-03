@@ -113,7 +113,9 @@ input[type=number] {
 	border: solid 2px transparent !important;
 	color: $white !important;
 }
-
+.tag-for-scroll{
+	overflow-y: auto;
+}
 .table > tbody > tr:nth-child(2n+1) > td, .table > tbody > tr:nth-child(2n+1) > th {
 	background-color: $medium-blue;
 }
@@ -126,6 +128,11 @@ input[type=number] {
 	height: 65px;
 	text-align: center;
 	vertical-align: middle;
+	@media (max-width: 1024px) {
+		height: 50px;
+		font-size: 10px;
+		line-height: 13px;
+	}
 }
 
 .table > tbody {
@@ -141,18 +148,30 @@ input[type=number] {
 	font-style: normal;
 	font-weight: normal;
 	opacity: 0.4;
+	
+	@media (max-width: 1024px) {
+		height: 55px;
+		font-size: 10px;
+		line-height: 13px;
+	}
 }
 
 .tbody-detail > tr > td:nth-child(1) {
 	width: 40%;
 	text-align: start;
 	padding-left: 130px;
+	@media (max-width: 1024px) {
+		padding-left: 21px;
+	}
 } 
 
 .tbody-detail > tr > td:nth-child(2) {
 	width: 60%;
 	text-align: start;
 	padding-left: 120px;
+	@media (max-width: 1024px) {
+		padding-left: 20px;
+	}
 } 
 
 .title {
@@ -161,6 +180,11 @@ input[type=number] {
 	font-weight: bold;
 	font-size: 30.798px;
 	line-height: 40px;
+
+	@media (max-width : 1024px) {
+        font-size: 16px;
+		line-height: 20px;
+    }
 }
 
 .text-large {
@@ -196,4 +220,11 @@ input[type=number] {
 
 .border-radius {
 	border-radius: 20px;
+}
+
+.font-08 {
+	font-size: 1rem!important;
+	@media (max-width : 1024px) {
+        font-size: 0.8rem!important;
+    }
 }

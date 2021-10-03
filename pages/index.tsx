@@ -9,7 +9,7 @@ export interface HomeProps {
 const Home: NextPage<HomeProps> = () => {
 
   return (
-    <HomeScan />
+    <BlockDetail />
   )
 }
 

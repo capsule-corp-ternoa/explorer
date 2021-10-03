@@ -9,9 +9,10 @@ import { actions } from 'redux/walletUser/actions';
 import ClickAwayListener from 'react-click-away-listener';
 
 export interface HeaderProps {
+    searchBar?: Boolean
 }
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = (props) => {
     const dispatch = useAppDispatch()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isCapsInputFocused, setIsCapsInputFocused] = useState(false)
@@ -23,23 +24,25 @@ const Header: React.FC<HeaderProps> = () => {
                         <LogoTernoaScan className={style.logo} />
                     </a>
                 </Link>
-                <div className="py-1 py-md-1 position-relative">
-                    <input
-                        type="text"
-                        value={''}
-                        onChange={(e) => {
-                            
-                        }}
-                        className={style.searchContainer}
-                        placeholder="Search by adresse / Txn Hash / Block / NFT"
-                        style={{ backgroundColor: "#14142E" }}
-                        min={0}
-                        onFocus={(e) => {
-                            setIsCapsInputFocused(true)
-                        }}
-                        onBlur={() => setIsCapsInputFocused(false)}
-                    />
-                    <Search className={style.search + " position-absolute"}/>
+                <div className={`${style.searchBoxContainer} py-1 py-md-1 position-relative`}>
+                    {(props.searchBar || props.searchBar == undefined) && <div>
+                        <input
+                            type="text"
+                            value={''}
+                            onChange={(e) => {
+                                
+                            }}
+                            className={style.searchContainer}
+                            placeholder="Search by adresse / Txn Hash / Block / NFT"
+                            style={{ backgroundColor: "#14142E" }}
+                            min={0}
+                            onFocus={(e) => {
+                                setIsCapsInputFocused(true)
+                            }}
+                            onBlur={() => setIsCapsInputFocused(false)}
+                        />
+                        <Search className={style.search + " position-absolute"}/>
+                    </div>}
                 </div>
                 <div className={"d-md-none"} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     <Hamburger className={style.hamburger + " mx-2"} />
