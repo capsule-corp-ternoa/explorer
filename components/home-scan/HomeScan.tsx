@@ -6,6 +6,7 @@ import Check from 'components/assets/Check';
 import MarketLogo from 'components/assets/MarketLogo';
 import TransactionLogo from 'components/assets/TransactionLogo';
 import BlockLogo from 'components/assets/BlockLogo';
+import Search from 'components/assets/Search';
 import style from './HomeScan.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
@@ -26,17 +27,19 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                 <div className={style.main}>
                     <div className={style.searchForm}>
                         <div className={style.searchTitle}>The Ternoa blockchain explorer</div>
-                        <div className="d-flex flex-row mt-4">
+                        <div className="d-flex flex-row mt-4 position-relative">
                             <input
                                 type="text"
                                 value={''}
                                 onChange={(e) => {
                                     
                                 }}
+                                placeholder="Search by adresse / Txn Hash / Block"
                                 className={style.searchInput}
                                 style={{ backgroundColor: "#14142E" }}
                                 min={0}
                             />
+                            <Search className={style.search + " position-absolute"}/>
                             <div
                                 className={style.searchBtn + " btn btn-primary rounded-pill"}
                                 onClick={() => console.log()}
@@ -50,44 +53,44 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             <div className="pe-5 ps-3 border-end border-dark">
                                 <div className="d-flex">
                                     <div className="pt-2">
-                                        <CAPSLogo className={style.ternoaLogo}></CAPSLogo>
+                                        <CAPSLogo className={style.Logo}></CAPSLogo>
                                     </div>
                                     <div className="d-flex flex-column ms-3">
-                                        <div className="fs-6">CAPS price</div>
-                                        <div className="fs-5">$0.68</div>
+                                        <div className="fs-6 text-opacity">CAPS price</div>
+                                        <div className="fs-5 fw-bold">$0.68</div>
                                     </div>
                                 </div>
                             </div>
                             <div className="pe-5 ps-5 border-end border-dark">
                                 <div className="d-flex">
                                     <div className="pt-2">
-                                        <MarketLogo className={style.marketLogo}></MarketLogo>
+                                        <MarketLogo className={style.Logo}></MarketLogo>
                                     </div>
                                     <div className="d-flex flex-column ms-3">
-                                        <div className="fs-6">Market cap</div>
-                                        <div className="fs-5">$24.683.396</div>
+                                        <div className="fs-6 text-opacity">Market cap</div>
+                                        <div className="fs-5 fw-bold">$24.683.396</div>
                                     </div>
                                 </div>
                             </div>
                             <div className="pe-5 ps-5 border-end border-dark">
                                 <div className="d-flex">
                                     <div className="pt-2">
-                                        <TransactionLogo className={style.transactionLogo}></TransactionLogo>
+                                        <TransactionLogo className={style.Logo}></TransactionLogo>
                                     </div>
                                     <div className="d-flex flex-column ms-3">
-                                        <div className="fs-6">Transactions</div>
-                                        <div className="fs-5">$1.347</div>
+                                        <div className="fs-6 text-opacity">Transactions</div>
+                                        <div className="fs-5 fw-bold">$1.347</div>
                                     </div>
                                 </div>
                             </div>
                             <div className="pe-5 ps-5">
                                 <div className="d-flex">
                                     <div className="pt-2">
-                                        <BlockLogo className={style.blockLogo}></BlockLogo>
+                                        <BlockLogo className={style.Logo}></BlockLogo>
                                     </div>
                                     <div className="d-flex flex-column ms-3">
-                                        <div className="fs-6">Finalized Block</div>
-                                        <div className="fs-5">$2.000.000</div>
+                                        <div className="fs-6 text-opacity">Finalized Block</div>
+                                        <div className="fs-5 fw-bold">$2.000.000</div>
                                     </div>
                                 </div>
                             </div>

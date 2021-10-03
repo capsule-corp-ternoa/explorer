@@ -34,7 +34,7 @@ input[type=number] {
 		transition: all 0.2s;
 		border: solid 2px transparent;
 		background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-			linear-gradient(101deg,  #ff8500, #ff0062, #cb06ed, #004fff);
+			linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
 		background-origin: border-box;
 		background-clip: content-box, border-box;
 		&:hover {
@@ -81,7 +81,7 @@ input[type=number] {
 			box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
 			border: solid 2px transparent;
             background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-                linear-gradient(101deg,  #ff8500, #ff0062, #cb06ed, #004fff);
+                linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
 			background-origin: border-box;
 			background-clip: content-box, border-box;
 			box-shadow: 2px 1000px 1px $dark-blue inset;
@@ -123,24 +123,40 @@ input[type=number] {
 }
 
 .table > tbody > tr > td {
-		height: 65px;
-    text-align: center;
-    vertical-align: middle;
+	height: 65px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.table > tbody {
+	border-radius: 20px;
 }
 
 .table > thead > tr > th {
-		height: 65px;
-    text-align: center;
-    vertical-align: middle;
-		color: $grey;
-		font-family: Airbnb Cereal App Book;
-		font-style: normal;
-		font-weight: normal;
-		opacity: 0.4;
+	height: 75px;
+	text-align: center;
+	vertical-align: middle;
+	color: $grey;
+	font-family: Airbnb Cereal App Book;
+	font-style: normal;
+	font-weight: normal;
+	opacity: 0.4;
 }
 
+.tbody-detail > tr > td:nth-child(1) {
+	width: 40%;
+	text-align: start;
+	padding-left: 130px;
+} 
+
+.tbody-detail > tr > td:nth-child(2) {
+	width: 60%;
+	text-align: start;
+	padding-left: 120px;
+} 
+
 .title {
-	font-family: Airbnb Cereal App Book;
+	font-family: Airbnb Cereal App Bold;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 30.798px;
@@ -151,7 +167,7 @@ input[type=number] {
 	color: white;
 	font-family: Airbnb Cereal App Book;
 	font-style: normal;
-	font-weight: bold;
+	font-weight: normal;
 	font-size: 16px;
 	line-height: 21px;
 }
@@ -176,4 +192,8 @@ input[type=number] {
 
 .text-opacity {
 	opacity: 0.7;
+}
+
+.border-radius {
+	border-radius: 20px;
 }

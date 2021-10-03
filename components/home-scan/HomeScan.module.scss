@@ -60,29 +60,13 @@
     margin-left: 50px;
 }
 
-.ternoaLogo {
-    width: 70%;
-    @media (min-width: 768px) {
-        width: 100%;
-    }
+.search {
+    right: 310px;
+    top: 20px;
 }
 
-.marketLogo {
-    width: 75%;
-    @media (min-width: 768px) {
-        width: 100%;
-    }
-}
-
-.transactionLogo {
-    width: 80%;
-    @media (min-width: 768px) {
-        width: 100%;
-    }
-}
-
-.blockLogo {
-    width: 80%;
+.Logo {
+    width: 100%;
     @media (min-width: 768px) {
         width: 100%;
     }
