@@ -22,7 +22,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                 <div className={style.main}>
                 <h1 className={style.subtitle}>Blocks</h1>
                 <div className={style.block + " pb-4 mt-2"}>
-                    <div class = "tag-for-scroll">
+                    <div className = "tag-for-scroll">
                         <table className="table table-borderless mb-3">
                             <thead>
                                 <tr className="fs-6 text-grey">

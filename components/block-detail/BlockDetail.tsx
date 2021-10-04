@@ -27,7 +27,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                     <Back />
                     <h1 className={style.subtitle + " mt-3"}>Block #5545118</h1>
                     <div className={style.block + " pb-4 mt-2 mb-5"}>
-                        <div class = "tag-for-scroll">
+                        <div className = "tag-for-scroll">
                             <table className="table table-borderless mb-3">
                                 <tbody className="tbody-detail">
                                     <tr>
@@ -95,7 +95,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                       <Down className="mb-1"/>
                     </div>
                     <div className={style.block + " pb-4 mt-3"}>
-                        <div class = "tag-for-scroll">
+                        <div className = "tag-for-scroll">
                             <table className="table table-borderless mb-3">
                                 <thead> 
                                     <tr className="fs-6 text-grey">
