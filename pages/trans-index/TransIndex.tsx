@@ -24,8 +24,9 @@ const TransIndex: React.FC<TransIndexProps> = () => {
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
-    const goBlockDetail = () => {
-        router.push("../block-detail")
+
+    const goTransDetail = () => {
+        router.push("../trans-detail")
     }
 
     return (
@@ -64,7 +65,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -79,7 +80,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -94,7 +95,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -109,7 +110,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -124,7 +125,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -139,7 +140,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -154,7 +155,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -188,7 +189,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                             </div>
                                         </div>
                                         <div className="flex flex-row mt-4">
-                                            <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
+                                            <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                         </div>
                                     </div>
                             
