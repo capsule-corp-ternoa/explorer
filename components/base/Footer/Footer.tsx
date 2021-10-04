@@ -35,7 +35,7 @@ const Footer: React.FC<{}> = () => {
                     target="_blank"
                     rel="noopener"
                 >
-                    <Instagram className={style.socialLogo}/>
+                    <Instagram className={style.socialLogoRight}/>
                 </a>
             </div>
             <div className={"col-md-6 col-12 mb-2 d-flex align-items-center justify-content-center justify-content-md-end"}>
