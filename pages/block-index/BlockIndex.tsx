@@ -33,7 +33,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                         <table className={"table table-borderless mb-3 " + style.indexTable}>
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Name</th>
+                                    <th>Number</th>
                                     <th>Age</th>
                                     <th>Block Hash</th>
                                     <th>Signed Extrinsics</th>
