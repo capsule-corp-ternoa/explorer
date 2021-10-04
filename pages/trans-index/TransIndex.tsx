@@ -25,7 +25,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
         }
     }, [mediaQuery])
     const goBlockDetail = () => {
-        router.push("../block-detail")
+        router.push("../trans-detail")
     }
 
     return (
