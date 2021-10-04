@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
+import { useRouter } from "next/router";
 import LeftArrow from 'components/assets/LeftArrow';
 import RightArrow from 'components/assets/RightArrow';
 import style from './BlockIndex.module.scss';
@@ -10,6 +11,12 @@ export interface BlockIndexProps {
 }
 
 const BlockIndex: React.FC<BlockIndexProps> = () => {
+    const router = useRouter();
+
+    const goBlockDetail = () => {
+        router.push("../block-detail")
+    }
+
     return (
         <>
             <Head>
@@ -20,10 +27,10 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
             <div className={"mainContainer"}>
                 <Header searchBar={false} />
                 <div className={style.main}>
-                <h1 className={style.subtitle}>Blocks</h1>
+                <h1 className={style.subtitle + " subTitleMargin"}>Blocks</h1>
                 <div className={style.block + " pb-4 mt-2"}>
                     <div className = "tag-for-scroll">
-                        <table className="table table-borderless mb-3">
+                        <table className={"table table-borderless mb-3 " + style.indexTable}>
                             <thead>
                                 <tr className="fs-6 text-grey">
                                     <th>Name</th>
@@ -42,7 +49,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -52,7 +59,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -62,7 +69,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -72,7 +79,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -82,7 +89,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -92,7 +99,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -102,7 +109,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -112,7 +119,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -122,7 +129,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -132,7 +139,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,7 +149,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -152,19 +159,20 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
+                                
                             </tbody>
                         </table>
                     </div>
                     <div className="d-flex justify-content-center py-3">
-                        <LeftArrow className="mt-1 me-2"/>
+                        <LeftArrow className="mt-1 me-2 cursor-point"/>
                         <span className="text-large mx-2">Page</span>
                         <span className="text-large me-1">1</span>
                         <span className="text-large ms-1">of</span>
                         <span className="text-large mx-2">9</span>
-                        <RightArrow className="mt-1 ms-2"/>
+                        <RightArrow className="mt-1 ms-2 cursor-point"/>
                     </div>
                 </div>
                 </div>

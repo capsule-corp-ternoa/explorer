@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from "next/router";
 import Head from 'next/head'
 import CAPSLogo from 'components/assets/CAPSLogo';
 import TransactionIcon from 'components/assets/TransactionIcon';
@@ -20,8 +21,16 @@ export interface HomeScanProps {
 
 const HomeScan: React.FC<HomeScanProps> = () => {
     
-    const isLaptop = useMediaQuery({ query: '(min-device-width: 1024px)' });
-    
+    const [isLaptop, setIsLaptop] = useState(false);
+    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const router = useRouter();
+
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+      }, [mediaQuery])
+
     const data = [
         {
           name: 'Apr',
@@ -59,7 +68,15 @@ const HomeScan: React.FC<HomeScanProps> = () => {
           pv: 3800,
           amt: 2500,
         }
-      ];
+    ];
+
+    const goBlockIndex = () => {
+        router.push("../block-index");
+    }
+
+    const goBlockDetail = () => {
+        router.push("../block-detail");
+    }
 
     return (
         <>
@@ -71,7 +88,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             <div className={"mainContainer"}>
                 <Header searchBar={false} />
                 <div className={style.main + " position-relative"}>
-                    {!isLaptop && <div className={style.gradientBack}></div>}
+                    <div className={style.gradientBack}></div>
                     <div className={style.searchForm + " position-relative"}>
                         <div className={style.searchTitle}>The Ternoa blockchain explorer</div>
                         <div className="flex flex-row flex-between flex-items-center mt-4">
@@ -90,14 +107,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 <Search className={style.search + " position-absolute"}/>
                             </div>
                             
-                            {isLaptop && <div
+                            <div
                                 className={style.searchBtn + " btn btn-primary rounded-pill flex flex-center"}
                                 onClick={() => console.log()}
                             >
                                 <div className={"d-flex align-items-center"}>
                                     <span className="me-auto ms-auto">Search</span>
                                 </div>
-                            </div>}
+                            </div>
                         </div>
                         <div className="d-flex mt-5">
                             <div className={`${style.searchBarInfo} pe-5 border-end border-dark`}>
@@ -105,7 +122,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <div className={`${isLaptop ? 'pt-2' : ''}`}>
                                         <CAPSLogo className={style.Logo}></CAPSLogo>
                                     </div>
-                                    <div className={`d-flex flex-column ${isLaptop ? 'ms-3': 'ms-1'}`}>
+                                    <div className={"d-flex flex-column " + (isLaptop ? 'ms-3': 'ms-1')}>
                                         <div className={`${style.logoTitle} fs-6 text-opacity text-ellipsis`}>CAPS price</div>
                                         <div className={`${style.logoPrice} fs-5 fw-bold`}>$0.68</div>
                                     </div>
@@ -173,9 +190,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
-                                        </tr>
+                                        </tr>    
                                         <tr>
                                             <td width="20%" className="font-08 text-opacity">5545118</td>
                                             <td width="35%" className="text-small text-opacity">38 seconds ago</td>
@@ -184,9 +201,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
-                                        </tr>
+                                        </tr>    
                                         <tr>
                                             <td width="20%" className="font-08 text-opacity">5545118</td>
                                             <td width="35%" className="text-small text-opacity">38 seconds ago</td>
@@ -195,9 +212,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
-                                        </tr>
+                                        </tr>    
                                         <tr>
                                             <td width="20%" className="font-08 text-opacity">5545118</td>
                                             <td width="35%" className="text-small text-opacity">38 seconds ago</td>
@@ -206,13 +223,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
-                                        </tr>
-                                                                                
+                                        </tr>                            
                                     </tbody>
                                 </table>
-                                <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
+                                <button onClick={goBlockIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
                             </div>
                         </div>
                         <div className="col-sm-6 mt-5">
