@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </a>
                 </Link>
                 <div className={`${style.searchBoxContainer} py-1 py-md-1 position-relative`}>
-                    {(props.searchBar || props.searchBar == undefined) && <div>
+                    {(props.searchBar || props.searchBar == undefined) && <div className={style.mobileSearchBar}>
                         <input
                             type="text"
                             value={''}

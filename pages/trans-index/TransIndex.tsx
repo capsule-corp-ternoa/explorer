@@ -3,14 +3,14 @@ import Head from 'next/head'
 import { useRouter } from "next/router";
 import LeftArrow from 'components/assets/LeftArrow';
 import RightArrow from 'components/assets/RightArrow';
-import style from './BlockIndex.module.scss';
+import style from './TransIndex.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 
-export interface BlockIndexProps {
+export interface TransIndexProps {
 }
 
-const BlockIndex: React.FC<BlockIndexProps> = () => {
+const TransIndex: React.FC<TransIndexProps> = () => {
     const router = useRouter();
 
     const goBlockDetail = () => {
@@ -25,9 +25,9 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                 <meta name="description" content="BSC Scan, by Ternoa." />
             </Head>
             <div className={"mainContainer"}>
-                <Header />
+                <Header searchBar={false} />
                 <div className={style.main}>
-                <h1 className={style.subtitle + " subTitleMargin"}>Blocks</h1>
+                <h1 className={style.subtitle + " subTitleMargin"}>Balance transfers </h1>
                 <div className={style.block + " pb-4 mt-2"}>
                     <div className = "tag-for-scroll">
                         <table className={"table table-borderless mb-3 " + style.indexTable}>
@@ -142,7 +142,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                         <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                     </td>
                                 </tr>
-                                <tr> 
+                                <tr>
                                     <td className="text-large text-opacity fw-bold">5545118</td>
                                     <td className="text-large text-opacity">21 hours Ago</td>
                                     <td className="text-large text-opacity">0x3a851d3...efe6f</td>
@@ -182,4 +182,4 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
     )
 }
 
-export default BlockIndex;
+export default TransIndex;

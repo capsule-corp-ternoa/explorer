@@ -118,6 +118,10 @@ input[type=number] {
 }
 .table > tbody > tr:nth-child(2n+1) > td, .table > tbody > tr:nth-child(2n+1) > th {
 	background-color: $medium-blue;
+
+	&:last-child {
+		background-color: rgba(17, 17, 41, 0.7)!important;
+	}
 }
 
 .table > tbody > tr:nth-child(2n) > td {

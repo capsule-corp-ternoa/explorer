@@ -29,7 +29,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                 <meta name="description" content="BSC Scan, by Ternoa." />
             </Head>
             <div className={"mainContainer"}>
-                <Header searchBar={false} />
+                <Header />
                 <div className={style.main}>
                     <div className="cursor-point w-fit-content" onClick={()=>router.back()}>
                        {isLaptop && <Back />}
