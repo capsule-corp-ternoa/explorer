@@ -78,6 +78,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         router.push("../block-detail");
     }
 
+    const goTransDetail = () => {
+        router.push("../trans-detail");
+    }
+
     return (
         <>
             <Head>
@@ -255,7 +259,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
                                         </tr>
                                         <tr className="position-relative">
@@ -266,7 +270,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
                                         </tr>
                                         <tr className="position-relative">
@@ -277,7 +281,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
                                         </tr>
                                         <tr className="position-relative">
@@ -288,7 +292,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
                                             </td>
                                         </tr>
                                         

@@ -1,0 +1,52 @@
+@import "styles/color";
+
+.main {
+    margin-left: 170px;
+    margin-right: 170px;
+    margin-bottom: 100px;
+    margin-top: 0px;
+    @media (max-width: 1024px) {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 37px;
+        margin-top: 0px;
+    }
+}
+
+.block {
+    background-color: $semi-blue;
+    border-radius: 20px;
+}
+
+.subtitle {
+    font-family: Airbnb Cereal App Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 65px;
+    background: -webkit-linear-gradient(1deg, #004FFF 0%, #CB06ED 5%, #FF0062 8%, #FF8500 32%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @media (max-width: 1024px) {
+        font-family: Airbnb Cereal App Bold;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 23px;
+        background: -webkit-linear-gradient(1deg, #004FFF 0%, #CB06ED 5%, #FF0062 8%, #FF8500 32%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+@media (max-width: 1024px) {
+    .smallImage {
+        width: 20px;
+        height: 20px;
+    }
+
+    .smallCheckImage {
+        width: 10px;
+        height: 10px;
+    }
+}
