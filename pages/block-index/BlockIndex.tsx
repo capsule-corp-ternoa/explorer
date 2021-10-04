@@ -49,7 +49,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -59,7 +59,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,7 +69,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -79,7 +79,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -89,7 +89,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -99,7 +99,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -109,7 +109,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -119,7 +119,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -129,7 +129,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -139,17 +139,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                    </td>
-                                </tr>
-                                <tr> 
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity">21 hours Ago</td>
-                                    <td className="text-large text-opacity">0x3a851d3...efe6f</td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td className="text-large text-opacity">6</td>
-                                    <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -159,7 +149,17 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <td className="text-large text-opacity">2</td>
                                     <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="text-large text-opacity fw-bold">5545118</td>
+                                    <td className="text-large text-opacity">21 hours Ago</td>
+                                    <td className="text-large text-opacity">0x3a851d3...efe6f</td>
+                                    <td className="text-large text-opacity">2</td>
+                                    <td className="text-large text-opacity">6</td>
+                                    <td>
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                     </td>
                                 </tr>
                                 

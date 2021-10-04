@@ -25,11 +25,17 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
 
+    const [totalTrans, setTotalTrans] = useState(true);
+    const [newAccount, setNewAccount] = useState(true);
+    const [averBlock, setAverBlock] = useState(true);
+
+    const [searchText, setSearchText] = useState('');
+
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
-      }, [mediaQuery])
+    }, [mediaQuery])
 
     const data = [
         {
@@ -78,6 +84,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         router.push("../block-detail");
     }
 
+    const goNftIndex = () => {
+        router.push("../trans-index");
+    }
+
     return (
         <>
             <Head>
@@ -95,9 +105,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             <div className="flex-1 position-relative">
                                 <input
                                     type="text"
-                                    value={''}
+                                    value={searchText}
                                     onChange={(e) => {
-                                        
+                                        setSearchText(e.target.value)
                                     }}
                                     placeholder="Search by adresse / Txn Hash / Block"
                                     className={style.searchInput}
@@ -177,7 +187,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <th width="20%">Number</th>
                                             <th width="35%">Age</th>
                                             <th width="15%">Transactions</th>
-                                            <th width="15%">Module Events</th>
+                                            <th width="15%" className="text-no-wrap">Module Events</th>
                                             <th width="15%"></th>
                                         </tr>
                                     </thead>
@@ -190,7 +200,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>    
                                         <tr>
@@ -201,7 +211,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>    
                                         <tr>
@@ -212,7 +222,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>    
                                         <tr>
@@ -223,7 +233,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                 0
                                             </td>
                                             <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>                            
                                     </tbody>
@@ -255,7 +265,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>
                                         <tr className="position-relative">
@@ -266,7 +276,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>
                                         <tr className="position-relative">
@@ -277,7 +287,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>
                                         <tr className="position-relative">
@@ -288,13 +298,13 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-small text-opacity">951</td>
                                             <td width="60px">
-                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 "+ style.detailButton}>Detail</button>
+                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
                                             </td>
                                         </tr>
                                         
                                     </tbody>
                                 </table>
-                                <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
+                                <button onClick={goNftIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
                             </div>
                         </div>
                     </div>
@@ -446,14 +456,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                     <div className="row mt-5">
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
-                                <div className={"cursor-point flex flex-row flex-items-center flex-between " + style.mMinus50}>
-                                    <div className="flex flex-row flex-items-center">
+                                <div className={"flex flex-row flex-items-center flex-between " + style.mMinus50}>
+                                    <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setTotalTrans(!totalTrans)}>
                                         <div className={style.activeChartRect}></div>
-                                        <span className={style.chartLabel}>Total transaction by day</span>
+                                        <span className={totalTrans ? style.chartLabel : style.chartInactiveLabel}>Total transaction by day</span>
                                     </div>
-                                    <div className="flex flex-row flex-items-center">
+                                    <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setNewAccount(!newAccount)}>
                                         <div className={style.inactiveChartRect}></div>
-                                        <span className={style.chartLabel}>New account by day</span>
+                                        <span className={newAccount ? style.chartLabel : style.chartInactiveLabel}>New account by day</span>
                                     </div>
                                     
                                 </div>
@@ -479,17 +489,17 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <XAxis tickLine={false} axisLine={false} dataKey="name" style={{color:'white'}} />
                                     <YAxis tick={false} tickLine={false} axisLine={false} />
                                     <Tooltip />
-                                    <Area type="linear" dataKey="uv" stroke="transparent" fill="url(#blockUV)" />
-                                    <Bar dataKey="pv" barSize={25} fill="#9F9FFF" radius={[20,20,20,20]} />   
+                                    {totalTrans && <Area type="linear" dataKey="uv" stroke="transparent" fill="url(#blockUV)" />}
+                                    {newAccount && <Bar dataKey="pv" barSize={25} fill="#9F9FFF" radius={[20,20,20,20]} />}
                                     </ComposedChart>
                                 </ResponsiveContainer>
                             </div>
                         </div>
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
-                                <div className="cursor-point flex flex-row flex-center">
+                                <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
                                     <div className={style.activeChartRect}></div>
-                                    <span className={style.chartLabel}>Average block time by day</span>
+                                    <span className={averBlock ? style.chartLabel : style.chartInactiveLabel}>Average block time by day</span>
                                 </div>
                                 <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
                                     <AreaChart
@@ -513,8 +523,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <XAxis tickLine={false} axisLine={false} dataKey="name" style={{color:'white'}} />
                                     <YAxis tick={false} tickLine={false} axisLine={false} />
                                     <Tooltip />
-                                    <Bar dataKey="uv" barSize={20} fill="#413ea0" />
-                                    <Area strokeWidth={5} type="linear" dataKey="uv" baseLine={8} stroke="#9F9FFF" fill="url(#colorUv)" />
+                                    {/* <Bar dataKey="uv" barSize={20} fill="#413ea0" /> */}
+                                    {averBlock && <Area strokeWidth={5} type="linear" dataKey="uv" baseLine={8} stroke="#9F9FFF" fill="url(#colorUv)" />}
                                     </AreaChart>
                                 </ResponsiveContainer>
                             </div>

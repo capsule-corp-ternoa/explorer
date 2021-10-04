@@ -169,6 +169,21 @@
         }
     }
 
+    .chartInactiveLabel {
+        color: white;
+        opacity: 0.3;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 700;
+        font-family: "Airbnb Cereal App Bold";
+        margin-left: 8px;
+        white-space: nowrap;
+        @media (max-width: 1024px) {
+            margin-left: 4px;
+            font-size: 10px;
+        }
+    }
+
     .chartView {
         height: 255px;
         margin-top: 60px;
@@ -232,17 +247,7 @@
     
     .blockTitle {
         line-height: 16px!important;
-    }
-    
-    .detailButton {
-        position: absolute;
-        right: 7px;
-        /* width: 46px; */
-        font-size: 10px;
-        padding: 4px 12px!important;
-        top: 15px;
-        border: 1px solid #9F9FFF;
-    }
+    }    
 }
 
 .table > thead > tr > th {

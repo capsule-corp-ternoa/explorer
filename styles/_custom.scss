@@ -232,3 +232,19 @@ input[type=number] {
         font-size: 0.8rem!important;
     }
 }
+
+.text-no-wrap {
+	white-space: nowrap;
+}
+
+@media (max-width : 1024px) {
+	.detailButton {
+		position: absolute;
+		right: 7px;
+		/* width: 46px; */
+		font-size: 10px;
+		padding: 4px 12px!important;
+		top: 15px;
+		border: 1px solid #9F9FFF;
+	}
+}

@@ -14,8 +14,15 @@ export interface BlockDetailProps {
 }
 
 const BlockDetail: React.FC<BlockDetailProps> = () => {
-    const isLaptop = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const [isLaptop, setIsLaptop] = useState(false);
+    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
+
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+    }, [mediaQuery])
 
     const goTransInfo = () => {
         router.push("../trans-info")

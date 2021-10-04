@@ -42,3 +42,11 @@
         -webkit-text-fill-color: transparent;
     }
 }
+
+.detailButton {  
+    @media (max-width: 1024px) {
+		border: 1px solid #9F9FFF;
+		font-size: 10px;
+		padding: 4px 12px!important;
+    }
+}
