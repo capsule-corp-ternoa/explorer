@@ -14,8 +14,15 @@ export interface ValidatorDetailProps {
 }
 
 const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
-    const isLaptop = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const [isLaptop, setIsLaptop] = useState(false);
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+    }, [mediaQuery])
 
     const goTransInfo = () => {
         router.push("./1/trans")
@@ -96,38 +103,64 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                             }
                             {!isLaptop &&
                                 <div className={style.mobileView}>
-                                    <div className="flex flex-row">
+                                    <div className="flex flex-row mt-2">
                                         <div className="flex-1 flex flex-col">
-                                            <span className={style.mobileLabel}>Block</span>
-                                            <span className={style.mobileValue}>5545118</span>
+                                            <span className={style.mobileLabel}>Total Balance</span>
+                                            <span className={style.mobileValue}>299231 CAPS</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
-                                            <span className={style.mobileLabel}>Event-ID</span>
-                                            <span className={style.mobileValue}>5560132-8</span>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col mt-4">
-                                        <span className={style.mobileLabel}>From</span>
-                                        <div className="flex flex-row flex-1 flex-items-center">
-                                            <CAPSDark className={style.smallImage} />
-                                            <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col mt-3">
-                                        <span className={style.mobileLabel}>To</span>
-                                        <div className="flex flex-row flex-1 flex-items-center">
-                                            <CAPSDark className={style.smallImage} />
-                                            <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className={style.mobileLabel}>Free Balance</span>
+                                            <span className={style.mobileValue}>230231 CAPS</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-4">
                                         <div className="flex-1 flex flex-col">
-                                            <span className={style.mobileLabel}>Fee</span>
-                                            <span className={style.mobileValue}>41.5 CAPS</span>
+                                            <span className={style.mobileLabel}>Reserved Balance</span>
+                                            <span className={style.mobileValue}>80.789 CAPS</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
-                                            <span className={style.mobileLabel}>Value</span>
-                                            <span className={style.mobileValue}>1006 CAPS</span>
+                                            <span className={style.mobileLabel}>Account Index</span>
+                                            <span className={style.mobileValue}>1Rs7u</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-4">
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Display name</span>
+                                            <span className={style.mobileValue}>P2P.ORG/7</span>
+                                        </div>
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Email</span>
+                                            <span className={style.mobileValue}>Explorer@Ternoa.pro</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-4">
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Riot</span>
+                                            <span className={style.mobileValue}>@p2p:7.org</span>
+                                        </div>
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Web</span>
+                                            <span className={style.mobileValue}>Ternoascan.pro</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-4">
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Twitter</span>
+                                            <span className={style.mobileValue}>@Ternoascan</span>
+                                        </div>
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Nonce</span>
+                                            <span className={style.mobileValue}>111</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-4">
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Active</span>
+                                            <span className={style.mobileValue}>True</span>
+                                        </div>
+                                        <div className="flex-1 flex flex-col">
+                                            <span className={style.mobileLabel}>Current Roles</span>
+                                            <span className={style.mobileValue}>Validator</span>
                                         </div>
                                     </div>
                                 </div>
@@ -140,6 +173,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                     </div>
                     <div className={style.block + " mt-3"}>
                         <div className = "tag-for-scroll">
+                            {isLaptop &&
                             <table className="table table-borderless mb-0">
                                 <thead> 
                                     <tr className="fs-6 text-grey">
@@ -166,6 +200,40 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                     </tr>
                                 </tbody>
                             </table>
+                            }
+                            {!isLaptop &&
+                            <div className={style.mobileView}>
+                                <div className="flex flex-row mt-2">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Transaction ID</span>
+                                        <span className={style.mobileValue}>5556906-2</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Block</span>
+                                        <span className={style.mobileValue}>5556906</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Module</span>
+                                        <span className={style.mobileValue}>Stacking</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Call</span>
+                                        <span className={style.mobileValue}>payout_stakers</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Success</span>
+                                        <Check/>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <button onClick={goTransInfo} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
+                                </div>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>

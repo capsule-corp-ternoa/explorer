@@ -12,8 +12,15 @@ export interface TransInfoProps {
 }
 
 const TransInfo: React.FC<TransInfoProps> = () => {
-    const isLaptop = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const [isLaptop, setIsLaptop] = useState(false);
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+    }, [mediaQuery])
 
     return (
         <>
@@ -31,6 +38,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                     <h1 className={style.subtitle + " subTitleMargin"}>Account index 1Rs7u</h1>
                     <div className={style.block + " mt-2 mb-5"}>
                         <div className = "tag-for-scroll">
+                            {isLaptop &&
                             <table className="table table-borderless mb-0">
                                 <tbody className="tbody-detail">
                                     <tr>
@@ -47,6 +55,27 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                     </tr>  
                                 </tbody>
                             </table>
+                            }
+                            {!isLaptop &&
+                            <div className={style.mobileView}>
+                                <div className="flex flex-row mt-2">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Account</span>
+                                        <span className={style.mobileValue}>P2P.ORG/7</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Updated at block</span>
+                                        <span className={style.mobileValue}>0</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>ID</span>
+                                        <span className={style.mobileValue}>74</span>
+                                    </div>
+                                </div>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>

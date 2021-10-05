@@ -14,8 +14,15 @@ export interface TransDetailProps {
 }
 
 const TransDetail: React.FC<TransDetailProps> = () => {
-    const isLaptop = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const [isLaptop, setIsLaptop] = useState(false);
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+    }, [mediaQuery])
 
     return (
         <>

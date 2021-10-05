@@ -44,6 +44,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                     <h1 className={style.subtitle + " subTitleMargin"}><CAPSDark /> 14Kazg6SFiUC...Q1pvXzF1dQhv</h1>
                     <div className={style.block + " mt-2 mb-5"}>
                         <div className = "tag-for-scroll">
+                            {isLaptop &&
                             <table className="table table-borderless mb-0">
                                 <tbody className="tbody-detail">
                                     <tr>
@@ -64,6 +65,31 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                                     </tr>
                                 </tbody>
                             </table>
+                            }
+                            {!isLaptop && 
+                            <div className={style.mobileView}>
+                                <div className="flex flex-row mt-2">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Total Balance</span>
+                                        <span className={style.mobileValue}>52.456 CAPS</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Free Balance</span>
+                                        <span className={style.mobileValue}>52.456 CAPS</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Nonce</span>
+                                        <span className={style.mobileValue}>Staking</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Active</span>
+                                        <Check />
+                                    </div>
+                                </div>
+                            </div>
+                        }
                         </div>
                     </div>
                     <div>
@@ -72,6 +98,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                     </div>
                     <div className={style.block + " mt-3"}>
                         <div className = "tag-for-scroll">
+                            {isLaptop &&
                             <table className="table table-borderless mb-0">
                                 <thead> 
                                     <tr className="fs-6 text-grey">
@@ -122,6 +149,40 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                                     </tr>
                                 </tbody>
                             </table>
+                            }
+                            {!isLaptop && 
+                            <div className={style.mobileView}>
+                                <div className="flex flex-row mt-2">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Transaction ID</span>
+                                        <span className={style.mobileValue}>5556906-2</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>From</span>
+                                        <span className={style.mobileValue}>5560132</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Module</span>
+                                        <span className={style.mobileValue}>Balancers</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Success</span>
+                                        <Check />
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className={style.mobileLabel}>Call</span>
+                                        <span className={style.mobileValue}>transfer</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
+                                    <button className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
+                                </div>
+                            </div>
+                        }
                         </div>
                     </div>
                 </div>

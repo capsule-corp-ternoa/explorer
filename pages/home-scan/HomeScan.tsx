@@ -98,6 +98,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         router.push("../validator");
     }
 
+    const goValidatorDetail = () => {
+        router.push("../validator/1");
+    }
+
     return (
         <>
             <Head>
@@ -307,34 +311,34 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     return (
                                         <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
                                             <div className="flex flex-row">
-                                                <div className="flex-1 flex flex-row">
+                                                <div className="flex-1 flex flex-row flex-items-center">
                                                     <span className={style.mobileLabel}>Number</span>
                                                     <span className={style.mobileValue}>65792442</span>
                                                 </div>
-                                                <div className="flex-1 flex flex-row">
+                                                <div className="flex-1 flex flex-row flex-items-center">
                                                     <span className={style.mobileLabel}>Age</span>
                                                     <span className={style.mobileValue}>38 seconds ago</span>
                                                 </div>
                                             </div>
                                             <div className="flex flex-row mt-2">
-                                                <div className="flex-1 flex flex-row">
+                                                <div className="flex-1 flex flex-row flex-items-center">
                                                     <span className={style.mobileLabel}>Transactions</span>
                                                     <span className={style.mobileValue}>2</span>
                                                 </div>
-                                                <div className="flex-1 flex flex-row">
+                                                <div className="flex-1 flex flex-row flex-items-center">
                                                     <span className={style.mobileLabel}>Module Event</span>
                                                     <span className={style.mobileValue}>0</span>
                                                 </div>
                                             </div>
                                             <div className="flex flex-row mt-3">
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
                                             </div>
                                         </div>
                                     )
                                     })
                                 }
                                 {!isLaptop && <div className="d-flex justify-content-center py-3">
-                                    <button className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Blocks</button> 
+                                    <button onClick={goBlockIndex} className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Blocks</button> 
                                 </div>}
                             </div>
                         </div>
@@ -561,7 +565,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-small">0.00%</td>
                                             <td className="text-small">14.37%</td>
                                             <td>
-                                                <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -574,7 +578,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-small">0.00%</td>
                                             <td className="text-small">14.37%</td>
                                             <td>
-                                                <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -587,7 +591,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-small">0.00%</td>
                                             <td className="text-small">14.37%</td>
                                             <td>
-                                                <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -600,7 +604,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-small">0.00%</td>
                                             <td className="text-small">14.37%</td>
                                             <td>
-                                                <button className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -613,23 +617,23 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     return(
                                         <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
                                             <div className="flex flex-row mt-3">
-                                                <div className="flex-1 flex flex-row flex-grow-6">
+                                                <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
                                                     <div className="text-large text-opacity">
                                                         <CAPSDark />
                                                         <Check className="ms-2"/>
                                                         <span className="ms-2">P2P.ORG/7</span>
                                                     </div>
                                                 </div>
-                                                <div className="flex-1 flex flex-row flex-grow-4">
+                                                <div className="flex-1 flex flex-row flex-grow-4 flex-items-center">
                                                     <span className={style.mobileLabel}>Return:</span>
                                                     <span className={style.mobileValue}>14.37%</span>
                                                 </div>
                                             </div>
-                                            <div className="flex flex-row mt-4">
+                                            <div className="flex flex-row mt-4 flex-items-center">
                                                 <span className={style.mobileLabel}>Total staked:</span>
                                                 <span className={style.mobileValue}>5.965.695</span>
                                             </div>
-                                            <div className="flex flex-row mt-2 mb-2">
+                                            <div className="flex flex-row mt-2 mb-2 flex-items-center">
                                                 <span className={style.mobileLabel}>Commissions:</span>
                                                 <span className={style.mobileValue}>0.00%</span>
                                             </div>
@@ -638,7 +642,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 })
                                 }
                                 {!isLaptop && <div className="d-flex justify-content-center py-3">
-                                    <button className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Validators</button> 
+                                    <button onClick={goValidatorList} className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Validators</button> 
                                 </div>}
                             </div>
                         </div>
@@ -686,7 +690,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </ResponsiveContainer>
                             </div>
                         </div>
-                        {isLaptop &&
+
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
@@ -721,7 +725,6 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </ResponsiveContainer>
                             </div>
                         </div>
-                        }
                     </div>
                 </div>
                 <Footer />               
