@@ -92,6 +92,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         router.push("../trans-detail")
     }
 
+    const goValidatorList = () => {
+        router.push("../validator");
+    }
+
     return (
         <>
             <Head>
@@ -452,7 +456,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </tbody>
                                 </table>
                                 </div>
-                                <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Validators</button>
+                                <button onClick={goValidatorList} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Validators</button>
                             </div>
                         </div>
                     </div>
