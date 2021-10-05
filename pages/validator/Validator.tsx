@@ -9,6 +9,7 @@ import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import Check from 'components/assets/Check';
 import CAPSDark from 'components/assets/CAPSDark';
+import Pagination from 'components/base/Pagination';
 
 export interface ValidatorProps {
 }
@@ -180,14 +181,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="d-flex justify-content-center py-3">
-                        <LeftArrow className="mt-1 me-2 cursor-point"/>
-                        <span className="text-large mx-2">Page</span>
-                        <span className="text-large me-1">1</span>
-                        <span className="text-large ms-1">of</span>
-                        <span className="text-large mx-2">9</span>
-                        <RightArrow className="mt-1 ms-2 cursor-point"/>
-                    </div>
+                    <Pagination curPage={1} totalPage={9} />
                 </div>
                 </div>
                 <Footer />               
