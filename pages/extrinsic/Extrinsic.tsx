@@ -7,12 +7,21 @@ import style from './Extrinsic.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import Check from 'components/assets/Check';
+import { useMediaQuery } from 'react-responsive';
 
 export interface ExtrinsicProps {
 }
 
 const Extrinsic: React.FC<ExtrinsicProps> = () => {
+    const [isLaptop, setIsLaptop] = useState(false);
+    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
+
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+    }, [mediaQuery])
 
     const goExtrinsicDetail = () => {
         router.push("../block-detail")
@@ -158,14 +167,17 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="d-flex justify-content-center py-3">
+                    {isLaptop && <div className="d-flex justify-content-center py-3">
                         <LeftArrow className="mt-1 me-2 cursor-point"/>
                         <span className="text-large mx-2">Page</span>
                         <span className="text-large me-1">1</span>
                         <span className="text-large ms-1">of</span>
                         <span className="text-large mx-2">9</span>
                         <RightArrow className="mt-1 ms-2 cursor-point"/>
-                    </div>
+                    </div> }
+                    {!isLaptop && <div className="d-flex justify-content-center py-3">
+                        <button className={"btn btn-secondary rounded-pill " + style.nextButton}>View Next</button> 
+                    </div>}
                 </div>
                 </div>
                 <Footer />               
