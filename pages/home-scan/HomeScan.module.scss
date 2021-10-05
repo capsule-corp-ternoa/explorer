@@ -106,6 +106,9 @@
 .block {
     background-color: $semi-blue;
     border-radius: 30px;
+    @media (max-width: 768px) {
+        border-radius: 12px;
+    }
 }
 
 .chartBlock {
@@ -248,6 +251,56 @@
     .blockTitle {
         line-height: 16px!important;
     }    
+}
+
+.showAllButton {
+    font-family: Airbnb Cereal App Bold;
+    font-weight: bold; 
+    color: white;
+    font-size: 12px;
+    padding: 12px 50px!important;
+    background-color: black;
+}
+
+.blackMobileView {
+    background-color: rgba(7,7,20,0.2)!important;
+}
+
+.mobileView {
+    background-color: $semi-blue;
+    border-radius: 12px;
+    padding: 16px;
+
+    .mobileLabel {
+        font-family: 'Airbnb Cereal App Medium';
+        color: $grey;
+        font-size: 14px;
+        line-height: 18px;
+        margin-right: 5px;
+    }
+
+    .mobileValue {
+        font-family: 'Airbnb Cereal App Medium';
+        font-weight: 500;
+        color: white;
+        opacity: 0.7;
+        font-size: 16px;
+    }
+
+    .tokenValue {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 80%;
+        margin-left: 8px;
+    }
+
+    .detailButton {  
+        font-family: Airbnb Cereal App Bold;
+        font-weight: bold; 
+        color: $white-blue;
+        font-size: 12px;
+        padding: 12px 36px!important;
+    }
 }
 
 .table > thead > tr > th {

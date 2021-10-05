@@ -31,6 +31,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
 
     const [searchText, setSearchText] = useState('');
 
+    const dummyData = [0,1,1,1];
+
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
@@ -189,6 +191,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 <span className={"title " + style.blockTitle}>Latest Blocks</span>
                             </div>
                             <div className={style.block + " pb-4 mt-2"}>
+                                {isLaptop &&
                                 <table className="table table-borderless mb-3">
                                     <thead className="display-block">
                                         <tr className="font-08 text-grey table-mobile-header">
@@ -246,10 +249,47 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>                            
                                     </tbody>
                                 </table>
+                                }
+                                {isLaptop && 
                                 <button onClick={goBlockIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
+                                }
+                                {!isLaptop &&
+                                dummyData.map((item,key) => {
+                                    return (
+                                        <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
+                                            <div className="flex flex-row">
+                                                <div className="flex-1 flex flex-row">
+                                                    <span className={style.mobileLabel}>Number</span>
+                                                    <span className={style.mobileValue}>65792442</span>
+                                                </div>
+                                                <div className="flex-1 flex flex-row">
+                                                    <span className={style.mobileLabel}>Age</span>
+                                                    <span className={style.mobileValue}>38 seconds ago</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-row mt-2">
+                                                <div className="flex-1 flex flex-row">
+                                                    <span className={style.mobileLabel}>Transactions</span>
+                                                    <span className={style.mobileValue}>2</span>
+                                                </div>
+                                                <div className="flex-1 flex flex-row">
+                                                    <span className={style.mobileLabel}>Module Event</span>
+                                                    <span className={style.mobileValue}>0</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-row mt-3">
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
+                                            </div>
+                                        </div>
+                                    )
+                                    })
+                                }
+                                {!isLaptop && <div className="d-flex justify-content-center py-3">
+                                    <button className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Blocks</button> 
+                                </div>}
                             </div>
                         </div>
-                        <div className="col-sm-6 mt-5">
+                        {isLaptop && <div className="col-sm-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
                                 <span className={"title " + style.blockTitle}>NFT transactions</span>
@@ -314,15 +354,16 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </table>
                                 <button onClick={goTransIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
                             </div>
-                        </div>
+                        </div> }
                     </div>
-                    <div className="row mt-5">
+                    <div className={"row" + (isLaptop && " mt-5")}>
                         <div className="col-sm-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
                                 <span className={"title " + style.blockTitle}>Latest transactions</span>
                             </div>
                             <div className={style.block + " pb-4 mt-2"}>
+                                {isLaptop &&
                                 <div className="overflow-x-auto">
                                 <table className="table table-borderless mb-3">
                                     <thead>
@@ -379,8 +420,67 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                </div>
+                                </div>}
+                                {isLaptop &&
                                 <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Transactions</button>
+                                }
+                                {!isLaptop &&
+                                <div>
+                                    <div className={style.mobileView}>
+                                        <div className="flex flex-col mt-2">
+                                            <span className={style.mobileLabel}>From</span>
+                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
+                                                <CAPSDark className={style.smallImage} />
+                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col mt-3">
+                                            <span className={style.mobileLabel}>To</span>
+                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
+                                                <CAPSDark className={style.smallImage} />
+                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-row flex-between mt-4">
+                                            <div className="flex flex-col">
+                                                <span className={style.mobileLabel}>Amount</span>
+                                                <span className={style.mobileValue}>52.456 CAPS</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={style.mobileView + " " + style.blackMobileView}>
+                                        <div className="flex flex-col mt-2">
+                                            <span className={style.mobileLabel}>From</span>
+                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
+                                                <CAPSDark className={style.smallImage} />
+                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col mt-3">
+                                            <span className={style.mobileLabel}>To</span>
+                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
+                                                <CAPSDark className={style.smallImage} />
+                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-row flex-between mt-4">
+                                            <div className="flex flex-col">
+                                                <span className={style.mobileLabel}>Amount</span>
+                                                <span className={style.mobileValue}>52.456 CAPS</span>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                                {!isLaptop && <div className="d-flex justify-content-center py-3">
+                                    <button className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Transactions</button> 
+                                </div>}
                             </div>
                         </div>
                         <div className="col-sm-6 mt-5">
@@ -389,6 +489,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 <span className={"title " + style.blockTitle}>Validators</span>
                             </div>
                             <div className={style.block + " pb-4 mt-2"}>
+                                {isLaptop &&
                                 <div className="overflow-x-auto">
                                 <table className="table table-borderless mb-3">
                                     <thead>
@@ -455,8 +556,31 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                </div>
                                 <button onClick={goValidatorList} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Validators</button>
+                                </div>
+                                }
+                                {!isLaptop &&
+                                dummyData.map((item, key) => {
+                                    return(
+                                        <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
+                                            <div className="flex flex-row">
+                                                <div className="flex-1 flex flex-row">
+                                                    <span className={style.mobileLabel}>Number</span>
+                                                    <span className={style.mobileValue}>65792442</span>
+                                                </div>
+                                                <div className="flex-1 flex flex-row">
+                                                    <span className={style.mobileLabel}>Age</span>
+                                                    <span className={style.mobileValue}>38 seconds ago</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-row mt-2">
+                                                <span className={style.mobileLabel}>Age</span>
+                                                <span className={style.mobileValue}>38 seconds ago</span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                                }
                             </div>
                         </div>
                     </div>
