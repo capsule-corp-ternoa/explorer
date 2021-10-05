@@ -22,7 +22,7 @@ export interface HomeScanProps {
 const HomeScan: React.FC<HomeScanProps> = () => {
     
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
     const [totalTrans, setTotalTrans] = useState(true);
@@ -136,52 +136,101 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </div>
                             </div>
                         </div>
+                        {isLaptop &&
                         <div className="d-flex mt-5">
                             <div className={`${style.searchBarInfo} pe-5 border-end border-dark`}>
                                 <div className="d-flex flex-items-center">
-                                    <div className={`${isLaptop ? 'pt-2' : ''}`}>
+                                    <div className='pt-2'>
                                         <CAPSLogo className={style.Logo}></CAPSLogo>
                                     </div>
-                                    <div className={"d-flex flex-column " + (isLaptop ? 'ms-3': 'ms-1')}>
-                                        <div className={`${style.logoTitle} fs-6 text-opacity text-ellipsis`}>CAPS price</div>
-                                        <div className={`${style.logoPrice} fs-5 fw-bold`}>$0.68</div>
+                                    <div className={"d-flex flex-column ms-3"}>
+                                        <div className="fs-6 text-opacity text-ellipsis">CAPS price</div>
+                                        <div className="fs-5 fw-bold">$0.68</div>
                                     </div>
                                 </div>
                             </div>
                             <div className={`${style.searchBarInfo} pe-5 ps-3 border-end border-dark`}>
                                 <div className="d-flex flex-items-center">
-                                    <div className={`${isLaptop ? 'pt-2' : ''}`}>
+                                    <div className='pt-2'>
                                         <MarketLogo className={style.Logo}></MarketLogo>
                                     </div>
-                                    <div className={`d-flex flex-column ${isLaptop ? 'ms-3': 'ms-1'}`}>
-                                        <div className={`${style.logoTitle} fs-6 text-opacity text-ellipsis`}>Market cap</div>
-                                        <div className={`${style.logoPrice} fs-5 fw-bold`}>$24.683.396</div>
+                                    <div className={`d-flex flex-column ms-3`}>
+                                        <div className="fs-6 text-opacity text-ellipsis">Market cap</div>
+                                        <div className="fs-5 fw-bold">$24.683.396</div>
                                     </div>
                                 </div>
                             </div>
                             <div className={`${style.searchBarInfo} pe-5 ps-3 border-end border-dark`}>
                                 <div className="d-flex flex-items-center">
-                                    <div className={`${isLaptop ? 'pt-2' : ''}`}>
+                                    <div className='pt-2'>
                                         <TransactionLogo className={style.Logo}></TransactionLogo>
                                     </div>
-                                    <div className={`d-flex flex-column ${isLaptop ? 'ms-3': 'ms-1'}`}>
-                                        <div className={`${style.logoTitle} fs-6 text-opacity text-ellipsis`}>Transactions</div>
-                                        <div className={`${style.logoPrice} fs-5 fw-bold`}>$1.347</div>
+                                    <div className={`d-flex flex-column 'ms-3'`}>
+                                        <div className="fs-6 text-opacity text-ellipsis">Transactions</div>
+                                        <div className="fs-5 fw-bold">$1.347</div>
                                     </div>
                                 </div>
                             </div>
                             <div className={`${style.searchBarInfo} ps-3`}>
                                 <div className="d-flex flex-items-center">
-                                    <div className={`${isLaptop ? 'pt-2' : ''}`}>
+                                    <div className='pt-2'>
                                         <BlockLogo className={style.Logo}></BlockLogo>
                                     </div>
-                                    <div className={`d-flex flex-column ${isLaptop ? 'ms-3': 'ms-1'}`}>
-                                        <div className={`${style.logoTitle} fs-6 text-opacity text-ellipsis`}>Finalized Block</div>
-                                        <div className={`${style.logoPrice} fs-5 fw-bold`}>$2.000.000</div>
+                                    <div className={`d-flex flex-column ms-3`}>
+                                        <div className="fs-6 text-opacity text-ellipsis">Finalized Block</div>
+                                        <div className="fs-5 fw-bold">$2.000.000</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        }
+                        {!isLaptop &&
+                        <div className="flex flex-col mt-4 mb-2">
+                            <div className="flex-1 flex flex-row">
+                                <div className="flex-1 flex flex-col">
+                                    <div className="flex flex-row flex-items-center">
+                                        <TransactionLogo className={style.Logo}></TransactionLogo>
+                                        <div className="flex-1 flex flex-col ms-2">
+                                            <span className="fs-6 text-opacity text-ellipsis">Transactions</span>
+                                            <span className={`${style.logoSummary} fs-5 fw-bold`}>1.347M</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex-1 flex flex-col">
+                                    <div className="flex flex-row flex-items-center">
+                                        <CAPSLogo className={style.Logo}></CAPSLogo>
+                                        <div className="flex-1 flex flex-col ms-2">
+                                            <span className="fs-6 text-opacity text-ellipsis">CAPS price</span>
+                                            <div>
+                                                <span className={style.logoSummary}>$0.68</span>
+                                                <span className={`${style.logoPercent} ms-2`}>(+8.50%)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex-1 flex flex-row mt-4">
+                                <div className="flex-1 flex flex-col">
+                                    <div className="flex flex-row flex-items-center">
+                                        <BlockLogo className={style.Logo}></BlockLogo>
+                                        <div className="flex-1 flex flex-col ms-2">
+                                            <span className="fs-6 text-opacity text-ellipsis">Finalized Block</span>
+                                            <span className={style.logoSummary}>2.000.000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex-1 flex flex-col">
+                                    <div className="flex flex-row flex-items-center">
+                                        <MarketLogo className={style.Logo}></MarketLogo>
+                                        <div className="flex-1 flex flex-col ms-2">
+                                            <span className="fs-6 text-opacity text-ellipsis">Market cap</span>
+                                            <span className={style.logoSummary}>$24.683.396</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
                     </div>
                     
                     <div className={`row ${isLaptop ? 'mt-5' : ''}`}>
@@ -545,7 +594,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-large text-opacity">
                                                 <CAPSDark />
                                                 <Check className="ms-3"/>
-                                                <span className="ms-2">P2P.ORG/7</span>    
+                                                <span className="ms-2">P2P.ORG/7</span>
                                             </td>
                                             <td className="text-small">5.965.695</td>
                                             <td className="text-small">0.00%</td>
@@ -563,29 +612,39 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 dummyData.map((item, key) => {
                                     return(
                                         <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
-                                            <div className="flex flex-row">
-                                                <div className="flex-1 flex flex-row">
-                                                    <span className={style.mobileLabel}>Number</span>
-                                                    <span className={style.mobileValue}>65792442</span>
+                                            <div className="flex flex-row mt-3">
+                                                <div className="flex-1 flex flex-row flex-grow-6">
+                                                    <div className="text-large text-opacity">
+                                                        <CAPSDark />
+                                                        <Check className="ms-2"/>
+                                                        <span className="ms-2">P2P.ORG/7</span>
+                                                    </div>
                                                 </div>
-                                                <div className="flex-1 flex flex-row">
-                                                    <span className={style.mobileLabel}>Age</span>
-                                                    <span className={style.mobileValue}>38 seconds ago</span>
+                                                <div className="flex-1 flex flex-row flex-grow-4">
+                                                    <span className={style.mobileLabel}>Return:</span>
+                                                    <span className={style.mobileValue}>14.37%</span>
                                                 </div>
                                             </div>
-                                            <div className="flex flex-row mt-2">
-                                                <span className={style.mobileLabel}>Age</span>
-                                                <span className={style.mobileValue}>38 seconds ago</span>
+                                            <div className="flex flex-row mt-4">
+                                                <span className={style.mobileLabel}>Total staked:</span>
+                                                <span className={style.mobileValue}>5.965.695</span>
+                                            </div>
+                                            <div className="flex flex-row mt-2 mb-2">
+                                                <span className={style.mobileLabel}>Commissions:</span>
+                                                <span className={style.mobileValue}>0.00%</span>
                                             </div>
                                         </div>
                                     )
                                 })
                                 }
+                                {!isLaptop && <div className="d-flex justify-content-center py-3">
+                                    <button className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Validators</button> 
+                                </div>}
                             </div>
                         </div>
                     </div>
                 
-                    <div className="row mt-5">
+                    <div className={"row" + (isLaptop && " mt-5")}>
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className={"flex flex-row flex-items-center flex-between " + style.mMinus50}>
@@ -627,6 +686,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </ResponsiveContainer>
                             </div>
                         </div>
+                        {isLaptop &&
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
@@ -661,6 +721,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </ResponsiveContainer>
                             </div>
                         </div>
+                        }
                     </div>
                 </div>
                 <Footer />               

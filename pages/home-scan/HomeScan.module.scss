@@ -78,8 +78,8 @@
     width: 40px;
     height: 40px;
     @media (max-width: 1024px) {
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
     }
 }
 .blockButton {
@@ -234,14 +234,14 @@
         height: 25px;
     }
 
-    .logoTitle {
-        font-size: 5px!important;
-        line-height: 7px;
+    .logoSummary {
+        font-size: 14px!important;
+        line-height: 8px;
     }
 
-    .logoPrice {
-        font-size: 7px!important;
-        line-height: 8px;
+    .logoPercent {
+        font-size: 12px!important;
+        color: $white-blue;
     }
 
     .searchBarInfo {
