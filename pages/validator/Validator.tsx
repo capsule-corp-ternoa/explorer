@@ -17,7 +17,7 @@ const Validator: React.FC<ValidatorProps> = () => {
     const router = useRouter();
 
     const goValidatorDetail = () => {
-        router.push("../block-detail")
+        router.push("./validator/1")
     }
 
     return (
