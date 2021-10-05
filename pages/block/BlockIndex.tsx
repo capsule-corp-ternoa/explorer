@@ -14,7 +14,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
     const router = useRouter();
 
     const goBlockDetail = () => {
-        router.push("../block-detail")
+        router.push("./block/1")
     }
 
     return (

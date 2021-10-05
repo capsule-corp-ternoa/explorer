@@ -26,7 +26,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
     }, [mediaQuery])
 
     const goTransDetail = () => {
-        router.push("../trans-detail")
+        router.push("./nft/1")
     }
 
     return (

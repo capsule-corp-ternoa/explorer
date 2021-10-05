@@ -79,19 +79,19 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     ];
 
     const goBlockIndex = () => {
-        router.push("../block-index");
+        router.push("../block");
     }
 
     const goBlockDetail = () => {
-        router.push("../block-detail");
+        router.push("../block/1");
     }
 
     const goTransIndex = () => {
-        router.push("../trans-index");
+        router.push("../nft");
     }
 
     const goTransDetail = () => {
-        router.push("../trans-detail")
+        router.push("../nft/1")
     }
 
     const goValidatorList = () => {
