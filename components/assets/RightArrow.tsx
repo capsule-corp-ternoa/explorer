@@ -2,12 +2,13 @@ import React from 'react';
 
 interface RightArrowProps {
   className?: string;
+  opacity?: number
 }
 
-const RightArrow: React.FC<RightArrowProps> = ({ className }) => (
+const RightArrow: React.FC<RightArrowProps> = ({ className, opacity }) => (
   <svg width="31" height="14" className={className} viewBox="0 0 31 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path opacity="0.95" d="M22.9219 4.96179C23.852 4.96179 24.6061 5.71583 24.6061 6.646C24.6061 7.57616 23.852 8.33021 22.9219 8.33021V4.96179ZM1.69111 8.33021C0.760942 8.33021 0.00689697 7.57616 0.00689697 6.646C0.00689697 5.71583 0.760942 4.96179 1.69111 4.96179V8.33021ZM22.9219 8.33021H1.69111V4.96179H22.9219V8.33021Z" fill="#9F9FFF"/>
-      <g opacity="0.95">
+    <path opacity={opacity?opacity:1} d="M22.9219 4.96179C23.852 4.96179 24.6061 5.71583 24.6061 6.646C24.6061 7.57616 23.852 8.33021 22.9219 8.33021V4.96179ZM1.69111 8.33021C0.760942 8.33021 0.00689697 7.57616 0.00689697 6.646C0.00689697 5.71583 0.760942 4.96179 1.69111 4.96179V8.33021ZM22.9219 8.33021H1.69111V4.96179H22.9219V8.33021Z" fill="#9F9FFF"/>
+      <g opacity={opacity?opacity:1}>
       <mask id="path-2-inside-1" fill="white">
         <path d="M30.7655 6.78354L22.2957 0.572379C21.4058 -0.0802677 20.1516 0.555274 20.1516 1.6589V12.5872C20.1516 13.6909 21.4058 14.3264 22.2957 13.6738L30.7655 7.46262C30.9949 7.29438 30.9949 6.95177 30.7655 6.78354Z"/>
       </mask>

@@ -653,11 +653,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             <div className={style.chartBlock}>
                                 <div className={"flex flex-row flex-items-center flex-between " + style.mMinus50}>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setTotalTrans(!totalTrans)}>
-                                        <div className={style.activeChartRect}></div>
+                                        <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" checked={totalTrans} />
                                         <span className={totalTrans ? style.chartLabel : style.chartInactiveLabel}>Total transaction by day</span>
                                     </div>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setNewAccount(!newAccount)}>
-                                        <div className={style.inactiveChartRect}></div>
+                                        <input className={style.chartCheckbox + " " + style.inactiveChartRect} type="checkbox" checked={newAccount} />
                                         <span className={newAccount ? style.chartLabel : style.chartInactiveLabel}>New account by day</span>
                                     </div>
                                     
@@ -684,8 +684,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <XAxis tickLine={false} axisLine={false} dataKey="name" style={{color:'white'}} />
                                     <YAxis tick={false} tickLine={false} axisLine={false} />
                                     <Tooltip />
-                                    {totalTrans && <Area type="linear" dataKey="uv" stroke="transparent" fill="url(#blockUV)" />}
-                                    {newAccount && <Bar dataKey="pv" barSize={25} fill="#9F9FFF" radius={[20,20,20,20]} />}
+                                    {newAccount && <Area type="linear" dataKey="uv" stroke="transparent" fill="url(#blockUV)" />}
+                                    {totalTrans && <Bar dataKey="pv" barSize={25} fill="#9F9FFF" radius={[20,20,20,20]} />}
                                     </ComposedChart>
                                 </ResponsiveContainer>
                             </div>
@@ -694,7 +694,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
-                                    <div className={style.activeChartRect}></div>
+                                    <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" checked={averBlock} />
                                     <span className={averBlock ? style.chartLabel : style.chartInactiveLabel}>Average block time by day</span>
                                 </div>
                                 <ResponsiveContainer width="100%" height="80%" className={style.chartView}>

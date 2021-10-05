@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import { useRouter } from "next/router";
-import LeftArrow from 'components/assets/LeftArrow';
-import RightArrow from 'components/assets/RightArrow';
 import style from './BlockIndex.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
+import Pagination from 'components/base/Pagination';
 
 export interface BlockIndexProps {
 }
@@ -166,14 +165,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className="d-flex justify-content-center py-3">
-                        <LeftArrow className="mt-1 me-2 cursor-point"/>
-                        <span className="text-large mx-2">Page</span>
-                        <span className="text-large me-1">1</span>
-                        <span className="text-large ms-1">of</span>
-                        <span className="text-large mx-2">9</span>
-                        <RightArrow className="mt-1 ms-2 cursor-point"/>
-                    </div>
+                    <Pagination curPage={1} totalPage={9} />
                 </div>
                 </div>
                 <Footer />               

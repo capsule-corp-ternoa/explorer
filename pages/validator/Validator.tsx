@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import { useRouter } from "next/router";
-import LeftArrow from 'components/assets/LeftArrow';
-import RightArrow from 'components/assets/RightArrow';
+import Pagination from 'components/base/Pagination';
 import Down from 'components/assets/Down';
 import style from './Validator.module.scss';
 import Header from 'components/base/Header';
@@ -228,14 +227,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                         }
                     </div>
                     {isLaptop &&
-                    <div className="d-flex justify-content-center py-3">
-                        <LeftArrow className="mt-1 me-2 cursor-point"/>
-                        <span className="text-large mx-2">Page</span>
-                        <span className="text-large me-1">1</span>
-                        <span className="text-large ms-1">of</span>
-                        <span className="text-large mx-2">9</span>
-                        <RightArrow className="mt-1 ms-2 cursor-point"/>
-                    </div>
+                    <Pagination curPage={1} totalPage={9} />
                     }
                     {!isLaptop && <div className="d-flex justify-content-center py-3">
                         <button className={"btn btn-secondary rounded-pill " + style.nextButton}>View Next</button> 
