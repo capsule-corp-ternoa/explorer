@@ -1,0 +1,10 @@
+.paginationButton {
+    opacity: 0.6;
+    &:hover {
+        opacity: 1;
+    }
+
+    &:active {
+        opacity: 0.4;
+    }
+}

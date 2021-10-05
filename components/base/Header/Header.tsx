@@ -15,6 +15,7 @@ export interface HeaderProps {
 const Header: React.FC<HeaderProps> = (props) => {
     const dispatch = useAppDispatch()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [searchText, setSearchText] = useState('');
     const [isCapsInputFocused, setIsCapsInputFocused] = useState(false)
     return (
         <header>
@@ -28,9 +29,12 @@ const Header: React.FC<HeaderProps> = (props) => {
                     {(props.searchBar || props.searchBar == undefined) && <div className={style.mobileSearchBar}>
                         <input
                             type="text"
-                            value={''}
+                            value={searchText}
                             onChange={(e) => {
-                                
+                                setSearchText(e.target.value)
+                            }}
+                            onKeyDown={(e) => {
+                                if(e.keyCode === 13) setSearchText('');
                             }}
                             className={style.searchContainer}
                             placeholder="Search by adresse / Txn Hash / Block / NFT"
