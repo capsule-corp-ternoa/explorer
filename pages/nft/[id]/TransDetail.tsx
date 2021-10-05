@@ -17,10 +17,6 @@ const TransDetail: React.FC<TransDetailProps> = () => {
     const isLaptop = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
 
-    const goTransInfo = () => {
-        router.push("../trans-info")
-    }
-
     return (
         <>
             <Head>

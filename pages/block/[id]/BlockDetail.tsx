@@ -25,7 +25,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
     }, [mediaQuery])
 
     const goTransInfo = () => {
-        router.push("../trans-info")
+        router.push("./1/trans")
     }
 
     return (
