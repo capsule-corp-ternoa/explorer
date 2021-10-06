@@ -30,6 +30,11 @@ const Header: React.FC<HeaderProps> = (props) => {
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
+
+    const goAccountIndex = () => {
+        router.push("/account");
+    }
+
     return (
         <header>
             <div className={style.header}>
@@ -70,7 +75,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 <div className={style.mobileMenu + " flex flex-col flex-items-center"}>
                     <span className={style.mobileMenuItem + " " + (router.route == '/' ? style.activeMobileMenuItem : '')}>Dashboard</span>
                     <span className={style.mobileMenuItem}>Chain</span>
-                    <span className={style.mobileMenuItem}>Account</span>
+                    <span onClick={goAccountIndex} className={style.mobileMenuItem}>Account</span>
                 </div>
             </Modal>}
         </header>
