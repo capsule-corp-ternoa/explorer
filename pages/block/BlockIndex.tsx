@@ -54,22 +54,22 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity">21 hours Ago</td>
-                                    <td className="text-large text-opacity">0x3a851d3...efe6f</td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td className="text-large text-opacity">6</td>
-                                    <td>
-                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
-                                    </td>
-                                </tr>
+                                    <tr key={key}>
+                                        <td className="text-large text-opacity fw-bold">5545118</td>
+                                        <td className="text-large text-opacity">21 hours Ago</td>
+                                        <td className="text-large text-opacity">0x3a851d3...efe6f</td>
+                                        <td className="text-large text-opacity">2</td>
+                                        <td className="text-large text-opacity">6</td>
+                                        <td>
+                                            <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                        </td>
+                                    </tr>
                                 )})}
                             </tbody>
                         </table>
                         }
                         {!isLaptop && dummyMobile.map((item, key) => { return (
-                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                            <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Number</span>

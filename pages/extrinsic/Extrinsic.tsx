@@ -55,7 +55,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                             </thead>
                             <tbody>
                             {dummyWeb.map((item, key) => { return (
-                                <tr>
+                                <tr key={key}>
                                     <td className="text-large text-opacity fw-bold">5659861-2</td>
                                     <td className="text-large text-opacity">5659861</td>
                                     <td className="text-large text-opacity">staking</td>
@@ -71,7 +71,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                         </table>
                         }
                         {!isLaptop && dummyMobile.map((item, key) => { return (
-                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Extrinsic ID</span>

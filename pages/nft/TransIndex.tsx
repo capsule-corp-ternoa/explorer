@@ -56,7 +56,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
-                                <tr>
+                                <tr key={key}>
                                     <td className="text-large text-opacity fw-bold">Multicolor galaxy-6502</td>
                                     <td className="text-large text-opacity">13/09/2021, 22:14</td>
                                     <td className="text-large text-opacity text-no-wrap">
@@ -77,7 +77,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                         </table>
                         }
                         {!isLaptop && dummyMobile.map((item, key) => { return (
-                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Name/ID</span>

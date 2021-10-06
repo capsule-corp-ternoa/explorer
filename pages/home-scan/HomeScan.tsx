@@ -123,6 +123,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     onChange={(e) => {
                                         setSearchText(e.target.value)
                                     }}
+                                    onKeyDown={(e) => {
+                                        if(e.keyCode === 13) setSearchText('');
+                                    }}
                                     placeholder="Search by adresse / Txn Hash / Block"
                                     className={style.searchInput}
                                     style={{ backgroundColor: "#14142E" }}
@@ -133,7 +136,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             
                             <div
                                 className={style.searchBtn + " btn btn-primary rounded-pill flex flex-center"}
-                                onClick={() => console.log()}
+                                onClick={() => setSearchText('')}
                             >
                                 <div className={"d-flex align-items-center"}>
                                     <span className="me-auto ms-auto">Search</span>
@@ -257,48 +260,20 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </thead>
                                     <tbody>
                                         {dummyData.map((item, key) => { return (
-                                        <tr>
-                                            <td className="text-large text-opacity">5545118</td>
-                                            <td className="text-large text-opacity">38 seconds ago</td>
-                                            <td className="text-large text-opacity">2</td>
-                                            <td className="text-large text-opacity">0</td>
-                                            <td>
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                        <tr key={key}>
+                                            <td width="20%" className="font-08 text-opacity">5545118</td>
+                                            <td width="35%" className="text-small text-opacity">38 seconds ago</td>
+                                            <td width="15%" className="text-small text-opacity">2</td>
+                                            <td width="15%" className="text-small text-opacity">0</td>
+                                            <td width="15%">
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Detail</button>
                                             </td>
                                         </tr>
                                         )})}                           
                                     </tbody>
                                 </table>
                                 }
-                                {!isLaptop &&
-                                dummyData.map((item,key) => { return (
-                                    <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
-                                        <div className="flex flex-row mt-2">
-                                            <div className="flex-1 flex flex-row flex-items-center">
-                                                <span className="mobileRowLabel me-1">Number</span>
-                                                <span className="mobileValue">65792442</span>
-                                            </div>
-                                            <div className="flex-1 flex flex-row flex-items-center">
-                                                <span className="mobileRowLabel me-1">Age</span>
-                                                <span className="mobileValue">38 seconds ago</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-row mt-3">
-                                            <div className="flex-1 flex flex-row flex-items-center">
-                                                <span className="mobileRowLabel me-1">Transactions</span>
-                                                <span className="mobileValue">2</span>
-                                            </div>
-                                            <div className="flex-1 flex flex-row flex-items-center">
-                                                <span className="mobileRowLabel me-1">Module Event</span>
-                                                <span className="mobileValue">0</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-row mt-3 mb-1">
-                                            <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
-                                        </div>
-                                    </div>
-                                )})
-                                }
+                                
                                 {isLaptop && 
                                     <button onClick={goBlockIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
                                 }
@@ -550,7 +525,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop &&
                                 dummyData.map((item, key) => {
                                     return(
-                                        <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
+                                        <div key={key} className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
                                             <div className="flex flex-row mt-3">
                                                 <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
                                                     <div className="text-large text-opacity">
@@ -588,11 +563,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             <div className={style.chartBlock}>
                                 <div className={"flex flex-row flex-items-center flex-between " + style.mMinus50}>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setTotalTrans(!totalTrans)}>
-                                        <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" checked={totalTrans} />
+                                        <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" onChange={()=>console.log()} checked={totalTrans} />
                                         <span className={totalTrans ? style.chartLabel : style.chartInactiveLabel}>Total transaction by day</span>
                                     </div>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setNewAccount(!newAccount)}>
-                                        <input className={style.chartCheckbox + " " + style.inactiveChartRect} type="checkbox" checked={newAccount} />
+                                        <input className={style.chartCheckbox + " " + style.inactiveChartRect} type="checkbox" onChange={()=>console.log()} checked={newAccount} />
                                         <span className={newAccount ? style.chartLabel : style.chartInactiveLabel}>New account by day</span>
                                     </div>
                                     
@@ -629,7 +604,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
-                                    <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" checked={averBlock} />
+                                    <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" onChange={()=>console.log()} checked={averBlock} />
                                     <span className={averBlock ? style.chartLabel : style.chartInactiveLabel}>Average block time by day</span>
                                 </div>
                                 <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
