@@ -3,15 +3,15 @@ import Head from 'next/head'
 import { useRouter } from "next/router";
 import CAPSDark from 'components/assets/CAPSDark';
 import Pagination from 'components/base/Pagination';
-import style from './TransIndex.module.scss';
+import style from './AccountIndex.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
 
-export interface TransIndexProps {
+export interface AccountIndexProps {
 }
 
-const TransIndex: React.FC<TransIndexProps> = () => {
+const AccountIndex: React.FC<AccountIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
@@ -25,8 +25,8 @@ const TransIndex: React.FC<TransIndexProps> = () => {
         }
     }, [mediaQuery])
 
-    const goTransDetail = () => {
-        router.push("./nft/1")
+    const goAccountDetail = () => {
+        router.push("./account/1")
     }
 
     return (
@@ -39,37 +39,30 @@ const TransIndex: React.FC<TransIndexProps> = () => {
             <div className={"mainContainer"}>
                 <Header/>
                 <div className="mainBody">
-                <h1 className="subTitle">NFT Transactions</h1>
+                <h1 className="subTitle">All Accounts</h1>
                 <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
                         {isLaptop &&
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Name/ID</th>
-                                    <th>Date</th>
-                                    <th>Sender</th>
-                                    <th>Receiver</th>
-                                    <th>Account</th>
+                                    <th>Address</th>
+                                    <th>Transactions</th>
+                                    <th>Amount</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
-                                <tr key={key}>
-                                    <td className="text-large text-opacity fw-bold">Multicolor galaxy-6502</td>
-                                    <td className="text-large text-opacity">13/09/2021, 22:14</td>
+                                <tr>
                                     <td className="text-large text-opacity text-no-wrap">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">0x3a851d...399f86</span>
+                                        <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...</span>
                                     </td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">0x3a851d...399f86</span>
-                                    </td>
+                                    <td className="text-large text-opacity">7</td>
                                     <td className="text-large text-opacity">10.000 CAPS</td>
                                     <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                        <button onClick={goAccountDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -77,44 +70,26 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                         </table>
                         }
                         {!isLaptop && dummyMobile.map((item, key) => { return (
-                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
+                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
-                                        <span className="mobileLabel">Name/ID</span>
-                                        <span className="mobileValue">Multicolor galaxy-6502</span>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">Transactions</span>
+                                        <span className="mobileValue">7</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Amount</span>
                                         <span className="mobileValue">10.000 CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Date</span>
-                                    <div className="mobileValue">13/09/2021, 22:14</div>
-                                </div>
-                                <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">From</span>
+                                    <span className="mobileRowLabel">Block Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">To</span>
-                                    <div className="flex flex-row flex-1 flex-items-center">
-                                        <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Creator</span>
-                                    <div className="flex flex-row flex-1 flex-items-center">
-                                        <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue">10x3a851...3f084a0t542f7c1aff</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={goAccountDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})
@@ -134,4 +109,4 @@ const TransIndex: React.FC<TransIndexProps> = () => {
     )
 }
 
-export default TransIndex;
+export default AccountIndex;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Head from 'next/head'
+import style from './ExtrinsicDetail.module.scss';
 import CAPSDark from 'components/assets/CAPSDark';
 import Back from 'components/assets/Back';
-import Down from 'components/assets/Down';
 import Check from 'components/assets/Check';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
@@ -24,7 +24,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
     }, [mediaQuery])
 
     const goTransInfo = () => {
-        router.push("./1/trans")
+        router.push("./1/address")
     }
 
     return (
@@ -113,28 +113,28 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     <span className="mobileValue">Jun 18, 2021, 3:16:00 PM</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Hash</span>
+                                    <span className="mobileRowLabel">Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Parent Hash</span>
+                                    <span className="mobileRowLabel">Parent Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">State Root</span>
+                                    <span className="mobileRowLabel">State Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Extrinsics Root</span>
+                                    <span className="mobileRowLabel">Extrinsics Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
@@ -167,7 +167,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-4">
-                                    <span className="mobileLabel">Block author</span>
+                                    <span className="mobileRowLabel">Block author</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
@@ -187,9 +187,11 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">Destination</td>
-                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
+                                        <td className={"text-large text-opacity"}>
+                                            <div className={"flex flex-row flex-items-center w-100 " + style.addressButton} onClick={goTransInfo}>
                                             <CAPSDark className="webIcon me-2" />
                                             <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -212,7 +214,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">From</span>
+                                    <span className="mobileRowLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
