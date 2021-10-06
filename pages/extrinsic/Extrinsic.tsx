@@ -61,7 +61,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                     <td className="text-large text-opacity">staking</td>
                                     <td className="text-large text-opacity">bond_extra</td>
                                     <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="webCheckIcon"/></td>
+                                    <td className="text-large text-opacity"><Check className="webCheckIcon"/></td>
                                     <td>
                                         <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>

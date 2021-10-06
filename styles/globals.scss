@@ -243,6 +243,10 @@ a {
   overflow: hidden;
 }
 
+.text-80 {
+  width: 80%;
+}
+
 .webBorderTable {
   border-bottom: 1px solid $table-border;
   thead {
@@ -298,8 +302,8 @@ a {
 }
 
 .mobileIcon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
 }
 
 .mobileCheckIcon {

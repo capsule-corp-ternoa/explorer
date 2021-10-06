@@ -99,7 +99,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Extrinsics Root</td>
-                                        <td className="text-large text-opacity flex flex-row flex-items-center">
+                                        <td className="text-large text-opacity">
                                             <Check className="webCheckIcon" />
                                         </td>
                                     </tr>
@@ -113,31 +113,31 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     <span className="mobileValue">Jun 18, 2021, 3:16:00 PM</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Hash</span>
+                                    <span className="mobileLabel">Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Parent Hash</span>
+                                    <span className="mobileLabel">Parent Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">State Root</span>
+                                    <span className="mobileLabel">State Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Extrinsics Root</span>
+                                    <span className="mobileLabel">Extrinsics Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
@@ -167,10 +167,10 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-4">
-                                    <span className="mobileRowLabel">Block author</span>
+                                    <span className="mobileLabel">Block author</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                             </div>
@@ -214,10 +214,10 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">From</span>
+                                    <span className="mobileLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">

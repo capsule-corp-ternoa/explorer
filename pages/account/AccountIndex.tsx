@@ -54,7 +54,7 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
-                                <tr>
+                                <tr key={key}>
                                     <td className="text-large text-opacity text-no-wrap">
                                         <CAPSDark className="webIcon me-2" />
                                         <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...</span>
@@ -70,7 +70,7 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                         </table>
                         }
                         {!isLaptop && dummyMobile.map((item, key) => { return (
-                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                            <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Transactions</span>
@@ -82,10 +82,10 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Block Hash</span>
+                                    <span className="mobileLabel">Block Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">10x3a851...3f084a0t542f7c1aff</span>
+                                        <span className="textToken text-80 mobileValue">10x3a851...3f084a0t542f7c1aff</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

@@ -44,12 +44,12 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Number</th>
-                                    <th>Age</th>
-                                    <th>Block Hash</th>
-                                    <th>Signed Extrinsics</th>
-                                    <th>Module Events</th>
-                                    <th></th>
+                                    <th style={{width:"17%"}}>Number</th>
+                                    <th style={{width:"18%"}}>Age</th>
+                                    <th style={{width:"30%"}}>Block Hash</th>
+                                    <th style={{width:"10%"}}>Signed Extrinsics</th>
+                                    <th style={{width:"10%"}}>Module Events</th>
+                                    <th style={{width:"15%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,7 +84,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     <span className="mobileLabel">Block Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
