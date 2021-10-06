@@ -114,28 +114,28 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                     <span className="mobileValue">Jun 18, 2021, 3:16:00 PM</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Hash</span>
+                                    <span className="mobileRowLabel">Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Parent Hash</span>
+                                    <span className="mobileRowLabel">Parent Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">State Root</span>
+                                    <span className="mobileRowLabel">State Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Extrinsics Root</span>
+                                    <span className="mobileRowLabel">Extrinsics Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
@@ -168,7 +168,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-4">
-                                    <span className="mobileLabel">Block author</span>
+                                    <span className="mobileRowLabel">Block author</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
@@ -228,7 +228,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">From</span>
+                                    <span className="mobileRowLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>

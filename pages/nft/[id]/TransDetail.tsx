@@ -36,41 +36,72 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">Balance transfer "5560132-8"</h1>
+                    <h1 className="subTitle">Multicolor galaxy-6502</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&
                             <table className="table table-borderless mb-0">
                                 <tbody className="tbody-detail">
                                     <tr>
-                                        <td className="text-large text-opacity">Block</td>
-                                        <td className="text-large text-opacity">5545118</td>
+                                        <td className="text-large text-opacity">NFT Name</td>
+                                        <td className="text-large text-opacity">Multicolor galaxy</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">From</td>
+                                        <td className="text-large text-opacity">ID</td>
+                                        <td className="text-large text-opacity">6502</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Type of transaction</td>
+                                        <td className="text-large text-opacity">Sale</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Amount</td>
+                                        <td className="text-large text-opacity">1000 CAPS</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Minting contract</td>
+                                        <td className="text-large text-opacity">
+                                            <span className="textToken">0x7be8076f4ea4a4ad08075c2508e481d6c946d12b</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">NFT asset address</td>
+                                        <td className="text-large text-opacity">
+                                            <span className="textToken">0x495f947276749ce646f68ac8c248420045cb7b5e</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Sender</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
                                             <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">To</td>
+                                        <td className="text-large text-opacity">Receiver</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
                                             <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Value</td>
-                                        <td className="text-large text-opacity">1006 CAPS</td>
+                                        <td className="text-large text-opacity">Creator</td>
+                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
+                                            <CAPSDark className="webIcon me-2" />
+                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Fee</td>
-                                        <td className="text-large text-opacity">41.5 CAPS</td>
+                                        <td className="text-large text-opacity">Date</td>
+                                        <td className="text-large text-opacity">13/09/2021, 22:14</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Event ID</td>
-                                        <td className="text-large text-opacity">5560132-8</td>
+                                        <td className="text-large text-opacity">Quantity</td>
+                                        <td className="text-large text-opacity">3</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Content URL</td>
+                                        <td className="text-large text-opacity">https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -79,37 +110,66 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                             <div className={"mobileView"}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Block</span>
-                                        <span className="mobileValue">5545118</span>
+                                        <span className="mobileLabel">NFT Name</span>
+                                        <span className="mobileValue">Multicolor galaxy</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Event-ID</span>
-                                        <span className="mobileValue">5560132-8</span>
+                                        <span className="mobileLabel">ID</span>
+                                        <span className="mobileValue">6502</span>
                                     </div>
                                 </div>
+                                <div className="flex flex-row mt-4">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">Type of transaction</span>
+                                        <span className="mobileValue">Sale</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">Amount</span>
+                                        <span className="mobileValue">1000 CAPS</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col mt-4 mb-2">
+                                    <span className="mobileLabel">Minting contract</span>
+                                    <div className="mobileValue textToken">16hCXjmTFQ...E9EiMg8FrzdzRrC</div>
+                                </div>
+                                <div className="flex flex-col mt-4 mb-2">
+                                    <span className="mobileLabel">NFT asset address</span>
+                                    <div className="mobileValue textToken">16hCXjmTFQ...E9EiMg8FrzdzRrC</div>
+                                </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">From</span>
+                                    <span className="mobileRowLabel">Sender</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">To</span>
+                                    <span className="mobileRowLabel">Receiver</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
-                                <div className="flex flex-row mt-4 mb-2">
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileRowLabel">Creator</span>
+                                    <div className="flex flex-row flex-1 flex-items-center">
+                                        <CAPSDark className="mobileIcon me-2" />
+                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Fee</span>
-                                        <span className="mobileValue">41.5 CAPS</span>
+                                        <span className="mobileLabel">Date</span>
+                                        <span className="mobileValue">13/09/2021, 22:14</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Value</span>
-                                        <span className="mobileValue">1006 CAPS</span>
+                                        <span className="mobileLabel">Quantity</span>
+                                        <span className="mobileValue">3</span>
                                     </div>
+                                </div>
+                                <div className="flex flex-col mt-4 mb-2">
+                                    <span className="mobileLabel">Content URL</span>
+                                    <div className="mobileValue">https://SecretNFT/files d84ed2d6ef96bb146e0df57017e47731</div>
                                 </div>
                             </div>
                             }

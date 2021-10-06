@@ -39,33 +39,35 @@ const TransIndex: React.FC<TransIndexProps> = () => {
             <div className={"mainContainer"}>
                 <Header/>
                 <div className="mainBody">
-                <h1 className="subTitle">Balance transfers</h1>
+                <h1 className="subTitle">NFT Transactions</h1>
                 <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
                         {isLaptop &&
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Name</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Value</th>
+                                    <th>Name/ID</th>
+                                    <th>Date</th>
+                                    <th>Sender</th>
+                                    <th>Receiver</th>
+                                    <th>Account</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
                                 <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
+                                    <td className="text-large text-opacity fw-bold">Multicolor galaxy-6502</td>
+                                    <td className="text-large text-opacity">13/09/2021, 22:14</td>
                                     <td className="text-large text-opacity text-no-wrap">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
+                                        <span className="textToken">0x3a851d...399f86</span>
                                     </td>
                                     <td className="text-large text-opacity text-no-wrap">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
+                                        <span className="textToken">0x3a851d...399f86</span>
                                     </td>
-                                    <td className="text-large text-opacity">2</td>
+                                    <td className="text-large text-opacity">10.000 CAPS</td>
                                     <td>
                                         <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
@@ -77,24 +79,35 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                         {!isLaptop && dummyMobile.map((item, key) => { return (
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Block</span>
-                                        <span className="mobileValue">5545118</span>
+                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                        <span className="mobileLabel">Name/ID</span>
+                                        <span className="mobileValue">Multicolor galaxy-6502</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col">
+                                    <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Amount</span>
-                                        <span className="mobileValue">52.456 CAPS</span>
+                                        <span className="mobileValue">10.000 CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">From</span>
+                                    <span className="mobileLabel">Date</span>
+                                    <div className="mobileValue">13/09/2021, 22:14</div>
+                                </div>
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileRowLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">To</span>
+                                    <span className="mobileRowLabel">To</span>
+                                    <div className="flex flex-row flex-1 flex-items-center">
+                                        <CAPSDark className="mobileIcon me-2" />
+                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileRowLabel">Creator</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>

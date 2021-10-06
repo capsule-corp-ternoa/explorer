@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import Head from 'next/head'
 import { useRouter } from "next/router";
+import CAPSDark from 'components/assets/CAPSDark';
+import Pagination from 'components/base/Pagination';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
-import Pagination from 'components/base/Pagination';
-import CAPSDark from 'components/assets/CAPSDark';
+import { useMediaQuery } from 'react-responsive';
 
-export interface BlockIndexProps {
+export interface TransIndexProps {
 }
 
-const BlockIndex: React.FC<BlockIndexProps> = () => {
+const TransIndex: React.FC<TransIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
+
     const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
     const dummyMobile = [0,1,1,1];
 
@@ -23,8 +24,8 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
         }
     }, [mediaQuery])
 
-    const goBlockDetail = () => {
-        router.push("./block/1")
+    const goTransDetail = () => {
+        router.push("./trans/1")
     }
 
     return (
@@ -35,20 +36,19 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                 <meta name="description" content="BSC Scan, by Ternoa." />
             </Head>
             <div className={"mainContainer"}>
-                <Header />
+                <Header/>
                 <div className="mainBody">
-                <h1 className="subTitle">Blocks</h1>
+                <h1 className="subTitle">Balance transfers</h1>
                 <div className="mainBlock pb-4 mt-2">
-                    <div className="tag-for-scroll">
+                    <div className = "tag-for-scroll">
                         {isLaptop &&
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Number</th>
-                                    <th>Age</th>
-                                    <th>Block Hash</th>
-                                    <th>Signed Extrinsics</th>
-                                    <th>Module Events</th>
+                                    <th>Name</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Value</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -56,12 +56,17 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                 {dummyWeb.map((item, key) => { return (
                                 <tr>
                                     <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity">21 hours Ago</td>
-                                    <td className="text-large text-opacity">0x3a851d3...efe6f</td>
+                                    <td className="text-large text-opacity text-no-wrap">
+                                        <CAPSDark className="webIcon me-2" />
+                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
+                                    </td>
+                                    <td className="text-large text-opacity text-no-wrap">
+                                        <CAPSDark className="webIcon me-2" />
+                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
+                                    </td>
                                     <td className="text-large text-opacity">2</td>
-                                    <td className="text-large text-opacity">6</td>
                                     <td>
-                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -72,33 +77,30 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Number</span>
+                                        <span className="mobileLabel">Block</span>
                                         <span className="mobileValue">5545118</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Age</span>
-                                        <span className="mobileValue">21 hour ago</span>
+                                        <span className="mobileLabel">Amount</span>
+                                        <span className="mobileValue">52.456 CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Block Hash</span>
+                                    <span className="mobileRowLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
-                                <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Signed Extrinsics</span>
-                                        <span className="mobileValue">1</span>
-                                    </div>
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Module Events</span>
-                                        <span className="mobileValue">2</span>
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileRowLabel">To</span>
+                                    <div className="flex flex-row flex-1 flex-items-center">
+                                        <CAPSDark className="mobileIcon me-2" />
+                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})
@@ -112,10 +114,10 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                     </div>}
                 </div>
                 </div>
-                <Footer />               
+                <Footer />
             </div>
         </>
     )
 }
 
-export default BlockIndex;
+export default TransIndex;
