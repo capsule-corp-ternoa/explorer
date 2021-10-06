@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from "next/router";
 import style from './Header.module.scss';
 import LogoTernoaScan from 'components/assets/LogoTernoaScan';
 import Hamburger from 'components/assets/Hamburger';
@@ -7,6 +8,9 @@ import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import Search from 'components/assets/Search';
 import { actions } from 'redux/walletUser/actions';
 import ClickAwayListener from 'react-click-away-listener';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import { useMediaQuery } from 'react-responsive';
 
 export interface HeaderProps {
     searchBar?: Boolean
@@ -17,6 +21,15 @@ const Header: React.FC<HeaderProps> = (props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [searchText, setSearchText] = useState('');
     const [isCapsInputFocused, setIsCapsInputFocused] = useState(false)
+    const [isLaptop, setIsLaptop] = useState(false);
+    const mediaQuery = useMediaQuery({ query: '(min-device-width: 768px)' });
+    const router = useRouter();
+    
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+    }, [mediaQuery])
     return (
         <header>
             <div className={style.header}>
@@ -52,6 +65,14 @@ const Header: React.FC<HeaderProps> = (props) => {
                     <Hamburger className={style.hamburger + " mx-2"} />
                 </div>
             </div>
+
+            {!isLaptop && <Modal open={isMenuOpen} onClose={()=>setIsMenuOpen(false)}>
+                <div className={style.mobileMenu + " flex flex-col flex-items-center"}>
+                    <span className={style.mobileMenuItem + " " + (router.route == '/' ? style.activeMobileMenuItem : '')}>Dashboard</span>
+                    <span className={style.mobileMenuItem}>Chain</span>
+                    <span className={style.mobileMenuItem}>Account</span>
+                </div>
+            </Modal>}
         </header>
     )
 }

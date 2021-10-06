@@ -161,6 +161,15 @@ input[type=number] {
 
 .table > tbody {
 	border-radius: 20px;
+
+	tr:last-child {
+		td:first-child {
+			border-bottom-left-radius: 20px;
+		}
+		td:last-child {
+			border-bottom-right-radius: 20px;
+		}
+	}
 }
 
 .table > thead > tr > th {
@@ -187,7 +196,18 @@ input[type=number] {
 	@media (max-width: 1024px) {
 		padding-left: 21px;
 	}
-} 
+}
+
+.tbody-detail {
+	tr:first-child {
+		td:first-child {
+			border-top-left-radius: 20px;
+		}
+		td:last-child {
+			border-top-right-radius: 20px;
+		}
+	}
+}
 
 .tbody-detail > tr > td:nth-child(2) {
 	width: 60%;
@@ -281,5 +301,35 @@ input[type=number] {
 			padding-top: 0px!important;
 		}
 	}
-	
-  }
+}
+.react-responsive-modal-overlay {
+	background: rgba(0, 0, 0, 0.3)!important
+}
+.react-responsive-modal-modal {
+	max-width: unset!important;
+    position: absolute!important;
+	bottom: 0px;
+	left: 0px;
+    padding: 1.2rem;
+    background: rgba(136, 136, 136, 0.15)!important;
+    background-clip: padding-box;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.45)!important;
+	backdrop-filter: blur(20px);
+	width: 100%!important;
+    margin: 0px!important;
+	border-top-left-radius: 35px;
+	border-top-right-radius: 35px;
+
+	.react-responsive-modal-closeButton {
+		svg {
+			background-color: rgba(255,255,255,0.1);
+			padding: 7px;
+			border-radius: 50%;
+			margin-top: 15px;
+			margin-right: 5px;
+			path {
+				fill: white;
+			}
+		}
+	}
+}

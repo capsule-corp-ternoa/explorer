@@ -123,6 +123,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     onChange={(e) => {
                                         setSearchText(e.target.value)
                                     }}
+                                    onKeyDown={(e) => {
+                                        if(e.keyCode === 13) setSearchText('');
+                                    }}
                                     placeholder="Search by adresse / Txn Hash / Block"
                                     className={style.searchInput}
                                     style={{ backgroundColor: "#14142E" }}
@@ -133,7 +136,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             
                             <div
                                 className={style.searchBtn + " btn btn-primary rounded-pill flex flex-center"}
-                                onClick={() => console.log()}
+                                onClick={() => setSearchText('')}
                             >
                                 <div className={"d-flex align-items-center"}>
                                     <span className="me-auto ms-auto">Search</span>
@@ -257,7 +260,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </thead>
                                     <tbody className="display-block table-mobile-body">
                                         {dummyData.map((item, key) => { return (
-                                        <tr>
+                                        <tr key={key}>
                                             <td width="20%" className="font-08 text-opacity">5545118</td>
                                             <td width="35%" className="text-small text-opacity">38 seconds ago</td>
                                             <td width="15%" className="text-small text-opacity">2</td>
@@ -276,7 +279,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop &&
                                 dummyData.map((item,key) => {
                                     return (
-                                        <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                                        <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                             <div className="flex flex-row mt-1">
                                                 <div className="flex-1 flex flex-row flex-items-center">
                                                     <span className="mobileRowLabel me-1">Number</span>
@@ -582,7 +585,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop &&
                                 dummyData.map((item, key) => {
                                     return(
-                                        <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
+                                        <div key={key} className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
                                             <div className="flex flex-row mt-3">
                                                 <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
                                                     <div className="text-large text-opacity">
@@ -620,11 +623,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             <div className={style.chartBlock}>
                                 <div className={"flex flex-row flex-items-center flex-between " + style.mMinus50}>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setTotalTrans(!totalTrans)}>
-                                        <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" checked={totalTrans} />
+                                        <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" onChange={()=>console.log()} checked={totalTrans} />
                                         <span className={totalTrans ? style.chartLabel : style.chartInactiveLabel}>Total transaction by day</span>
                                     </div>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setNewAccount(!newAccount)}>
-                                        <input className={style.chartCheckbox + " " + style.inactiveChartRect} type="checkbox" checked={newAccount} />
+                                        <input className={style.chartCheckbox + " " + style.inactiveChartRect} type="checkbox" onChange={()=>console.log()} checked={newAccount} />
                                         <span className={newAccount ? style.chartLabel : style.chartInactiveLabel}>New account by day</span>
                                     </div>
                                     
@@ -661,7 +664,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                         <div className="col-sm-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
-                                    <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" checked={averBlock} />
+                                    <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" onChange={()=>console.log()} checked={averBlock} />
                                     <span className={averBlock ? style.chartLabel : style.chartInactiveLabel}>Average block time by day</span>
                                 </div>
                                 <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
