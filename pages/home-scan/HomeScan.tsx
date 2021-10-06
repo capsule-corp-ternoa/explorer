@@ -14,7 +14,7 @@ import style from './HomeScan.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Line, ComposedChart, Bar, Legend } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, ComposedChart, Bar } from 'recharts';
 
 export interface HomeScanProps {
 }
@@ -172,7 +172,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <div className='pt-2'>
                                         <TransactionLogo className={style.Logo}></TransactionLogo>
                                     </div>
-                                    <div className={`d-flex flex-column 'ms-3'`}>
+                                    <div className={`d-flex flex-column ms-3`}>
                                         <div className="fs-6 text-opacity text-ellipsis">Transactions</div>
                                         <div className="fs-5 fw-bold">$1.347</div>
                                     </div>

@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { useRouter } from "next/router";
 import CAPSDark from 'components/assets/CAPSDark';
 import Pagination from 'components/base/Pagination';
-import style from './TransIndex.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
