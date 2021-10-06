@@ -246,69 +246,68 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             <div className={style.block + " pb-4 mt-2"}>
                                 {isLaptop &&
                                 <table className="table table-borderless mb-3">
-                                    <thead className="display-block">
-                                        <tr className="font-08 text-grey table-mobile-header">
-                                            <th width="20%">Number</th>
-                                            <th width="35%">Age</th>
-                                            <th width="15%">Transactions</th>
-                                            <th width="15%" className="text-no-wrap">Module Events</th>
-                                            <th width="15%"></th>
+                                    <thead>
+                                        <tr className="fs-6 text-grey">
+                                            <th style={{width:"20%"}}>Number</th>
+                                            <th style={{width:"30%"}}>Age</th>
+                                            <th style={{width:"15%"}}>Transactions</th>
+                                            <th style={{width:"15%"}} className="text-no-wrap">Module Events</th>
+                                            <th style={{width:"20%"}}></th>
                                         </tr>
                                     </thead>
-                                    <tbody className="display-block table-mobile-body">
+                                    <tbody>
                                         {dummyData.map((item, key) => { return (
                                         <tr>
-                                            <td width="20%" className="font-08 text-opacity">5545118</td>
-                                            <td width="35%" className="text-small text-opacity">38 seconds ago</td>
-                                            <td width="15%" className="text-small text-opacity">2</td>
-                                            <td width="15%" className="text-small text-opacity">0</td>
-                                            <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Detail</button>
+                                            <td className="text-large text-opacity">5545118</td>
+                                            <td className="text-large text-opacity">38 seconds ago</td>
+                                            <td className="text-large text-opacity">2</td>
+                                            <td className="text-large text-opacity">0</td>
+                                            <td>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                             </td>
                                         </tr>
                                         )})}                           
                                     </tbody>
                                 </table>
                                 }
-                                {isLaptop && 
-                                <button onClick={goBlockIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
-                                }
                                 {!isLaptop &&
-                                dummyData.map((item,key) => {
-                                    return (
-                                        <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
-                                            <div className="flex flex-row mt-1">
-                                                <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className="mobileRowLabel me-1">Number</span>
-                                                    <span className="mobileValue">65792442</span>
-                                                </div>
-                                                <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className="mobileRowLabel me-1">Age</span>
-                                                    <span className="mobileValue">38 seconds ago</span>
-                                                </div>
+                                dummyData.map((item,key) => { return (
+                                    <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                                        <div className="flex flex-row mt-2">
+                                            <div className="flex-1 flex flex-row flex-items-center">
+                                                <span className="mobileRowLabel me-1">Number</span>
+                                                <span className="mobileValue">65792442</span>
                                             </div>
-                                            <div className="flex flex-row mt-3">
-                                                <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className="mobileRowLabel me-1">Transactions</span>
-                                                    <span className="mobileValue">2</span>
-                                                </div>
-                                                <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className="mobileRowLabel me-1">Module Event</span>
-                                                    <span className="mobileValue">0</span>
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-row mt-3 mb-1">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                            <div className="flex-1 flex flex-row flex-items-center">
+                                                <span className="mobileRowLabel me-1">Age</span>
+                                                <span className="mobileValue">38 seconds ago</span>
                                             </div>
                                         </div>
-                                    )
-                                    })
+                                        <div className="flex flex-row mt-3">
+                                            <div className="flex-1 flex flex-row flex-items-center">
+                                                <span className="mobileRowLabel me-1">Transactions</span>
+                                                <span className="mobileValue">2</span>
+                                            </div>
+                                            <div className="flex-1 flex flex-row flex-items-center">
+                                                <span className="mobileRowLabel me-1">Module Event</span>
+                                                <span className="mobileValue">0</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-row mt-3 mb-1">
+                                            <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                        </div>
+                                    </div>
+                                )})
+                                }
+                                {isLaptop && 
+                                    <button onClick={goBlockIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
                                 }
                                 {!isLaptop && <div className="d-flex justify-content-center mt-4">
-                                    <button onClick={goBlockIndex} className={"btn btn-secondary rounded-pill mobileNextButton"}>Show all Blocks</button> 
+                                    <button onClick={goBlockIndex} className={"btn btn-black rounded-pill mobileNextButton"}>Show all Blocks</button> 
                                 </div>}
                             </div>
                         </div>
+
                         {isLaptop && <div className="col-sm-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
@@ -317,65 +316,34 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             <div className={style.block + " pb-4 mt-2"}>
                                 <table className="table table-borderless mb-3">
                                     <thead>
-                                        <tr className="font-08 text-grey">
-                                            <th>Name/ID</th>
-                                            <th>Creator</th>
-                                            <th>ID</th>
-                                            <th></th>
+                                        <tr className="fs-6 text-grey">
+                                            <th style={{width:"30%"}}>Name/ID</th>
+                                            <th style={{width:"35%"}}>Creator</th>
+                                            <th style={{width:"15%"}}>ID</th>
+                                            <th style={{width:"20%"}}></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {dummyData.map((item, key) => { return (
                                         <tr className="position-relative">
-                                            <td className="font-08 text-opacity">Multicolor galaxy</td>
-                                            <td className="text-small text-opacity flex flex-row flex-center">
-                                                <CAPSDark/>
-                                                <span className={isLaptop ? "ms-3" : 'ms-1'}>16hC...E98FrRrC</span>    
+                                            <td className="text-large text-opacity">Multicolor galaxy</td>
+                                            <td className="text-large text-opacity flex flex-row flex-center">
+                                                <CAPSDark className="webIcon me-2" />
+                                                <span className="textToken">16hC...E98FrRrC</span>    
                                             </td>
-                                            <td className="text-small text-opacity">951</td>
-                                            <td width="60px">
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
+                                            <td className="text-large text-opacity">951</td>
+                                            <td>
+                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                             </td>
                                         </tr>
-                                        <tr className="position-relative">
-                                            <td className="font-08 text-opacity">Multicolor galaxy</td>
-                                            <td className="text-small text-opacity flex flex-row flex-center">
-                                                <CAPSDark/>
-                                                <span className={isLaptop ? "ms-3" : 'ms-1'}>16hC...E98FrRrC</span>    
-                                            </td>
-                                            <td className="text-small text-opacity">951</td>
-                                            <td width="60px">
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
-                                            </td>
-                                        </tr>
-                                        <tr className="position-relative">
-                                            <td className="font-08 text-opacity">Multicolor galaxy</td>
-                                            <td className="text-small text-opacity flex flex-row flex-center">
-                                                <CAPSDark/>
-                                                <span className={isLaptop ? "ms-3" : 'ms-1'}>16hC...E98FrRrC</span>    
-                                            </td>
-                                            <td className="text-small text-opacity">951</td>
-                                            <td width="60px">
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
-                                            </td>
-                                        </tr>
-                                        <tr className="position-relative">
-                                            <td className="font-08 text-opacity">Multicolor galaxy</td>
-                                            <td className="text-small text-opacity flex flex-row flex-center">
-                                                <CAPSDark/>
-                                                <span className={isLaptop ? "ms-3" : 'ms-1'}>16hC...E98FrRrC</span>    
-                                            </td>
-                                            <td className="text-small text-opacity">951</td>
-                                            <td width="60px">
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
-                                            </td>
-                                        </tr>
-                                        
+                                        )})}
                                     </tbody>
                                 </table>
                                 <button onClick={goTransIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
                             </div>
                         </div> }
                     </div>
+
                     <div className={"row" + (isLaptop && " mt-5")}>
                         <div className="col-sm-6 mt-5">
                             <div className="flex flex-row flex-items-end">
