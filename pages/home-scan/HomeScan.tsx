@@ -22,7 +22,7 @@ export interface HomeScanProps {
 const HomeScan: React.FC<HomeScanProps> = () => {
     
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
 
     const [totalTrans, setTotalTrans] = useState(true);
@@ -111,7 +111,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             </Head>
             <div className={"mainContainer"}>
                 <Header searchBar={false} />
-                <div className={style.main + " position-relative"}>
+                <div className={"mainBody position-relative"}>
                     <div className={style.gradientBack}></div>
                     <div className={style.searchForm + " position-relative"}>
                         <div className={style.searchTitle}>The Ternoa blockchain explorer</div>
@@ -256,50 +256,17 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody className="display-block table-mobile-body">
+                                        {dummyData.map((item, key) => { return (
                                         <tr>
                                             <td width="20%" className="font-08 text-opacity">5545118</td>
                                             <td width="35%" className="text-small text-opacity">38 seconds ago</td>
                                             <td width="15%" className="text-small text-opacity">2</td>
-                                            <td width="15%" className="text-small text-opacity">
-                                                0
-                                            </td>
+                                            <td width="15%" className="text-small text-opacity">0</td>
                                             <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Detail</button>
                                             </td>
-                                        </tr>    
-                                        <tr>
-                                            <td width="20%" className="font-08 text-opacity">5545118</td>
-                                            <td width="35%" className="text-small text-opacity">38 seconds ago</td>
-                                            <td width="15%" className="text-small text-opacity">2</td>
-                                            <td width="15%" className="text-small text-opacity">
-                                                0
-                                            </td>
-                                            <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
-                                            </td>
-                                        </tr>    
-                                        <tr>
-                                            <td width="20%" className="font-08 text-opacity">5545118</td>
-                                            <td width="35%" className="text-small text-opacity">38 seconds ago</td>
-                                            <td width="15%" className="text-small text-opacity">2</td>
-                                            <td width="15%" className="text-small text-opacity">
-                                                0
-                                            </td>
-                                            <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
-                                            </td>
-                                        </tr>    
-                                        <tr>
-                                            <td width="20%" className="font-08 text-opacity">5545118</td>
-                                            <td width="35%" className="text-small text-opacity">38 seconds ago</td>
-                                            <td width="15%" className="text-small text-opacity">2</td>
-                                            <td width="15%" className="text-small text-opacity">
-                                                0
-                                            </td>
-                                            <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 detailButton"}>Detail</button>
-                                            </td>
-                                        </tr>                            
+                                        </tr>
+                                        )})}                           
                                     </tbody>
                                 </table>
                                 }
@@ -309,36 +276,36 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop &&
                                 dummyData.map((item,key) => {
                                     return (
-                                        <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
-                                            <div className="flex flex-row">
+                                        <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                                            <div className="flex flex-row mt-1">
                                                 <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className={style.mobileLabel}>Number</span>
-                                                    <span className={style.mobileValue}>65792442</span>
+                                                    <span className="mobileRowLabel me-1">Number</span>
+                                                    <span className="mobileValue">65792442</span>
                                                 </div>
                                                 <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className={style.mobileLabel}>Age</span>
-                                                    <span className={style.mobileValue}>38 seconds ago</span>
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-row mt-2">
-                                                <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className={style.mobileLabel}>Transactions</span>
-                                                    <span className={style.mobileValue}>2</span>
-                                                </div>
-                                                <div className="flex-1 flex flex-row flex-items-center">
-                                                    <span className={style.mobileLabel}>Module Event</span>
-                                                    <span className={style.mobileValue}>0</span>
+                                                    <span className="mobileRowLabel me-1">Age</span>
+                                                    <span className="mobileValue">38 seconds ago</span>
                                                 </div>
                                             </div>
                                             <div className="flex flex-row mt-3">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
+                                                <div className="flex-1 flex flex-row flex-items-center">
+                                                    <span className="mobileRowLabel me-1">Transactions</span>
+                                                    <span className="mobileValue">2</span>
+                                                </div>
+                                                <div className="flex-1 flex flex-row flex-items-center">
+                                                    <span className="mobileRowLabel me-1">Module Event</span>
+                                                    <span className="mobileValue">0</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-row mt-3 mb-1">
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                             </div>
                                         </div>
                                     )
                                     })
                                 }
-                                {!isLaptop && <div className="d-flex justify-content-center py-3">
-                                    <button onClick={goBlockIndex} className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Blocks</button> 
+                                {!isLaptop && <div className="d-flex justify-content-center mt-4">
+                                    <button onClick={goBlockIndex} className={"btn btn-secondary rounded-pill mobileNextButton"}>Show all Blocks</button> 
                                 </div>}
                             </div>
                         </div>
@@ -481,14 +448,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 <div>
                                     <div className={style.mobileView}>
                                         <div className="flex flex-col mt-2">
-                                            <span className={style.mobileLabel}>From</span>
+                                            <span className="mobileRowLabel">From</span>
                                             <div className="flex flex-row flex-1 flex-items-center mt-1">
                                                 <CAPSDark className={style.smallImage} />
                                                 <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                             </div>
                                         </div>
                                         <div className="flex flex-col mt-3">
-                                            <span className={style.mobileLabel}>To</span>
+                                            <span className="mobileRowLabel">To</span>
                                             <div className="flex flex-row flex-1 flex-items-center mt-1">
                                                 <CAPSDark className={style.smallImage} />
                                                 <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
@@ -496,8 +463,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </div>
                                         <div className="flex flex-row flex-between mt-4">
                                             <div className="flex flex-col">
-                                                <span className={style.mobileLabel}>Amount</span>
-                                                <span className={style.mobileValue}>52.456 CAPS</span>
+                                                <span className="mobileRowLabel">Amount</span>
+                                                <span className="mobileValue">52.456 CAPS</span>
                                             </div>
                                             <div className="flex flex-col">
                                                 <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
@@ -506,14 +473,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </div>
                                     <div className={style.mobileView + " " + style.blackMobileView}>
                                         <div className="flex flex-col mt-2">
-                                            <span className={style.mobileLabel}>From</span>
+                                            <span className="mobileRowLabel">From</span>
                                             <div className="flex flex-row flex-1 flex-items-center mt-1">
                                                 <CAPSDark className={style.smallImage} />
                                                 <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                             </div>
                                         </div>
                                         <div className="flex flex-col mt-3">
-                                            <span className={style.mobileLabel}>To</span>
+                                            <span className="mobileRowLabel">To</span>
                                             <div className="flex flex-row flex-1 flex-items-center mt-1">
                                                 <CAPSDark className={style.smallImage} />
                                                 <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
@@ -521,8 +488,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </div>
                                         <div className="flex flex-row flex-between mt-4">
                                             <div className="flex flex-col">
-                                                <span className={style.mobileLabel}>Amount</span>
-                                                <span className={style.mobileValue}>52.456 CAPS</span>
+                                                <span className="mobileRowLabel">Amount</span>
+                                                <span className="mobileValue">52.456 CAPS</span>
                                             </div>
                                             <div className="flex flex-col">
                                                 <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
@@ -625,17 +592,17 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                                     </div>
                                                 </div>
                                                 <div className="flex-1 flex flex-row flex-grow-4 flex-items-center">
-                                                    <span className={style.mobileLabel}>Return:</span>
-                                                    <span className={style.mobileValue}>14.37%</span>
+                                                    <span className="mobileRowLabel">Return:</span>
+                                                    <span className="mobileValue">14.37%</span>
                                                 </div>
                                             </div>
                                             <div className="flex flex-row mt-4 flex-items-center">
-                                                <span className={style.mobileLabel}>Total staked:</span>
-                                                <span className={style.mobileValue}>5.965.695</span>
+                                                <span className="mobileRowLabel">Total staked:</span>
+                                                <span className="mobileValue">5.965.695</span>
                                             </div>
                                             <div className="flex flex-row mt-2 mb-2 flex-items-center">
-                                                <span className={style.mobileLabel}>Commissions:</span>
-                                                <span className={style.mobileValue}>0.00%</span>
+                                                <span className="mobileRowLabel">Commissions:</span>
+                                                <span className="mobileValue">0.00%</span>
                                             </div>
                                         </div>
                                     )

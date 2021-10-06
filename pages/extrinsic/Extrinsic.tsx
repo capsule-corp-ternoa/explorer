@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
 import { useRouter } from "next/router";
-import style from './Extrinsic.module.scss';
 import Pagination from 'components/base/Pagination';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
@@ -15,7 +14,8 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
-    const dummyData = [0,1,1,1];
+    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
+    const dummyMobile = [0,1,1,1];
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -24,7 +24,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
     }, [mediaQuery])
 
     const goExtrinsicDetail = () => {
-        router.push("../block-detail")
+        router.push("./extrinsic/1")
     }
 
     return (
@@ -36,12 +36,12 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
             </Head>
             <div className={"mainContainer"}>
                 <Header />
-                <div className={style.main}>
-                <h1 className={style.subtitle + " subTitleMargin"}>Extrinsics</h1>
-                <div className={style.block + " pb-4 mt-2"}>
+                <div className="mainBody">
+                <h1 className="subTitle">Extrinsics</h1>
+                <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
                         {isLaptop &&
-                        <table className={"table table-borderless mb-3 " + style.indexTable}>
+                        <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
                                     <th>Extrinsic ID</th>
@@ -54,164 +54,66 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
+                            {dummyWeb.map((item, key) => { return (
                                 <tr>
                                     <td className="text-large text-opacity fw-bold">5659861-2</td>
                                     <td className="text-large text-opacity">5659861</td>
                                     <td className="text-large text-opacity">staking</td>
                                     <td className="text-large text-opacity">bond_extra</td>
                                     <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
+                                    <td><Check className="webCheckIcon"/></td>
                                     <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
+                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
-                                    <td><Check className="ms-3"/></td>
-                                    <td>
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "}>Detail</button>
-                                    </td>
-                                </tr>
-                                
+                                )})}
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyData.map((item,key) => {
-                            return (
-                            <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
+                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Extrinsic ID</span>
-                                        <span className={style.mobileValue}>5659861-2</span>
+                                        <span className="mobileLabel">Extrinsic ID</span>
+                                        <span className="mobileValue">5659861-2</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Block</span>
-                                        <span className={style.mobileValue}>5659861</span>
+                                        <span className="mobileLabel">Block</span>
+                                        <span className="mobileValue">5659861</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Mudule</span>
-                                        <span className={style.mobileValue}>Staking</span>
+                                        <span className="mobileLabel">Module</span>
+                                        <span className="mobileValue">Staking</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Call</span>
-                                        <span className={style.mobileValue}>bond_extra</span>
+                                        <span className="mobileLabel">Call</span>
+                                        <span className="mobileValue">bond_extra</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Signed</span>
-                                        <span className={style.mobileValue}>Yes</span>
+                                        <span className="mobileLabel">Signed</span>
+                                        <span className="mobileValue">Yes</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Success</span>
-                                        <Check />
+                                        <span className="mobileLabel">Success</span>
+                                        <Check className="mobileCheckIcon" />
                                     </div>
                                 </div>
-                                <div className="flex flex-row mt-4">
-                                    <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
+                                <div className="flex flex-row mt-4 mb-2">
+                                    <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
-                            )
-                        })
+                        )})
                         }
                     </div>
-                    {isLaptop && <Pagination curPage={1} totalPage={9} /> }
-                    {!isLaptop && <div className="d-flex justify-content-center py-3">
-                        <button className={"btn btn-secondary rounded-pill " + style.nextButton}>View Next</button> 
+                    {isLaptop &&
+                    <Pagination curPage={1} totalPage={9} />
+                    }
+                    {!isLaptop && <div className="d-flex justify-content-center mt-4">
+                        <button className="btn btn-black rounded-pill mobileNextButton">View Next</button> 
                     </div>}
                 </div>
                 </div>

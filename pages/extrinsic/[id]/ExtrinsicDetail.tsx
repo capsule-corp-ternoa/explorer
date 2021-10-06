@@ -9,10 +9,10 @@ import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
 
-export interface BlockDetailProps {
+export interface ExtrinsicDetailProps {
 }
 
-const BlockDetail: React.FC<BlockDetailProps> = () => {
+const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
@@ -42,67 +42,66 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">Block #5545118</h1>
+                    <h1 className="subTitle">Extrinsics: 0xed6zegve3...f489d83</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&
                             <table className="table table-borderless mb-0">
                                 <tbody className="tbody-detail">
                                     <tr>
+                                        <td className="text-large text-opacity">Block</td>
+                                        <td className="text-large text-opacity">7129421</td>
+                                    </tr>
+                                    <tr>
                                         <td className="text-large text-opacity">Timestamp</td>
-                                        <td className="text-large text-opacity">Jun 17, 2021, 12:36:06 PM</td>
+                                        <td className="text-large text-opacity">Jun 18, 2021, 3:16:00 PM</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Hash</td>
-                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
-                                            <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <td className="text-large text-opacity">Extrinsic Index</td>
+                                        <td className="text-large text-opacity">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Extrinsic Hash</td>
+                                        <td className="text-large text-opacity">
+                                            <span className="textToken">0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Parent hash</td>
-                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
-                                            <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <td className="text-large text-opacity">Module</td>
+                                        <td className="text-large text-opacity">balancers</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Call</td>
+                                        <td className="text-large text-opacity">transfer_keep_alive</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Description</td>
+                                        <td className="text-large text-opacity">
+                                            <span className="textToken">Same as the [`transfer`] call, but with a check that the transfer will not kill...</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">State Root</td>
+                                        <td className="text-large text-opacity">Address</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Nonce</td>
+                                        <td className="text-large text-opacity">14539</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Signature</td>
+                                        <td className="text-large text-opacity">
+                                            <span className="textToken">0xa429608de459f7913...dd417cbf4afd6dff3</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Extrinsics Root</td>
-                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
-                                            <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <td className="text-large text-opacity flex flex-row flex-items-center">
+                                            <Check className="webCheckIcon" />
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity">Transactions</td>
-                                        <td className="text-large text-opacity">2</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity">Total module events</td>
-                                        <td className="text-large text-opacity">6</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity">Runtime Version</td>
-                                        <td className="text-large text-opacity">30</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity">Block time</td>
-                                        <td className="text-large text-opacity">6 seconds</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity">Session ID</td>
-                                        <td className="text-large text-opacity">2320</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity">Block author</td>
-                                        <td className="text-large text-opacity textToken">112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -179,38 +178,23 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                         </div>
                     </div>
                     <div>
-                      <span className={"mt-5 mb-3 subTitle2"}>Transactions</span>
-                      <Down className="ms-3 mb-1"/>
+                      <span className={"mt-5 mb-3 subTitle2"}>Parameters</span>
                     </div>
                     <div className={"mainBlock mt-3"}>
                         <div className = "tag-for-scroll">
                             {isLaptop &&
-                            <table className="table table-borderless mb-0 webBorderTable2">
-                                <thead>
-                                    <tr className="fs-6 text-grey">
-                                        <th>Transaction ID</th>
-                                        <th>From</th>
-                                        <th>Module</th>
-                                        <th>Call</th>
-                                        <th>Success</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <table className="table table-borderless mb-0">
+                                <tbody className="tbody-detail">
                                     <tr>
-                                        <td className="text-large text-opacity fw-bold">Stacking</td>
-                                        <td className="text-large text-opacity">unbound</td>
-                                        <td className="text-large text-opacity">0x3a851d3...</td>
-                                        <td className="text-large text-opacity flex flex-row flex-center">
+                                        <td className="text-large text-opacity">Destination</td>
+                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
                                         </td>
-                                        <td className="text-large text-opacity">
-                                            <Check className="webCheckIcon" />
-                                        </td>
-                                        <td>
-                                            <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
-                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Value</td>
+                                        <td className="text-large text-opacity">52.456 CAPS</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -258,4 +242,4 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
     )
 }
 
-export default BlockDetail;
+export default ExtrinsicDetail;

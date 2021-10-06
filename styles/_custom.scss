@@ -61,6 +61,25 @@ input[type=number] {
 			box-shadow: 2px 1000px 1px $light-blue inset;
 		}
 	}
+	&-black {
+		font-family: "Airbnb Cereal App Bold", sans-serif;
+		font-size: smaller;
+		color: $white;
+		transition: all 0.2s;
+		border: solid 1px transparent;
+		background-image: linear-gradient($black, $black),
+			linear-gradient(101deg,  $black, $black, $black, $black);
+		background-color: $black;
+		background-origin: border-box;
+		background-clip: content-box, border-box;
+		&:hover {
+			border: solid 1px $dark-blue;
+		}
+		&:active, &:focus {
+			border: solid 2px $dark-blue;
+			box-shadow: 2px 1000px 1px $medium-blue inset;
+		}
+	}
 	&-transparent {
 		font-family: "Airbnb Cereal App Bold", sans-serif;
 		color: $white;

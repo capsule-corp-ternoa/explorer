@@ -16,7 +16,8 @@ const TransIndex: React.FC<TransIndexProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
 
-    const dummyData = [0,1,1,1];
+    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
+    const dummyMobile = [0,1,1,1];
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -37,11 +38,12 @@ const TransIndex: React.FC<TransIndexProps> = () => {
             </Head>
             <div className={"mainContainer"}>
                 <Header/>
-                <div className={style.main}>
-                <h1 className={style.subtitle + " subTitleMargin"}>Balance transfers</h1>
-                <div className={style.block + " pb-4 mt-2"}>
+                <div className="mainBody">
+                <h1 className="subTitle">Balance transfers</h1>
+                <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
-                        {isLaptop && <table className={"table table-borderless mb-3 " + style.indexTable}>
+                        {isLaptop &&
+                        <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
                                     <th>Name</th>
@@ -52,159 +54,68 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
+                                {dummyWeb.map((item, key) => { return (
                                 <tr>
                                     <td className="text-large text-opacity fw-bold">5545118</td>
                                     <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
+                                        <CAPSDark className="webIcon me-2" />
+                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
                                     </td>
                                     <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
+                                        <CAPSDark className="webIcon me-2" />
+                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
                                     </td>
                                     <td className="text-large text-opacity">2</td>
                                     <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity text-no-wrap">
-                                        <CAPSDark className={style.smallImage} />
-                                        <span className={isLaptop ? "ms-3": 'ms-1'}>112A6wJPeDsf34nsqo...</span>
-                                    </td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td>
-                                        <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                    </td>
-                                </tr>
+                                )})}
                             </tbody>
-                        </table>}
-                        {!isLaptop &&
-                            dummyData.map((item,key) => {
-                                return (
-                                    <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
-                                        <div className="flex flex-row">
-                                            <div className="flex-1 flex flex-col">
-                                                <span className={style.mobileLabel}>Block</span>
-                                                <span className={style.mobileValue}>5545118</span>
-                                            </div>
-                                            <div className="flex-1 flex flex-col">
-                                                <span className={style.mobileLabel}>Amount</span>
-                                                <span className={style.mobileValue}>5560132-8</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col mt-4">
-                                            <span className={style.mobileLabel}>From</span>
-                                            <div className="flex flex-row flex-1 flex-items-center">
-                                                <CAPSDark className={style.smallImage} />
-                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col mt-3">
-                                            <span className={style.mobileLabel}>To</span>
-                                            <div className="flex flex-row flex-1 flex-items-center">
-                                                <CAPSDark className={style.smallImage} />
-                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-row mt-4">
-                                            <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                        </div>
+                        </table>
+                        }
+                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                                <div className="flex flex-row mt-2">
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">Block</span>
+                                        <span className="mobileValue">5545118</span>
                                     </div>
-                            
-                                )
-                            })
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">Amount</span>
+                                        <span className="mobileValue">52.456 CAPS</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileLabel">From</span>
+                                    <div className="flex flex-row flex-1 flex-items-center">
+                                        <CAPSDark className="mobileIcon me-2" />
+                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileLabel">To</span>
+                                    <div className="flex flex-row flex-1 flex-items-center">
+                                        <CAPSDark className="mobileIcon me-2" />
+                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-row mt-4 mb-2">
+                                    <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                </div>
+                            </div>
+                        )})
                         }
                     </div>
-                    {isLaptop && 
-                    <Pagination curPage={1} totalPage={9} />}
-                    {!isLaptop && <div className="d-flex justify-content-center py-3">
-                        <button className={"btn btn-secondary rounded-pill " + style.nextButton}>View Next</button> 
+                    {isLaptop &&
+                    <Pagination curPage={1} totalPage={9} />
+                    }
+                    {!isLaptop && <div className="d-flex justify-content-center mt-4">
+                        <button className="btn btn-black rounded-pill mobileNextButton">View Next</button> 
                     </div>}
-
                 </div>
                 </div>
-                <Footer />               
+                <Footer />
             </div>
         </>
     )

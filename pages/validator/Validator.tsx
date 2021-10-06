@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { useRouter } from "next/router";
 import Pagination from 'components/base/Pagination';
 import Down from 'components/assets/Down';
-import style from './Validator.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import Check from 'components/assets/Check';
@@ -15,9 +14,10 @@ export interface ValidatorProps {
 
 const Validator: React.FC<ValidatorProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
-    const dummyData = [0,1,1,1];
+    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
+    const dummyMobile = [0,1,1,1];
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -38,14 +38,15 @@ const Validator: React.FC<ValidatorProps> = () => {
             </Head>
             <div className={"mainContainer"}>
                 <Header />
-                <div className={style.main}>
-                <h1 className={style.subtitle + " subTitleMargin"}>
-                    Elected (297)<Down className="ms-3 mb-1"/>
+                <div className="mainBody">
+                <h1 className="subTitle">
+                    Elected (297)
+                    <Down className="ms-3 mb-1"/>
                 </h1>
-                <div className={style.block + " pb-4 mt-2"}>
+                <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
                         {isLaptop &&
-                        <table className={"table table-borderless mb-3 " + style.indexTable}>
+                        <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
                                     <th>Name</th>
@@ -56,181 +57,64 @@ const Validator: React.FC<ValidatorProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
+                                {dummyWeb.map((item, key) => { return (
                                 <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
+                                    <td className="text-large text-opacity text-no-wrap">
+                                        <CAPSDark className="webIcon" />
+                                        <Check className="ms-2"/>
+                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>
                                     </td>
                                     <td className="text-large text-opacity">5.965.695</td>
                                     <td className="text-large text-opacity">0.00%</td>
                                     <td className="text-large text-opacity">14.37%</td>
                                     <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
+                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Detail</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="text-large text-opacity">
-                                        <CAPSDark />
-                                        <Check className="ms-3"/>
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>    
-                                    </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
-                                    <td>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 "}>Detail</button>
-                                    </td>
-                                </tr>
+                                )})}
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyData.map((item,key) => {
-                            return (
-                            <div className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
+                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Name</span>
+                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                        <span className="mobileLabel">Name</span>
                                         <div className="flex flex-row flex-1 flex-items-center">
-                                            <CAPSDark className={style.smallImage} />
-                                            <Check className="ms-2" />
-                                            <span className={style.tokenValue + " " + style.mobileValue}>P2P.ORG/7</span>
+                                            <CAPSDark className="mobileIcon" />
+                                            <Check className="ms-2 me-2" />
+                                            <span className="textToken mobileValue">P2P.ORG/7</span>
                                         </div>
                                     </div>
-                                    <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Total stacked</span>
+                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                        <span className="mobileLabel">Total stacked</span>
                                         <div className="flex flex-row flex-1 flex-items-center">{/* this line only is for center-align */}
-                                        <span className={style.mobileValue}>5659861</span>
+                                        <span className="mobileValue">5659861</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Comissions</span>
-                                        <span className={style.mobileValue}>0.00%</span>
+                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                        <span className="mobileColLaebl">Comissions</span>
+                                        <span className="mobileValue">0.00%</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col">
-                                        <span className={style.mobileLabel}>Returns</span>
-                                        <span className={style.mobileValue}>14.37%</span>
+                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                        <span className="mobileLabel">Returns</span>
+                                        <span className="mobileValue">14.37%</span>
                                     </div>
                                 </div>
-                                <div className="flex flex-row mt-4">
-                                    <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
+                                <div className="flex flex-row mt-4 mb-2">
+                                    <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
-                            )
-                        })
+                        )})
                         }
                     </div>
                     {isLaptop &&
                     <Pagination curPage={1} totalPage={9} />
                     }
-                    {!isLaptop && <div className="d-flex justify-content-center py-3">
-                        <button className={"btn btn-secondary rounded-pill " + style.nextButton}>View Next</button> 
+                    {!isLaptop && <div className="d-flex justify-content-center mt-4">
+                        <button className="btn btn-black rounded-pill mobileNextButton">View Next</button> 
                     </div>}
                 </div>
                 </div>
