@@ -86,12 +86,20 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         router.push("../block/1");
     }
 
-    const goTransIndex = () => {
+    const goNftIndex = () => {
         router.push("../nft");
     }
 
+    const goNftDetail = () => {
+        router.push("../nft/1");
+    }
+
+    const goTransIndex = () => {
+        router.push("../trans");
+    }
+
     const goTransDetail = () => {
-        router.push("../nft/1")
+        router.push("../trans/1");
     }
 
     const goValidatorList = () => {
@@ -261,19 +269,47 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <tbody>
                                         {dummyData.map((item, key) => { return (
                                         <tr key={key}>
-                                            <td width="20%" className="font-08 text-opacity">5545118</td>
-                                            <td width="35%" className="text-small text-opacity">38 seconds ago</td>
-                                            <td width="15%" className="text-small text-opacity">2</td>
-                                            <td width="15%" className="text-small text-opacity">0</td>
-                                            <td width="15%">
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Detail</button>
+                                            <td className="text-large text-opacity">5545118</td>
+                                            <td className="text-large text-opacity">38 seconds ago</td>
+                                            <td className="text-large text-opacity">2</td>
+                                            <td className="text-large text-opacity">0</td>
+                                            <td>
+                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
                                         </tr>
-                                        )})}                           
+                                        )})}
                                     </tbody>
                                 </table>
                                 }
-                                
+
+                                {!isLaptop && dummyData.map((item, key) => { return (
+                                <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                                    <div className="flex flex-row mt-2">
+                                        <div className="flex-1 flex flex-row flex-items-center">
+                                            <span className="mobileRowLabel me-1">Number</span>
+                                            <span className="mobileValue">5545118</span>
+                                        </div>
+                                        <div className="flex-1 flex flex-row flex-items-center">
+                                            <span className="mobileRowLabel me-1">Age</span>
+                                            <span className="mobileValue">21 hour ago</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-2">
+                                        <div className="flex-1 flex flex-row flex-items-center">
+                                            <span className="mobileRowLabel me-1">Transaction</span>
+                                            <span className="mobileValue">2</span>
+                                        </div>
+                                        <div className="flex-1 flex flex-row flex-items-center">
+                                            <span className="mobileRowLabel me-1">Module Event</span>
+                                            <span className="mobileValue">0</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-3 mb-2">
+                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    </div>
+                                </div>
+                                )})
+                                }
                                 {isLaptop && 
                                     <button onClick={goBlockIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
                                 }
@@ -300,7 +336,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </thead>
                                     <tbody>
                                         {dummyData.map((item, key) => { return (
-                                        <tr className="position-relative">
+                                        <tr key={key} className="position-relative">
                                             <td className="text-large text-opacity">Multicolor galaxy</td>
                                             <td className="text-large text-opacity flex flex-row flex-center">
                                                 <CAPSDark className="webIcon me-2" />
@@ -308,13 +344,13 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-large text-opacity">951</td>
                                             <td>
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                                <button onClick={goNftDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
                                         </tr>
                                         )})}
                                     </tbody>
                                 </table>
-                                <button onClick={goTransIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
+                                <button onClick={goNftIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
                             </div>
                         </div> }
                     </div>
@@ -327,125 +363,70 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                             <div className={style.block + " pb-4 mt-2"}>
                                 {isLaptop &&
-                                <div className="overflow-x-auto">
                                 <table className="table table-borderless mb-3">
                                     <thead>
-                                        <tr className="font-08 text-grey">
-                                            <th>From</th>
-                                            <th>To</th>
-                                            <th className="pe-5">Amount</th>
+                                        <tr className="fs-6 text-grey">
+                                            <th style={{width:"38%"}}>From</th>
+                                            <th style={{width:"38%"}}>To</th>
+                                            <th style={{width:"24%"}}>Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
+                                        {dummyData.map((item, key) => { return (
+                                        <tr key={key}>
+                                            <td className="text-large text-opacity">
+                                                <CAPSDark className="webIcon me-2" />
+                                                <span className="textToken">16hCXjmTFQ...E9EiMg8FrRrC</span>
                                             </td>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
+                                            <td className="text-large text-opacity">
+                                            <CAPSDark className="webIcon me-2" />
+                                                <span className="textToken">16hCXjmTFQ...E9EiMg8FrRrC</span>    
                                             </td>
-                                            <td className="text-medium text-opacity pe-5">52.456 CAPS</td>
+                                            <td className="text-large text-opacity">52.456 CAPS</td>
                                         </tr>
-                                        <tr>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
-                                            </td>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
-                                            </td>
-                                            <td className="text-medium text-opacity pe-5">52.456 CAPS</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
-                                            </td>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
-                                            </td>
-                                            <td className="text-medium text-opacity pe-5">52.456 CAPS</td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
-                                            </td>
-                                            <td className="text-small text-opacity">
-                                                <CAPSDark />
-                                                <span className="ms-3">16hCXjmTFQ...E9EiMg8FrRrC</span>    
-                                            </td>
-                                            <td className="text-medium text-opacity pe-5">52.456 CAPS</td>
-                                        </tr>
+                                        )})}
                                     </tbody>
                                 </table>
-                                </div>}
-                                {isLaptop &&
-                                <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Transactions</button>
                                 }
-                                {!isLaptop &&
-                                <div>
-                                    <div className={style.mobileView}>
-                                        <div className="flex flex-col mt-2">
-                                            <span className="mobileRowLabel">From</span>
-                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
-                                                <CAPSDark className={style.smallImage} />
-                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-col mt-3">
-                                            <span className="mobileRowLabel">To</span>
-                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
-                                                <CAPSDark className={style.smallImage} />
-                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                            </div>
-                                        </div>
-                                        <div className="flex flex-row flex-between mt-4">
-                                            <div className="flex flex-col">
-                                                <span className="mobileRowLabel">Amount</span>
-                                                <span className="mobileValue">52.456 CAPS</span>
-                                            </div>
-                                            <div className="flex flex-col">
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
-                                            </div>
+
+                                {!isLaptop && dummyData.map((item, key) => { return (
+                                <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                                    <div className="flex flex-col mt-2">
+                                        <span className="mobileLabel">From</span>
+                                        <div className="flex flex-row flex-1 flex-items-center">
+                                            <CAPSDark className={"mobileIcon me-1"} />
+                                            <span className={"textToken text-80 mobileValue"}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                         </div>
                                     </div>
-                                    <div className={style.mobileView + " " + style.blackMobileView}>
-                                        <div className="flex flex-col mt-2">
-                                            <span className="mobileRowLabel">From</span>
-                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
-                                                <CAPSDark className={style.smallImage} />
-                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                            </div>
+                                    <div className="flex flex-col mt-3">
+                                    <span className="mobileLabel">To</span>
+                                        <div className="flex flex-row flex-1 flex-items-center">
+                                            <CAPSDark className={"mobileIcon me-1"} />
+                                            <span className={"textToken text-80 mobileValue"}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                         </div>
-                                        <div className="flex flex-col mt-3">
-                                            <span className="mobileRowLabel">To</span>
-                                            <div className="flex flex-row flex-1 flex-items-center mt-1">
-                                                <CAPSDark className={style.smallImage} />
-                                                <span className={style.tokenValue + " " + style.mobileValue}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                            </div>
+                                    </div>
+                                    <div className="flex flex-row flex-between mt-4 mb-1 flex-items-center">
+                                        <div className="flex flex-col">
+                                            <span className="mobileLabel">Amount</span>
+                                            <span className="mobileValue">52.456 CAPS</span>
                                         </div>
-                                        <div className="flex flex-row flex-between mt-4">
-                                            <div className="flex flex-col">
-                                                <span className="mobileRowLabel">Amount</span>
-                                                <span className="mobileValue">52.456 CAPS</span>
-                                            </div>
-                                            <div className="flex flex-col">
-                                                <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 " + style.detailButton}>Details</button>
-                                            </div>
+                                        <div className="flex flex-col">
+                                            <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                         </div>
                                     </div>
                                 </div>
+                                )})
                                 }
-                                {!isLaptop && <div className="d-flex justify-content-center py-3">
-                                    <button className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Transactions</button> 
+
+                                {isLaptop && 
+                                    <button onClick={goTransIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Transactions</button>
+                                }
+                                {!isLaptop && <div className="d-flex justify-content-center mt-4">
+                                    <button onClick={goTransIndex} className={"btn btn-black rounded-pill mobileNextButton"}>Show all Transactions</button> 
                                 </div>}
                             </div>
                         </div>
+
                         <div className="col-sm-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <EditIcon className={style.blockLogo}></EditIcon>}
@@ -453,106 +434,69 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                             <div className={style.block + " pb-4 mt-2"}>
                                 {isLaptop &&
-                                <div className="overflow-x-auto">
                                 <table className="table table-borderless mb-3">
                                     <thead>
-                                        <tr className="font-08 text-grey">
-                                            <th>Name</th>
-                                            <th>Total Stacked</th>
-                                            <th>Comissions</th>
-                                            <th>Returns</th>
-                                            <th></th>
+                                        <tr className="fs-6 text-grey">
+                                            <th style={{width:"30%"}}>Name</th>
+                                            <th style={{width:"20%"}}>Total Stacked</th>
+                                            <th style={{width:"15%"}}>Comissions</th>
+                                            <th style={{width:"15%"}}>Returns</th>
+                                            <th style={{width:"20%"}}></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        {dummyData.map((item, key) => { return (
+                                        <tr key={key}>
                                             <td className="text-large text-opacity">
-                                                <CAPSDark />
-                                                <Check className="ms-3"/>
-                                                <span className="ms-2">P2P.ORG/7</span>    
+                                                <CAPSDark className="webIcon" />
+                                                <Check className="webCheckIcon ms-2 me-2"/>
+                                                P2P.ORG/7
                                             </td>
-                                            <td className="text-small">5.965.695</td>
-                                            <td className="text-small">0.00%</td>
-                                            <td className="text-small">14.37%</td>
+                                            <td className="text-large text-opacity">5.965.695</td>
+                                            <td className="text-large text-opacity">0.00%</td>
+                                            <td className="text-large text-opacity">14.37%</td>
                                             <td>
-                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
+                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-2">Details</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td className="text-large text-opacity">
-                                                <CAPSDark />
-                                                <Check className="ms-3"/>
-                                                <span className="ms-2">P2P.ORG/7</span>    
-                                            </td>
-                                            <td className="text-small">5.965.695</td>
-                                            <td className="text-small">0.00%</td>
-                                            <td className="text-small">14.37%</td>
-                                            <td>
-                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-large text-opacity">
-                                                <CAPSDark />
-                                                <Check className="ms-3"/>
-                                                <span className="ms-2">P2P.ORG/7</span>    
-                                            </td>
-                                            <td className="text-small">5.965.695</td>
-                                            <td className="text-small">0.00%</td>
-                                            <td className="text-small">14.37%</td>
-                                            <td>
-                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-large text-opacity">
-                                                <CAPSDark />
-                                                <Check className="ms-3"/>
-                                                <span className="ms-2">P2P.ORG/7</span>
-                                            </td>
-                                            <td className="text-small">5.965.695</td>
-                                            <td className="text-small">0.00%</td>
-                                            <td className="text-small">14.37%</td>
-                                            <td>
-                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                            </td>
-                                        </tr>
+                                        )})}
                                     </tbody>
                                 </table>
-                                <button onClick={goValidatorList} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Validators</button>
-                                </div>
                                 }
-                                {!isLaptop &&
-                                dummyData.map((item, key) => {
-                                    return(
-                                        <div key={key} className={style.mobileView + " " + (key%2==1?style.blackMobileView:'')}>
-                                            <div className="flex flex-row mt-3">
-                                                <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
-                                                    <div className="text-large text-opacity">
-                                                        <CAPSDark />
-                                                        <Check className="ms-2"/>
-                                                        <span className="ms-2">P2P.ORG/7</span>
-                                                    </div>
-                                                </div>
-                                                <div className="flex-1 flex flex-row flex-grow-4 flex-items-center">
-                                                    <span className="mobileRowLabel">Return:</span>
-                                                    <span className="mobileValue">14.37%</span>
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-row mt-4 flex-items-center">
-                                                <span className="mobileRowLabel">Total staked:</span>
-                                                <span className="mobileValue">5.965.695</span>
-                                            </div>
-                                            <div className="flex flex-row mt-2 mb-2 flex-items-center">
-                                                <span className="mobileRowLabel">Commissions:</span>
-                                                <span className="mobileValue">0.00%</span>
+                                {!isLaptop && dummyData.map((item, key) => { return (
+                                <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
+                                    <div className="flex flex-row mt-2">
+                                        <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
+                                            <div className="text-large text-opacity">
+                                                <CAPSDark className="mobileIcon me-1" />
+                                                <Check className={"mobileCheckIcon me-1 " + style.whiteBlueText}/>
+                                                <span className={"mobileValue " + style.whiteBlueText}>P2P.ORG/7</span>
                                             </div>
                                         </div>
-                                    )
-                                })
+                                        <div className="flex-1 flex flex-row flex-grow-4 flex-items-center">
+                                            <span className={"mobileRowLabel me-1 " + style.whiteText}>Return:</span>
+                                            <span className={"mobileValue " + style.whiteBlueText}>14.37%</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-4 flex-items-center">
+                                        <span className="mobileRowLabel me-1">Total staked:</span>
+                                        <span className="mobileValue">5.965.695</span>
+                                    </div>
+                                    <div className="flex flex-row mt-2 mb-2 flex-items-center">
+                                        <span className="mobileRowLabel me-1">Commissions:</span>
+                                        <span className="mobileValue">0.00%</span>
+                                    </div>
+                                    {/* <div className="flex flex-row mt-3 mb-2">
+                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    </div> */}
+                                </div>
+                                )})
                                 }
-                                {!isLaptop && <div className="d-flex justify-content-center py-3">
-                                    <button onClick={goValidatorList} className={"btn btn-secondary rounded-pill " + style.showAllButton}>Show all Validators</button> 
+                                {isLaptop && 
+                                    <button onClick={goValidatorList} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Validators</button>
+                                }
+                                {!isLaptop && <div className="d-flex justify-content-center mt-4">
+                                    <button onClick={goValidatorList} className={"btn btn-black rounded-pill mobileNextButton"}>Show all Validators</button>
                                 </div>}
                             </div>
                         </div>
