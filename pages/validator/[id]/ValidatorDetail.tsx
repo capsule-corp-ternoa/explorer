@@ -227,7 +227,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Success</span>
-                                        <Check/>
+                                        <Check className="mobileCheckIcon" />
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

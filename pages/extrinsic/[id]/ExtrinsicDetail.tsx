@@ -99,7 +99,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Extrinsics Root</td>
-                                        <td className="text-large text-opacity flex flex-row flex-items-center">
+                                        <td className="text-large text-opacity">
                                             <Check className="webCheckIcon" />
                                         </td>
                                     </tr>

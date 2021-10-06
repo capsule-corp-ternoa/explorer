@@ -45,11 +45,11 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Name</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>Value</th>
-                                    <th></th>
+                                    <th style={{width:"20%"}}>Name</th>
+                                    <th style={{width:"30%"}}>From</th>
+                                    <th style={{width:"30%"}}>To</th>
+                                    <th style={{width:"10%"}}>Value</th>
+                                    <th style={{width:"10%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>
