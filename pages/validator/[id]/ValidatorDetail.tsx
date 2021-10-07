@@ -42,7 +42,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">
+                    <h1 className="subTitle subTitleMarginTop2">
                         1REAJ1k691g5E...9gL7vvZCBG
                     </h1>
                     <div className="mainBlock mt-2 mb-5">

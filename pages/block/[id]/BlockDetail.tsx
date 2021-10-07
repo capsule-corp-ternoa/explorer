@@ -42,7 +42,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">Block #5545118</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Block #5545118</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&

@@ -28,14 +28,14 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                 <meta name="description" content="BSC Scan, by Ternoa." />
             </Head>
             <div className={"mainContainer"}>
-                <Header searchBar={false} />
+                <Header />
                 <div className="mainBody">
                 {isLaptop &&
                     <div className="cursor-point w-fit-content mb-4" onClick={()=>router.back()}>
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">Account index 1Rs7u</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Account index 1Rs7u</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&

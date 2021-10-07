@@ -36,7 +36,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">Multicolor galaxy-6502</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Multicolor galaxy-6502</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&

@@ -244,7 +244,13 @@ a {
 .subTitleMarginTop {
   margin-top: 54px; /* < Back icon height + mt-4 */
   @media (max-device-width: 1024px) {
-    margin-top: 0px;
+    margin-top: 2rem;
+  }
+}
+
+.subTitleMarginTop2 {
+  @media (max-device-width: 1024px) {
+    margin-top: 2rem;
   }
 }
 

@@ -29,14 +29,14 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
                 <meta name="description" content="BSC Scan, by Ternoa." />
             </Head>
             <div className={"mainContainer"}>
-                <Header searchBar={false} />
+                <Header />
                 <div className="mainBody">
                 {isLaptop &&
                     <div className="cursor-point w-fit-content mb-4" onClick={()=>router.back()}>
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">14Kazg6SFiUC...Q1pvXzF1dQhv</h1>
+                    <h1 className="subTitle subTitleMarginTop2">14Kazg6SFiUC...Q1pvXzF1dQhv</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&

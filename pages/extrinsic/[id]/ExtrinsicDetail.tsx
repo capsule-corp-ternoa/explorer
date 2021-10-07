@@ -42,7 +42,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">Extrinsics: 0xed6zegve3...f489d83</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Extrinsics: 0xed6zegve3...f489d83</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&

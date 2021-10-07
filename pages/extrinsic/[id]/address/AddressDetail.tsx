@@ -25,7 +25,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
     }, [mediaQuery])
 
     const goTransInfo = () => {
-        router.push("../trans-info")
+        // router.push("../trans-info")
     }
 
     return (
@@ -43,7 +43,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle">
+                    <h1 className="subTitle subTitleMarginTop2">
                         14Kazg6SFiUC...Q1pvXzF1dQhv
                     </h1>
                     <div className="mainBlock mt-2 mb-5">
