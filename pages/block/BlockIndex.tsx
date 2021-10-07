@@ -37,16 +37,16 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
             <div className={"mainContainer"}>
                 <Header />
                 <div className="mainBody">
-                <h1 className="subTitle">Blocks</h1>
+                <h1 className="subTitle subTitleMarginTop">Blocks</h1>
                 <div className="mainBlock pb-4 mt-2">
                     <div className="tag-for-scroll">
                         {isLaptop &&
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th style={{width:"17%"}}>Number</th>
-                                    <th style={{width:"18%"}}>Age</th>
-                                    <th style={{width:"30%"}}>Block Hash</th>
+                                    <th style={{width:"17%"}} className="text-left ps-4p0">Number</th>
+                                    <th style={{width:"18%"}} className="text-left">Age</th>
+                                    <th style={{width:"30%"}} className="text-left">Block Hash</th>
                                     <th style={{width:"10%"}}>Signed Extrinsics</th>
                                     <th style={{width:"10%"}}>Module Events</th>
                                     <th style={{width:"15%"}}></th>
@@ -55,12 +55,12 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
                                     <tr key={key}>
-                                        <td className="text-large text-opacity fw-bold">5545118</td>
-                                        <td className="text-large text-opacity">21 hours Ago</td>
-                                        <td className="text-large text-opacity">0x3a851d3...efe6f</td>
+                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">5545118</td>
+                                        <td className="text-large text-opacity text-left">21 hours Ago</td>
+                                        <td className="text-large text-opacity text-left">0x3a851d3a3290283242390832efe6f</td>
                                         <td className="text-large text-opacity">2</td>
                                         <td className="text-large text-opacity">6</td>
-                                        <td>
+                                        <td className="text-right pe-4p0">
                                             <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                         </td>
                                     </tr>

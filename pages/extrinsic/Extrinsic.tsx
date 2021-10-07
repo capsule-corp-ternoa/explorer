@@ -37,7 +37,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
             <div className={"mainContainer"}>
                 <Header />
                 <div className="mainBody">
-                <h1 className="subTitle">Extrinsics</h1>
+                <h1 className="subTitle subTitleMarginTop">Extrinsics</h1>
                 <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
                         {isLaptop &&

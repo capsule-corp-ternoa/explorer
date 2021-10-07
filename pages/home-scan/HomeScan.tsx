@@ -5,6 +5,7 @@ import CAPSLogo from 'components/assets/CAPSLogo';
 import TransactionIcon from 'components/assets/TransactionIcon';
 import EditIcon from 'components/assets/EditIcon';
 import CAPSDark from 'components/assets/CAPSDark';
+import CAPSFlat from 'components/assets/CAPSFlat';
 import Check from 'components/assets/Check';
 import MarketLogo from 'components/assets/MarketLogo';
 import TransactionLogo from 'components/assets/TransactionLogo';
@@ -122,7 +123,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                 <div className={"mainBody position-relative"}>
                     <div className={style.gradientBack}></div>
                     <div className={style.searchForm + " position-relative"}>
-                        <div className={style.searchTitle}>The Ternoa blockchain explorer</div>
+                        <div className={`${style.searchTitle} ${isLaptop ? 'ms-4' : ''}`}>The Ternoa blockchain explorer</div>
                         <div className="flex flex-row flex-between flex-items-center mt-4">
                             <div className="flex-1 position-relative">
                                 <input
@@ -152,47 +153,47 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                         </div>
                         {isLaptop &&
-                        <div className="d-flex mt-5">
-                            <div className={`${style.searchBarInfo} pe-5 border-end border-dark`}>
+                        <div className="d-flex mt-5 ms-4">
+                            <div className={`${style.searchBarInfo} pe-5 border-end`}>
                                 <div className="d-flex flex-items-center">
                                     <div className='pt-2'>
                                         <CAPSLogo className={style.Logo}></CAPSLogo>
                                     </div>
                                     <div className={"d-flex flex-column ms-3"}>
-                                        <div className="fs-6 text-opacity text-ellipsis">CAPS price</div>
+                                        <div className="fs-6 text-opacity-4 text-ellipsis">CAPS price</div>
                                         <div className="fs-5 fw-bold">$0.68</div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={`${style.searchBarInfo} pe-5 ps-3 border-end border-dark`}>
+                            <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
                                 <div className="d-flex flex-items-center">
                                     <div className='pt-2'>
                                         <MarketLogo className={style.Logo}></MarketLogo>
                                     </div>
                                     <div className={`d-flex flex-column ms-3`}>
-                                        <div className="fs-6 text-opacity text-ellipsis">Market cap</div>
+                                        <div className="fs-6 text-opacity-4 text-ellipsis">Market cap</div>
                                         <div className="fs-5 fw-bold">$24.683.396</div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={`${style.searchBarInfo} pe-5 ps-3 border-end border-dark`}>
+                            <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
                                 <div className="d-flex flex-items-center">
                                     <div className='pt-2'>
                                         <TransactionLogo className={style.Logo}></TransactionLogo>
                                     </div>
                                     <div className={`d-flex flex-column ms-3`}>
-                                        <div className="fs-6 text-opacity text-ellipsis">Transactions</div>
+                                        <div className="fs-6 text-opacity-4 text-ellipsis">Transactions</div>
                                         <div className="fs-5 fw-bold">$1.347</div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={`${style.searchBarInfo} ps-3`}>
+                            <div className={`${style.searchBarInfo} ps-5`}>
                                 <div className="d-flex flex-items-center">
                                     <div className='pt-2'>
                                         <BlockLogo className={style.Logo}></BlockLogo>
                                     </div>
                                     <div className={`d-flex flex-column ms-3`}>
-                                        <div className="fs-6 text-opacity text-ellipsis">Finalized Block</div>
+                                        <div className="fs-6 text-opacity-4 text-ellipsis">Finalized Block</div>
                                         <div className="fs-5 fw-bold">$2.000.000</div>
                                     </div>
                                 </div>
@@ -200,22 +201,22 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                         </div>
                         }
                         {!isLaptop &&
-                        <div className="flex flex-col mt-4 mb-2">
+                        <div className="flex flex-col mt-4 mb-1 ps-2">
                             <div className="flex-1 flex flex-row">
                                 <div className="flex-1 flex flex-col">
                                     <div className="flex flex-row flex-items-center">
                                         <TransactionLogo className={style.Logo}></TransactionLogo>
                                         <div className="flex-1 flex flex-col ms-2">
-                                            <span className="fs-6 text-opacity text-ellipsis">Transactions</span>
+                                            <span className="fs-6 text-opacity-4 text-ellipsis">Transactions</span>
                                             <span className={`${style.logoSummary} fs-5 fw-bold`}>1.347M</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex-1 flex flex-col">
+                                <div className="flex-1 flex flex-col ms-2">
                                     <div className="flex flex-row flex-items-center">
-                                        <CAPSLogo className={style.Logo}></CAPSLogo>
+                                        <CAPSFlat className={style.Logo}></CAPSFlat>
                                         <div className="flex-1 flex flex-col ms-2">
-                                            <span className="fs-6 text-opacity text-ellipsis">CAPS price</span>
+                                            <span className="fs-6 text-opacity-4 text-ellipsis">CAPS price</span>
                                             <div>
                                                 <span className={style.logoSummary}>$0.68</span>
                                                 <span className={`${style.logoPercent} ms-2`}>(+8.50%)</span>
@@ -229,16 +230,16 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <div className="flex flex-row flex-items-center">
                                         <BlockLogo className={style.Logo}></BlockLogo>
                                         <div className="flex-1 flex flex-col ms-2">
-                                            <span className="fs-6 text-opacity text-ellipsis">Finalized Block</span>
+                                            <span className="fs-6 text-opacity-4 text-ellipsis">Finalized Block</span>
                                             <span className={style.logoSummary}>2.000.000</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex-1 flex flex-col">
+                                <div className="flex-1 flex flex-col ms-2">
                                     <div className="flex flex-row flex-items-center">
                                         <MarketLogo className={style.Logo}></MarketLogo>
                                         <div className="flex-1 flex flex-col ms-2">
-                                            <span className="fs-6 text-opacity text-ellipsis">Market cap</span>
+                                            <span className="fs-6 text-opacity-4 text-ellipsis">Market cap</span>
                                             <span className={style.logoSummary}>$24.683.396</span>
                                         </div>
                                     </div>
@@ -249,18 +250,18 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                     </div>
                     
                     <div className={`row ${isLaptop ? 'mt-5' : ''}`}>
-                        <div className="col-sm-6 mt-5">
+                        <div className={`col-sm-6 ${isLaptop?"mt-5":"mt-2p5"}`}>
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <BlockLogo className={style.blockLogo}></BlockLogo>}
                                 <span className={"title " + style.blockTitle}>Latest Blocks</span>
                             </div>
-                            <div className={style.block + " pb-4 mt-2"}>
+                            <div className={style.block + " pb-4 mt-3"}>
                                 {isLaptop &&
                                 <table className="table table-borderless mb-3">
                                     <thead>
                                         <tr className="fs-6 text-grey">
-                                            <th style={{width:"20%"}}>Number</th>
-                                            <th style={{width:"30%"}}>Age</th>
+                                            <th style={{width:"27%"}} className="text-left ps-5">Number</th>
+                                            <th style={{width:"23%"}} className="text-left">Age</th>
                                             <th style={{width:"15%"}}>Transactions</th>
                                             <th style={{width:"15%"}} className="text-no-wrap">Module Events</th>
                                             <th style={{width:"20%"}}></th>
@@ -269,10 +270,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <tbody>
                                         {dummyData.map((item, key) => { return (
                                         <tr key={key}>
-                                            <td className="text-large text-opacity">5545118</td>
-                                            <td className="text-large text-opacity">38 seconds ago</td>
+                                            <td className="text-large text-opacity text-left ps-5">5545118</td>
+                                            <td className="text-large text-opacity text-left">38 seconds ago</td>
                                             <td className="text-large text-opacity">2</td>
-                                            <td className="text-large text-opacity">0</td>
+                                            <td className="text-large text-opacity text-right pe-5">0</td>
                                             <td>
                                                 <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
@@ -324,12 +325,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
                                 <span className={"title " + style.blockTitle}>NFT transactions</span>
                             </div>
-                            <div className={style.block + " pb-4 mt-2"}>
+                            <div className={style.block + " pb-4 mt-3"}>
                                 <table className="table table-borderless mb-3">
                                     <thead>
                                         <tr className="fs-6 text-grey">
-                                            <th style={{width:"30%"}}>Name/ID</th>
-                                            <th style={{width:"35%"}}>Creator</th>
+                                            <th style={{width:"33%"}} className="text-left ps-5">Name/ID</th>
+                                            <th style={{width:"32%"}} className="text-left">Creator</th>
                                             <th style={{width:"15%"}}>ID</th>
                                             <th style={{width:"20%"}}></th>
                                         </tr>
@@ -337,13 +338,13 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <tbody>
                                         {dummyData.map((item, key) => { return (
                                         <tr key={key} className="position-relative">
-                                            <td className="text-large text-opacity">Multicolor galaxy</td>
-                                            <td className="text-large text-opacity flex flex-row flex-center">
+                                            <td className="text-large text-opacity text-left ps-5">Multicolor galaxy</td>
+                                            <td className="text-large text-opacity flex flex-row flex-items-center text-left">
                                                 <CAPSDark className="webIcon me-2" />
                                                 <span className="textToken">16hC...E98FrRrC</span>    
                                             </td>
                                             <td className="text-large text-opacity">951</td>
-                                            <td>
+                                            <td className="text-right pe-5">
                                                 <button onClick={goNftDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
                                         </tr>
@@ -361,28 +362,28 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
                                 <span className={"title " + style.blockTitle}>Latest transactions</span>
                             </div>
-                            <div className={style.block + " pb-4 mt-2"}>
+                            <div className={style.block + " pb-4 mt-3"}>
                                 {isLaptop &&
                                 <table className="table table-borderless mb-3">
                                     <thead>
                                         <tr className="fs-6 text-grey">
-                                            <th style={{width:"38%"}}>From</th>
-                                            <th style={{width:"38%"}}>To</th>
-                                            <th style={{width:"24%"}}>Amount</th>
+                                            <th style={{width:"40%"}} className="text-left ps-5">From</th>
+                                            <th style={{width:"40%"}} className="text-left">To</th>
+                                            <th style={{width:"20%"}} className="text-left pe-5">Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {dummyData.map((item, key) => { return (
                                         <tr key={key}>
-                                            <td className="text-large text-opacity">
+                                            <td className="text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon me-2" />
                                                 <span className="textToken">16hCXjmTFQ...E9EiMg8FrRrC</span>
                                             </td>
-                                            <td className="text-large text-opacity">
+                                            <td className="text-large text-opacity text-left">
                                             <CAPSDark className="webIcon me-2" />
                                                 <span className="textToken">16hCXjmTFQ...E9EiMg8FrRrC</span>    
                                             </td>
-                                            <td className="text-large text-opacity">52.456 CAPS</td>
+                                            <td className="text-large text-opacity text-left pe-5">52.456 CAPS</td>
                                         </tr>
                                         )})}
                                     </tbody>
@@ -432,12 +433,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop && <EditIcon className={style.blockLogo}></EditIcon>}
                                 <span className={"title " + style.blockTitle}>Validators</span>
                             </div>
-                            <div className={style.block + " pb-4 mt-2"}>
+                            <div className={style.block + " pb-4 mt-3"}>
                                 {isLaptop &&
                                 <table className="table table-borderless mb-3">
                                     <thead>
                                         <tr className="fs-6 text-grey">
-                                            <th style={{width:"30%"}}>Name</th>
+                                            <th style={{width:"30%"}} className="text-left ps-5">Name</th>
                                             <th style={{width:"20%"}}>Total Stacked</th>
                                             <th style={{width:"15%"}}>Comissions</th>
                                             <th style={{width:"15%"}}>Returns</th>
@@ -447,7 +448,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <tbody>
                                         {dummyData.map((item, key) => { return (
                                         <tr key={key}>
-                                            <td className="text-large text-opacity">
+                                            <td className="text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon" />
                                                 <Check className="webCheckIcon ms-2 me-2"/>
                                                 P2P.ORG/7
@@ -455,7 +456,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-large text-opacity">5.965.695</td>
                                             <td className="text-large text-opacity">0.00%</td>
                                             <td className="text-large text-opacity">14.37%</td>
-                                            <td>
+                                            <td className="text-left pe-5">
                                                 <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-2">Details</button>
                                             </td>
                                         </tr>

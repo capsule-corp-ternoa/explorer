@@ -38,7 +38,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
             <div className={"mainContainer"}>
                 <Header/>
                 <div className="mainBody">
-                <h1 className="subTitle">NFT Transactions</h1>
+                <h1 className="subTitle subTitleMarginTop">NFT Transactions</h1>
                 <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
                         {isLaptop &&

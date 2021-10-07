@@ -39,14 +39,14 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
             <div className={"mainContainer"}>
                 <Header/>
                 <div className="mainBody">
-                <h1 className="subTitle">All Accounts</h1>
+                <h1 className="subTitle subTitleMarginTop">All Accounts</h1>
                 <div className="mainBlock pb-4 mt-2">
                     <div className = "tag-for-scroll">
                         {isLaptop &&
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Address</th>
+                                    <th className="text-left ps-5">Address</th>
                                     <th>Transactions</th>
                                     <th>Amount</th>
                                     <th></th>
@@ -55,13 +55,13 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity text-no-wrap">
+                                    <td className="text-large text-opacity text-no-wrap text-left ps-5">
                                         <CAPSDark className="webIcon me-2" />
                                         <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...</span>
                                     </td>
                                     <td className="text-large text-opacity">7</td>
                                     <td className="text-large text-opacity">10.000 CAPS</td>
-                                    <td>
+                                    <td className="text-right pe-5">
                                         <button onClick={goAccountDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>
