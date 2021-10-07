@@ -80,8 +80,11 @@ const Header: React.FC<HeaderProps> = (props) => {
                         <LogoTernoaScan className={style.logo} />
                     </a>
                 </Link>
-                <div className={`${style.searchBoxContainer} py-1 py-md-1 position-relative`}>
-                    {(props.searchBar || props.searchBar == undefined) && <div className={style.mobileSearchBar}>
+                <div className="d-md-none ml-auto" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <Hamburger className={style.hamburger + " mx-2"} />
+                </div>
+                {(props.searchBar || props.searchBar == undefined) &&<div className={`${style.searchBoxContainer} py-1 py-md-1 position-relative`}>
+                     <div className={style.mobileSearchBar}>
                         <input
                             type="text"
                             value={searchText}
@@ -102,8 +105,8 @@ const Header: React.FC<HeaderProps> = (props) => {
                         />
                         {isCapsInputFocused && <div className="search-gradient"></div>}
                         <Search className={style.search + " position-absolute"}/>
-                    </div>}
-                </div>
+                    </div>
+                </div>}
                 {isLaptop && <div className="flex flex-row flex-items-center">
                    <span className={style.navBarItem}>Dashboard</span>
                    <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown}>
@@ -172,9 +175,6 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </Dropdown> 
     
                 </div>}
-                <div className={"d-md-none"} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                    <Hamburger className={style.hamburger + " mx-2"} />
-                </div>
             </div>
 
             {!isLaptop && <Modal classNames={{

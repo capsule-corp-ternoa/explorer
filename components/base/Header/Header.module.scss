@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 8px 12px;
     margin-top: 5px;
     @media (min-width: 768px) {
@@ -31,6 +32,10 @@
     margin-top: 30px;
     margin-bottom: 20px;
     height: 58px;
+    @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 0px;
+    }
 }
  
 .searchContainer{
@@ -114,9 +119,6 @@
 }
 
 @media (max-width:768px) {
-    .mobileSearchBar {
-        display: none;
-    }
 
     .mobileMenu {
         padding: 80px 0px;
