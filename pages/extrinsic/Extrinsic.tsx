@@ -44,25 +44,27 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Extrinsic ID</th>
-                                    <th>Block</th>
-                                    <th>Module</th>
-                                    <th>Call</th>
-                                    <th>Signed</th>
-                                    <th>Success</th>
-                                    <th></th>
+                                    <th style={{width:"20%"}} className="text-left ps-4p0">Extrinsic ID</th>
+                                    <th style={{width:"20%"}} className="text-left">Block</th>
+                                    <th style={{width:"10%"}} className="text-left">Module</th>
+                                    <th style={{width:"10%"}} className="text-left">Call</th>
+                                    <th style={{width:"10%"}}>Signed</th>
+                                    <th style={{width:"10%"}}>Success</th>
+                                    <th style={{width:"10%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>
                             {dummyWeb.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity fw-bold">5659861-2</td>
-                                    <td className="text-large text-opacity">5659861</td>
-                                    <td className="text-large text-opacity">staking</td>
-                                    <td className="text-large text-opacity">bond_extra</td>
+                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">5659861-2</td>
+                                    <td className="text-large text-opacity text-left">5659861</td>
+                                    <td className="text-large text-opacity text-left">staking</td>
+                                    <td className="text-large text-opacity text-left">bond_extra</td>
                                     <td className="text-large text-opacity">Yes</td>
-                                    <td className="text-large text-opacity"><Check className="webCheckIcon"/></td>
-                                    <td>
+                                    <td className="text-large text-opacity">
+                                        <Check className="webCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                    </td>
+                                    <td className="text-right pe-4p0">
                                         <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
@@ -99,7 +101,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Success</span>
-                                        <Check className="mobileCheckIcon" />
+                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

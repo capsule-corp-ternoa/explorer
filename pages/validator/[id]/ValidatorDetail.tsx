@@ -43,7 +43,6 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                     </div>
                     }
                     <h1 className="subTitle">
-                        <CAPSDark className="webIcon me-2" />
                         1REAJ1k691g5E...9gL7vvZCBG
                     </h1>
                     <div className="mainBlock mt-2 mb-5">
@@ -178,24 +177,24 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                             <table className="table table-borderless mb-0 webBorderTable2">
                                 <thead> 
                                     <tr className="fs-6 text-grey">
-                                        <th>Transaction ID</th>
-                                        <th>Block</th>
-                                        <th>Module</th>
-                                        <th>Call</th>
-                                        <th>Success</th>
-                                        <th></th>
+                                        <th style={{width:"20%"}} className="text-left ps-4p0">Transaction ID</th>
+                                        <th style={{width:"20%"}} className="text-left">Block</th>
+                                        <th style={{width:"20%"}} className="text-left">Module</th>
+                                        <th style={{width:"20%"}} className="text-left">Call</th>
+                                        <th style={{width:"15%"}}>Success</th>
+                                        <th style={{width:"10%"}}></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td className="text-large text-opacity fw-bold">5556906-2</td>
-                                        <td className="text-large text-opacity">5556906</td>
-                                        <td className="text-large text-opacity">Stacking</td>
-                                        <td className="text-large text-opacity">payout_stakers</td>
+                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">5556906-2</td>
+                                        <td className="text-large text-opacity text-left">5556906</td>
+                                        <td className="text-large text-opacity text-left">Stacking</td>
+                                        <td className="text-large text-opacity text-left">payout_stakers</td>
                                         <td className="text-large text-opacity">
                                             <Check className="webCheckIcon" />
                                         </td>
-                                        <td>
+                                        <td className="text-right pe-4p0">
                                             <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                         </td>
                                     </tr>
@@ -227,7 +226,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Success</span>
-                                        <Check className="mobileCheckIcon" />
+                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

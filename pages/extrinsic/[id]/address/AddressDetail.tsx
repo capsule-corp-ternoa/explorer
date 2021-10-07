@@ -16,6 +16,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
+    const dummyData = [0,1,1];
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -43,7 +44,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                     </div>
                     }
                     <h1 className="subTitle">
-                        <CAPSDark className="webIcon me-2" /> 14Kazg6SFiUC...Q1pvXzF1dQhv
+                        14Kazg6SFiUC...Q1pvXzF1dQhv
                     </h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
@@ -64,7 +65,9 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Active</td>
-                                        <td className="text-large text-opacity"><Check className="webCheckIcon"></Check></td>
+                                        <td className="text-large text-opacity">
+                                            <Check className="webCheckIcon" />
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -105,51 +108,29 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                             <table className="table table-borderless mb-0 webBorderTable2">
                                 <thead> 
                                     <tr className="fs-6 text-grey">
-                                        <th>Transaction ID</th>
-                                        <th>From</th>
-                                        <th>Module</th>
-                                        <th>Call</th>
-                                        <th>Success</th>
-                                        <th></th>
+                                        <th style={{width:"20%"}} className="text-left ps-4p0">Transaction ID</th>
+                                        <th style={{width:"20%"}} className="text-left">From</th>
+                                        <th style={{width:"20%"}} className="text-left">Module</th>
+                                        <th style={{width:"10%"}} className="text-left">Call</th>
+                                        <th style={{width:"10%"}}>Success</th>
+                                        <th style={{width:"10%"}}></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className="text-large text-opacity fw-bold">5556906-2</td>
-                                        <td className="text-large text-opacity">5560132</td>
-                                        <td className="text-large text-opacity">Balancers</td>
-                                        <td className="text-large text-opacity">transfer</td>
+                                    {dummyData.map((item, key) => { return (
+                                    <tr key={key}>
+                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">5556906-2</td>
+                                        <td className="text-large text-opacity text-left">5560132</td>
+                                        <td className="text-large text-opacity text-left">Balancers</td>
+                                        <td className="text-large text-opacity text-left">transfer</td>
                                         <td className="text-large text-opacity">
                                             <Check className="webCheckIcon" />
                                         </td>
-                                        <td>
+                                        <td className="text-right pe-4p0">
                                             <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity fw-bold">5556906-2</td>
-                                        <td className="text-large text-opacity">5560132</td>
-                                        <td className="text-large text-opacity">Balancers</td>
-                                        <td className="text-large text-opacity">transfer</td>
-                                        <td className="text-large text-opacity">
-                                        <Check className={"webCheckIcon"} />
-                                        </td>
-                                        <td>
-                                            <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-large text-opacity fw-bold">5556906-2</td>
-                                        <td className="text-large text-opacity">5560132</td>
-                                        <td className="text-large text-opacity">Balancers</td>
-                                        <td className="text-large text-opacity">transfer</td>
-                                        <td className="text-large text-opacity">
-                                        <Check className={"webCheckIcon"} />
-                                        </td>
-                                        <td>
-                                            <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Detail</button>
-                                        </td>
-                                    </tr>
+                                    )})}
                                 </tbody>
                             </table>
                             }
@@ -172,7 +153,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Success</span>
-                                        <Check className="mobileCheckIcon" />
+                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">

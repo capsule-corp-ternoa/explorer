@@ -474,7 +474,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
                                             <div className="text-large text-opacity">
                                                 <CAPSDark className="mobileIcon me-1" />
-                                                <Check className={"mobileCheckIcon me-1 " + style.whiteBlueText}/>
+                                                <Check className={"mobileCheckIcon me-1 "} fillColor="#9f9fff"/>
                                                 <span className={"mobileValue " + style.whiteBlueText}>P2P.ORG/7</span>
                                             </div>
                                         </div>

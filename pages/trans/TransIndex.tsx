@@ -45,27 +45,27 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th style={{width:"20%"}}>Name</th>
-                                    <th style={{width:"30%"}}>From</th>
-                                    <th style={{width:"30%"}}>To</th>
-                                    <th style={{width:"10%"}}>Value</th>
+                                    <th style={{width:"20%"}} className="text-left ps-4p0">Block</th>
+                                    <th style={{width:"30%"}} className="text-left">From</th>
+                                    <th style={{width:"30%"}} className="text-left">To</th>
+                                    <th style={{width:"10%"}} className="text-left">Value</th>
                                     <th style={{width:"10%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity fw-bold">5545118</td>
-                                    <td className="text-large text-opacity text-no-wrap">
+                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">5545118</td>
+                                    <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
                                         <span className="textToken">112A6wJPeDsf34nsqo...</span>
                                     </td>
-                                    <td className="text-large text-opacity text-no-wrap">
+                                    <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
                                         <span className="textToken">112A6wJPeDsf34nsqo...</span>
                                     </td>
-                                    <td className="text-large text-opacity">2</td>
-                                    <td>
+                                    <td className="text-large text-opacity text-left">52.456 CAPS</td>
+                                    <td className="text-right pe-4p0">
                                         <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>

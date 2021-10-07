@@ -241,7 +241,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Success</span>
-                                        <Check className="mobileCheckIcon" />
+                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

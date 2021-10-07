@@ -86,7 +86,9 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Active</span>
-                                        <span className="mobileValue"><Check className="mobileCheckIcon" /></span>
+                                        <span className="mobileValue">
+                                            <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                        </span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

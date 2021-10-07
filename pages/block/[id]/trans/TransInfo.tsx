@@ -79,19 +79,21 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                         <td className="text-large text-opacity textToken">Same as the [`transfer`] call, but with a check that the transfer will not kill the origin</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Address</td>
+                                        <td className="text-large text-opacity">Nonce</td>
                                         <td className="text-large text-opacity">488</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">From</td>
+                                        <td className="text-large text-opacity">Signature</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
                                             <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Block</td>
-                                        <td className="text-large text-opacity">check</td>
+                                        <td className="text-large text-opacity">Result</td>
+                                        <td className="text-large text-opacity">
+                                            <Check className="webCheckIcon" />
+                                        </td>
                                     </tr>     
                                 </tbody>
                             </table>
@@ -113,10 +115,10 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                     <span className="mobileValue">1</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Transaction Hash</span>
+                                    <span className="mobileLabel">Transaction Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
@@ -134,10 +136,10 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                     <span className="textToken mobileValue">Same as the [`transfer`] call</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Address</span>
+                                    <span className="mobileLabel">Address</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
@@ -147,14 +149,14 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Result</span>
-                                        <Check className="mobileCheckIcon" />
+                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-2">
-                                    <span className="mobileRowLabel">Signature</span>
+                                    <span className="mobileLabel">Signature</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                             </div>
@@ -186,10 +188,10 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                             {!isLaptop &&
                             <div className={"mobileView"}>
                                 <div className="flex flex-col mt-2">
-                                    <span className="mobileRowLabel">From</span>
+                                    <span className="mobileLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-2">

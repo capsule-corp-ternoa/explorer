@@ -243,6 +243,9 @@ a {
 
 .subTitleMarginTop {
   margin-top: 54px; /* < Back icon height + mt-4 */
+  @media (max-device-width: 1024px) {
+    margin-top: 0px;
+  }
 }
 
 .mainBody {
@@ -292,8 +295,8 @@ a {
 }
 
 .webCheckIcon {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .mobileView {
@@ -309,14 +312,14 @@ a {
 
 .mobileRowLabel {
   font-family: 'Airbnb Cereal App Medium';
-  color: $grey;
+  color: $light-grey;
   font-size: 14px;
   line-height: 18px;
 }
 
 .mobileLabel {
   font-family: 'Airbnb Cereal App Medium';
-  color: $grey;
+  color: $light-grey;
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 13px;

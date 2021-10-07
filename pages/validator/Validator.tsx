@@ -49,25 +49,25 @@ const Validator: React.FC<ValidatorProps> = () => {
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th>Name</th>
-                                    <th>Total Stacked</th>
-                                    <th>Comissions</th>
-                                    <th>Returns</th>
-                                    <th></th>
+                                    <th style={{width:"30%"}} className="text-left ps-4p0">Name</th>
+                                    <th style={{width:"30%"}} className="text-left">Total Stacked</th>
+                                    <th style={{width:"15%"}}>Comissions</th>
+                                    <th style={{width:"15%"}}>Returns</th>
+                                    <th style={{width:"10%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity text-no-wrap">
+                                    <td className="text-large text-opacity text-no-wrap text-left ps-4p0">
                                         <CAPSDark className="webIcon" />
-                                        <Check className="ms-2"/>
+                                        <Check className="webCheckIcon ms-2" />
                                         <span className="ms-2 fw-bold">P2P.ORG/7</span>
                                     </td>
-                                    <td className="text-large text-opacity">5.965.695</td>
+                                    <td className="text-large text-opacity text-left">5.965.695</td>
                                     <td className="text-large text-opacity">0.00%</td>
                                     <td className="text-large text-opacity">14.37%</td>
-                                    <td>
+                                    <td className='text-right pe-4p0'>
                                         <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
@@ -82,7 +82,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                                         <span className="mobileLabel">Name</span>
                                         <div className="flex flex-row flex-1 flex-items-center">
                                             <CAPSDark className="mobileIcon" />
-                                            <Check className="ms-2 me-2" />
+                                            <Check className="mobileCheckIcon ms-2 me-2" fillColor="rgba(255, 255, 255, 0.7)" />
                                             <span className="textToken mobileValue">P2P.ORG/7</span>
                                         </div>
                                     </div>
@@ -95,7 +95,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col flex-grow-6">
-                                        <span className="mobileColLaebl">Comissions</span>
+                                        <span className="mobileLabel">Comissions</span>
                                         <span className="mobileValue">0.00%</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-4">

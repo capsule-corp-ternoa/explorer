@@ -46,22 +46,22 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th className="text-left ps-5">Address</th>
-                                    <th>Transactions</th>
-                                    <th>Amount</th>
-                                    <th></th>
+                                    <th style={{width:"60%"}} className="text-left ps-4p0">Address</th>
+                                    <th style={{width:"10%"}}>Transactions</th>
+                                    <th style={{width:"25%"}}>Amount</th>
+                                    <th style={{width:"10%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity text-no-wrap text-left ps-5">
+                                    <td className="text-large text-opacity text-no-wrap text-left ps-4p0">
                                         <CAPSDark className="webIcon me-2" />
                                         <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...</span>
                                     </td>
                                     <td className="text-large text-opacity">7</td>
                                     <td className="text-large text-opacity">10.000 CAPS</td>
-                                    <td className="text-right pe-5">
+                                    <td className="text-right pe-4p0">
                                         <button onClick={goAccountDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>

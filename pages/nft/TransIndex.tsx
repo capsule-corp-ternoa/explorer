@@ -45,29 +45,29 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                         <table className="table table-borderless mb-3 webBorderTable">
                             <thead>
                                 <tr className="fs-6 text-grey">
-                                    <th style={{width:"15%"}}>Name/ID</th>
-                                    <th style={{width:"15%"}}>Date</th>
-                                    <th style={{width:"25%"}}>Sender</th>
-                                    <th style={{width:"25%"}}>Receiver</th>
-                                    <th style={{width:"10%"}}>Account</th>
+                                    <th style={{width:"20%"}} className="text-left ps-4p0">Name/ID</th>
+                                    <th style={{width:"15%"}} className="text-left">Date</th>
+                                    <th style={{width:"20%"}} className="text-left">Sender</th>
+                                    <th style={{width:"20%"}} className="text-left">Receiver</th>
+                                    <th style={{width:"10%"}} className="text-left">Account</th>
                                     <th style={{width:"10%"}}></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {dummyWeb.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity fw-bold">Multicolor galaxy-6502</td>
-                                    <td className="text-large text-opacity">13/09/2021, 22:14</td>
-                                    <td className="text-large text-opacity text-no-wrap">
+                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">Multicolor galaxy-6502</td>
+                                    <td className="text-large text-opacity text-left">13/09/2021, 22:14</td>
+                                    <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
                                         <span className="textToken">0x3a851d...399f86</span>
                                     </td>
-                                    <td className="text-large text-opacity text-no-wrap">
+                                    <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
                                         <span className="textToken">0x3a851d...399f86</span>
                                     </td>
-                                    <td className="text-large text-opacity">10.000 CAPS</td>
-                                    <td>
+                                    <td className="text-large text-opacity text-left">10.000 CAPS</td>
+                                    <td className="text-right pe-4p0">
                                         <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>
@@ -92,24 +92,17 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     <div className="mobileValue">13/09/2021, 22:14</div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">From</span>
+                                    <span className="mobileLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">To</span>
+                                    <span className="mobileLabel">To</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col mt-4">
-                                    <span className="mobileRowLabel">Creator</span>
-                                    <div className="flex flex-row flex-1 flex-items-center">
-                                        <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
