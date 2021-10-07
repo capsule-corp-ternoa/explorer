@@ -293,6 +293,15 @@ input[type=number] {
 	}
 }
 
+@media (min-width : 1024px) {
+	.header35 {
+		margin-top: 35px;
+	}
+	.header20 {
+		margin-top: 20px;
+	}
+}
+
 .recharts-tooltip-wrapper {
 	.recharts-default-tooltip{
 		background-color: rgba(20,20,46,0.6)!important;

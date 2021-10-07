@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <header>
-            <div className={style.header}>
+            <div className={style.header + " "+ ((props.searchBar || props.searchBar == undefined)?'header20':'header35')}>
                 <Link href="/">
                     <a>
                         <LogoTernoaScan className={style.logo} />
