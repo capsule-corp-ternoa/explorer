@@ -44,10 +44,6 @@ const Header: React.FC<HeaderProps> = (props) => {
         setMenu(!menu1);
     }
 
-    const goAccountIndex = () => {
-        router.push("/account");
-    }
-
     const leaveMenu = () => {
         timeout = setTimeout(() => {
             setMenu(false)
@@ -108,7 +104,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </div>
                 </div>}
                 {isLaptop && <div className="flex flex-row flex-items-center">
-                   <span className={style.navBarItem}>Dashboard</span>
+                   <span className={style.navBarItem} onClick={()=>router.push("/")}>Dashboard</span>
                    <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown}>
                         <DropdownToggle
                             className={style.navBarDropdownItem}
@@ -123,18 +119,19 @@ const Header: React.FC<HeaderProps> = (props) => {
                         <DropdownMenu className={style.dropdownMenu} right>
                             <p
                                 className={style.dropdownItem}
-                                onClick={()=>router.push("./validator")}
+                                onClick={()=>router.push("/validator")}
                             >
                                 Validator
                             </p>
                             <p
                                 className={style.dropdownItem}
+                                onClick={()=>router.push("/extrinsic")}
                             >
                                 Nominator
                             </p>
                             <p
                                 className={style.dropdownItem}
-                                onClick={()=>router.push("./account")}
+                                onClick={()=>router.push("/account")}
                             >
                                 All Account
                             </p>
@@ -155,19 +152,19 @@ const Header: React.FC<HeaderProps> = (props) => {
                         <DropdownMenu className={style.dropdownMenu} right>
                             <p
                                 className={style.dropdownItem}
-                                onClick={()=>router.push("./block")}
+                                onClick={()=>router.push("/block")}
                             >
                                 Blocks
                             </p>
                             <p
                                 className={style.dropdownItem}
-                                onClick={()=>router.push("./trans")}
+                                onClick={()=>router.push("/trans")}
                             >
                                 Transactions
                             </p>
                             <p
                                 className={style.dropdownItem}
-                                onClick={()=>router.push("./nft")}
+                                onClick={()=>router.push("/nft")}
                             >
                                 NFT/ Capsule
                             </p>
@@ -184,7 +181,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 <div className={style.mobileMenu + " flex flex-col flex-items-center"}>
                     <span className={style.mobileMenuItem + " " + (router.route == '/' ? style.activeMobileMenuItem : '')}>Dashboard</span>
                     <span className={style.mobileMenuItem}>Chain</span>
-                    <span onClick={goAccountIndex} className={style.mobileMenuItem}>Account</span>
+                    <span className={style.mobileMenuItem}>Account</span>
                 </div>
             </Modal>}
         </header>
