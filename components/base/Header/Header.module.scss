@@ -63,6 +63,56 @@
     right: 20px;
 }
 
+.navBarItem {
+    font-family: "Airbnb Cereal App Bold";
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+.navBarDropdown {
+    margin-left: 30px;
+
+    .dropdownItem{
+        cursor: pointer;
+        color: white;
+        font-family: "Airbnb Cereal App Bold";
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 14px;
+
+        &:hover {
+            color: $white-blue;
+            transition: all 150ms ease-out;
+        }
+
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+
+    .navBarDropdownItem {
+        background: unset;
+        border: unset;
+
+        .downArrowItem {
+            margin-left: 4px;
+        }
+    }
+
+    .dropdownMenu {
+        background-color: #191939!important;
+        border-radius: 11px;
+  		// transition: all 1000ms ease-out;
+        padding: 11px 17px;
+        margin-top: 8px;
+        z-index: 1000001;
+    }
+}
+
 @media (max-width:768px) {
     .mobileSearchBar {
         display: none;

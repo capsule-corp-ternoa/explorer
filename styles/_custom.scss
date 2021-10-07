@@ -305,22 +305,48 @@ input[type=number] {
 .react-responsive-modal-overlay {
 	background: rgba(0, 0, 0, 0.3)!important
 }
+
+@keyframes mobileMenuAnimationIn {
+	0% {
+		opacity: 0;
+		transform: translateY(200px);
+  		transition: all 800ms ease-in-out;
+	  }
+	100% {
+		opacity: 1;
+  		transform: translateY(0px);
+	}
+}
+
+@keyframes mobileMenuAnimationOut {
+	0% {
+		opacity: 1;
+		transform: translateY(0px);
+  		transition: all 800ms ease-in-out;
+	  }
+	100% {
+		opacity: 0;
+  		transform: translateY(200px);
+	}
+}
+
 .react-responsive-modal-modal {
 	max-width: unset!important;
     position: absolute!important;
 	bottom: 0px;
 	left: 0px;
-    padding: 1.2rem;
+    // padding: 1.2rem;
     background: rgba(136, 136, 136, 0.15)!important;
     background-clip: padding-box;
+	backdrop-filter: blur(4px);
     box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.45)!important;
-	backdrop-filter: blur(20px);
 	width: 100%!important;
     margin: 0px!important;
 	border-top-left-radius: 35px;
 	border-top-right-radius: 35px;
 
 	.react-responsive-modal-closeButton {
+		outline: unset!important;
 		svg {
 			background-color: rgba(255,255,255,0.1);
 			padding: 7px;
@@ -332,4 +358,27 @@ input[type=number] {
 			}
 		}
 	}
+}
+
+.input-over-effect {
+	z-index: 1;
+	&:focus {
+		&::placeholder {
+			color: transparent;
+		}
+	}
+}
+
+.search-gradient{
+	background: linear-gradient(
+		90deg, #FF0062);
+	filter: blur(10px);
+	position: absolute;
+	width: 100%;
+	margin-left: 5px;
+	height: 56px;
+	z-index: 0;
+	top: 2px;
+	left: -5px;
+	border-radius: 25px;
 }

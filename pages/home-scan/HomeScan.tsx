@@ -28,6 +28,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     const [totalTrans, setTotalTrans] = useState(true);
     const [newAccount, setNewAccount] = useState(true);
     const [averBlock, setAverBlock] = useState(true);
+    const [searchFocus, setSearchFocus] = useState(false);
 
     const [searchText, setSearchText] = useState('');
 
@@ -134,11 +135,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     onKeyDown={(e) => {
                                         if(e.keyCode === 13) setSearchText('');
                                     }}
+                                    onFocus={()=>setSearchFocus(true)}
+                                    onBlur={()=>setSearchFocus(false)}
                                     placeholder="Search by adresse / Txn Hash / Block"
-                                    className={style.searchInput}
+                                    className={style.searchInput + " position-relative"}
                                     style={{ backgroundColor: "#14142E" }}
                                     min={0}
                                 />
+                                {searchFocus && <div className="search-gradient" style={{height:'60px'}}></div>}
                                 <Search className={style.search + " position-absolute"}/>
                             </div>
                             
@@ -523,8 +527,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         data={data}
                                         margin={{
                                             top: 10,
-                                            right: 30,
-                                            left: 0,
+                                            right: 40,
+                                            left: -15,
                                             bottom: 0,
                                         }}
                                     >
@@ -558,8 +562,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         data={data}
                                         margin={{
                                             top: 10,
-                                            right: 30,
-                                            left: 0,
+                                            right: 40,
+                                            left: -15,
                                             bottom: 0,
                                         }}
                                     >
