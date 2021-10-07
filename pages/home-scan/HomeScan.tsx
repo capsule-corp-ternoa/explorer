@@ -143,7 +143,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     style={{ backgroundColor: "#14142E" }}
                                     min={0}
                                 />
-                                {searchFocus && <div className="search-gradient" style={{height:'60px'}}></div>}
+                                {searchFocus && <div className={"search-gradient " + style.searchGradient}></div>}
                                 <Search className={style.search + " position-absolute"}/>
                             </div>
                             

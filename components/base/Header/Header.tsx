@@ -104,7 +104,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                         <Search className={style.search + " position-absolute"}/>
                     </div>}
                 </div>
-                <div className="flex flex-row flex-items-center">
+                {isLaptop && <div className="flex flex-row flex-items-center">
                    <span className={style.navBarItem}>Dashboard</span>
                    <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown}>
                         <DropdownToggle
@@ -171,7 +171,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                         </DropdownMenu>
                     </Dropdown> 
     
-                </div>
+                </div>}
                 <div className={"d-md-none"} onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     <Hamburger className={style.hamburger + " mx-2"} />
                 </div>
