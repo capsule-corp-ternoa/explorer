@@ -192,9 +192,9 @@ input[type=number] {
 .tbody-detail > tr > td:nth-child(1) {
 	width: 40%;
 	text-align: start;
-	padding-left: 130px;
+	padding-left: 4rem;
 	@media (max-width: 1024px) {
-		padding-left: 21px;
+		padding-left: 2rem;
 	}
 }
 
@@ -260,6 +260,10 @@ input[type=number] {
 
 .text-opacity {
 	opacity: 0.7;
+}
+
+.text-opacity-4 {
+	opacity: 0.4;
 }
 
 .border-radius {

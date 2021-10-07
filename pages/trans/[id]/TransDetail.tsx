@@ -32,7 +32,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                 <Header />
                 <div className="mainBody">
                     {isLaptop &&
-                    <div className="cursor-point w-fit-content mb-3" onClick={()=>router.back()}>
+                    <div className="cursor-point w-fit-content mb-4" onClick={()=>router.back()}>
                        <Back />
                     </div>
                     }

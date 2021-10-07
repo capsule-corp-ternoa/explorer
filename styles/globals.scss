@@ -134,10 +134,34 @@ a {
   width: fit-content!important;
 }
 
+.mt-2p0 {
+  margin-top: ($spacer * 2) !important;
+}
+
+.mt-2p5 {
+  margin-top: ($spacer * 2.5) !important;
+}
+
+.ps-4p0 {
+  padding-left: ($spacer * 4) !important;
+}
+
+.pe-4p0 {
+  padding-right: ($spacer * 4) !important;
+}
+
 .text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
 }
 
 .cursor-point {
@@ -215,6 +239,10 @@ a {
   @media (max-width: 1024px) {
     font-size: 16px!important;
   }
+}
+
+.subTitleMarginTop {
+  margin-top: 54px; /* < Back icon height + mt-4 */
 }
 
 .mainBody {

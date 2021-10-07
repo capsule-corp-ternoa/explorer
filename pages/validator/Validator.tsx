@@ -39,7 +39,7 @@ const Validator: React.FC<ValidatorProps> = () => {
             <div className={"mainContainer"}>
                 <Header />
                 <div className="mainBody">
-                <h1 className="subTitle">
+                <h1 className="subTitle subTitleMarginTop">
                     Elected (297)
                     <Down className="ms-3 mb-1"/>
                 </h1>

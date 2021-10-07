@@ -38,7 +38,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                 <Header />
                 <div className="mainBody">
                     {isLaptop &&
-                    <div className="cursor-point w-fit-content mb-3" onClick={()=>router.back()}>
+                    <div className="cursor-point w-fit-content mb-4" onClick={()=>router.back()}>
                        <Back />
                     </div>
                     }
@@ -188,27 +188,27 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                             <table className="table table-borderless mb-0 webBorderTable2">
                                 <thead>
                                     <tr className="fs-6 text-grey">
-                                        <th>Transaction ID</th>
-                                        <th>From</th>
-                                        <th>Module</th>
-                                        <th>Call</th>
-                                        <th>Success</th>
-                                        <th></th>
+                                        <th style={{width:"15%"}} className="text-left ps-4p0">Transaction ID</th>
+                                        <th style={{width:"15%"}} className="text-left">From</th>
+                                        <th style={{width:"20%"}} className="text-left">Module</th>
+                                        <th style={{width:"30%"}} className="text-left">Call</th>
+                                        <th style={{width:"10%"}}>Success</th>
+                                        <th style={{width:"10%"}}></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td className="text-large text-opacity fw-bold">Stacking</td>
-                                        <td className="text-large text-opacity">unbound</td>
-                                        <td className="text-large text-opacity">0x3a851d3...</td>
-                                        <td className="text-large text-opacity flex flex-row flex-center">
+                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">Stacking</td>
+                                        <td className="text-large text-opacity text-left">unbound</td>
+                                        <td className="text-large text-opacity text-left">0x3a851d3...</td>
+                                        <td className="text-large text-opacity flex flex-row flex-items-center text-left">
                                             <CAPSDark className="webIcon me-2" />
                                             <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                         </td>
                                         <td className="text-large text-opacity">
                                             <Check className="webCheckIcon" />
                                         </td>
-                                        <td>
+                                        <td className="text-right pe-4p0">
                                             <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                         </td>
                                     </tr>
