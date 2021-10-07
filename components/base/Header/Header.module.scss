@@ -6,9 +6,14 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 8px 12px;
-    margin-top: 5px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    height: 58px;
     @media (min-width: 768px) {
         padding: 0 170px;
+    }
+    @media (max-width: 768px) {
+        margin-bottom: 0px;
     }
     background-color: $black-blue;
 }
@@ -29,12 +34,9 @@
 }
 
 .searchBoxContainer {
-    margin-top: 30px;
-    margin-bottom: 20px;
     height: 58px;
     @media (max-width: 768px) {
         width: 100%;
-        margin-bottom: 0px;
         height: 50px;
     }
 }
