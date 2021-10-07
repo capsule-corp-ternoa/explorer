@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     const [searchText, setSearchText] = useState('');
     const [isCapsInputFocused, setIsCapsInputFocused] = useState(false)
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-device-width: 768px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
     const router = useRouter();
     const [menu, setMenu] = useState(false);
     const [menu1, setMenu1] = useState(false);
@@ -179,7 +179,12 @@ const Header: React.FC<HeaderProps> = (props) => {
                 modalAnimationOut: 'mobileMenuAnimationOut'
             }} open={isMenuOpen} onClose={()=>setIsMenuOpen(false)}>
                 <div className={style.mobileMenu + " flex flex-col flex-items-center"}>
-                    <span className={style.mobileMenuItem + " " + (router.route == '/' ? style.activeMobileMenuItem : '')}>Dashboard</span>
+                    <span
+                        className={style.mobileMenuItem + " " + (router.route == '/' ? style.activeMobileMenuItem : '')}
+                        onClick={()=>router.push("/")}
+                    >
+                        Dashboard
+                    </span>
                     <span className={style.mobileMenuItem}>Chain</span>
                     <span className={style.mobileMenuItem}>Account</span>
                 </div>
