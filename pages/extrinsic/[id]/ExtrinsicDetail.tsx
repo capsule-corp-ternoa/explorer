@@ -62,8 +62,9 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Extrinsic Hash</td>
-                                        <td className="text-large text-opacity">
-                                            <span className="textToken">0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03</span>
+                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
+                                            <CAPSDark className="webIcon me-2" />
+                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -93,8 +94,9 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Signature</td>
-                                        <td className="text-large text-opacity">
-                                            <span className="textToken">0xa429608de459f7913...dd417cbf4afd6dff3</span>
+                                        <td className="text-large text-opacity flex flex-row flex-items-center w-100">
+                                            <CAPSDark className="webIcon me-2" />
+                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -108,66 +110,62 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                             }
                             {!isLaptop &&
                             <div className={"mobileView"}>
-                                <div className="flex flex-col mt-2">
-                                    <span className="mobileLabel">TimeStamp</span>
-                                    <span className="mobileValue">Jun 18, 2021, 3:16:00 PM</span>
-                                </div>
-                                <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Hash</span>
-                                    <div className="flex flex-row flex-1 flex-items-center">
-                                        <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                <div className="flex flex-row mt-2">
+                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                        <span className="mobileLabel">Block</span>
+                                        <span className="mobileValue">7129421</span>
+                                    </div>
+                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                        <span className="mobileLabel">Timestamp</span>
+                                        <span className="mobileValue">Jun 18, 2021, 3:16:00 PM</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Parent Hash</span>
-                                    <div className="flex flex-row flex-1 flex-items-center">
-                                        <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                    </div>
+                                    <span className="mobileLabel">Extrinsic Index</span>
+                                    <span className="mobileValue">1</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">State Root</span>
-                                    <div className="flex flex-row flex-1 flex-items-center">
-                                        <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">Extrinsics Root</span>
+                                    <span className="mobileLabel">Extrinsic Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Transactions</span>
-                                        <span className="mobileValue">2</span>
+                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                        <span className="mobileLabel">Module</span>
+                                        <span className="mobileValue">Balancers</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Total module events</span>
-                                        <span className="mobileValue">6</span>
+                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                        <span className="mobileLabel">Call</span>
+                                        <span className="mobileValue">Transfer_keep_alive</span>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileLabel">Description</span>
+                                    <span className="textToken mobileValue">Same as the transfer c</span>
+                                </div>
+                                <div className="flex flex-col mt-4">
+                                    <span className="mobileLabel">Address</span>
+                                    <div className="flex flex-row flex-1 flex-items-center">
+                                        <CAPSDark className="mobileIcon me-2" />
+                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Runtime Version</span>
-                                        <span className="mobileValue">30</span>
+                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                        <span className="mobileLabel">Nonce</span>
+                                        <span className="mobileValue">14539</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Block time</span>
-                                        <span className="mobileValue">6 seconds</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Session ID</span>
-                                        <span className="mobileValue">2320</span>
+                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                        <span className="mobileLabel">Result</span>
+                                        <span className="mobileValue">
+                                            <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="flex flex-col mt-4 mb-4">
-                                    <span className="mobileLabel">Block author</span>
+                                <div className="flex flex-col mt-4 mb-2">
+                                    <span className="mobileLabel">Signature</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
@@ -203,35 +201,16 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                             }
                             {!isLaptop &&
                             <div className={"mobileView"}>
-                                <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
-                                        <span className="mobileLabel">Transaction ID</span>
-                                        <span className="mobileValue">Stacking</span>
-                                    </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
-                                        <span className="mobileLabel">Module</span>
-                                        <span className="mobileValue">Balance</span>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col mt-4">
-                                    <span className="mobileLabel">From</span>
-                                    <div className="flex flex-row flex-1 flex-items-center">
+                                <div className="flex flex-col mt-2">
+                                    <span className="mobileLabel">Transaction Hash</span>
+                                    <div className={"flex flex-row flex-1 flex-items-center"} onClick={goTransInfo}>
                                         <CAPSDark className="mobileIcon me-2" />
                                         <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
                                     </div>
                                 </div>
-                                <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
-                                        <span className="mobileLabel">Call</span>
-                                        <span className="mobileValue">transfer_keep_alive</span>
-                                    </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
-                                        <span className="mobileLabel">Success</span>
-                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
-                                    </div>
-                                </div>
-                                <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goTransInfo} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                <div className="flex flex-col mt-4 mb-2">
+                                    <span className="mobileLabel">Value</span>
+                                    <span className="mobileValue">52.456 CAPs</span>
                                 </div>
                             </div>
                             }
