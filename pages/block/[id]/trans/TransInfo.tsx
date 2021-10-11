@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Head from 'next/head'
 import CAPSDark from 'components/assets/CAPSDark';
 import Back from 'components/assets/Back';
-import Down from 'components/assets/Down';
 import Check from 'components/assets/Check';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';

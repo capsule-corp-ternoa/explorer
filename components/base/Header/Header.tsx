@@ -5,10 +5,7 @@ import { useRouter } from "next/router";
 import style from './Header.module.scss';
 import LogoTernoaScan from 'components/assets/LogoTernoaScan';
 import Hamburger from 'components/assets/Hamburger';
-import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import Search from 'components/assets/Search';
-import { actions } from 'redux/walletUser/actions';
-import ClickAwayListener from 'react-click-away-listener';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { useMediaQuery } from 'react-responsive';
@@ -19,7 +16,6 @@ export interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-    const dispatch = useAppDispatch()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [searchText, setSearchText] = useState('');
     const [isCapsInputFocused, setIsCapsInputFocused] = useState(false)
