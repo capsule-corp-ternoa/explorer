@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from 'redux/hooks';
 import style from './Pagination.module.scss';
 import LeftArrow from 'components/assets/LeftArrow';
 import RightArrow from 'components/assets/RightArrow';
