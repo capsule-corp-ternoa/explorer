@@ -83,7 +83,8 @@
 
 .search {
     right: 54px;
-    top: 20px;
+    top: 23px;
+    z-index: 1;
 
     @media (max-width : 1024px) {
         right: 24px;

@@ -138,7 +138,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     }}
                                     onFocus={()=>setSearchFocus(true)}
                                     onBlur={()=>setSearchFocus(false)}
-                                    placeholder="Search by adresse / Txn Hash / Block"
+                                    placeholder="Search by address / Txn Hash / Block"
                                     className={style.searchInput + " position-relative"}
                                     style={{ backgroundColor: "#14142E" }}
                                     min={0}
