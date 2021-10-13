@@ -14,7 +14,304 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
+    const blocks = [
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        },
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        },
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        },
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        },
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        },
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        },
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        },
+        {
+          'number': 5545118,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': '52.456 CAPS'
+              }
+            }
+          ]
+        }
+      ]
     const dummyMobile = [0,1,1,1];
 
     useEffect(() => {
@@ -24,7 +321,11 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
     }, [mediaQuery])
 
     const goBlockDetail = () => {
-        router.push("./block/1")
+        // router.push("./block/1")
+        router.push({
+            pathname: './block/1',
+            query: { data: JSON.stringify(blocks[0]) }
+        })
     }
 
     return (
@@ -53,13 +354,13 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dummyWeb.map((item, key) => { return (
+                                {blocks.map((item, key) => { return (
                                     <tr key={key}>
-                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">5545118</td>
-                                        <td className="text-large text-opacity text-left">21 hours Ago</td>
-                                        <td className="text-large text-opacity text-left">0x3a851d3a3290283242390832efe6f</td>
-                                        <td className="text-large text-opacity">2</td>
-                                        <td className="text-large text-opacity">6</td>
+                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">{item.number}</td>
+                                        <td className="text-large text-opacity text-left">{item.age + ' hours ago'}</td>
+                                        <td className="text-large text-opacity text-left">{item.block_hash}</td>
+                                        <td className="text-large text-opacity">{item.signed_extrinsics}</td>
+                                        <td className="text-large text-opacity">{item.module_events}</td>
                                         <td className="text-right pe-4p0">
                                             <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                         </td>
