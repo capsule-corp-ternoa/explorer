@@ -8,6 +8,7 @@ import Check from 'components/assets/Check';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
+import block from '..';
 
 export interface BlockDetailProps {
 }
@@ -17,11 +18,18 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
+    const [blockData, setBlockdata] = useState<any>({})
+
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
+
+    useEffect(() => {
+        const rParam:any = router.query.data?.toString();
+        setBlockdata(JSON.parse(rParam));
+    },[])
 
     const goTransInfo = () => {
         router.push("./1/trans")
@@ -42,7 +50,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle subTitleMarginTop2">Block #5545118</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Block #{blockData.number}</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&
@@ -50,59 +58,59 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">Timestamp</td>
-                                        <td className="text-large text-opacity">Jun 17, 2021, 12:36:06 PM</td>
+                                        <td className="text-large text-opacity">{blockData.timestamp}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Hash</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{blockData.block_hash}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Parent hash</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{blockData.parent_hash}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">State Root</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{blockData.state_root}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Extrinsics Root</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{blockData.extrinsics_root}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Transactions</td>
-                                        <td className="text-large text-opacity">2</td>
+                                        <td className="text-large text-opacity">{blockData.transactions}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Total module events</td>
-                                        <td className="text-large text-opacity">6</td>
+                                        <td className="text-large text-opacity">{blockData.module_events}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Runtime Version</td>
-                                        <td className="text-large text-opacity">30</td>
+                                        <td className="text-large text-opacity">{blockData.runtime_version}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Block time</td>
-                                        <td className="text-large text-opacity">6 seconds</td>
+                                        <td className="text-large text-opacity">{blockData.block_time} seconds</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Session ID</td>
-                                        <td className="text-large text-opacity">2320</td>
+                                        <td className="text-large text-opacity">{blockData.session_id}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Block author</td>
-                                        <td className="text-large text-opacity textToken">112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa</td>
+                                        <td className="text-large text-opacity textToken">{blockData.block_author}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -111,67 +119,67 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                             <div className={"mobileView"}>
                                 <div className="flex flex-col mt-2">
                                     <span className="mobileLabel">TimeStamp</span>
-                                    <span className="mobileValue">Jun 18, 2021, 3:16:00 PM</span>
+                                    <span className="mobileValue">{blockData.timestamp}</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{blockData.block_hash}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Parent Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{blockData.parent_hash}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">State Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{blockData.state_root}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Extrinsics Root</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{blockData.extrinsics_root}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Transactions</span>
-                                        <span className="mobileValue">2</span>
+                                        <span className="mobileValue">{blockData.transactions}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Total module events</span>
-                                        <span className="mobileValue">6</span>
+                                        <span className="mobileValue">{blockData.module_events}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Runtime Version</span>
-                                        <span className="mobileValue">30</span>
+                                        <span className="mobileValue">{blockData.runtime_version}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Block time</span>
-                                        <span className="mobileValue">6 seconds</span>
+                                        <span className="mobileValue">{blockData.block_time} seconds</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Session ID</span>
-                                        <span className="mobileValue">2320</span>
+                                        <span className="mobileValue">{blockData.session_id}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-4">
                                     <span className="mobileLabel">Block author</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{blockData.block_author}</span>
                                     </div>
                                 </div>
                             </div>
@@ -197,21 +205,27 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">Stacking</td>
-                                        <td className="text-large text-opacity text-left">unbound</td>
-                                        <td className="text-large text-opacity text-left">0x3a851d3...</td>
-                                        <td className="text-large text-opacity flex flex-row flex-items-center text-left">
-                                            <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
-                                        </td>
-                                        <td className="text-large text-opacity">
-                                            <Check className="webCheckIcon" />
-                                        </td>
-                                        <td className="text-right pe-4p0">
-                                            <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
-                                        </td>
-                                    </tr>
+                                    {blockData.transaction_detail.map((transItem:any,key:any) => {
+                                        return (
+                                            <tr key={key}>    
+                                                <td className="text-large text-opacity fw-bold text-left ps-4p0">{transItem.transaction_id}</td>
+                                                <td className="text-large text-opacity text-left">{transItem.from}</td>
+                                                <td className="text-large text-opacity text-left">{transItem.module}</td>
+                                                <td className="text-large text-opacity flex flex-row flex-items-center text-left">
+                                                    <CAPSDark className="webIcon me-2" />
+                                                    <span className="textToken">{transItem.call}</span>
+                                                </td>
+                                                <td className="text-large text-opacity">
+                                                    {transItem.success ?<Check className="webCheckIcon" /> : '' }
+                                                </td>
+                                                <td className="text-right pe-4p0">
+                                                    <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                                </td>
+                                            </tr>
+                                            
+                                        )
+                                    })}
+                                   
                                 </tbody>
                             </table>
                             }
