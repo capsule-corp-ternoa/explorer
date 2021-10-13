@@ -66,17 +66,23 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <header>
-            <div className={style.header + " "+ ((props.searchBar || props.searchBar == undefined)?'header20':'header35')}>
-                <Link href="/">
-                    <a>
-                        <LogoTernoaScan className={style.logo} />
-                    </a>
-                </Link>
-                <div className="d-md-none ml-auto" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                    <Hamburger className={style.hamburger + " mx-2"} />
+            <div className={style.header + ' row'}>
+                <div className={'d-none d-md-block col-1'}>
                 </div>
-                {(props.searchBar || props.searchBar == undefined) &&<div className={`${style.searchBoxContainer} py-1 py-md-1 position-relative`}>
-                     <div className={style.mobileSearchBar}>
+                <div className={'col col-md-2 col-lg-2 flex flex-cont-start'}>
+                    <Link href="/">
+                        <a><LogoTernoaScan className={'w-100'} /></a>
+                    </Link>
+                </div>
+                <div className="d-block d-md-none col">
+                    <div className="flex flex-cont-end" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                        <Hamburger className={style.hamburger + " mx-2"} />
+                    </div>
+                </div>
+                
+                <div className={'col-md-5 col-lg-4 ' + style.searchBoxContainer}>
+                    {(props.searchBar || props.searchBar == undefined) &&
+                    <div className={'flex flex-items-center position-relative'}>
                         <input
                             type="text"
                             value={searchText}
@@ -86,7 +92,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                             onKeyDown={(e) => {
                                 if(e.keyCode === 13) setSearchText('');
                             }}
-                            className={style.searchContainer + " input-over-effect position-relative"}
+                            className={style.searchContainer + " input-over-effect "}
                             placeholder="Search by adresse / Txn Hash / Block / NFT"
                             style={{ backgroundColor: "#14142E" }}
                             min={0}
@@ -98,10 +104,12 @@ const Header: React.FC<HeaderProps> = (props) => {
                         {isCapsInputFocused && <div className="search-gradient"></div>}
                         <Search className={style.search + " position-absolute"}/>
                     </div>
-                </div>}
-                {isLaptop && <div className="flex flex-row flex-items-center">
-                   <span className={style.navBarItem} onClick={()=>router.push("/")}>Dashboard</span>
-                   <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown}>
+                    }
+                </div>
+                <div className={'d-none d-md-block col-md-3 col-lg-3'}>
+                <div className={'flex flex-cont-end flex-items-center'}>
+                    <span className={style.navBarItem} onClick={()=>router.push("/")}>Dashboard</span>
+                    <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
                         <DropdownToggle
                             className={style.navBarDropdownItem}
                             id="page-header-user-dropdown"
@@ -165,12 +173,14 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 NFT/ Capsule
                             </p>
                         </DropdownMenu>
-                    </Dropdown> 
-    
-                </div>}
+                    </Dropdown>
+                    </div>
+                </div>
+                <div className={'d-none d-md-block col-1'}>
+                </div>
             </div>
 
-            {!isLaptop && <Modal classNames={{
+            <Modal classNames={{
                 modalAnimationIn: 'mobileMenuAnimationIn',
                 modalAnimationOut: 'mobileMenuAnimationOut'
             }} open={isMenuOpen} onClose={()=>setIsMenuOpen(false)}>
@@ -184,7 +194,8 @@ const Header: React.FC<HeaderProps> = (props) => {
                     <span className={style.mobileMenuItem}>Chain</span>
                     <span className={style.mobileMenuItem}>Account</span>
                 </div>
-            </Modal>}
+            </Modal>
+
         </header>
     )
 }
