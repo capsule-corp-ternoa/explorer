@@ -15,8 +15,65 @@ const TransIndex: React.FC<TransIndexProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
-    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
-    const dummyMobile = [0,1,1,1];
+    const dummyData = [
+        {
+            'name_id': 'Multicolor galaxy-6502',
+            'date': '13/09/2021, 22:14',
+            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
+            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
+            'amount': 10000,
+            'nft_name': 'Multicolor galaxy',
+            'id': 6502,
+            'transaction_type': 'Sale',
+            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
+            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
+            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+            'quantity': 3,
+            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
+        }, {
+            'name_id': 'Multicolor galaxy-6502',
+            'date': '13/09/2021, 22:14',
+            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
+            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
+            'amount': 10000,
+            'nft_name': 'Multicolor galaxy',
+            'id': 6502,
+            'transaction_type': 'Sale',
+            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
+            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
+            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+            'quantity': 3,
+            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
+        }, {
+            'name_id': 'Multicolor galaxy-6502',
+            'date': '13/09/2021, 22:14',
+            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
+            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
+            'amount': 10000,
+            'nft_name': 'Multicolor galaxy',
+            'id': 6502,
+            'transaction_type': 'Sale',
+            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
+            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
+            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+            'quantity': 3,
+            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
+        }, {
+            'name_id': 'Multicolor galaxy-6502',
+            'date': '13/09/2021, 22:14',
+            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
+            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
+            'amount': 10000,
+            'nft_name': 'Multicolor galaxy',
+            'id': 6502,
+            'transaction_type': 'Sale',
+            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
+            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
+            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+            'quantity': 3,
+            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
+        }
+    ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -54,19 +111,19 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dummyWeb.map((item, key) => { return (
+                                {dummyData.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">Multicolor galaxy-6502</td>
-                                    <td className="text-large text-opacity text-left">13/09/2021, 22:14</td>
+                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">{item.name_id}</td>
+                                    <td className="text-large text-opacity text-left">{item.date}</td>
                                     <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">0x3a851d...399f86</span>
+                                        <span className="textToken">{item.sender}</span>
                                     </td>
                                     <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">0x3a851d...399f86</span>
+                                        <span className="textToken">{item.receiver}</span>
                                     </td>
-                                    <td className="text-large text-opacity text-left">10.000 CAPS</td>
+                                    <td className="text-large text-opacity text-left">{item.amount} CAPS</td>
                                     <td className="text-right pe-4p0">
                                         <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
@@ -75,34 +132,34 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                        {!isLaptop && dummyData.map((item, key) => { return (
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Name/ID</span>
-                                        <span className="mobileValue">Multicolor galaxy-6502</span>
+                                        <span className="mobileValue">{item.name_id}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Amount</span>
-                                        <span className="mobileValue">10.000 CAPS</span>
+                                        <span className="mobileValue">{item.amount} CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Date</span>
-                                    <div className="mobileValue">13/09/2021, 22:14</div>
+                                    <div className="mobileValue">{item.date}</div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">{item.sender}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">To</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">{item.receiver}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

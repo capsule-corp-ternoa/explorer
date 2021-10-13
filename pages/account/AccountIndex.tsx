@@ -15,8 +15,45 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
-    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
-    const dummyMobile = [0,1,1,1];
+    const dummyData = [
+        {
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
+            'transactions': 7,
+            'amount': 10000,
+            'total_balance': 56233,
+            'free_balance': 4593,
+            'nonce': 70732,
+            'active': true,
+            'past_roles': 'nominator'
+        }, {
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
+            'transactions': 7,
+            'amount': 10000,
+            'total_balance': 56233,
+            'free_balance': 4593,
+            'nonce': 70732,
+            'active': true,
+            'past_roles': 'nominator'
+        }, {
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
+            'transactions': 7,
+            'amount': 10000,
+            'total_balance': 56233,
+            'free_balance': 4593,
+            'nonce': 70732,
+            'active': true,
+            'past_roles': 'nominator'
+        }, {
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
+            'transactions': 7,
+            'amount': 10000,
+            'total_balance': 56233,
+            'free_balance': 4593,
+            'nonce': 70732,
+            'active': true,
+            'past_roles': 'nominator'
+        }
+    ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -52,14 +89,14 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dummyWeb.map((item, key) => { return (
+                                {dummyData.map((item, key) => { return (
                                 <tr key={key}>
                                     <td className="text-large text-opacity text-no-wrap text-left ps-4p0">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...</span>
+                                        <span className="textToken">{item.address}</span>
                                     </td>
-                                    <td className="text-large text-opacity">7</td>
-                                    <td className="text-large text-opacity">10.000 CAPS</td>
+                                    <td className="text-large text-opacity">{item.transactions}</td>
+                                    <td className="text-large text-opacity">{item.amount} CAPS</td>
                                     <td className="text-right pe-4p0">
                                         <button onClick={goAccountDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
@@ -68,23 +105,23 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                        {!isLaptop && dummyData.map((item, key) => { return (
                             <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Transactions</span>
-                                        <span className="mobileValue">7</span>
+                                        <span className="mobileValue">{item.transactions}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Amount</span>
-                                        <span className="mobileValue">10.000 CAPS</span>
+                                        <span className="mobileValue">{item.amount} CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Block Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">10x3a851...3f084a0t542f7c1aff</span>
+                                        <span className="textToken text-80 mobileValue">{item.address}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

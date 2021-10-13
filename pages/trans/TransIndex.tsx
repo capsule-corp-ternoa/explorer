@@ -14,9 +14,51 @@ const TransIndex: React.FC<TransIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-
-    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
-    const dummyMobile = [0,1,1,1];
+    const dummyData = [
+        {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }
+    ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -53,18 +95,18 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dummyWeb.map((item, key) => { return (
+                                {dummyData.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">5545118</td>
+                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">{item.block}</td>
                                     <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
+                                        <span className="textToken">{item.from}</span>
                                     </td>
                                     <td className="text-large text-opacity text-no-wrap text-left">
                                         <CAPSDark className="webIcon me-2" />
-                                        <span className="textToken">112A6wJPeDsf34nsqo...</span>
+                                        <span className="textToken">{item.to}</span>
                                     </td>
-                                    <td className="text-large text-opacity text-left">52.456 CAPS</td>
+                                    <td className="text-large text-opacity text-left">{item.value} CAPS</td>
                                     <td className="text-right pe-4p0">
                                         <button onClick={goTransDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
@@ -73,30 +115,30 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                        {!isLaptop && dummyData.map((item, key) => { return (
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Block</span>
-                                        <span className="mobileValue">5545118</span>
+                                        <span className="mobileValue">{item.block}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Amount</span>
-                                        <span className="mobileValue">52.456 CAPS</span>
+                                        <span className="mobileValue">{item.value} CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{item.from}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">To</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{item.to}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

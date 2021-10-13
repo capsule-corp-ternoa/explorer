@@ -14,8 +14,134 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
-    const dummyMobile = [0,1,1,1];
+    const dummyData = [
+        {
+          'extrinsic_id': '5659861-2',
+          'block': 5659861,
+          'module': 'staking',
+          'call': 'bond_extra',
+          'signed': true,
+          'success': true,
+          'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+          'extrinsic_index': 1,
+          'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+          'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+          'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+          'nonce': '14539',
+          'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+          'result ': true,
+          'parameters': {
+            'destination': {
+              'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+              'total_balance': 52456,
+              'free_balance': 34234,
+              'nonce': 70732,
+              'active': true
+            }, 
+            'value': 34234
+          }
+        }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result ': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result ': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result ': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result ': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }
+      ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -54,15 +180,18 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                            {dummyWeb.map((item, key) => { return (
+                            {dummyData.map((item, key) => { return (
                                 <tr key={key}>
-                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">5659861-2</td>
-                                    <td className="text-large text-opacity text-left">5659861</td>
-                                    <td className="text-large text-opacity text-left">staking</td>
-                                    <td className="text-large text-opacity text-left">bond_extra</td>
-                                    <td className="text-large text-opacity">Yes</td>
+                                    <td className="text-large text-opacity fw-bold text-left ps-4p0">{item.extrinsic_id}</td>
+                                    <td className="text-large text-opacity text-left">{item.block}</td>
+                                    <td className="text-large text-opacity text-left">{item.module}</td>
+                                    <td className="text-large text-opacity text-left">{item.call}</td>
+                                    <td className="text-large text-opacity">{item.signed?'YES':'NO'}</td>
                                     <td className="text-large text-opacity">
+                                        {item.success?
                                         <Check className="webCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                        :'Fail'
+                                        }
                                     </td>
                                     <td className="text-right pe-4p0">
                                         <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
@@ -72,36 +201,39 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                        {!isLaptop && dummyData.map((item, key) => { return (
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Extrinsic ID</span>
-                                        <span className="mobileValue">5659861-2</span>
+                                        <span className="mobileValue">{item.extrinsic_id}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Block</span>
-                                        <span className="mobileValue">5659861</span>
+                                        <span className="mobileValue">{item.block}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Module</span>
-                                        <span className="mobileValue">Staking</span>
+                                        <span className="mobileValue">{item.module}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Call</span>
-                                        <span className="mobileValue">bond_extra</span>
+                                        <span className="mobileValue">{item.call}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Signed</span>
-                                        <span className="mobileValue">Yes</span>
+                                        <span className="mobileValue">{item.signed?'YES':'NO'}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Success</span>
+                                        {item.success?
                                         <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                        :<span className="mobileValue">Fail</span>
+                                        }
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">

@@ -16,8 +16,133 @@ const Validator: React.FC<ValidatorProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
-    const dummyMobile = [0,1,1,1];
+    const dummyData = [
+        {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }, {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }, {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }, {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }
+    ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -57,16 +182,16 @@ const Validator: React.FC<ValidatorProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {dummyWeb.map((item, key) => { return (
+                                {dummyData.map((item, key) => { return (
                                 <tr key={key}>
                                     <td className="text-large text-opacity text-no-wrap text-left ps-4p0">
                                         <CAPSDark className="webIcon" />
                                         <Check className="webCheckIcon ms-2" />
-                                        <span className="ms-2 fw-bold">P2P.ORG/7</span>
+                                        <span className="ms-2 fw-bold">{item.name}</span>
                                     </td>
-                                    <td className="text-large text-opacity text-left">5.965.695</td>
-                                    <td className="text-large text-opacity">0.00%</td>
-                                    <td className="text-large text-opacity">14.37%</td>
+                                    <td className="text-large text-opacity text-left">{item.total_stacked}</td>
+                                    <td className="text-large text-opacity">{item.comissions}%</td>
+                                    <td className="text-large text-opacity">{item.returns}%</td>
                                     <td className='text-right pe-4p0'>
                                         <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
@@ -75,7 +200,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                        {!isLaptop && dummyData.map((item, key) => { return (
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col flex-grow-6">
@@ -83,24 +208,24 @@ const Validator: React.FC<ValidatorProps> = () => {
                                         <div className="flex flex-row flex-1 flex-items-center">
                                             <CAPSDark className="mobileIcon" />
                                             <Check className="mobileCheckIcon ms-2 me-2" fillColor="rgba(255, 255, 255, 0.7)" />
-                                            <span className="textToken mobileValue">P2P.ORG/7</span>
+                                            <span className="textToken mobileValue">{item.name}</span>
                                         </div>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Total stacked</span>
                                         <div className="flex flex-row flex-1 flex-items-center">{/* this line only is for center-align */}
-                                        <span className="mobileValue">5659861</span>
+                                        <span className="mobileValue">{item.total_stacked}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Comissions</span>
-                                        <span className="mobileValue">0.00%</span>
+                                        <span className="mobileValue">{item.comissions}%</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Returns</span>
-                                        <span className="mobileValue">14.37%</span>
+                                        <span className="mobileValue">{item.returns}%</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
