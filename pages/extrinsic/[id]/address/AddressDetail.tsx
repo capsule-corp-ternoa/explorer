@@ -13,7 +13,7 @@ export interface AddressDetailProps {
 
 const AddressDetail: React.FC<AddressDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
     const dummyData = [0,1,1];
 

@@ -12,7 +12,7 @@ export interface ExtrinsicProps {
 
 const Extrinsic: React.FC<ExtrinsicProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
     const dummyWeb = [0,1,1,1,1,1,1,1,1,1,1,1];
     const dummyMobile = [0,1,1,1];

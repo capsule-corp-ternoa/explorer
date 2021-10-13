@@ -23,7 +23,7 @@ export interface HomeScanProps {
 const HomeScan: React.FC<HomeScanProps> = () => {
     
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
     const [totalTrans, setTotalTrans] = useState(true);
@@ -254,7 +254,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                     </div>
                     
                     <div className={`row ${isLaptop ? 'mt-5' : ''}`}>
-                        <div className={`col-sm-6 ${isLaptop?"mt-5":"mt-2p5"}`}>
+                        <div className={`col-sm-12 col-md-12 col-xl-6 ${isLaptop?"mt-5":"mt-2p5"}`}>
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <BlockLogo className={style.blockLogo}></BlockLogo>}
                                 <span className={"title " + style.blockTitle}>Latest Blocks</span>
@@ -324,7 +324,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                         </div>
 
-                        {isLaptop && <div className="col-sm-6 mt-5">
+                        <div className="col-sm-12 col-md-12 col-xl-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
                                 <span className={"title " + style.blockTitle}>NFT transactions</span>
@@ -357,11 +357,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </table>
                                 <button onClick={goNftIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
                             </div>
-                        </div> }
+                        </div> 
                     </div>
 
                     <div className={"row" + (isLaptop && " mt-5")}>
-                        <div className="col-sm-6 mt-5">
+                        <div className="col-sm-12 col-md-12 col-xl-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
                                 <span className={"title " + style.blockTitle}>Latest transactions</span>
@@ -381,11 +381,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <tr key={key}>
                                             <td className="text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon me-2" />
-                                                <span className="textToken">16hCXjmTFQ...E9EiMg8FrRrC</span>
+                                                <span className="textToken">0x3a851d3...efe6f</span>
                                             </td>
                                             <td className="text-large text-opacity text-left">
                                             <CAPSDark className="webIcon me-2" />
-                                                <span className="textToken">16hCXjmTFQ...E9EiMg8FrRrC</span>    
+                                                <span className="textToken">0x3a851d3...efe6f</span>    
                                             </td>
                                             <td className="text-large text-opacity text-left pe-5">52.456 CAPS</td>
                                         </tr>
@@ -432,7 +432,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                         </div>
 
-                        <div className="col-sm-6 mt-5">
+                        <div className="col-sm-12 col-md-12 col-xl-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <EditIcon className={style.blockLogo}></EditIcon>}
                                 <span className={"title " + style.blockTitle}>Validators</span>
@@ -508,7 +508,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                     </div>
                 
                     <div className={"row" + (isLaptop && " mt-5")}>
-                        <div className="col-sm-6 mt-5">
+                        <div className="col-sm-6 col-md-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className={"flex flex-row flex-items-center flex-between " + style.mMinus50}>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setTotalTrans(!totalTrans)}>
@@ -550,7 +550,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                         </div>
 
-                        <div className="col-sm-6 mt-5">
+                        <div className="col-sm-6 col-md-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
                                     <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" onChange={()=>console.log()} checked={averBlock} />

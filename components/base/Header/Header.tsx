@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     const [searchText, setSearchText] = useState('');
     const [isCapsInputFocused, setIsCapsInputFocused] = useState(false)
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
     const [menu, setMenu] = useState(false);
     const [menu1, setMenu1] = useState(false);

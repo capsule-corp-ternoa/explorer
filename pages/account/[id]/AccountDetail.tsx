@@ -12,7 +12,7 @@ export interface AccountDetailProps {
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
-    const mediaQuery = useMediaQuery({ query: '(min-device-width: 1024px)' });
+    const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
     useEffect(() => {

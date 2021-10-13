@@ -1,16 +1,5 @@
 @import "styles/color";
 
-.main {
-    margin-left: 170px;
-    margin-right: 170px;
-    margin-bottom: 100px;
-
-    @media (max-width : 1024px) {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
-
 .searchForm {
     display: flex;
     flex-direction: column;
@@ -20,7 +9,7 @@
     margin: 30px auto;
     margin-bottom: 10px;
     border: solid 2px transparent;
-    @media (min-width: 1024px) { 
+    @media (min-width: 1280px) { 
         padding: 30px 80px;
     }
     padding: 25px 14px;
@@ -39,14 +28,14 @@
     font-weight: bold;
     font-size: 29.9791px;
     line-height: 39px;
-    @media (max-width : 1024px) {
+    @media (max-width : 1280px) {
         font-size: 20px;
         line-height: 26px;
     }
 }
 .searchGradient {
     height: 60px!important;
-    @media (max-width : 1024px) {
+    @media (max-width : 1280px) {
         height: 40px!important;
     }
 }
@@ -99,13 +88,13 @@
 .Logo {
     width: 40px;
     height: 40px;
-    @media (max-width: 1024px) {
+    @media (max-width: 1280px) {
         width: 30px;
         height: 30px;
     }
 }
 .blockButton {
-    @media (max-width: 1024px) {
+    @media (max-width: 1280px) {
         // border: solid 3.25px transparent;
         // background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
         //             linear-gradient(101deg,#FF850059, #FF006259, #CB06ED59, #004FFF59 );
@@ -128,7 +117,7 @@
 .block {
     background-color: $semi-blue;
     border-radius: 30px;
-    @media (max-width: 768px) {
+    @media (max-width: 1280px) {
         border-radius: 12px;
     }
 }
@@ -143,7 +132,7 @@
     padding: 88px 112px;
     height: 520px;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1280px) {
         padding: 40px 0px; 
         height: 360px;
         border-width: 1px;
@@ -151,7 +140,7 @@
 
     .mMinus50 {
         margin-left: -50px;
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) {
             padding:0px 40px;
             margin-left: 0px;
         }
@@ -162,7 +151,7 @@
         height: 16px;
         background-color: #9F9FFF;
         border-radius: 4px;
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) {
             width: 11px;
             height: 11px;
             border-radius: 2px;
@@ -175,7 +164,7 @@
         background-color: #21244A;
         border-radius: 4px;
         margin-left: 30px;
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) {
             margin-left: 15px;
             width: 11px;
             height: 11px;
@@ -191,7 +180,7 @@
         font-family: "Airbnb Cereal App Bold";
         margin-left: 8px;
         white-space: nowrap;
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) {
             margin-left: 4px;
             font-size: 10px;
         }
@@ -206,7 +195,7 @@
         font-family: "Airbnb Cereal App Bold";
         margin-left: 8px;
         white-space: nowrap;
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) {
             margin-left: 4px;
             font-size: 10px;
         }
@@ -215,7 +204,7 @@
     .chartView {
         height: 255px;
         margin-top: 60px;
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) {
             margin-top: 30px;
         }
     }
@@ -231,8 +220,7 @@
     }
 }
 
-@media (max-width: 1024px) {
-    
+@media (max-width: 1023px) {
     .searchBtn {
         display: none!important;
     }
@@ -244,11 +232,16 @@
         position: absolute;
         width: calc(100% - 10px);
         margin-left: 5px;
-        height: 200px;
+        height: 278px;
         z-index: 0;
         top: 35px;
         border-radius: 10px;
     }
+}
+
+@media (max-width: 1280px) {
+    
+    
 
     .validatorColorMobile {
         color: #9F9FFF;
@@ -299,7 +292,7 @@
 	display: inline-block;
 	position: relative;
     transform: scale(0.9);
-    @media (max-width: 768px) {
+    @media (max-width: 1280px) {
         transform: scale(0.7);
     }
  }
