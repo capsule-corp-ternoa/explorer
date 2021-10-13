@@ -389,9 +389,18 @@ input[type=number] {
 	position: absolute;
 	width: 100%;
 	margin-left: 5px;
-	height: 56px;
+	height: 50px;
 	z-index: 0;
 	top: 2px;
 	left: -5px;
 	border-radius: 25px;
+}
+
+.headerNoSearchBar {
+	margin-top: 11px!important;
+}
+
+.no-padding-vertical {
+	padding-left: 0px!important;
+	padding-right: 0px!important;
 }

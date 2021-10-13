@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     const leaveMenu = () => {
         timeout = setTimeout(() => {
             setMenu(false)
-        }, 1200);
+        }, 200);
     }
 
     const overMenu = () => {
@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     const leaveMenu1 = () => {
         timeout = setTimeout(() => {
             setMenu1(false)
-        }, 1200);
+        }, 200);
     }
 
     const overMenu1 = () => {
@@ -66,21 +66,19 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <header>
-            <div className={style.header + ' row'}>
-                <div className={'d-none d-md-block col-1'}>
-                </div>
-                <div className={'col col-md-2 col-lg-2 flex flex-cont-start'}>
+            <div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
+                <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
                     <Link href="/">
                         <a><LogoTernoaScan className={'w-100'} /></a>
                     </Link>
                 </div>
-                <div className="d-block d-md-none col">
+                <div className="d-block d-md-none col no-padding-vertical">
                     <div className="flex flex-cont-end" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         <Hamburger className={style.hamburger + " mx-2"} />
                     </div>
                 </div>
                 
-                <div className={'col-md-5 col-lg-4 ' + style.searchBoxContainer}>
+                <div className={'no-padding-vertical col-md-5 col-lg-4 ' + style.searchBoxContainer}>
                     {(props.searchBar || props.searchBar == undefined) &&
                     <div className={'flex flex-items-center position-relative'}>
                         <input
@@ -106,8 +104,8 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </div>
                     }
                 </div>
-                <div className={'d-none d-md-block col-md-3 col-lg-3'}>
-                <div className={'flex flex-cont-end flex-items-center'}>
+                <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
+                <div className={'flex flex-cont-end flex-items-center '}>
                     <span className={style.navBarItem} onClick={()=>router.push("/")}>Dashboard</span>
                     <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
                         <DropdownToggle
@@ -175,8 +173,6 @@ const Header: React.FC<HeaderProps> = (props) => {
                         </DropdownMenu>
                     </Dropdown>
                     </div>
-                </div>
-                <div className={'d-none d-md-block col-1'}>
                 </div>
             </div>
 
