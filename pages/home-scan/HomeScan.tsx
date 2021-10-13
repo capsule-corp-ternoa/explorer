@@ -508,7 +508,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                     </div>
                 
                     <div className={"row" + (isLaptop && " mt-5")}>
-                        <div className="col-sm-6 col-md-6 mt-5">
+                        <div className="col-sm-12 col-md-12 col-xl-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className={"flex flex-row flex-items-center flex-between " + style.mMinus50}>
                                     <div className="cursor-point flex flex-row flex-items-center" onClick={()=>setTotalTrans(!totalTrans)}>
@@ -550,7 +550,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                         </div>
 
-                        <div className="col-sm-6 col-md-6 mt-5">
+                        <div className="col-sm-12 col-md-12 col-xl-6 mt-5">
                             <div className={style.chartBlock}>
                                 <div className="cursor-point flex flex-row flex-center" onClick={()=>setAverBlock(!averBlock)}>
                                     <input className={style.chartCheckbox + " " + style.activeChartRect} type="checkbox" onChange={()=>console.log()} checked={averBlock} />
