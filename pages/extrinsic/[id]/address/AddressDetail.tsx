@@ -17,11 +17,18 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
     const router = useRouter();
     const dummyData = [0,1,1];
 
+    const [addrData, setAddrdata] = useState<any>({})
+
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
+
+    useEffect(() => {
+        const rParam:any = router.query.data?.toString();
+        setAddrdata(JSON.parse(rParam));
+    },[])
 
     const goTransInfo = () => {
         // router.push("../trans-info")
@@ -43,7 +50,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                     </div>
                     }
                     <h1 className="subTitle subTitleMarginTop2">
-                        14Kazg6SFiUC...Q1pvXzF1dQhv
+                        {addrData.address}
                     </h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
@@ -52,20 +59,20 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">Total balance</td>
-                                        <td className="text-large text-opacity">52.456 CAPS</td>
+                                        <td className="text-large text-opacity">{addrData.total_balance} CAPS</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Free balance</td>
-                                        <td className="text-large text-opacity">52.456 CAPS</td>
+                                        <td className="text-large text-opacity">{addrData.free_balance} CAPS</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Nonce</td>
-                                        <td className="text-large text-opacity">70732</td>
+                                        <td className="text-large text-opacity">{addrData.nonce}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Active</td>
                                         <td className="text-large text-opacity">
-                                            <Check className="webCheckIcon" />
+                                            {addrData.active?<Check className="webCheckIcon" />:''}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -76,21 +83,21 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Total Balance</span>
-                                        <span className="mobileValue">52.456 CAPS</span>
+                                        <span className="mobileValue">{addrData.total_balance} CAPS</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Free Balance</span>
-                                        <span className="mobileValue">52.456 CAPS</span>
+                                        <span className="mobileValue">{addrData.free_balance} CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Nonce</span>
-                                        <span className="mobileValue">Staking</span>
+                                        <span className="mobileValue">{addrData.nonce}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Active</span>
-                                        <Check />
+                                        {addrData.active?<Check className='webCheckicon'/>:''}
                                     </div>
                                 </div>
                             </div>

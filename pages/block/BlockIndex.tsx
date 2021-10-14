@@ -14,9 +14,9 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const blocks = [
+    const dummyData = [
         {
-          'number': 5545118,
+          'number': 3234723,
           'age': 21,
           'block_hash': '0x3a851d3...efe6f',
           'parent_hash': '0x3a851d3...efe6f',
@@ -33,9 +33,9 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
           'transaction_detail': [
             {
               'transaction_id': 'stacking',
-              'from': 'unbound',
-              'module': ' 0x3a851d3...',
-              'call': '112A6wJPeDsf34nsqo...',
+              'from': '112A6wJPeDsf34nsqo...',
+              'module': 'Balance',
+              'call': 'transfer_keep_alive',
               'success': true,
               'timestamp': 'Jun 18, 2021, 3:16:00 PM',
               'hash': 5559817,
@@ -47,20 +47,20 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
               'result': true,
               'parameters': {
                 'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
+                'value': 52342
               }
             }
           ]
         },
         {
-          'number': 5545118,
-          'age': 21,
+          'number': 5748383,
+          'age': 32,
           'block_hash': '0x3a851d3...efe6f',
           'parent_hash': '0x3a851d3...efe6f',
           'state_root': '0x3a851d3...efe6f',
           'extrinsics_root': '0x3a851d3...efe6f',
-          'signed_extrinsics': 2,
-          'module_events': 6,
+          'signed_extrinsics': 3,
+          'module_events': 4,
           'timestamp': 'Jun 17, 2021, 12:36:06 PM',
           'runtime_version': 30,
           'block_time': 6,
@@ -84,20 +84,20 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
               'result': true,
               'parameters': {
                 'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
+                'value': 34293
               }
             }
           ]
         },
         {
-          'number': 5545118,
-          'age': 21,
+          'number': 6803432,
+          'age': 20,
           'block_hash': '0x3a851d3...efe6f',
           'parent_hash': '0x3a851d3...efe6f',
           'state_root': '0x3a851d3...efe6f',
           'extrinsics_root': '0x3a851d3...efe6f',
-          'signed_extrinsics': 2,
-          'module_events': 6,
+          'signed_extrinsics': 7,
+          'module_events': 8,
           'timestamp': 'Jun 17, 2021, 12:36:06 PM',
           'runtime_version': 30,
           'block_time': 6,
@@ -121,20 +121,20 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
               'result': true,
               'parameters': {
                 'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
+                'value': 39237
               }
             }
           ]
         },
         {
-          'number': 5545118,
-          'age': 21,
+          'number': 9988079,
+          'age': 49,
           'block_hash': '0x3a851d3...efe6f',
           'parent_hash': '0x3a851d3...efe6f',
           'state_root': '0x3a851d3...efe6f',
           'extrinsics_root': '0x3a851d3...efe6f',
-          'signed_extrinsics': 2,
-          'module_events': 6,
+          'signed_extrinsics': 9,
+          'module_events': 1,
           'timestamp': 'Jun 17, 2021, 12:36:06 PM',
           'runtime_version': 30,
           'block_time': 6,
@@ -158,161 +158,12 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
               'result': true,
               'parameters': {
                 'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
-              }
-            }
-          ]
-        },
-        {
-          'number': 5545118,
-          'age': 21,
-          'block_hash': '0x3a851d3...efe6f',
-          'parent_hash': '0x3a851d3...efe6f',
-          'state_root': '0x3a851d3...efe6f',
-          'extrinsics_root': '0x3a851d3...efe6f',
-          'signed_extrinsics': 2,
-          'module_events': 6,
-          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
-          'runtime_version': 30,
-          'block_time': 6,
-          'session_id': 2320,
-          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
-          'transactions': 2,
-          'transaction_detail': [
-            {
-              'transaction_id': 'stacking',
-              'from': 'unbound',
-              'module': ' 0x3a851d3...',
-              'call': '112A6wJPeDsf34nsqo...',
-              'success': true,
-              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-              'hash': 5559817,
-              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
-              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
-              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
-              'nonce': 488, 
-              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-              'result': true,
-              'parameters': {
-                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
-              }
-            }
-          ]
-        },
-        {
-          'number': 5545118,
-          'age': 21,
-          'block_hash': '0x3a851d3...efe6f',
-          'parent_hash': '0x3a851d3...efe6f',
-          'state_root': '0x3a851d3...efe6f',
-          'extrinsics_root': '0x3a851d3...efe6f',
-          'signed_extrinsics': 2,
-          'module_events': 6,
-          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
-          'runtime_version': 30,
-          'block_time': 6,
-          'session_id': 2320,
-          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
-          'transactions': 2,
-          'transaction_detail': [
-            {
-              'transaction_id': 'stacking',
-              'from': 'unbound',
-              'module': ' 0x3a851d3...',
-              'call': '112A6wJPeDsf34nsqo...',
-              'success': true,
-              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-              'hash': 5559817,
-              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
-              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
-              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
-              'nonce': 488, 
-              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-              'result': true,
-              'parameters': {
-                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
-              }
-            }
-          ]
-        },
-        {
-          'number': 5545118,
-          'age': 21,
-          'block_hash': '0x3a851d3...efe6f',
-          'parent_hash': '0x3a851d3...efe6f',
-          'state_root': '0x3a851d3...efe6f',
-          'extrinsics_root': '0x3a851d3...efe6f',
-          'signed_extrinsics': 2,
-          'module_events': 6,
-          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
-          'runtime_version': 30,
-          'block_time': 6,
-          'session_id': 2320,
-          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
-          'transactions': 2,
-          'transaction_detail': [
-            {
-              'transaction_id': 'stacking',
-              'from': 'unbound',
-              'module': ' 0x3a851d3...',
-              'call': '112A6wJPeDsf34nsqo...',
-              'success': true,
-              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-              'hash': 5559817,
-              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
-              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
-              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
-              'nonce': 488, 
-              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-              'result': true,
-              'parameters': {
-                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
-              }
-            }
-          ]
-        },
-        {
-          'number': 5545118,
-          'age': 21,
-          'block_hash': '0x3a851d3...efe6f',
-          'parent_hash': '0x3a851d3...efe6f',
-          'state_root': '0x3a851d3...efe6f',
-          'extrinsics_root': '0x3a851d3...efe6f',
-          'signed_extrinsics': 2,
-          'module_events': 6,
-          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
-          'runtime_version': 30,
-          'block_time': 6,
-          'session_id': 2320,
-          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
-          'transactions': 2,
-          'transaction_detail': [
-            {
-              'transaction_id': 'stacking',
-              'from': 'unbound',
-              'module': ' 0x3a851d3...',
-              'call': '112A6wJPeDsf34nsqo...',
-              'success': true,
-              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-              'hash': 5559817,
-              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
-              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
-              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
-              'nonce': 488, 
-              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-              'result': true,
-              'parameters': {
-                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
-                'value': '52.456 CAPS'
+                'value': 43928
               }
             }
           ]
         }
       ]
-    const dummyMobile = [0,1,1,1];
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -320,11 +171,10 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
         }
     }, [mediaQuery])
 
-    const goBlockDetail = () => {
-        // router.push("./block/1")
+    function goBlockDetail(index:any) {
         router.push({
-            pathname: './block/1',
-            query: { data: JSON.stringify(blocks[0]) }
+            pathname: './block/' + index,
+            query: { data: JSON.stringify(dummyData[index]) }
         })
     }
 
@@ -354,7 +204,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {blocks.map((item, key) => { return (
+                                {dummyData.map((item, key) => { return (
                                     <tr key={key}>
                                         <td className="text-large text-opacity fw-bold text-left ps-4p0">{item.number}</td>
                                         <td className="text-large text-opacity text-left">{item.age + ' hours ago'}</td>
@@ -362,44 +212,44 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                         <td className="text-large text-opacity">{item.signed_extrinsics}</td>
                                         <td className="text-large text-opacity">{item.module_events}</td>
                                         <td className="text-right pe-4p0">
-                                            <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                            <button onClick={() => goBlockDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                         </td>
                                     </tr>
                                 )})}
                             </tbody>
                         </table>
                         }
-                        {!isLaptop && dummyMobile.map((item, key) => { return (
+                        {!isLaptop && dummyData.map((item, key) => { return (
                             <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Number</span>
-                                        <span className="mobileValue">5545118</span>
+                                        <span className="mobileValue">{item.number}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Age</span>
-                                        <span className="mobileValue">21 hour ago</span>
+                                        <span className="mobileValue">{item.age + ' hour ago'}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Block Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{item.block_hash}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Signed Extrinsics</span>
-                                        <span className="mobileValue">1</span>
+                                        <span className="mobileValue">{item.signed_extrinsics}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Module Events</span>
-                                        <span className="mobileValue">2</span>
+                                        <span className="mobileValue">{item.module_events}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goBlockDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})

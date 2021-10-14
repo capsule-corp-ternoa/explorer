@@ -17,14 +17,25 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
+    const [valData, setValdata] = useState<any>({})
+
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
 
-    const goTransInfo = () => {
-        router.push("./1/trans")
+    useEffect(() => {
+        const rParam:any = router.query.data?.toString();
+        setValdata(JSON.parse(rParam));
+    },[])
+
+    function goTransInfo(index:any) {
+        router.push({
+            // pathname: './' + valData.name + '/trans',
+            pathname: './1/trans',
+            query: {data: JSON.stringify(valData.transactions[index].transaction_detail) }
+        })
     }
 
     return (
@@ -43,7 +54,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                     </div>
                     }
                     <h1 className="subTitle subTitleMarginTop2">
-                        1REAJ1k691g5E...9gL7vvZCBG
+                        {valData.name}
                     </h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
@@ -52,51 +63,51 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">Total balance</td>
-                                        <td className="text-large text-opacity">99,352.866096895 CAPS</td>
+                                        <td className="text-large text-opacity">{valData.total_balance} CAPS</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Free Balance</td>
-                                        <td className="text-large text-opacity">799,272.0770968783 CAPS</td>
+                                        <td className="text-large text-opacity">{valData.free_balance} CAPS</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Reserved Balance</td>
-                                        <td className="text-large text-opacity">80.789 CAPS</td>
+                                        <td className="text-large text-opacity">{valData.reserved} CAPS</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Account Index</td>
-                                        <td className="text-large text-opacity">1Rs7u</td>
+                                        <td className="text-large text-opacity">{valData.account_index}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Display name</td>
-                                        <td className="text-large text-opacity">P2P.ORG/7</td>
+                                        <td className="text-large text-opacity">{valData.display_name}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Email</td>
-                                        <td className="text-large text-opacity">Explorer@Ternoa.pro</td>
+                                        <td className="text-large text-opacity">{valData.email}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Web</td>
-                                        <td className="text-large text-opacity">https://Ternoascan.pro</td>
+                                        <td className="text-large text-opacity">{valData.web}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Riot</td>
-                                        <td className="text-large text-opacity">@p2p:7.org</td>
+                                        <td className="text-large text-opacity">{valData.riot}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Twitter</td>
-                                        <td className="text-large text-opacity">@Ternoascan</td>
+                                        <td className="text-large text-opacity">{valData.twitter}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Nonce</td>
-                                        <td className="text-large text-opacity">111</td>
+                                        <td className="text-large text-opacity">{valData.nonce}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Active</td>
-                                        <td className="text-large text-opacity">True</td>
+                                        <td className="text-large text-opacity">{valData.active?'True':'False'}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Current Roles</td>
-                                        <td className="text-large text-opacity">Validator</td>
+                                        <td className="text-large text-opacity">{valData.current_roles}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -106,61 +117,61 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                     <div className="flex flex-row mt-2">
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Total Balance</span>
-                                            <span className="mobileValue">299231 CAPS</span>
+                                            <span className="mobileValue">{valData.total_balance} CAPS</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Free Balance</span>
-                                            <span className="mobileValue">230231 CAPS</span>
+                                            <span className="mobileValue">{valData.free_balance} CAPS</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-4">
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Reserved Balance</span>
-                                            <span className="mobileValue">80.789 CAPS</span>
+                                            <span className="mobileValue">{valData.reserved} CAPS</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Account Index</span>
-                                            <span className="mobileValue">1Rs7u</span>
+                                            <span className="mobileValue">{valData.account_index}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-4">
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Display name</span>
-                                            <span className="mobileValue">P2P.ORG/7</span>
+                                            <span className="mobileValue">{valData.display_name}</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Email</span>
-                                            <span className="mobileValue">Explorer@Ternoa.pro</span>
+                                            <span className="mobileValue">{valData.email}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-4">
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Riot</span>
-                                            <span className="mobileValue">@p2p:7.org</span>
+                                            <span className="mobileValue">{valData.riot}</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Web</span>
-                                            <span className="mobileValue">Ternoascan.pro</span>
+                                            <span className="mobileValue">{valData.web}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-4">
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Twitter</span>
-                                            <span className="mobileValue">@Ternoascan</span>
+                                            <span className="mobileValue">{valData.twitter}</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Nonce</span>
-                                            <span className="mobileValue">111</span>
+                                            <span className="mobileValue">{valData.nonce}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-4 mb-2">
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Active</span>
-                                            <span className="mobileValue">True</span>
+                                            <span className="mobileValue">{valData.active?'True':'False'}</span>
                                         </div>
                                         <div className="flex-1 flex flex-col">
                                             <span className="mobileLabel">Current Roles</span>
-                                            <span className="mobileValue">Validator</span>
+                                            <span className="mobileValue">{valData.current_roles}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -186,53 +197,60 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">5556906-2</td>
-                                        <td className="text-large text-opacity text-left">5556906</td>
-                                        <td className="text-large text-opacity text-left">Stacking</td>
-                                        <td className="text-large text-opacity text-left">payout_stakers</td>
+                                    {valData.transactions != undefined
+                                     && valData.transactions.map((transItem:any,key:any) => {
+                                        return (
+                                    <tr key={key}>
+                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">{transItem.transaction_id}</td>
+                                        <td className="text-large text-opacity text-left">{transItem.block}</td>
+                                        <td className="text-large text-opacity text-left">{transItem.module}</td>
+                                        <td className="text-large text-opacity text-left">{transItem.call}</td>
                                         <td className="text-large text-opacity">
-                                            <Check className="webCheckIcon" />
+                                            {transItem.success?<Check className="webCheckIcon" />:''}
                                         </td>
                                         <td className="text-right pe-4p0">
-                                            <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                            <button onClick={() => goTransInfo(key)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                         </td>
                                     </tr>
+                                    )
+                                    })}
                                 </tbody>
                             </table>
                             }
-                            {!isLaptop &&
-                            <div className={"mobileView"}>
+                            {!isLaptop && valData.transactions != undefined
+                             && valData.transactions.map((transItem:any,key:any) => { return (
+                            <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Transaction ID</span>
-                                        <span className="mobileValue">5556906-2</span>
+                                        <span className="mobileValue">{transItem.transaction_id}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Block</span>
-                                        <span className="mobileValue">5556906</span>
+                                        <span className="mobileValue">{transItem.block}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Module</span>
-                                        <span className="mobileValue">Stacking</span>
+                                        <span className="mobileValue">{transItem.module}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Call</span>
-                                        <span className="mobileValue">payout_stakers</span>
+                                        <span className="mobileValue">{transItem.call}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Success</span>
-                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                        {transItem.success?<Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />:''}
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goTransInfo} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goTransInfo(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
+                            )})
                             }
                         </div>
                     </div>

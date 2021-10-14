@@ -13,12 +13,18 @@ const TransInfo: React.FC<TransInfoProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+    const [transData, setTransdata] = useState<any>({})
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
+
+    useEffect(() => {
+        const rParam:any = router.query.data?.toString();
+        setTransdata(JSON.parse(rParam));
+    },[])
 
     return (
         <>
@@ -35,7 +41,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle subTitleMarginTop2">Account index 1Rs7u</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Account {transData.account}</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&
@@ -43,15 +49,15 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">Account</td>
-                                        <td className="text-large text-opacity">P2P.ORG/7</td>
+                                        <td className="text-large text-opacity">{transData.account}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">ID</td>
-                                        <td className="text-large text-opacity">74</td>
+                                        <td className="text-large text-opacity">{transData.id}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Updated at block</td>
-                                        <td className="text-large text-opacity">0</td>
+                                        <td className="text-large text-opacity">{transData.updated_at_block}</td>
                                     </tr>  
                                 </tbody>
                             </table>
@@ -61,17 +67,17 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Account</span>
-                                        <span className="mobileValue">P2P.ORG/7</span>
+                                        <span className="mobileValue">{transData.account}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Updated at block</span>
-                                        <span className="mobileValue">0</span>
+                                        <span className="mobileValue">{transData.updated_at_block}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">ID</span>
-                                        <span className="mobileValue">74</span>
+                                        <span className="mobileValue">{transData.id}</span>
                                     </div>
                                 </div>
                             </div>

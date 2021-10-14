@@ -61,8 +61,11 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
         }
     }, [mediaQuery])
 
-    const goAccountDetail = () => {
-        router.push("./account/1")
+    function goAccountDetail(index:any) {
+        router.push({
+            pathname: './account/' + index,
+            query: { data: JSON.stringify(dummyData[index]) }
+        })
     }
 
     return (
@@ -98,7 +101,7 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                                     <td className="text-large text-opacity">{item.transactions}</td>
                                     <td className="text-large text-opacity">{item.amount} CAPS</td>
                                     <td className="text-right pe-4p0">
-                                        <button onClick={goAccountDetail} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                        <button onClick={() => goAccountDetail(key)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -125,7 +128,7 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goAccountDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goAccountDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})

@@ -14,12 +14,18 @@ const TransDetail: React.FC<TransDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+    const [transData, setTransData] = useState<any>({})
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
+
+    useEffect(() => {
+        const rParam:any = router.query.data?.toString();
+        setTransData(JSON.parse(rParam));
+    },[])
 
     return (
         <>
@@ -36,7 +42,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle subTitleMarginTop2">Balance transfer "5560132-8"</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Balance transfer "{transData.block}"</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&
@@ -44,33 +50,33 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">Block</td>
-                                        <td className="text-large text-opacity">5545118</td>
+                                        <td className="text-large text-opacity">{transData.block}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">From</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{transData.from}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">To</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{transData.to}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Value</td>
-                                        <td className="text-large text-opacity">1006 CAPS</td>
+                                        <td className="text-large text-opacity">{transData.value} CAPS</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Fee</td>
-                                        <td className="text-large text-opacity">41.5 CAPS</td>
+                                        <td className="text-large text-opacity">{transData.fee} CAPS</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Event ID</td>
-                                        <td className="text-large text-opacity">5560132-8</td>
+                                        <td className="text-large text-opacity">{transData.event_id}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -80,35 +86,35 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Block</span>
-                                        <span className="mobileValue">5545118</span>
+                                        <span className="mobileValue">{transData.block}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Event-ID</span>
-                                        <span className="mobileValue">5560132-8</span>
+                                        <span className="mobileValue">{transData.event_id}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{transData.from}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">To</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{transData.to}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Fee</span>
-                                        <span className="mobileValue">41.5 CAPS</span>
+                                        <span className="mobileValue">{transData.fee} CAPS</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Value</span>
-                                        <span className="mobileValue">1006 CAPS</span>
+                                        <span className="mobileValue">{transData.value} CAPS</span>
                                     </div>
                                 </div>
                             </div>

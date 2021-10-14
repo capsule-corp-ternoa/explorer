@@ -150,8 +150,11 @@ const Validator: React.FC<ValidatorProps> = () => {
         }
     }, [mediaQuery])
 
-    const goValidatorDetail = () => {
-        router.push("./validator/1")
+    function goValidatorDetail(index:any) {
+        router.push({
+            pathname: './validator/' + index,
+            query: { data: JSON.stringify(dummyData[index]) }
+        })
     }
 
     return (
@@ -165,7 +168,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                 <Header />
                 <div className="mainBody">
                 <h1 className="subTitle subTitleMarginTop">
-                    Elected (297)
+                    Elected ({dummyData.length})
                     <Down className="ms-3 mb-1"/>
                 </h1>
                 <div className="mainBlock pb-4 mt-2">
@@ -193,7 +196,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                                     <td className="text-large text-opacity">{item.comissions}%</td>
                                     <td className="text-large text-opacity">{item.returns}%</td>
                                     <td className='text-right pe-4p0'>
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                        <button onClick={() => goValidatorDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -229,7 +232,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goValidatorDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})

@@ -31,8 +31,11 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
         setBlockdata(JSON.parse(rParam));
     },[])
 
-    const goTransInfo = () => {
-        router.push("./1/trans")
+    function goTransInfo(index:any) {
+        router.push({
+            pathname: './' + blockData.number + '/trans',
+            query: {data: JSON.stringify(blockData.transaction_detail[index]) }
+        })
     }
 
     return (
@@ -196,30 +199,31 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                             <table className="table table-borderless mb-0 webBorderTable2">
                                 <thead>
                                     <tr className="fs-6 text-grey">
-                                        <th style={{width:"15%"}} className="text-left ps-4p0">Transaction ID</th>
-                                        <th style={{width:"15%"}} className="text-left">From</th>
+                                        <th style={{width:"20%"}} className="text-left ps-4p0">Transaction ID</th>
+                                        <th style={{width:"25%"}} className="text-left">From</th>
                                         <th style={{width:"20%"}} className="text-left">Module</th>
-                                        <th style={{width:"30%"}} className="text-left">Call</th>
+                                        <th style={{width:"15%"}} className="text-left">Call</th>
                                         <th style={{width:"10%"}}>Success</th>
                                         <th style={{width:"10%"}}></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {blockData.transaction_detail.map((transItem:any,key:any) => {
+                                    {blockData.transaction_detail != undefined
+                                     && blockData.transaction_detail.map((transItem:any,key:any) => {
                                         return (
-                                            <tr key={key}>    
+                                            <tr key={key}>
                                                 <td className="text-large text-opacity fw-bold text-left ps-4p0">{transItem.transaction_id}</td>
-                                                <td className="text-large text-opacity text-left">{transItem.from}</td>
-                                                <td className="text-large text-opacity text-left">{transItem.module}</td>
                                                 <td className="text-large text-opacity flex flex-row flex-items-center text-left">
                                                     <CAPSDark className="webIcon me-2" />
-                                                    <span className="textToken">{transItem.call}</span>
+                                                    <span className="textToken">{transItem.from}</span>
                                                 </td>
+                                                <td className="text-large text-opacity text-left">{transItem.module}</td>
+                                                <td className="text-large text-opacity text-left">{transItem.call}</td>
                                                 <td className="text-large text-opacity">
                                                     {transItem.success ?<Check className="webCheckIcon" /> : '' }
                                                 </td>
                                                 <td className="text-right pe-4p0">
-                                                    <button onClick={goTransInfo} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                                    <button onClick={() => goTransInfo(key)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                                 </td>
                                             </tr>
                                             
@@ -229,39 +233,42 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                 </tbody>
                             </table>
                             }
-                            {!isLaptop &&
-                            <div className={"mobileView"}>
+
+                            {!isLaptop && blockData.transaction_detail != undefined
+                             && blockData.transaction_detail.map((transItem:any,key:any) => { return (
+                            <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Transaction ID</span>
-                                        <span className="mobileValue">Stacking</span>
+                                        <span className="mobileValue">{transItem.transaction_id}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Module</span>
-                                        <span className="mobileValue">Balance</span>
+                                        <span className="mobileValue">{transItem.module}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">From</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{transItem.from}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Call</span>
-                                        <span className="mobileValue">transfer_keep_alive</span>
+                                        <span className="mobileValue">{transItem.call}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Success</span>
-                                        <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                        {transItem.success ?<Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" /> : '' }
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goTransInfo} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goTransInfo(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
+                            )})
                             }
                         </div>
                     </div>

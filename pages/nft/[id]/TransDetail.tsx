@@ -14,12 +14,18 @@ const TransDetail: React.FC<TransDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+    const [transData, setTransdata] = useState<any>({})
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
+
+    useEffect(() => {
+        const rParam:any = router.query.data?.toString();
+        setTransdata(JSON.parse(rParam));
+    },[])
 
     return (
         <>
@@ -36,7 +42,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle subTitleMarginTop2">Multicolor galaxy-6502</h1>
+                    <h1 className="subTitle subTitleMarginTop2">{transData.name_id}</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&
@@ -44,64 +50,64 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">NFT Name</td>
-                                        <td className="text-large text-opacity">Multicolor galaxy</td>
+                                        <td className="text-large text-opacity">{transData.nft_name}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">ID</td>
-                                        <td className="text-large text-opacity">6502</td>
+                                        <td className="text-large text-opacity">{transData.id}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Type of transaction</td>
-                                        <td className="text-large text-opacity">Sale</td>
+                                        <td className="text-large text-opacity">{transData.transaction_type}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Amount</td>
-                                        <td className="text-large text-opacity">1000 CAPS</td>
+                                        <td className="text-large text-opacity">{transData.amount} CAPS</td>
                                     </tr>
                                     <tr>
-                                        <td className="text-large text-opacity">Minting contract</td>
+                                        <td className="text-large text-opacity">Missing contact</td>
                                         <td className="text-large text-opacity">
-                                            <span className="textToken">0x7be8076f4ea4a4ad08075c2508e481d6c946d12b</span>
+                                            <span className="textToken">{transData.missing_contact}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">NFT asset address</td>
                                         <td className="text-large text-opacity">
-                                            <span className="textToken">0x495f947276749ce646f68ac8c248420045cb7b5e</span>
+                                            <span className="textToken">{transData.nft_asset_address}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Sender</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{transData.sender}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Receiver</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{transData.receiver}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Creator</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className="textToken">{transData.creator}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Date</td>
-                                        <td className="text-large text-opacity">13/09/2021, 22:14</td>
+                                        <td className="text-large text-opacity">{transData.date}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Quantity</td>
-                                        <td className="text-large text-opacity">3</td>
+                                        <td className="text-large text-opacity">{transData.quantity}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Content URL</td>
-                                        <td className="text-large text-opacity">https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731</td>
+                                        <td className="text-large text-opacity">{transData.content_url}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -111,65 +117,65 @@ const TransDetail: React.FC<TransDetailProps> = () => {
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">NFT Name</span>
-                                        <span className="mobileValue">Multicolor galaxy</span>
+                                        <span className="mobileValue">{transData.nft_name}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">ID</span>
-                                        <span className="mobileValue">6502</span>
+                                        <span className="mobileValue">{transData.id}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Type of transaction</span>
-                                        <span className="mobileValue">Sale</span>
+                                        <span className="mobileValue">{transData.transaction_type}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Amount</span>
-                                        <span className="mobileValue">1000 CAPS</span>
+                                        <span className="mobileValue">{transData.amount} CAPS</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-2">
-                                    <span className="mobileLabel">Minting contract</span>
-                                    <div className="mobileValue textToken">16hCXjmTFQ...E9EiMg8FrzdzRrC</div>
+                                    <span className="mobileLabel">Missing contact</span>
+                                    <div className="mobileValue textToken">{transData.missing_contact}</div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-2">
                                     <span className="mobileLabel">NFT asset address</span>
-                                    <div className="mobileValue textToken">16hCXjmTFQ...E9EiMg8FrzdzRrC</div>
+                                    <div className="mobileValue textToken">{transData.nft_asset_address}</div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Sender</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">{transData.sender}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Receiver</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">{transData.receiver}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Creator</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken mobileValue text-80">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken mobileValue text-80">{transData.creator}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Date</span>
-                                        <span className="mobileValue">13/09/2021, 22:14</span>
+                                        <span className="mobileValue">{transData.date}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Quantity</span>
-                                        <span className="mobileValue">3</span>
+                                        <span className="mobileValue">{transData.quantity}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-2">
                                     <span className="mobileLabel">Content URL</span>
-                                    <div className="mobileValue">https://SecretNFT/files d84ed2d6ef96bb146e0df57017e47731</div>
+                                    <div className="mobileValue">{transData.content_url}</div>
                                 </div>
                             </div>
                             }

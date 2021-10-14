@@ -17,14 +17,24 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
+    const [extData, setExtdata] = useState<any>({})
+
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
 
-    const goTransInfo = () => {
-        router.push("./1/address")
+    useEffect(() => {
+        const rParam:any = router.query.data?.toString();
+        setExtdata(JSON.parse(rParam));
+    },[])
+
+    function goTransInfo() {
+        router.push({
+            pathname: './' + extData.extrinsic_id + '/address',
+            query: {data: JSON.stringify(extData.parameters.destination) }
+        })
     }
 
     return (
@@ -42,7 +52,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                        <Back />
                     </div>
                     }
-                    <h1 className="subTitle subTitleMarginTop2">Extrinsics: 0xed6zegve3...f489d83</h1>
+                    <h1 className="subTitle subTitleMarginTop2">Extrinsics: {extData.extrinsic_id}</h1>
                     <div className="mainBlock mt-2 mb-5">
                         <div className = "tag-for-scroll">
                             {isLaptop &&
@@ -50,59 +60,59 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                 <tbody className="tbody-detail">
                                     <tr>
                                         <td className="text-large text-opacity">Block</td>
-                                        <td className="text-large text-opacity">7129421</td>
+                                        <td className="text-large text-opacity">{extData.block}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Timestamp</td>
-                                        <td className="text-large text-opacity">Jun 18, 2021, 3:16:00 PM</td>
+                                        <td className="text-large text-opacity">{extData.timestamp}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Extrinsic Index</td>
-                                        <td className="text-large text-opacity">1</td>
+                                        <td className="text-large text-opacity">{extData.extrinsic_index}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Extrinsic Hash</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
+                                            <span className="textToken">{extData.extrinsic_hash}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Module</td>
-                                        <td className="text-large text-opacity">balancers</td>
+                                        <td className="text-large text-opacity">{extData.module}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Call</td>
-                                        <td className="text-large text-opacity">transfer_keep_alive</td>
+                                        <td className="text-large text-opacity">{extData.call}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Description</td>
                                         <td className="text-large text-opacity">
-                                            <span className="textToken">Same as the [`transfer`] call, but with a check that the transfer will not kill...</span>
+                                            <span className="textToken">{extData.description}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Address</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
+                                            <span className="textToken">{extData.address}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Nonce</td>
-                                        <td className="text-large text-opacity">14539</td>
+                                        <td className="text-large text-opacity">{extData.nonce}</td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Signature</td>
                                         <td className="text-large text-opacity flex flex-row flex-items-center w-100">
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
+                                            <span className="textToken">{extData.signature}</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Result</td>
                                         <td className="text-large text-opacity">
-                                            <Check className="webCheckIcon" />
+                                            {extData.result?<Check className="webCheckIcon" />:''}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -113,54 +123,54 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Block</span>
-                                        <span className="mobileValue">7129421</span>
+                                        <span className="mobileValue">{extData.block}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Timestamp</span>
-                                        <span className="mobileValue">Jun 18, 2021, 3:16:00 PM</span>
+                                        <span className="mobileValue">{extData.timestamp}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Extrinsic Index</span>
-                                    <span className="mobileValue">1</span>
+                                    <span className="mobileValue">{extData.extrinsic_index}</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Extrinsic Hash</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{extData.extrinsic_hash}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Module</span>
-                                        <span className="mobileValue">Balancers</span>
+                                        <span className="mobileValue">{extData.module}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Call</span>
-                                        <span className="mobileValue">Transfer_keep_alive</span>
+                                        <span className="mobileValue">{extData.call}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Description</span>
-                                    <span className="textToken mobileValue">Same as the transfer c</span>
+                                    <span className="textToken mobileValue">{extData.description}</span>
                                 </div>
                                 <div className="flex flex-col mt-4">
                                     <span className="mobileLabel">Address</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{extData.address}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
                                     <div className="flex-1 flex flex-col flex-grow-4">
                                         <span className="mobileLabel">Nonce</span>
-                                        <span className="mobileValue">14539</span>
+                                        <span className="mobileValue">{extData.nonce}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col flex-grow-6">
                                         <span className="mobileLabel">Result</span>
                                         <span className="mobileValue">
-                                            <Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />
+                                            {extData.result?<Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" /> : ''}
                                         </span>
                                     </div>
                                 </div>
@@ -168,7 +178,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     <span className="mobileLabel">Signature</span>
                                     <div className="flex flex-row flex-1 flex-items-center">
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{extData.signature}</span>
                                     </div>
                                 </div>
                             </div>
@@ -178,6 +188,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                     <div>
                       <span className={"mt-5 mb-3 subTitle2"}>Parameters</span>
                     </div>
+                    {extData.parameters != undefined &&
                     <div className={"mainBlock mt-3"}>
                         <div className = "tag-for-scroll">
                             {isLaptop &&
@@ -188,13 +199,13 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                         <td className={"text-large text-opacity"}>
                                             <div className={"flex flex-row flex-items-center w-100 " + style.addressButton} onClick={goTransInfo}>
                                             <CAPSDark className="webIcon me-2" />
-                                            <span className="textToken">0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af</span>
+                                            <span className="textToken">{extData.parameters.destination==undefined?'':extData.parameters.destination.address}</span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td className="text-large text-opacity">Value</td>
-                                        <td className="text-large text-opacity">52.456 CAPS</td>
+                                        <td className="text-large text-opacity">{extData.parameters.value} CAPS</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -205,17 +216,18 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     <span className="mobileLabel">Transaction Hash</span>
                                     <div className={"flex flex-row flex-1 flex-items-center"} onClick={goTransInfo}>
                                         <CAPSDark className="mobileIcon me-2" />
-                                        <span className="textToken text-80 mobileValue">14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                        <span className="textToken text-80 mobileValue">{extData.parameters.destination==undefined?'':extData.parameters.destination.address}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-col mt-4 mb-2">
                                     <span className="mobileLabel">Value</span>
-                                    <span className="mobileValue">52.456 CAPs</span>
+                                    <span className="mobileValue">{extData.parameters.value} CAPs</span>
                                 </div>
                             </div>
                             }
                         </div>
                     </div>
+                    }
                 </div>
                 <Footer />               
             </div>

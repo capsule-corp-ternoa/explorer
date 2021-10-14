@@ -29,7 +29,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
           'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
           'nonce': '14539',
           'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-          'result ': true,
+          'result': true,
           'parameters': {
             'destination': {
               'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
@@ -54,7 +54,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
             'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
             'nonce': '14539',
             'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'result ': true,
+            'result': true,
             'parameters': {
               'destination': {
                 'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
@@ -79,7 +79,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
             'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
             'nonce': '14539',
             'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'result ': true,
+            'result': true,
             'parameters': {
               'destination': {
                 'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
@@ -149,8 +149,11 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
         }
     }, [mediaQuery])
 
-    const goExtrinsicDetail = () => {
-        router.push("./extrinsic/1")
+    function goExtrinsicDetail(index:any) {
+        router.push({
+            pathname: './extrinsic/' + index,
+            query: { data: JSON.stringify(dummyData[index]) }
+        })
     }
 
     return (
@@ -194,7 +197,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                         }
                                     </td>
                                     <td className="text-right pe-4p0">
-                                        <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                        <button onClick={() => goExtrinsicDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -237,7 +240,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={goExtrinsicDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goExtrinsicDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})
