@@ -8,17 +8,196 @@ import Check from 'components/assets/Check';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
-import block from '..';
 
 export interface BlockDetailProps {
+}
+
+type BlockDetailType = {
+    number: number;
+    age: number;
+    block_hash: string,
+    parent_hash: string,
+    state_root: string,
+    extrinsics_root: string,
+    signed_extrinsics: number,
+    module_events: number,
+    timestamp: string,
+    runtime_version: number,
+    block_time: number,
+    session_id: number,
+    block_author: string,
+    transactions: number,
+    transaction_detail: Array<any>,
 }
 
 const BlockDetail: React.FC<BlockDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+    let bIndex:number;
 
-    const [blockData, setBlockdata] = useState<any>({})
+    useEffect(()=>{
+        if(!router.isReady) return;
+    
+        bIndex = parseInt(router.query.id as string);
+        setBlockdata(dummyData[bIndex])
+    
+    }, [router.isReady]);
+
+    const dummyData = [
+        {
+          'number': 3234723,
+          'age': 21,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 2,
+          'module_events': 6,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': '112A6wJPeDsf34nsqo...',
+              'module': 'Balance',
+              'call': 'transfer_keep_alive',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': 52342
+              }
+            }
+          ]
+        },
+        {
+          'number': 5748383,
+          'age': 32,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 3,
+          'module_events': 4,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': 34293
+              }
+            }
+          ]
+        },
+        {
+          'number': 6803432,
+          'age': 20,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 7,
+          'module_events': 8,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': 39237
+              }
+            }
+          ]
+        },
+        {
+          'number': 9988079,
+          'age': 49,
+          'block_hash': '0x3a851d3...efe6f',
+          'parent_hash': '0x3a851d3...efe6f',
+          'state_root': '0x3a851d3...efe6f',
+          'extrinsics_root': '0x3a851d3...efe6f',
+          'signed_extrinsics': 9,
+          'module_events': 1,
+          'timestamp': 'Jun 17, 2021, 12:36:06 PM',
+          'runtime_version': 30,
+          'block_time': 6,
+          'session_id': 2320,
+          'block_author': '112A6wJPeDsf34nsqoAkAtQ8n74vJU8qmyKMtzX7ZPQH2kXa',
+          'transactions': 2,
+          'transaction_detail': [
+            {
+              'transaction_id': 'stacking',
+              'from': 'unbound',
+              'module': ' 0x3a851d3...',
+              'call': '112A6wJPeDsf34nsqo...',
+              'success': true,
+              'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+              'hash': 5559817,
+              'transaction_hash': '0xbcac471afcdc2b...4d8a65e55a64bba858d651e5981e98cb03',
+              'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill the origin...',
+              'address': '112A6wJPeDsf34nsqo...ze4z5e21z',
+              'nonce': 488, 
+              'signature': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
+              'result': true,
+              'parameters': {
+                'transaction_hash': '0x13mPzYL8TK88MEN781GnBhJZdiHmvfsNEWjuK2vn7dNnugFr',
+                'value': 43928
+              }
+            }
+          ]
+        }
+    ]
+
+    const initData = dummyData[0];
+    
+    const [blockData, setBlockdata] = useState<BlockDetailType>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -26,15 +205,9 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
         }
     }, [mediaQuery])
 
-    useEffect(() => {
-        const rParam:any = router.query.data?.toString();
-        setBlockdata(JSON.parse(rParam));
-    },[])
-
     function goTransInfo(index:any) {
         router.push({
-            pathname: './' + blockData.number + '/trans',
-            query: {data: JSON.stringify(blockData.transaction_detail[index]) }
+            pathname: './' + router.query.id + '/' + index,
         })
     }
 

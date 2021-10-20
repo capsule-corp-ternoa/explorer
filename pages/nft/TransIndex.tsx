@@ -83,8 +83,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
 
     function goTransDetail(index:any) {
         router.push({
-            pathname: './nft/' + index,
-            query: { data: JSON.stringify(dummyData[index]) }
+            pathname: './nft/' + index
         })
     }
 

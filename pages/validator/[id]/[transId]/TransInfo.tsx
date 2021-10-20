@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head'
 import { useRouter } from "next/router";
-import Pagination from 'components/base/Pagination';
-import Down from 'components/assets/Down';
+import Head from 'next/head'
+import Back from 'components/assets/Back';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
-import Check from 'components/assets/Check';
-import CAPSDark from 'components/assets/CAPSDark';
 import { useMediaQuery } from 'react-responsive';
 
-export interface ValidatorProps {
+export interface TransInfoProps {
 }
 
-const Validator: React.FC<ValidatorProps> = () => {
+const TransInfo: React.FC<TransInfoProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+
+    useEffect(() => {
+        if(mediaQuery !== isLaptop){
+          setIsLaptop(mediaQuery);
+        }
+    }, [mediaQuery])
+
+    let bIndex:number;
+    let transId:number;
     const dummyData = [
         {
             'name': 'P2P.ORG/7',
@@ -143,18 +149,17 @@ const Validator: React.FC<ValidatorProps> = () => {
             ]
         }
     ]
+    const initData = dummyData[0].transactions[0].transaction_detail;
+    const [transData, setTransdata] = useState<any>(initData)
 
-    useEffect(() => {
-        if(mediaQuery !== isLaptop){
-          setIsLaptop(mediaQuery);
-        }
-    }, [mediaQuery])
-
-    function goValidatorDetail(index:any) {
-        router.push({
-            pathname: './validator/' + index
-        })
-    }
+    useEffect(()=>{
+        if(!router.isReady) return;
+    
+        bIndex = parseInt(router.query.id as string);
+        transId = parseInt(router.query.transId as string);
+        setTransdata(dummyData[bIndex].transactions[transId].transaction_detail)
+    
+    }, [router.isReady]);
 
     return (
         <>
@@ -166,84 +171,54 @@ const Validator: React.FC<ValidatorProps> = () => {
             <div className={"mainContainer"}>
                 <Header />
                 <div className="mainBody">
-                <h1 className="subTitle subTitleMarginTop">
-                    Elected ({dummyData.length})
-                    <Down className="ms-3 mb-1"/>
-                </h1>
-                <div className="mainBlock pb-4 mt-2">
-                    <div className = "tag-for-scroll">
-                        {isLaptop &&
-                        <table className="table table-borderless mb-3 webBorderTable">
-                            <thead>
-                                <tr className="fs-6 text-grey">
-                                    <th style={{width:"30%"}} className="text-left ps-4p0">Name</th>
-                                    <th style={{width:"30%"}} className="text-left">Total Stacked</th>
-                                    <th style={{width:"15%"}}>Comissions</th>
-                                    <th style={{width:"15%"}}>Returns</th>
-                                    <th style={{width:"10%"}}></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {dummyData.map((item, key) => { return (
-                                <tr key={key}>
-                                    <td className="text-large text-opacity text-no-wrap text-left ps-4p0">
-                                        <CAPSDark className="webIcon" />
-                                        <Check className="webCheckIcon ms-2" />
-                                        <span className="ms-2 fw-bold">{item.name}</span>
-                                    </td>
-                                    <td className="text-large text-opacity text-left">{item.total_stacked}</td>
-                                    <td className="text-large text-opacity">{item.comissions}%</td>
-                                    <td className="text-large text-opacity">{item.returns}%</td>
-                                    <td className='text-right pe-4p0'>
-                                        <button onClick={() => goValidatorDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
-                                    </td>
-                                </tr>
-                                )})}
-                            </tbody>
-                        </table>
-                        }
-                        {!isLaptop && dummyData.map((item, key) => { return (
-                            <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
+                {isLaptop &&
+                    <div className="cursor-point w-fit-content mb-4" onClick={()=>router.back()}>
+                       <Back />
+                    </div>
+                    }
+                    <h1 className="subTitle subTitleMarginTop2">Account {transData.account}</h1>
+                    <div className="mainBlock mt-2 mb-5">
+                        <div className = "tag-for-scroll">
+                            {isLaptop &&
+                            <table className="table table-borderless mb-0">
+                                <tbody className="tbody-detail">
+                                    <tr>
+                                        <td className="text-large text-opacity">Account</td>
+                                        <td className="text-large text-opacity">{transData.account}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">ID</td>
+                                        <td className="text-large text-opacity">{transData.id}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-large text-opacity">Updated at block</td>
+                                        <td className="text-large text-opacity">{transData.updated_at_block}</td>
+                                    </tr>  
+                                </tbody>
+                            </table>
+                            }
+                            {!isLaptop &&
+                            <div className={"mobileView"}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
-                                        <span className="mobileLabel">Name</span>
-                                        <div className="flex flex-row flex-1 flex-items-center">
-                                            <CAPSDark className="mobileIcon" />
-                                            <Check className="mobileCheckIcon ms-2 me-2" fillColor="rgba(255, 255, 255, 0.7)" />
-                                            <span className="textToken mobileValue">{item.name}</span>
-                                        </div>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">Account</span>
+                                        <span className="mobileValue">{transData.account}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
-                                        <span className="mobileLabel">Total stacked</span>
-                                        <div className="flex flex-row flex-1 flex-items-center">{/* this line only is for center-align */}
-                                        <span className="mobileValue">{item.total_stacked}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
-                                        <span className="mobileLabel">Comissions</span>
-                                        <span className="mobileValue">{item.comissions}%</span>
-                                    </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
-                                        <span className="mobileLabel">Returns</span>
-                                        <span className="mobileValue">{item.returns}%</span>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">Updated at block</span>
+                                        <span className="mobileValue">{transData.updated_at_block}</span>
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goValidatorDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <div className="flex-1 flex flex-col">
+                                        <span className="mobileLabel">ID</span>
+                                        <span className="mobileValue">{transData.id}</span>
+                                    </div>
                                 </div>
                             </div>
-                        )})
-                        }
+                            }
+                        </div>
                     </div>
-                    {isLaptop &&
-                    <Pagination curPage={1} totalPage={9} />
-                    }
-                    {!isLaptop && <div className="d-flex justify-content-center mt-4">
-                        <button className="btn btn-black rounded-pill mobileNextButton">View Next</button> 
-                    </div>}
-                </div>
                 </div>
                 <Footer />               
             </div>
@@ -251,4 +226,4 @@ const Validator: React.FC<ValidatorProps> = () => {
     )
 }
 
-export default Validator;
+export default TransInfo;

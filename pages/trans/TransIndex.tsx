@@ -68,8 +68,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
 
     function goTransDetail(index:any) {
         router.push({
-            pathname: './trans/' + index,
-            query: { data: JSON.stringify(dummyData[index]) }
+            pathname: './trans/' + index
         })
     }
 

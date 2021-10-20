@@ -14,6 +14,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+
     const dummyData = [
         {
           'number': 3234723,
@@ -173,8 +174,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
 
     function goBlockDetail(index:any) {
         router.push({
-            pathname: './block/' + index,
-            query: { data: JSON.stringify(dummyData[index]) }
+            pathname: './block/' + index
         })
     }
 

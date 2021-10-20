@@ -17,23 +17,158 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
-    const [extData, setExtdata] = useState<any>({})
-
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
 
-    useEffect(() => {
-        const rParam:any = router.query.data?.toString();
-        setExtdata(JSON.parse(rParam));
-    },[])
+    const dummyData = [
+        {
+          'extrinsic_id': '5659861-2',
+          'block': 5659861,
+          'module': 'staking',
+          'call': 'bond_extra',
+          'signed': true,
+          'success': true,
+          'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+          'extrinsic_index': 1,
+          'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+          'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+          'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+          'nonce': '14539',
+          'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+          'result': true,
+          'parameters': {
+            'destination': {
+              'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+              'total_balance': 52456,
+              'free_balance': 34234,
+              'nonce': 70732,
+              'active': true
+            }, 
+            'value': 34234
+          }
+        }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result ': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }, {
+            'extrinsic_id': '5659861-2',
+            'block': 5659861,
+            'module': 'staking',
+            'call': 'bond_extra',
+            'signed': true,
+            'success': true,
+            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
+            'extrinsic_index': 1,
+            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
+            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'nonce': '14539',
+            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+            'result ': true,
+            'parameters': {
+              'destination': {
+                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
+                'total_balance': 52456,
+                'free_balance': 34234,
+                'nonce': 70732,
+                'active': true
+              }, 
+              'value': 34234
+            }
+          }
+      ]
+
+    const initData = dummyData[0];
+
+    let bIndex:number;
+
+    useEffect(()=>{
+        if(!router.isReady) return;
+    
+        bIndex = parseInt(router.query.id as string);
+        setExtdata(dummyData[bIndex])
+    
+    }, [router.isReady]);
+
+    const [extData, setExtdata] = useState<any>(initData)
 
     function goTransInfo() {
         router.push({
-            pathname: './' + extData.extrinsic_id + '/address',
-            query: {data: JSON.stringify(extData.parameters.destination) }
+            pathname: './' + router.query.id + '/address'
         })
     }
 

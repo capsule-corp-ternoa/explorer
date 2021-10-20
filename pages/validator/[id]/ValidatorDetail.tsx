@@ -16,8 +16,145 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
+    let bIndex:number;
+    const dummyData = [
+        {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }, {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }, {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }, {
+            'name': 'P2P.ORG/7',
+            'total_stacked': 5965695,
+            'comissions': 0.2,
+            'returns': 14.37,
+            'total_balance': 93442342343,
+            'free_balance': 778483844,
+            'reserved': 80782,
+            'account_index': '1Rs7u',
+            'display_name': 'P2P.ORG/7',
+            'email': 'Explorer@Ternoa.pro',
+            'web': 'https://Ternoascan.pro',
+            'riot': '@p2p:7.org',
+            'twitter': '@Ternoascan',
+            'nonce': 111,
+            'active': true,
+            'current_roles': 'validator',
+            'transactions': [
+                {
+                    'transaction_id': '5556906-2',
+                    'block': 5556906,
+                    'module': 'Stacking',
+                    'call': 'payout_stackers',
+                    'success': true,
+                    'transaction_detail': {
+                    'account': 'P2P.ORG/7',
+                    'id': 74,
+                    'updated_at_block': 0
+                    }
+                }
+            ]
+        }
+    ]
+    const initData = dummyData[0];
 
-    const [valData, setValdata] = useState<any>({})
+    useEffect(()=>{
+        if(!router.isReady) return;
+    
+        bIndex = parseInt(router.query.id as string);
+        setValdata(dummyData[bIndex])
+    
+    }, [router.isReady]);
+
+    const [valData, setValdata] = useState<any>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -25,16 +162,10 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
         }
     }, [mediaQuery])
 
-    useEffect(() => {
-        const rParam:any = router.query.data?.toString();
-        setValdata(JSON.parse(rParam));
-    },[])
-
     function goTransInfo(index:any) {
         router.push({
             // pathname: './' + valData.name + '/trans',
-            pathname: './1/trans',
-            query: {data: JSON.stringify(valData.transactions[index].transaction_detail) }
+            pathname: './' + router.query.id + '/' + index,
         })
     }
 

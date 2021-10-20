@@ -151,8 +151,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
 
     function goExtrinsicDetail(index:any) {
         router.push({
-            pathname: './extrinsic/' + index,
-            query: { data: JSON.stringify(dummyData[index]) }
+            pathname: './extrinsic/' + index
         })
     }
 

@@ -14,18 +14,70 @@ const TransDetail: React.FC<TransDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const [transData, setTransData] = useState<any>({})
+
+    let bIndex:number;
+    const dummyData = [
+        {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }, {
+            'block': '5545118',
+            'from': '112A6wJPeDsf34nsqo...',
+            'to': '112A6wJPeDsf34nsqo...',
+            'value': '52.456',
+            'fee': '41.5',
+            'event_id': '5560132-8'
+        }
+    ]
+    const initData = dummyData[0];
+
+    useEffect(()=>{
+        if(!router.isReady) return;
+    
+        bIndex = parseInt(router.query.id as string);
+        setTransData(dummyData[bIndex])
+    
+    }, [router.isReady]);
+
+    const [transData, setTransData] = useState<any>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
-
-    useEffect(() => {
-        const rParam:any = router.query.data?.toString();
-        setTransData(JSON.parse(rParam));
-    },[])
 
     return (
         <>
