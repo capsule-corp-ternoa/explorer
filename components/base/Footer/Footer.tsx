@@ -57,10 +57,10 @@ const Footer: React.FC<{}> = () => {
                 </a>
             </div>
             <div className={"d-none d-md-block col-md-6 mb-2 d-flex flex-row align-items-center justify-content-left"}>
-                <p className={style.footerCopyright}>© 2021 Ternoa Bridge developed and designed by ternoa.com. All rights reserved.</p>
+                <p className={style.footerCopyright}>© 2021 Ternoa Scan developed and designed by ternoa.com. All rights reserved.</p>
             </div>
             <div className={"d-md-none col-12 mb-2 d-flex flex-row align-items-center justify-content-center"}>
-                <p className={style.footerCopyright}>© 2021 Ternoa Bridge. All rights reserved.</p>
+                <p className={style.footerCopyright}>© 2021 Ternoa Scan. All rights reserved.</p>
             </div>
         </div>
     )

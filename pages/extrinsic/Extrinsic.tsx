@@ -159,9 +159,9 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
     return (
         <>
             <Head>
-                <title>BSC Scan</title>
+                <title>Ternoa scan</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                <meta name="description" content="BSC Scan, by Ternoa." />
+                <meta name="description" content="Ternoa scan, by Ternoa." />
             </Head>
             <div className={"mainContainer"}>
                 <Header />
