@@ -6,6 +6,7 @@ import Pagination from 'components/base/Pagination';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
+import dummyData from 'components/data/nft.json'
 
 export interface TransIndexProps {
 }
@@ -14,66 +15,6 @@ const TransIndex: React.FC<TransIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-
-    const dummyData = [
-        {
-            'name_id': 'Multicolor galaxy-6502',
-            'date': '13/09/2021, 22:14',
-            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
-            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
-            'amount': 10000,
-            'nft_name': 'Multicolor galaxy',
-            'id': 6502,
-            'transaction_type': 'Sale',
-            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
-            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
-            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-            'quantity': 3,
-            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
-        }, {
-            'name_id': 'Multicolor galaxy-6502',
-            'date': '13/09/2021, 22:14',
-            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
-            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
-            'amount': 10000,
-            'nft_name': 'Multicolor galaxy',
-            'id': 6502,
-            'transaction_type': 'Sale',
-            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
-            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
-            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-            'quantity': 3,
-            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
-        }, {
-            'name_id': 'Multicolor galaxy-6502',
-            'date': '13/09/2021, 22:14',
-            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
-            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
-            'amount': 10000,
-            'nft_name': 'Multicolor galaxy',
-            'id': 6502,
-            'transaction_type': 'Sale',
-            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
-            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
-            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-            'quantity': 3,
-            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
-        }, {
-            'name_id': 'Multicolor galaxy-6502',
-            'date': '13/09/2021, 22:14',
-            'sender': '14Kazg6SFiUCH7FNhvBQ1pvXzF1dQhv',
-            'receiver': '14Kazg6SFiUCH7FNhvBKhtBQ1pvXzF1dQhv',
-            'amount': 10000,
-            'nft_name': 'Multicolor galaxy',
-            'id': 6502,
-            'transaction_type': 'Sale',
-            'missing_contact': '0x7be8076f4ea4a4ad08075c2508e481d6c946d12b',
-            'nft_asset_address': '0x495f947276749ce646f68ac8c248420045cb7b5e',
-            'creator': '14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv',
-            'quantity': 3,
-            'content_url': 'https://SecretNFT/files/d84ed2d6ef96bb146e0df57017e47731'
-        }
-    ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){

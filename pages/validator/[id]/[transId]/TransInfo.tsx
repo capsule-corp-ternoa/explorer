@@ -5,6 +5,7 @@ import Back from 'components/assets/Back';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
+import dummyData from 'components/data/validators.json'
 
 export interface TransInfoProps {
 }
@@ -22,133 +23,6 @@ const TransInfo: React.FC<TransInfoProps> = () => {
 
     let bIndex:number;
     let transId:number;
-    const dummyData = [
-        {
-            'name': 'P2P.ORG/7',
-            'total_stacked': 5965695,
-            'comissions': 0.2,
-            'returns': 14.37,
-            'total_balance': 93442342343,
-            'free_balance': 778483844,
-            'reserved': 80782,
-            'account_index': '1Rs7u',
-            'display_name': 'P2P.ORG/7',
-            'email': 'Explorer@Ternoa.pro',
-            'web': 'https://Ternoascan.pro',
-            'riot': '@p2p:7.org',
-            'twitter': '@Ternoascan',
-            'nonce': 111,
-            'active': true,
-            'current_roles': 'validator',
-            'transactions': [
-                {
-                    'transaction_id': '5556906-2',
-                    'block': 5556906,
-                    'module': 'Stacking',
-                    'call': 'payout_stackers',
-                    'success': true,
-                    'transaction_detail': {
-                    'account': 'P2P.ORG/7',
-                    'id': 74,
-                    'updated_at_block': 0
-                    }
-                }
-            ]
-        }, {
-            'name': 'P2P.ORG/7',
-            'total_stacked': 5965695,
-            'comissions': 0.2,
-            'returns': 14.37,
-            'total_balance': 93442342343,
-            'free_balance': 778483844,
-            'reserved': 80782,
-            'account_index': '1Rs7u',
-            'display_name': 'P2P.ORG/7',
-            'email': 'Explorer@Ternoa.pro',
-            'web': 'https://Ternoascan.pro',
-            'riot': '@p2p:7.org',
-            'twitter': '@Ternoascan',
-            'nonce': 111,
-            'active': true,
-            'current_roles': 'validator',
-            'transactions': [
-                {
-                    'transaction_id': '5556906-2',
-                    'block': 5556906,
-                    'module': 'Stacking',
-                    'call': 'payout_stackers',
-                    'success': true,
-                    'transaction_detail': {
-                    'account': 'P2P.ORG/7',
-                    'id': 74,
-                    'updated_at_block': 0
-                    }
-                }
-            ]
-        }, {
-            'name': 'P2P.ORG/7',
-            'total_stacked': 5965695,
-            'comissions': 0.2,
-            'returns': 14.37,
-            'total_balance': 93442342343,
-            'free_balance': 778483844,
-            'reserved': 80782,
-            'account_index': '1Rs7u',
-            'display_name': 'P2P.ORG/7',
-            'email': 'Explorer@Ternoa.pro',
-            'web': 'https://Ternoascan.pro',
-            'riot': '@p2p:7.org',
-            'twitter': '@Ternoascan',
-            'nonce': 111,
-            'active': true,
-            'current_roles': 'validator',
-            'transactions': [
-                {
-                    'transaction_id': '5556906-2',
-                    'block': 5556906,
-                    'module': 'Stacking',
-                    'call': 'payout_stackers',
-                    'success': true,
-                    'transaction_detail': {
-                    'account': 'P2P.ORG/7',
-                    'id': 74,
-                    'updated_at_block': 0
-                    }
-                }
-            ]
-        }, {
-            'name': 'P2P.ORG/7',
-            'total_stacked': 5965695,
-            'comissions': 0.2,
-            'returns': 14.37,
-            'total_balance': 93442342343,
-            'free_balance': 778483844,
-            'reserved': 80782,
-            'account_index': '1Rs7u',
-            'display_name': 'P2P.ORG/7',
-            'email': 'Explorer@Ternoa.pro',
-            'web': 'https://Ternoascan.pro',
-            'riot': '@p2p:7.org',
-            'twitter': '@Ternoascan',
-            'nonce': 111,
-            'active': true,
-            'current_roles': 'validator',
-            'transactions': [
-                {
-                    'transaction_id': '5556906-2',
-                    'block': 5556906,
-                    'module': 'Stacking',
-                    'call': 'payout_stackers',
-                    'success': true,
-                    'transaction_detail': {
-                    'account': 'P2P.ORG/7',
-                    'id': 74,
-                    'updated_at_block': 0
-                    }
-                }
-            ]
-        }
-    ]
     const initData = dummyData[0].transactions[0].transaction_detail;
     const [transData, setTransdata] = useState<any>(initData)
 

@@ -6,6 +6,7 @@ import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import Check from 'components/assets/Check';
 import { useMediaQuery } from 'react-responsive';
+import dummyData from 'components/data/extrinsics.json'
 
 export interface ExtrinsicProps {
 }
@@ -14,134 +15,6 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const dummyData = [
-        {
-          'extrinsic_id': '5659861-2',
-          'block': 5659861,
-          'module': 'staking',
-          'call': 'bond_extra',
-          'signed': true,
-          'success': true,
-          'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-          'extrinsic_index': 1,
-          'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-          'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
-          'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-          'nonce': '14539',
-          'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-          'result': true,
-          'parameters': {
-            'destination': {
-              'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-              'total_balance': 52456,
-              'free_balance': 34234,
-              'nonce': 70732,
-              'active': true
-            }, 
-            'value': 34234
-          }
-        }, {
-            'extrinsic_id': '5659861-2',
-            'block': 5659861,
-            'module': 'staking',
-            'call': 'bond_extra',
-            'signed': true,
-            'success': true,
-            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-            'extrinsic_index': 1,
-            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'nonce': '14539',
-            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'result': true,
-            'parameters': {
-              'destination': {
-                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-                'total_balance': 52456,
-                'free_balance': 34234,
-                'nonce': 70732,
-                'active': true
-              }, 
-              'value': 34234
-            }
-          }, {
-            'extrinsic_id': '5659861-2',
-            'block': 5659861,
-            'module': 'staking',
-            'call': 'bond_extra',
-            'signed': true,
-            'success': true,
-            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-            'extrinsic_index': 1,
-            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'nonce': '14539',
-            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'result': true,
-            'parameters': {
-              'destination': {
-                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-                'total_balance': 52456,
-                'free_balance': 34234,
-                'nonce': 70732,
-                'active': true
-              }, 
-              'value': 34234
-            }
-          }, {
-            'extrinsic_id': '5659861-2',
-            'block': 5659861,
-            'module': 'staking',
-            'call': 'bond_extra',
-            'signed': true,
-            'success': true,
-            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-            'extrinsic_index': 1,
-            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'nonce': '14539',
-            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'result ': true,
-            'parameters': {
-              'destination': {
-                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-                'total_balance': 52456,
-                'free_balance': 34234,
-                'nonce': 70732,
-                'active': true
-              }, 
-              'value': 34234
-            }
-          }, {
-            'extrinsic_id': '5659861-2',
-            'block': 5659861,
-            'module': 'staking',
-            'call': 'bond_extra',
-            'signed': true,
-            'success': true,
-            'timestamp': 'Jun 18, 2021, 3:16:00 PM',
-            'extrinsic_index': 1,
-            'extrinsic_hash': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'description': 'Same as the [`transfer`] call, but with a check that the transfer will not kill...',
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'nonce': '14539',
-            'signature': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-            'result ': true,
-            'parameters': {
-              'destination': {
-                'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af',
-                'total_balance': 52456,
-                'free_balance': 34234,
-                'nonce': 70732,
-                'active': true
-              }, 
-              'value': 34234
-            }
-          }
-      ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){

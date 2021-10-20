@@ -6,6 +6,7 @@ import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
 import Check from 'components/assets/Check';
+import dummyData from 'components/data/accounts.json'
 
 export interface AccountDetailProps {
 }
@@ -14,7 +15,9 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const [accountData, setAccountdata] = useState<any>({})
+    let bIndex:number;
+    const initData = dummyData[0];
+    const [accountData, setAccountData] = useState<any>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -22,10 +25,13 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
         }
     }, [mediaQuery])
 
-    useEffect(() => {
-        const rParam:any = router.query.data?.toString();
-        setAccountdata(JSON.parse(rParam));
-    },[])
+    useEffect(()=>{
+        if(!router.isReady) return;
+    
+        bIndex = parseInt(router.query.id as string);
+        setAccountData(dummyData[bIndex])
+    
+    }, [router.isReady]);
 
     return (
         <>

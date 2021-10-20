@@ -6,6 +6,7 @@ import Back from 'components/assets/Back';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
+import dummyData from 'components/data/trans.json'
 
 export interface TransDetailProps {
 }
@@ -16,51 +17,6 @@ const TransDetail: React.FC<TransDetailProps> = () => {
     const router = useRouter();
 
     let bIndex:number;
-    const dummyData = [
-        {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }
-    ]
     const initData = dummyData[0];
 
     useEffect(()=>{

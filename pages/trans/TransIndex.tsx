@@ -6,6 +6,7 @@ import Pagination from 'components/base/Pagination';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
+import dummyData from 'components/data/trans.json'
 
 export interface TransIndexProps {
 }
@@ -14,51 +15,6 @@ const TransIndex: React.FC<TransIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    const dummyData = [
-        {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }, {
-            'block': '5545118',
-            'from': '112A6wJPeDsf34nsqo...',
-            'to': '112A6wJPeDsf34nsqo...',
-            'value': '52.456',
-            'fee': '41.5',
-            'event_id': '5560132-8'
-        }
-    ]
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){

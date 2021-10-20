@@ -6,6 +6,7 @@ import Pagination from 'components/base/Pagination';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
+import dummyData from 'components/data/accounts.json'
 
 export interface AccountIndexProps {
 }
@@ -15,46 +16,6 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
-    const dummyData = [
-        {
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
-            'transactions': 7,
-            'amount': 10000,
-            'total_balance': 56233,
-            'free_balance': 4593,
-            'nonce': 70732,
-            'active': true,
-            'past_roles': 'nominator'
-        }, {
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
-            'transactions': 7,
-            'amount': 10000,
-            'total_balance': 56233,
-            'free_balance': 4593,
-            'nonce': 70732,
-            'active': true,
-            'past_roles': 'nominator'
-        }, {
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
-            'transactions': 7,
-            'amount': 10000,
-            'total_balance': 56233,
-            'free_balance': 4593,
-            'nonce': 70732,
-            'active': true,
-            'past_roles': 'nominator'
-        }, {
-            'address': '0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...',
-            'transactions': 7,
-            'amount': 10000,
-            'total_balance': 56233,
-            'free_balance': 4593,
-            'nonce': 70732,
-            'active': true,
-            'past_roles': 'nominator'
-        }
-    ]
-
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
@@ -63,8 +24,7 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
 
     function goAccountDetail(index:any) {
         router.push({
-            pathname: './account/' + index,
-            query: { data: JSON.stringify(dummyData[index]) }
+            pathname: './account/' + index
         })
     }
 
