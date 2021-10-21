@@ -22,10 +22,8 @@ const TransIndex: React.FC<TransIndexProps> = () => {
         }
     }, [mediaQuery])
 
-    function goTransDetail(index:any) {
-        router.push({
-            pathname: './trans/' + index
-        })
+    function goTransDetail(key:any) {
+        router.push('/trans/' + key)
     }
 
     return (
@@ -66,7 +64,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </td>
                                     <td className="text-large text-opacity text-left">{item.value} CAPS</td>
                                     <td className="text-right pe-4p0">
-                                        <button onClick={() => goTransDetail(key)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                        <button onClick={() => goTransDetail(item.block)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -100,7 +98,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goTransDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goTransDetail(item.block)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})

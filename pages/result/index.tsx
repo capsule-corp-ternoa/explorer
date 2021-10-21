@@ -43,15 +43,15 @@ const SearchResult: React.FC<SearchResultProps> = () => {
               <Back />
           </div>
           }
-          <h1 className="subTitle subTitleMarginTop2">Search Result</h1>
+          <h1 className="subTitle subTitleMarginTop2">No results</h1>
           <div className={"mainBlock mt-2 mb-5 py-5 flex flex-center " + style.resultBlock}>
-            <span className={"text-large text-opacity"}>
-            {keyword} : no search result
+            <span className={style.resultText + " text-opacity"}>
+            "No results found for {keyword}"
             </span>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

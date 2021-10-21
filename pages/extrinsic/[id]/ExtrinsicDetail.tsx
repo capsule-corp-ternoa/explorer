@@ -15,6 +15,7 @@ export interface ExtrinsicDetailProps {
 
 const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [extData, setExtData] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
@@ -24,24 +25,22 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
         }
     }, [mediaQuery])
 
-    const initData = dummyData[0];
-
-    let bIndex:number;
-
     useEffect(()=>{
         if(!router.isReady) return;
     
-        bIndex = parseInt(router.query.id as string);
-        setExtdata(dummyData[bIndex])
-    
+        const index = router.query.id as string;
+        const data = dummyData.filter(function(item) {
+            return item.extrinsic_id == index;
+        })
+        if (data.length != 0) {
+            setExtData(data[0])
+        } else {
+            setExtData(dummyData[0])
+        }
     }, [router.isReady]);
 
-    const [extData, setExtdata] = useState<any>(initData)
-
-    function goTransInfo() {
-        router.push({
-            pathname: './' + router.query.id + '/address'
-        })
+    function goTransInfo(key:any) {
+        router.push("/extrinsic/"+router.query.id+"/address")
     }
 
     return (

@@ -46,32 +46,32 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         router.push("/block");
     }
 
-    const goBlockDetail = () => {
-        router.push("/block/1");
+    const goBlockDetail = (key:any) => {
+        router.push("/block/"+key);
     }
 
     const goNftIndex = () => {
         router.push("/nft");
     }
 
-    const goNftDetail = () => {
-        router.push("/nft/1");
+    const goNftDetail = (key:any) => {
+        router.push("/nft/" + key);
     }
 
     const goTransIndex = () => {
         router.push("/trans");
     }
 
-    const goTransDetail = () => {
-        router.push("/trans/1");
+    const goTransDetail = (key:any) => {
+        router.push("/trans/" + key);
     }
 
     const goValidatorList = () => {
         router.push("/validator");
     }
 
-    const goValidatorDetail = () => {
-        router.push("/validator/1");
+    const goValidatorDetail = (key:any) => {
+        router.push("/validator/" + key);
     }
 
     return (
@@ -211,7 +211,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-large text-opacity">{item.transactions}</td>
                                             <td className="text-large text-opacity text-right pe-5">{item.module_events}</td>
                                             <td>
-                                                <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
+                                                <button onClick={() => goBlockDetail(item.number)} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
                                         </tr>
                                         )})}
@@ -242,7 +242,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-3 mb-2">
-                                        <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                        <button onClick={()=>goBlockDetail(item.number)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                     </div>
                                 </div>
                                 )})
@@ -282,7 +282,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-large text-opacity">{item.id}</td>
                                             <td className="text-right pe-5">
-                                                <button onClick={goNftDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
+                                                <button onClick={() => goNftDetail(item.name_id)} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
                                         </tr>
                                         )})}
@@ -350,7 +350,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <span className="mobileValue">{item.value} CAPS</span>
                                         </div>
                                         <div className="flex flex-col">
-                                            <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                            <button onClick={() => goTransDetail(item.block)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                         </div>
                                     </div>
                                 </div>
@@ -395,7 +395,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-large text-opacity">{item.comissions}%</td>
                                             <td className="text-large text-opacity">{item.returns}%</td>
                                             <td className="text-left pe-5">
-                                                <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-2">Details</button>
+                                                <button onClick={() => goValidatorDetail(item.name)} className="btn btn-secondary rounded-pill px-4 py-2">Details</button>
                                             </td>
                                         </tr>
                                         )})}
@@ -429,7 +429,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </div>
                                         </div>
                                         <div className="flex flex-col">
-                                            <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                            <button onClick={() => goValidatorDetail(item.name)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                         </div>
                                     </div>
                                 </div>

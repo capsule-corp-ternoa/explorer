@@ -14,24 +14,31 @@ export interface TransInfoProps {
 
 const TransInfo: React.FC<TransInfoProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [transData, setTransdata] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    console.log(router.query);
-    let bIndex:number;
-    let transId:number;
     
     useEffect(()=>{
         if(!router.isReady) return;
     
-        bIndex = parseInt(router.query.id as string);
-        transId = parseInt(router.query.transId as string);
-        setTransdata(dummyData[bIndex].transaction_detail[transId])
-    
+        const blockId = parseInt(router.query.id as string);
+        const block = dummyData.filter(function(item) {
+            return item.number == blockId;
+        })
+        let blockData = dummyData[0]
+        if (block.length != 0) {
+            blockData = block[0]
+        }
+        const transId = router.query.transId as string;
+        const trans = blockData.transaction_detail.filter(function(item) {
+            return item.transaction_id == transId;
+        })
+        if (trans.length != 0) {
+            setTransdata(trans[0])
+        } else {
+            setTransdata(blockData.transaction_detail[0])
+        }
     }, [router.isReady]);
-
-    const initData = dummyData[0].transaction_detail[0];
-
-    const [transData, setTransdata] = useState<any>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -182,6 +189,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                     <div>
                         <span className={"mt-5 mb-3 subTitle2"}>Parameters</span>
                     </div>
+                    {transData.parameters != undefined &&
                     <div className={"mainBlock mt-3"}>
                         <div className = "tag-for-scroll">
                             {isLaptop &&
@@ -218,6 +226,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                             }
                         </div>
                     </div>
+                    }
                 </div>
                 <Footer />               
             </div>

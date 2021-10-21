@@ -13,25 +13,21 @@ export interface TransDetailProps {
 
 const TransDetail: React.FC<TransDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [transData, setTransdata] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-
-    let bIndex:number;
-
-    const initData = dummyData[0];
-
-    const [transData, setTransdata] = useState<any>(initData)
 
     useEffect(()=>{
         if(!router.isReady) return;
     
-        var transId = router.query.id as string
-        console.log(transId)
-        var trans = dummyData.filter(function(item) {
+        const transId = router.query.id as string
+        const trans = dummyData.filter(function(item) {
             return item.name_id == transId;
         })
         if (trans.length != 0) {
             setTransdata(trans[0]);
+        } else {
+            setTransdata(dummyData[0])
         }
     }, [router.isReady]);
 

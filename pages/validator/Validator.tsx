@@ -24,10 +24,8 @@ const Validator: React.FC<ValidatorProps> = () => {
         }
     }, [mediaQuery])
 
-    function goValidatorDetail(index:any) {
-        router.push({
-            pathname: './validator/' + index
-        })
+    function goValidatorDetail(key:any) {
+        router.push('/validator/' + key)
     }
 
     return (
@@ -69,7 +67,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                                     <td className="text-large text-opacity">{item.comissions}%</td>
                                     <td className="text-large text-opacity">{item.returns}%</td>
                                     <td className='text-right pe-4p0'>
-                                        <button onClick={() => goValidatorDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                        <button onClick={() => goValidatorDetail(item.name)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -105,7 +103,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goValidatorDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goValidatorDetail(item.name)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})

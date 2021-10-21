@@ -12,6 +12,7 @@ export interface TransInfoProps {
 
 const TransInfo: React.FC<TransInfoProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [transData, setTransData] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
@@ -21,18 +22,26 @@ const TransInfo: React.FC<TransInfoProps> = () => {
         }
     }, [mediaQuery])
 
-    let bIndex:number;
-    let transId:number;
-    const initData = dummyData[0].transactions[0].transaction_detail;
-    const [transData, setTransdata] = useState<any>(initData)
-
     useEffect(()=>{
         if(!router.isReady) return;
     
-        bIndex = parseInt(router.query.id as string);
-        transId = parseInt(router.query.transId as string);
-        setTransdata(dummyData[bIndex].transactions[transId].transaction_detail)
-    
+        const valId = router.query.id as string;
+        const validators = dummyData.filter(function(item) {
+            return item.name == valId;
+        })
+        let valData = dummyData[0]
+        if (validators.length != 0) {
+            valData = validators[0]
+        }
+        const transId = router.query.transId as string;
+        const trans = valData.transactions.filter(function(item) {
+            return item.transaction_id == transId;
+        })
+        if (trans.length != 0) {
+            setTransData(trans[0].transaction_detail)
+        } else {
+            setTransData(valData.transactions[0].transaction_detail)
+        }
     }, [router.isReady]);
 
     return (

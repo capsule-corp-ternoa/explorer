@@ -29,6 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         router.push({
           pathname: '/block/' + keyword
         })
+        return
       }
     } else {
       console.log(keyword)
@@ -39,6 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         router.push({
           pathname: '/nft/' + keyword
         })
+        return
       }
   
       var account = accountData.filter(function(item) {
@@ -48,6 +50,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         router.push({
           pathname: '/account/' + keyword
         })
+        return
       }
     }
     router.push("/result?search=" + keyword)

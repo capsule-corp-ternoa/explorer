@@ -14,22 +14,24 @@ export interface AddressDetailProps {
 
 const AddressDetail: React.FC<AddressDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [addrData, setAddrdata] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
-    const initData = dummyData[0].parameters.destination;
-
-    let bIndex:number;
-
     useEffect(()=>{
         if(!router.isReady) return;
-    
-        bIndex = parseInt(router.query.id as string);
-        setAddrdata(dummyData[bIndex].parameters.destination)
+
+        const extId = router.query.id as string;
+        const exts = dummyData.filter(function(item) {
+            return item.extrinsic_id == extId;
+        })
+        let extData = dummyData[0]
+        if (exts.length != 0) {
+            extData = exts[0]
+        }
+        setAddrdata(extData.parameters.destination)
     
     }, [router.isReady]);
-
-    const [addrData, setAddrdata] = useState<any>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){

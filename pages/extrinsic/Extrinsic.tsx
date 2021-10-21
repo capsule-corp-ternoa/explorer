@@ -22,10 +22,8 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
         }
     }, [mediaQuery])
 
-    function goExtrinsicDetail(index:any) {
-        router.push({
-            pathname: './extrinsic/' + index
-        })
+    function goExtrinsicDetail(key:any) {
+        router.push("/extrinsic/" + key)
     }
 
     return (
@@ -69,7 +67,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                         }
                                     </td>
                                     <td className="text-right pe-4p0">
-                                        <button onClick={() => goExtrinsicDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                        <button onClick={() => goExtrinsicDetail(item.extrinsic_id)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                     </td>
                                 </tr>
                                 )})}
@@ -112,7 +110,7 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goExtrinsicDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goExtrinsicDetail(item.extrinsic_id)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})

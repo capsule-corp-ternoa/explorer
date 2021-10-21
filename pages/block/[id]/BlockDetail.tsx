@@ -13,44 +13,25 @@ import dummyData from 'components/data/blocks.json'
 export interface BlockDetailProps {
 }
 
-type BlockDetailType = {
-    number: number;
-    age: number;
-    block_hash: string,
-    parent_hash: string,
-    state_root: string,
-    extrinsics_root: string,
-    signed_extrinsics: number,
-    module_events: number,
-    timestamp: string,
-    runtime_version: number,
-    block_time: number,
-    session_id: number,
-    block_author: string,
-    transactions: number,
-    transaction_detail: Array<any>,
-}
-
 const BlockDetail: React.FC<BlockDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [blockData, setBlockdata] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
     useEffect(()=>{
         if(!router.isReady) return;
     
-        var index = parseInt(router.query.id as string);
-        var block = dummyData.filter(function(item) {
+        const index = parseInt(router.query.id as string);
+        const block = dummyData.filter(function(item) {
             return item.number == index;
         })
         if (block.length != 0) {
             setBlockdata(block[0])
+        } else {
+            setBlockdata(dummyData[0])
         }
     }, [router.isReady]);
-
-    const initData = dummyData[0];
-    
-    const [blockData, setBlockdata] = useState<BlockDetailType>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -58,10 +39,8 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
         }
     }, [mediaQuery])
 
-    function goTransInfo(index:any) {
-        router.push({
-            pathname: './' + router.query.id + '/' + index,
-        })
+    function goTransInfo(key:any) {
+        router.push("/block/"+router.query.id+"/"+key)
     }
 
     return (
@@ -249,7 +228,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                                     {transItem.success ?<Check className="webCheckIcon" /> : '' }
                                                 </td>
                                                 <td className="text-right pe-4p0">
-                                                    <button onClick={() => goTransInfo(key)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                                    <button onClick={() => goTransInfo(transItem.transaction_id)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                                 </td>
                                             </tr>
                                             
@@ -291,7 +270,7 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goTransInfo(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goTransInfo(transItem.transaction_id)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                             )})

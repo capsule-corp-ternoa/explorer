@@ -15,20 +15,23 @@ export interface ValidatorDetailProps {
 
 const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [valData, setValdata] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    let bIndex:number;
-    const initData = dummyData[0];
 
     useEffect(()=>{
         if(!router.isReady) return;
     
-        bIndex = parseInt(router.query.id as string);
-        setValdata(dummyData[bIndex])
-    
+        const id = router.query.id as string;
+        const data = dummyData.filter(function(item) {
+            return item.name == id;
+        })
+        if (data.length != 0) {
+            setValdata(data[0])
+        } else {
+            setValdata(dummyData[0])
+        }
     }, [router.isReady]);
-
-    const [valData, setValdata] = useState<any>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -36,11 +39,8 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
         }
     }, [mediaQuery])
 
-    function goTransInfo(index:any) {
-        router.push({
-            // pathname: './' + valData.name + '/trans',
-            pathname: './' + router.query.id + '/' + index,
-        })
+    function goTransInfo(key:any) {
+        router.push("/validator/"+router.query.id+"/"+key)
     }
 
     return (
@@ -214,7 +214,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                             {transItem.success?<Check className="webCheckIcon" />:''}
                                         </td>
                                         <td className="text-right pe-4p0">
-                                            <button onClick={() => goTransInfo(key)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                            <button onClick={() => goTransInfo(transItem.transaction_id)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                         </td>
                                     </tr>
                                     )
@@ -252,7 +252,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goTransInfo(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goTransInfo(transItem.transaction_id)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                             )})

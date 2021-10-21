@@ -13,11 +13,9 @@ export interface AccountDetailProps {
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [accountData, setAccountData] = useState<any>({})
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    let bIndex:number;
-    const initData = dummyData[0];
-    const [accountData, setAccountData] = useState<any>(initData)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -34,6 +32,8 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
         })
         if (data.length != 0) {
             setAccountData(data[0]);
+        } else {
+            setAccountData(dummyData[0]);
         }
     }, [router.isReady]);
 

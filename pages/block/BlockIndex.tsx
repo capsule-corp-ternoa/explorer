@@ -22,10 +22,11 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
         }
     }, [mediaQuery])
 
-    function goBlockDetail(index:any) {
-        router.push({
-            pathname: './block/' + index
-        })
+    function goBlockDetail(key:any) {
+        // router.push({
+        //     pathname: './block/' + index
+        // })
+        router.push("/block/"+key)
     }
 
     return (
@@ -62,7 +63,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                         <td className="text-large text-opacity">{item.signed_extrinsics}</td>
                                         <td className="text-large text-opacity">{item.module_events}</td>
                                         <td className="text-right pe-4p0">
-                                            <button onClick={() => goBlockDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
+                                            <button onClick={() => goBlockDetail(item.number)} className={"btn btn-secondary rounded-pill px-4 py-1"}>Details</button>
                                         </td>
                                     </tr>
                                 )})}
@@ -99,7 +100,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goBlockDetail(key)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goBlockDetail(item.number)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         )})
