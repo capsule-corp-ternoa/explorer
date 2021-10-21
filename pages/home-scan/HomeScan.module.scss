@@ -75,6 +75,10 @@
     }
 }
 
+.blockTable {
+    table-layout: fixed;
+}
+
 .chartBlock {
     border-radius: 45px;
     border: solid 2px transparent;

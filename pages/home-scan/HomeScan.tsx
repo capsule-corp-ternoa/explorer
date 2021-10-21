@@ -20,6 +20,7 @@ import blockData from 'components/data/blocks.json'
 import nftData from 'components/data/nft.json'
 import transData from 'components/data/trans.json'
 import validatorData from 'components/data/validators.json'
+import statData from 'components/data/statast.json'
 
 export interface HomeScanProps {
 }
@@ -33,51 +34,13 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     const [totalTrans, setTotalTrans] = useState(true);
     const [newAccount, setNewAccount] = useState(true);
     const [averBlock, setAverBlock] = useState(true);
+    const rowCount = 4;
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
           setIsLaptop(mediaQuery);
         }
     }, [mediaQuery])
-
-    const data = [
-        {
-          name: 'Apr',
-          uv: 4000,
-          pv: 6000,
-          amt: 2400,
-        },
-        {
-          name: 'May',
-          uv: 3000,
-          pv: 4000,
-          amt: 2210,
-        },
-        {
-          name: 'Jun',
-          uv: 2000,
-          pv: 9800,
-          amt: 2290,
-        },
-        {
-          name: 'July',
-          uv: 2780,
-          pv: 3908,
-          amt: 2000,
-        },
-        {
-          name: 'Aug',
-          uv: 1890,
-          pv: 4800,
-          amt: 2181,
-        },
-        {
-          name: 'Sep',
-          uv: 2390,
-          pv: 3800,
-          amt: 2500,
-        }
-    ];
 
     const goBlockIndex = () => {
         router.push("/block");
@@ -230,7 +193,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                             <div className={style.block + " pb-4 mt-3"}>
                                 {isLaptop &&
-                                <table className="table table-borderless mb-3">
+                                <table className={"table table-borderless mb-3 " + style.blockTable}>
                                     <thead>
                                         <tr className="fs-6 text-grey">
                                             <th style={{width:"27%"}} className="text-left ps-5">Number</th>
@@ -241,7 +204,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {blockData.map((item, key) => { return (
+                                        {blockData.slice(0,rowCount).map((item, key) => { return (
                                         <tr key={key}>
                                             <td className="text-large text-opacity text-left ps-5">{item.number}</td>
                                             <td className="text-large text-opacity text-left">{item.age + " hours ago"}</td>
@@ -256,7 +219,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </table>
                                 }
 
-                                {!isLaptop && blockData.map((item, key) => { return (
+                                {!isLaptop && blockData.slice(0,rowCount).map((item, key) => { return (
                                 <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                     <div className="flex flex-row mt-2">
                                         <div className="flex-1 flex flex-row flex-items-center">
@@ -300,7 +263,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 <span className={"title " + style.blockTitle}>NFT transactions</span>
                             </div>
                             <div className={style.block + " pb-4 mt-3"}>
-                                <table className="table table-borderless mb-3">
+                                <table className={"table table-borderless mb-3 " + style.blockTable}>
                                     <thead>
                                         <tr className="fs-6 text-grey">
                                             <th style={{width:"33%"}} className="text-left ps-5">Name/ID</th>
@@ -310,9 +273,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {nftData.map((item, key) => { return (
+                                        {nftData.slice(0,rowCount).map((item, key) => { return (
                                         <tr key={key} className="position-relative">
-                                            <td className="text-large text-opacity text-left ps-5">{item.name_id}</td>
+                                            <td className="text-large text-opacity text-left textToken ps-5">{item.name_id}</td>
                                             <td className="text-large text-opacity flex flex-row flex-items-center text-left">
                                                 <CAPSDark className="webIcon me-2" />
                                                 <span className="textToken">{item.creator}</span>    
@@ -339,7 +302,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                             <div className={style.block + " pb-4 mt-3"}>
                                 {isLaptop &&
-                                <table className="table table-borderless mb-3">
+                                <table className={"table table-borderless mb-3 " + style.blockTable}>
                                     <thead>
                                         <tr className="fs-6 text-grey">
                                             <th style={{width:"40%"}} className="text-left ps-5">From</th>
@@ -348,7 +311,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {transData.map((item, key) => { return (
+                                        {transData.slice(0,4).map((item, key) => { return (
                                         <tr key={key}>
                                             <td className="text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon me-2" />
@@ -365,7 +328,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </table>
                                 }
 
-                                {!isLaptop && transData.map((item, key) => { return (
+                                {!isLaptop && transData.slice(0,rowCount).map((item, key) => { return (
                                 <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                     <div className="flex flex-col mt-2">
                                         <span className="mobileLabel">From</span>
@@ -410,7 +373,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                             <div className={style.block + " pb-4 mt-3"}>
                                 {isLaptop &&
-                                <table className="table table-borderless mb-3">
+                                <table className={"table table-borderless mb-3 " + style.blockTable}>
                                     <thead>
                                         <tr className="fs-6 text-grey">
                                             <th style={{width:"30%"}} className="text-left ps-5">Name</th>
@@ -421,7 +384,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {validatorData.map((item, key) => { return (
+                                        {validatorData.slice(0,rowCount).map((item, key) => { return (
                                         <tr key={key}>
                                             <td className="text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon" />
@@ -439,7 +402,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </tbody>
                                 </table>
                                 }
-                                {!isLaptop && validatorData.map((item, key) => { return (
+                                {!isLaptop && validatorData.slice(0,rowCount).map((item, key) => { return (
                                 <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                     <div className="flex flex-row mt-2">
                                         <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
@@ -500,7 +463,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <ComposedChart
                                         width={500}
                                         height={400}
-                                        data={data}
+                                        data={statData}
                                         margin={{
                                             top: 10,
                                             right: 40,
@@ -535,7 +498,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <AreaChart
                                         width={500}
                                         height={400}
-                                        data={data}
+                                        data={statData}
                                         margin={{
                                             top: 10,
                                             right: 40,
