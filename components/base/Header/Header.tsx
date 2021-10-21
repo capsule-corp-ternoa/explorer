@@ -6,6 +6,7 @@ import style from './Header.module.scss';
 import LogoTernoaScan from 'components/assets/LogoTernoaScan';
 import Hamburger from 'components/assets/Hamburger';
 import Search from 'components/assets/Search';
+import SearchBar from '../SearchBar';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { useMediaQuery } from 'react-responsive';
@@ -17,8 +18,6 @@ export interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = (props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [searchText, setSearchText] = useState('');
-    const [isCapsInputFocused, setIsCapsInputFocused] = useState(false)
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
@@ -79,30 +78,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </div>
                 
                 <div className={'no-padding-vertical col-md-5 col-lg-4 ' + style.searchBoxContainer}>
-                    {(props.searchBar || props.searchBar == undefined) &&
-                    <div className={'flex flex-items-center position-relative'}>
-                        <input
-                            type="text"
-                            value={searchText}
-                            onChange={(e) => {
-                                setSearchText(e.target.value)
-                            }}
-                            onKeyDown={(e) => {
-                                if(e.keyCode === 13) setSearchText('');
-                            }}
-                            className={style.searchContainer + " input-over-effect "}
-                            placeholder="Search by adresse / Txn Hash / Block / NFT"
-                            style={{ backgroundColor: "#14142E" }}
-                            min={0}
-                            onFocus={(e) => {
-                                setIsCapsInputFocused(true)
-                            }}
-                            onBlur={() => setIsCapsInputFocused(false)}
-                        />
-                        {isCapsInputFocused && <div className="search-gradient"></div>}
-                        <Search className={style.search + " position-absolute"}/>
-                    </div>
-                    }
+                    {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
                 </div>
                 <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
                 <div className={'flex flex-cont-end flex-items-center '}>

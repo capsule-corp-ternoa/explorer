@@ -10,12 +10,16 @@ import Check from 'components/assets/Check';
 import MarketLogo from 'components/assets/MarketLogo';
 import TransactionLogo from 'components/assets/TransactionLogo';
 import BlockLogo from 'components/assets/BlockLogo';
-import Search from 'components/assets/Search';
+import SearchBar from 'components/base/SearchBar';
 import style from './HomeScan.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, ComposedChart, Bar } from 'recharts';
+import blockData from 'components/data/blocks.json'
+import nftData from 'components/data/nft.json'
+import transData from 'components/data/trans.json'
+import validatorData from 'components/data/validators.json'
 
 export interface HomeScanProps {
 }
@@ -29,11 +33,6 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     const [totalTrans, setTotalTrans] = useState(true);
     const [newAccount, setNewAccount] = useState(true);
     const [averBlock, setAverBlock] = useState(true);
-    const [searchFocus, setSearchFocus] = useState(false);
-
-    const [searchText, setSearchText] = useState('');
-
-    const dummyData = [0,1,1,1];
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -81,35 +80,35 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     ];
 
     const goBlockIndex = () => {
-        router.push("../block");
+        router.push("/block");
     }
 
     const goBlockDetail = () => {
-        router.push("../block/1");
+        router.push("/block/1");
     }
 
     const goNftIndex = () => {
-        router.push("../nft");
+        router.push("/nft");
     }
 
     const goNftDetail = () => {
-        router.push("../nft/1");
+        router.push("/nft/1");
     }
 
     const goTransIndex = () => {
-        router.push("../trans");
+        router.push("/trans");
     }
 
     const goTransDetail = () => {
-        router.push("../trans/1");
+        router.push("/trans/1");
     }
 
     const goValidatorList = () => {
-        router.push("../validator");
+        router.push("/validator");
     }
 
     const goValidatorDetail = () => {
-        router.push("../validator/1");
+        router.push("/validator/1");
     }
 
     return (
@@ -124,38 +123,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                 <div className={"mainBody position-relative"}>
                     <div className={style.gradientBack}></div>
                     <div className={style.searchForm + " position-relative"}>
-                        <div className={`${style.searchTitle} ${isLaptop ? 'ms-4' : ''}`}>The Ternoa blockchain explorer</div>
-                        <div className="flex flex-row flex-between flex-items-center mt-4">
-                            <div className="flex-1 position-relative">
-                                <input
-                                    type="text"
-                                    value={searchText}
-                                    onChange={(e) => {
-                                        setSearchText(e.target.value)
-                                    }}
-                                    onKeyDown={(e) => {
-                                        if(e.keyCode === 13) setSearchText('');
-                                    }}
-                                    onFocus={()=>setSearchFocus(true)}
-                                    onBlur={()=>setSearchFocus(false)}
-                                    placeholder="Search by address / Txn Hash / Block"
-                                    className={style.searchInput + " position-relative"}
-                                    style={{ backgroundColor: "#14142E" }}
-                                    min={0}
-                                />
-                                {searchFocus && <div className={"search-gradient " + style.searchGradient}></div>}
-                                <Search className={style.search + " position-absolute"}/>
-                            </div>
-                            
-                            <div
-                                className={style.searchBtn + " btn btn-primary rounded-pill flex flex-center"}
-                                onClick={() => setSearchText('')}
-                            >
-                                <div className={"d-flex align-items-center"}>
-                                    <span className="me-auto ms-auto">Search</span>
-                                </div>
-                            </div>
-                        </div>
+                        <div className={`${style.searchTitle} ${isLaptop ? 'mb-4 ms-4' : 'mb-4'}`}>The Ternoa blockchain explorer</div>
+                        <SearchBar hasButton={true} isLarge={true} />
                         {isLaptop &&
                         <div className="d-flex mt-5 ms-4">
                             <div className={`${style.searchBarInfo} pe-5 border-end`}>
@@ -272,12 +241,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dummyData.map((item, key) => { return (
+                                        {blockData.map((item, key) => { return (
                                         <tr key={key}>
-                                            <td className="text-large text-opacity text-left ps-5">5545118</td>
-                                            <td className="text-large text-opacity text-left">38 seconds ago</td>
-                                            <td className="text-large text-opacity">2</td>
-                                            <td className="text-large text-opacity text-right pe-5">0</td>
+                                            <td className="text-large text-opacity text-left ps-5">{item.number}</td>
+                                            <td className="text-large text-opacity text-left">{item.age + " hours ago"}</td>
+                                            <td className="text-large text-opacity">{item.transactions}</td>
+                                            <td className="text-large text-opacity text-right pe-5">{item.module_events}</td>
                                             <td>
                                                 <button onClick={goBlockDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
@@ -287,26 +256,26 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </table>
                                 }
 
-                                {!isLaptop && dummyData.map((item, key) => { return (
+                                {!isLaptop && blockData.map((item, key) => { return (
                                 <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                     <div className="flex flex-row mt-2">
                                         <div className="flex-1 flex flex-row flex-items-center">
                                             <span className="mobileRowLabel me-1">Number</span>
-                                            <span className="mobileValue">5545118</span>
+                                            <span className="mobileValue">{item.number}</span>
                                         </div>
                                         <div className="flex-1 flex flex-row flex-items-center">
                                             <span className="mobileRowLabel me-1">Age</span>
-                                            <span className="mobileValue">21 hour ago</span>
+                                            <span className="mobileValue">{item.age + " hours ago"}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-2">
                                         <div className="flex-1 flex flex-row flex-items-center">
                                             <span className="mobileRowLabel me-1">Transaction</span>
-                                            <span className="mobileValue">2</span>
+                                            <span className="mobileValue">{item.transactions}</span>
                                         </div>
                                         <div className="flex-1 flex flex-row flex-items-center">
                                             <span className="mobileRowLabel me-1">Module Event</span>
-                                            <span className="mobileValue">0</span>
+                                            <span className="mobileValue">{item.module_events}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-3 mb-2">
@@ -324,6 +293,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                             </div>
                         </div>
 
+                        {isLaptop && 
                         <div className="col-sm-12 col-md-12 col-xl-6 mt-5">
                             <div className="flex flex-row flex-items-end">
                                 {!isLaptop && <TransactionIcon className={style.blockLogo}></TransactionIcon>}
@@ -340,14 +310,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dummyData.map((item, key) => { return (
+                                        {nftData.map((item, key) => { return (
                                         <tr key={key} className="position-relative">
-                                            <td className="text-large text-opacity text-left ps-5">Multicolor galaxy</td>
+                                            <td className="text-large text-opacity text-left ps-5">{item.name_id}</td>
                                             <td className="text-large text-opacity flex flex-row flex-items-center text-left">
                                                 <CAPSDark className="webIcon me-2" />
-                                                <span className="textToken">16hC...E98FrRrC</span>    
+                                                <span className="textToken">{item.creator}</span>    
                                             </td>
-                                            <td className="text-large text-opacity">951</td>
+                                            <td className="text-large text-opacity">{item.id}</td>
                                             <td className="text-right pe-5">
                                                 <button onClick={goNftDetail} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
                                             </td>
@@ -357,7 +327,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 </table>
                                 <button onClick={goNftIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
                             </div>
-                        </div> 
+                        </div>
+                        }
                     </div>
 
                     <div className={"row" + (isLaptop && " mt-5")}>
@@ -377,43 +348,43 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dummyData.map((item, key) => { return (
+                                        {transData.map((item, key) => { return (
                                         <tr key={key}>
                                             <td className="text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon me-2" />
-                                                <span className="textToken">0x3a851d3...efe6f</span>
+                                                <span className="textToken">{item.from}</span>
                                             </td>
                                             <td className="text-large text-opacity text-left">
                                             <CAPSDark className="webIcon me-2" />
-                                                <span className="textToken">0x3a851d3...efe6f</span>    
+                                                <span className="textToken">{item.to}</span>    
                                             </td>
-                                            <td className="text-large text-opacity text-left pe-5">52.456 CAPS</td>
+                                            <td className="text-large text-opacity text-left pe-5">{item.value} CAPS</td>
                                         </tr>
                                         )})}
                                     </tbody>
                                 </table>
                                 }
 
-                                {!isLaptop && dummyData.map((item, key) => { return (
+                                {!isLaptop && transData.map((item, key) => { return (
                                 <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                     <div className="flex flex-col mt-2">
                                         <span className="mobileLabel">From</span>
                                         <div className="flex flex-row flex-1 flex-items-center">
                                             <CAPSDark className={"mobileIcon me-1"} />
-                                            <span className={"textToken text-80 mobileValue"}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className={"textToken text-80 mobileValue"}>{item.from}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-col mt-3">
                                     <span className="mobileLabel">To</span>
                                         <div className="flex flex-row flex-1 flex-items-center">
                                             <CAPSDark className={"mobileIcon me-1"} />
-                                            <span className={"textToken text-80 mobileValue"}>14Kazg6SFiUCH7FNhvBhvr4WNfAXVtKKKhtBQ1pvXzF1dQhv</span>
+                                            <span className={"textToken text-80 mobileValue"}>{item.to}</span>
                                         </div>
                                     </div>
                                     <div className="flex flex-row flex-between mt-4 mb-1 flex-items-center">
                                         <div className="flex flex-col">
                                             <span className="mobileLabel">Amount</span>
-                                            <span className="mobileValue">52.456 CAPS</span>
+                                            <span className="mobileValue">{item.value} CAPS</span>
                                         </div>
                                         <div className="flex flex-col">
                                             <button onClick={goTransDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
@@ -450,16 +421,16 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dummyData.map((item, key) => { return (
+                                        {validatorData.map((item, key) => { return (
                                         <tr key={key}>
                                             <td className="text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon" />
                                                 <Check className="webCheckIcon ms-2 me-2"/>
-                                                P2P.ORG/7
+                                                {item.name}
                                             </td>
-                                            <td className="text-large text-opacity">5.965.695</td>
-                                            <td className="text-large text-opacity">0.00%</td>
-                                            <td className="text-large text-opacity">14.37%</td>
+                                            <td className="text-large text-opacity">{item.total_stacked}</td>
+                                            <td className="text-large text-opacity">{item.comissions}%</td>
+                                            <td className="text-large text-opacity">{item.returns}%</td>
                                             <td className="text-left pe-5">
                                                 <button onClick={goValidatorDetail} className="btn btn-secondary rounded-pill px-4 py-2">Details</button>
                                             </td>
@@ -468,32 +439,36 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </tbody>
                                 </table>
                                 }
-                                {!isLaptop && dummyData.map((item, key) => { return (
+                                {!isLaptop && validatorData.map((item, key) => { return (
                                 <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                     <div className="flex flex-row mt-2">
                                         <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
                                             <div className="text-large text-opacity">
                                                 <CAPSDark className="mobileIcon me-1" />
                                                 <Check className={"mobileCheckIcon me-1 "} fillColor="#9f9fff"/>
-                                                <span className={"mobileValue " + style.whiteBlueText}>P2P.ORG/7</span>
+                                                <span className={"mobileValue " + style.whiteBlueText}>{item.name}</span>
                                             </div>
                                         </div>
                                         <div className="flex-1 flex flex-row flex-grow-4 flex-items-center">
                                             <span className={"mobileRowLabel me-1 " + style.whiteText}>Return:</span>
-                                            <span className={"mobileValue " + style.whiteBlueText}>14.37%</span>
+                                            <span className={"mobileValue " + style.whiteBlueText}>{item.returns}%</span>
                                         </div>
                                     </div>
-                                    <div className="flex flex-row mt-4 flex-items-center">
-                                        <span className="mobileRowLabel me-1">Total staked:</span>
-                                        <span className="mobileValue">5.965.695</span>
+                                    <div className="flex flex-row flex-between mt-4 mb-2 flex-items-center">
+                                        <div className="flex flex-col">
+                                            <div className="flex flex-row flex-items-center">
+                                                <span className="mobileRowLabel me-1">Total staked:</span>
+                                                <span className="mobileValue">{item.total_stacked}</span>
+                                            </div>
+                                            <div className="flex flex-row flex-items-center mt-2">
+                                                <span className="mobileRowLabel me-1">Commissions:</span>
+                                                <span className="mobileValue">{item.comissions}%</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                        </div>
                                     </div>
-                                    <div className="flex flex-row mt-2 mb-2 flex-items-center">
-                                        <span className="mobileRowLabel me-1">Commissions:</span>
-                                        <span className="mobileValue">0.00%</span>
-                                    </div>
-                                    {/* <div className="flex flex-row mt-3 mb-2">
-                                        <button onClick={goValidatorDetail} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
-                                    </div> */}
                                 </div>
                                 )})
                                 }

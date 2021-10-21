@@ -1,6 +1,6 @@
 [
     {
-        "address": "0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...",
+        "address": "12xtAYsRUrmbniiWQqJ",
         "transactions": 7,
         "amount": 10000,
         "total_balance": 56233,
@@ -9,7 +9,7 @@
         "active": true,
         "past_roles": "nominator"
     }, {
-        "address": "0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...",
+        "address": "16Rgk",
         "transactions": 7,
         "amount": 10000,
         "total_balance": 56233,
@@ -18,7 +18,7 @@
         "active": true,
         "past_roles": "nominator"
     }, {
-        "address": "0x3a851d399f86346150af63a824ce843790f3f084a0f7c1af...",
+        "address": "1qiQB",
         "transactions": 7,
         "amount": 10000,
         "total_balance": 56233,

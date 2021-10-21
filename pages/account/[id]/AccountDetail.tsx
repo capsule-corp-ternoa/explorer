@@ -28,9 +28,13 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     useEffect(()=>{
         if(!router.isReady) return;
     
-        bIndex = parseInt(router.query.id as string);
-        setAccountData(dummyData[bIndex])
-    
+        var address = router.query.id as string
+        var data = dummyData.filter(function(item) {
+            return item.address == address;
+        })
+        if (data.length != 0) {
+            setAccountData(data[0]);
+        }
     }, [router.isReady]);
 
     return (

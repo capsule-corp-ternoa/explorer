@@ -35,14 +35,17 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
-    let bIndex:number;
 
     useEffect(()=>{
         if(!router.isReady) return;
     
-        bIndex = parseInt(router.query.id as string);
-        setBlockdata(dummyData[bIndex])
-    
+        var index = parseInt(router.query.id as string);
+        var block = dummyData.filter(function(item) {
+            return item.number == index;
+        })
+        if (block.length != 0) {
+            setBlockdata(block[0])
+        }
     }, [router.isReady]);
 
     const initData = dummyData[0];

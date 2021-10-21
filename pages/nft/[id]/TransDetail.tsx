@@ -25,9 +25,14 @@ const TransDetail: React.FC<TransDetailProps> = () => {
     useEffect(()=>{
         if(!router.isReady) return;
     
-        bIndex = parseInt(router.query.id as string);
-        setTransdata(dummyData[bIndex])
-    
+        var transId = router.query.id as string
+        console.log(transId)
+        var trans = dummyData.filter(function(item) {
+            return item.name_id == transId;
+        })
+        if (trans.length != 0) {
+            setTransdata(trans[0]);
+        }
     }, [router.isReady]);
 
     useEffect(() => {
