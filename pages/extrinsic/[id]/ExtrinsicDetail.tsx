@@ -127,11 +127,11 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                             {!isLaptop &&
                             <div className={"mobileView"}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Block</span>
                                         <span className="mobileValue">{extData.block}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Timestamp</span>
                                         <span className="mobileValue">{extData.timestamp}</span>
                                     </div>
@@ -148,11 +148,11 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Module</span>
                                         <span className="mobileValue">{extData.module}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Call</span>
                                         <span className="mobileValue">{extData.call}</span>
                                     </div>
@@ -169,11 +169,11 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Nonce</span>
                                         <span className="mobileValue">{extData.nonce}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Result</span>
                                         <span className="mobileValue">
                                             {extData.result?<Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" /> : ''}

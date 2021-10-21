@@ -314,12 +314,16 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         {transData.slice(0,4).map((item, key) => { return (
                                         <tr key={key}>
                                             <td className="text-large text-opacity text-left ps-5">
+                                                <div className="flex flex-row flex-items-center">
                                                 <CAPSDark className="webIcon me-2" />
                                                 <span className="textToken">{item.from}</span>
+                                                </div>
                                             </td>
                                             <td className="text-large text-opacity text-left">
-                                            <CAPSDark className="webIcon me-2" />
-                                                <span className="textToken">{item.to}</span>    
+                                                <div className="flex flex-row flex-items-center">
+                                                <CAPSDark className="webIcon me-2" />
+                                                <span className="textToken">{item.to}</span>
+                                                </div>
                                             </td>
                                             <td className="text-large text-opacity text-left pe-5">{item.value} CAPS</td>
                                         </tr>
@@ -386,10 +390,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     <tbody>
                                         {validatorData.slice(0,rowCount).map((item, key) => { return (
                                         <tr key={key}>
-                                            <td className="text-large text-opacity text-left ps-5">
+                                            <td className="flex flex-row flex-items-center text-large text-opacity text-left ps-5">
                                                 <CAPSDark className="webIcon" />
                                                 <Check className="webCheckIcon ms-2 me-2"/>
-                                                {item.name}
+                                                <span className="textToken">{item.name}</span>
                                             </td>
                                             <td className="text-large text-opacity">{item.total_stacked}</td>
                                             <td className="text-large text-opacity">{item.comissions}%</td>
@@ -405,14 +409,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop && validatorData.slice(0,rowCount).map((item, key) => { return (
                                 <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                     <div className="flex flex-row mt-2">
-                                        <div className="flex-1 flex flex-row flex-grow-6 flex-items-center">
-                                            <div className="text-large text-opacity">
+                                        <div className="flex-1 flex flex-row flex-grow-6 w-60 flex-items-center">
+                                            {/* <div className="text-large text-opacity"> */}
                                                 <CAPSDark className="mobileIcon me-1" />
                                                 <Check className={"mobileCheckIcon me-1 "} fillColor="#9f9fff"/>
-                                                <span className={"mobileValue " + style.whiteBlueText}>{item.name}</span>
-                                            </div>
+                                                <span className={"mobileValue textToken " + style.whiteBlueText}>{item.name}</span>
+                                            {/* </div> */}
                                         </div>
-                                        <div className="flex-1 flex flex-row flex-grow-4 flex-items-center">
+                                        <div className="flex-1 flex flex-row flex-grow-4 w-40 flex-items-center">
                                             <span className={"mobileRowLabel me-1 " + style.whiteText}>Return:</span>
                                             <span className={"mobileValue " + style.whiteBlueText}>{item.returns}%</span>
                                         </div>

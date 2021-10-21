@@ -76,11 +76,11 @@ const TransIndex: React.FC<TransIndexProps> = () => {
                         {!isLaptop && dummyData.map((item, key) => { return (
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Name/ID</span>
                                         <span className="mobileValue">{item.name_id}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Amount</span>
                                         <span className="mobileValue">{item.amount} CAPS</span>
                                     </div>

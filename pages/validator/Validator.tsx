@@ -77,7 +77,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                         {!isLaptop && dummyData.map((item, key) => { return (
                             <div className={"mobileView " + (key%2==1?"mobileDarkView":"")} key={key}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Name</span>
                                         <div className="flex flex-row flex-1 flex-items-center">
                                             <CAPSDark className="mobileIcon" />
@@ -85,7 +85,7 @@ const Validator: React.FC<ValidatorProps> = () => {
                                             <span className="textToken mobileValue">{item.name}</span>
                                         </div>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Total stacked</span>
                                         <div className="flex flex-row flex-1 flex-items-center">{/* this line only is for center-align */}
                                         <span className="mobileValue">{item.total_stacked}</span>
@@ -93,11 +93,11 @@ const Validator: React.FC<ValidatorProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Comissions</span>
                                         <span className="mobileValue">{item.comissions}%</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Returns</span>
                                         <span className="mobileValue">{item.returns}%</span>
                                     </div>

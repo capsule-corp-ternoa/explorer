@@ -124,11 +124,11 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                             {!isLaptop &&
                             <div className={"mobileView"}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Hash</span>
                                         <span className="mobileValue">{transData.hash}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">TimeStamp</span>
                                         <span className="mobileValue">{transData.timestamp}</span>
                                     </div>
@@ -145,11 +145,11 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Module</span>
                                         <span className="mobileValue">{transData.module}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Call</span>
                                         <span className="mobileValue">{transData.call}</span>
                                     </div>
@@ -166,11 +166,11 @@ const TransInfo: React.FC<TransInfoProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Nonce</span>
                                         <span className="mobileValue">{transData.nonce}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Result</span>
                                         {transData.result?<Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" />:''}
                                     </div>

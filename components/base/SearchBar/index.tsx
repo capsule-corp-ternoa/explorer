@@ -20,40 +20,40 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const isNumber = (n:any) => { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); }
 
   const searchAll = () => {
-    if (isNumber(keyword)) {
-      var number = parseInt(keyword)
+    var searchKey = keyword.trim()
+    if (isNumber(searchKey)) {
+      var number = parseInt(searchKey)
       var block = blockData.filter(function(item) {
         return item.number == number
       })
       if (block.length != 0) {
         router.push({
-          pathname: '/block/' + keyword
+          pathname: '/block/' + searchKey
         })
         return
       }
     } else {
-      console.log(keyword)
       var nft = nftData.filter(function(item) {
-        return item.name_id == keyword
+        return item.name_id == searchKey
       })
       if (nft.length != 0) {
         router.push({
-          pathname: '/nft/' + keyword
+          pathname: '/nft/' + searchKey
         })
         return
       }
   
       var account = accountData.filter(function(item) {
-        return item.address == keyword
+        return item.address == searchKey
       })
       if (account.length != 0) {
         router.push({
-          pathname: '/account/' + keyword
+          pathname: '/account/' + searchKey
         })
         return
       }
     }
-    router.push("/result?search=" + keyword)
+    router.push("/result?search=" + searchKey)
   }
 
   return (

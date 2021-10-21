@@ -243,11 +243,11 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                              && blockData.transaction_detail.map((transItem:any,key:any) => { return (
                             <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Transaction ID</span>
                                         <span className="mobileValue">{transItem.transaction_id}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Module</span>
                                         <span className="mobileValue">{transItem.module}</span>
                                     </div>
@@ -260,11 +260,11 @@ const BlockDetail: React.FC<BlockDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4">
-                                    <div className="flex-1 flex flex-col flex-grow-6">
+                                    <div className="flex-1 flex flex-col flex-grow-6 w-60">
                                         <span className="mobileLabel">Call</span>
                                         <span className="mobileValue">{transItem.call}</span>
                                     </div>
-                                    <div className="flex-1 flex flex-col flex-grow-4">
+                                    <div className="flex-1 flex flex-col flex-grow-4 w-40">
                                         <span className="mobileLabel">Success</span>
                                         {transItem.success ?<Check className="mobileCheckIcon" fillColor="rgba(255, 255, 255, 0.7)" /> : '' }
                                     </div>
