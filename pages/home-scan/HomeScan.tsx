@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
+import { FormattedNumber } from 'react-intl';
 import Head from 'next/head'
 import CAPSLogo from 'components/assets/CAPSLogo';
 import TransactionIcon from 'components/assets/TransactionIcon';
@@ -25,9 +26,20 @@ import statData from 'components/data/statast.json'
 export interface HomeScanProps {
 }
 
+type CoinCapsule = {
+  usd: number
+  usd_24h_change: number
+  usd_market_cap: number
+}
+
+type CoinCapsuleResponse = {
+  'coin-capsule': CoinCapsule
+}
+
 const HomeScan: React.FC<HomeScanProps> = () => {
     
     const [isLaptop, setIsLaptop] = useState(false);
+    const [data, setData] = useState<CoinCapsule | null>(null)
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
 
@@ -42,6 +54,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         }
     }, [mediaQuery])
 
+    useEffect(() => {
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=coin-capsule&vs_currencies=usd&include_24hr_change=true&include_market_cap=true')
+            .then(res => res.json())
+            .then(res => setData(res['coin-capsule']))
+    }, [])
     const goBlockIndex = () => {
         router.push("/block");
     }
@@ -97,7 +114,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </div>
                                     <div className={"d-flex flex-column ms-3"}>
                                         <div className="fs-6 text-opacity-4 text-ellipsis">CAPS price</div>
-                                        <div className="fs-5 fw-bold">$0.68</div>
+                                        <div className="fs-5 fw-bold">
+                                            {data && <FormattedNumber value={data.usd} format='caps' />}
+                                            <span className={`${style.logoPercent} ms-2`}>
+                                                {data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +130,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                     </div>
                                     <div className={`d-flex flex-column ms-3`}>
                                         <div className="fs-6 text-opacity-4 text-ellipsis">Market cap</div>
-                                        <div className="fs-5 fw-bold">$24.683.396</div>
+                                        <div className="fs-5 fw-bold">
+                                            {data &&<FormattedNumber value={data.usd_market_cap} format='noDecimal' />}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -154,8 +178,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <div className="flex-1 flex flex-col ms-2">
                                             <span className="fs-6 text-opacity-4 text-ellipsis">CAPS price</span>
                                             <div>
-                                                <span className={style.logoSummary}>$0.68</span>
-                                                <span className={`${style.logoPercent} ms-2`}>(+8.50%)</span>
+                                                <span className={style.logoSummary}>
+                                                    {data && <FormattedNumber value={data.usd} />}
+                                                </span>
+                                                <span className={`${style.logoPercent} ms-2`}>
+                                                    {data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +204,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <MarketLogo className={style.Logo}></MarketLogo>
                                         <div className="flex-1 flex flex-col ms-2">
                                             <span className="fs-6 text-opacity-4 text-ellipsis">Market cap</span>
-                                            <span className={style.logoSummary}>$24.683.396</span>
+                                            <span className={style.logoSummary}>
+                                                {data && <FormattedNumber format='cap' value={data.usd_market_cap} />}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
