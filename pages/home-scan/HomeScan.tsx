@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from "next/router";
 import Link from 'next/link'
 import { FormattedNumber } from 'react-intl';
 import Head from 'next/head'
@@ -14,6 +13,7 @@ import MarketLogo from 'components/assets/MarketLogo';
 import TransactionLogo from 'components/assets/TransactionLogo';
 import BlockLogo from 'components/assets/BlockLogo';
 import SearchBar from 'components/base/SearchBar';
+import Table from 'components/base/Table';
 import style from './HomeScan.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
@@ -24,6 +24,7 @@ import nftData from 'components/data/nft.json'
 import transData from 'components/data/trans.json'
 import validatorData from 'components/data/validators.json'
 import statData from 'components/data/statast.json'
+import { renderLatestBlockCell } from './renders';
 
 export interface HomeScanProps {
 }
@@ -34,16 +35,11 @@ type CoinCapsule = {
   usd_market_cap: number
 }
 
-type CoinCapsuleResponse = {
-  'coin-capsule': CoinCapsule
-}
-
 const HomeScan: React.FC<HomeScanProps> = () => {
     
     const [isLaptop, setIsLaptop] = useState(false);
     const [data, setData] = useState<CoinCapsule | null>(null)
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
-    const router = useRouter();
 
     const [totalTrans, setTotalTrans] = useState(true);
     const [newAccount, setNewAccount] = useState(true);
@@ -191,6 +187,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                 {!isLaptop && <BlockLogo className={style.blockLogo}></BlockLogo>}
                                 <span className={"title " + style.blockTitle}>Latest Blocks</span>
                             </div>
+                            {/* <Table
+                              data={blockData.slice(0, rowCount)}
+                              columns={['Number', 'Age', 'Transactions', 'Module Events', '']}
+                              dataKeys={['number', 'age', 'transactions', 'module_events', 'details']}
+                              renderCell={renderLatestBlockCell}
+                            /> */}
                             <div className={style.block + " pb-4 mt-3"}>
                                 {isLaptop &&
                                 <table className={"table table-borderless mb-3 " + style.blockTable}>
