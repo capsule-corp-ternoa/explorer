@@ -16,6 +16,8 @@ export default {
       },
       percentChange: {
         style: 'percent',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 3,
         signDisplay: 'exceptZero'
       }
     }

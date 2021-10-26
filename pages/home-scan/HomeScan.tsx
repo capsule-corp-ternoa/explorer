@@ -118,7 +118,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <div className="fs-5 fw-bold">
                                             {data && <FormattedNumber value={data.usd} format='caps' />}
                                             <span className={clsx(style.logoPercent, 'ms-2', {[style.minus]: data && (data.usd_24h_change < 0)})}>
-                                                ({data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />})
+                                                ({data && <FormattedNumber value={data.usd_24h_change / 100} format='percentChange' />})
                                             </span>
                                         </div>
                                     </div>
@@ -181,7 +181,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <div className={style.logoSummary}>
                                                 {data && <FormattedNumber value={data.usd} />}
                                                 <span className={clsx(style.logoPercent, 'ms-2', {[style.minus]: data && (data.usd_24h_change < 0)})}>
-                                                    ({data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />})
+                                                    ({data && <FormattedNumber value={data.usd_24h_change / 100} format='percentChange' />})
                                                 </span>
                                             </div>
                                         </div>
