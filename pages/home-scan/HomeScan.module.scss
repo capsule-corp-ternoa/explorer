@@ -196,6 +196,17 @@
     }
 }
 
+
+.logoPercent {
+    font-size: small;
+    color: green;
+
+    &.minus {
+        color: red;
+    }
+}
+
+
 @media (max-width: 1280px) {
     
     
@@ -211,11 +222,6 @@
 
     .logoSummary {
         font-size: 14px!important;
-    }
-
-    .logoPercent {
-        font-size: 12px!important;
-        color: $white-blue;
     }
 
     .whiteText {

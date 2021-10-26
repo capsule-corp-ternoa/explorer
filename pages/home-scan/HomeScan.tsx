@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import { FormattedNumber } from 'react-intl';
 import Head from 'next/head'
+import clsx from 'clsx'
 import CAPSLogo from 'components/assets/CAPSLogo';
 import TransactionIcon from 'components/assets/TransactionIcon';
 import EditIcon from 'components/assets/EditIcon';
@@ -116,8 +117,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <div className="fs-6 text-opacity-4 text-ellipsis">CAPS price</div>
                                         <div className="fs-5 fw-bold">
                                             {data && <FormattedNumber value={data.usd} format='caps' />}
-                                            <span className={`${style.logoPercent} ms-2`}>
-                                                {data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />}
+                                            <span className={clsx(style.logoPercent, 'ms-2', {[style.minus]: data && (data.usd_24h_change < 0)})}>
+                                                ({data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />})
                                             </span>
                                         </div>
                                     </div>
@@ -177,12 +178,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <CAPSFlat className={style.Logo}></CAPSFlat>
                                         <div className="flex-1 flex flex-col ms-2">
                                             <span className="fs-6 text-opacity-4 text-ellipsis">CAPS price</span>
-                                            <div>
-                                                <span className={style.logoSummary}>
-                                                    {data && <FormattedNumber value={data.usd} />}
-                                                </span>
-                                                <span className={`${style.logoPercent} ms-2`}>
-                                                    {data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />}
+                                            <div className={style.logoSummary}>
+                                                {data && <FormattedNumber value={data.usd} />}
+                                                <span className={clsx(style.logoPercent, 'ms-2', {[style.minus]: data && (data.usd_24h_change < 0)})}>
+                                                    ({data && <FormattedNumber value={data.usd_24h_change} format='percentChange' />})
                                                 </span>
                                             </div>
                                         </div>
@@ -205,7 +204,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         <div className="flex-1 flex flex-col ms-2">
                                             <span className="fs-6 text-opacity-4 text-ellipsis">Market cap</span>
                                             <span className={style.logoSummary}>
-                                                {data && <FormattedNumber format='cap' value={data.usd_market_cap} />}
+                                                {data && <FormattedNumber format='noDecimal' value={data.usd_market_cap} />}
                                             </span>
                                         </div>
                                     </div>
