@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
+import Link from 'next/link'
 import { FormattedNumber } from 'react-intl';
 import Head from 'next/head'
 import clsx from 'clsx'
@@ -59,38 +60,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=coin-capsule&vs_currencies=usd&include_24hr_change=true&include_market_cap=true')
             .then(res => res.json())
             .then(res => setData(res['coin-capsule']))
+            .catch(() => {})
     }, [])
-    const goBlockIndex = () => {
-        router.push("/block");
-    }
-
-    const goBlockDetail = (key:any) => {
-        router.push("/block/"+key);
-    }
-
-    const goNftIndex = () => {
-        router.push("/nft");
-    }
-
-    const goNftDetail = (key:any) => {
-        router.push("/nft/" + key);
-    }
-
-    const goTransIndex = () => {
-        router.push("/trans");
-    }
-
-    const goTransDetail = (key:any) => {
-        router.push("/trans/" + key);
-    }
-
-    const goValidatorList = () => {
-        router.push("/validator");
-    }
-
-    const goValidatorDetail = (key:any) => {
-        router.push("/validator/" + key);
-    }
 
     return (
         <>
@@ -233,17 +204,23 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {blockData.slice(0,rowCount).map((item, key) => { return (
-                                        <tr key={key}>
-                                            <td className="text-large text-opacity text-left ps-5">{item.number}</td>
-                                            <td className="text-large text-opacity text-left">{item.age + " hours ago"}</td>
-                                            <td className="text-large text-opacity">{item.transactions}</td>
-                                            <td className="text-large text-opacity text-right pe-5">{item.module_events}</td>
-                                            <td>
-                                                <button onClick={() => goBlockDetail(item.number)} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
-                                            </td>
-                                        </tr>
-                                        )})}
+                                        {blockData.slice(0, rowCount).map((item, key) => (
+                                            <tr key={key}>
+                                                <td className="text-large text-opacity text-left ps-5">{item.number}</td>
+                                                <td className="text-large text-opacity text-left">{item.age + " hours ago"}</td>
+                                                <td className="text-large text-opacity">{item.transactions}</td>
+                                                <td className="text-large text-opacity text-right pe-5">{item.module_events}</td>
+                                                <td>
+                                                    <Link href={`/block/${item.number}`}>
+                                                        <a>
+                                                            <button className="btn btn-secondary rounded-pill px-4 py-2">
+                                                                Details
+                                                            </button>
+                                                        </a>
+                                                    </Link>
+                                                </td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                                 }
@@ -271,17 +248,32 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                         </div>
                                     </div>
                                     <div className="flex flex-row mt-3 mb-2">
-                                        <button onClick={()=>goBlockDetail(item.number)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                        <Link href={`/block/${item.number}`}>
+                                            <a>
+                                                <button className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                            </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 )})
                                 }
-                                {isLaptop && 
-                                    <button onClick={goBlockIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
+                                {isLaptop && (
+                                    <Link href='/block'>
+                                        <a>
+                                            <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Blocks</button>
+                                        </a>
+                                    </Link>
+                                )
                                 }
-                                {!isLaptop && <div className="d-flex justify-content-center mt-4">
-                                    <button onClick={goBlockIndex} className={"btn btn-black rounded-pill mobileNextButton"}>Show all Blocks</button> 
-                                </div>}
+                                {!isLaptop && (
+                                    <div className="d-flex justify-content-center mt-4">
+                                        <Link href='/block'>
+                                            <a>
+                                                <button className={"btn btn-black rounded-pill mobileNextButton"}>Show all Blocks</button> 
+                                            </a>
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
@@ -311,13 +303,21 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </td>
                                             <td className="text-large text-opacity">{item.id}</td>
                                             <td className="text-right pe-5">
-                                                <button onClick={() => goNftDetail(item.name_id)} className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
+                                                <Link href={`/nft/${item.name_id}`}>
+                                                    <a>
+                                                        <button className={"btn btn-secondary rounded-pill px-4 py-2"}>Details</button>
+                                                    </a>
+                                                </Link>
                                             </td>
                                         </tr>
                                         )})}
                                     </tbody>
                                 </table>
-                                <button onClick={goNftIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
+                                <Link href='/nft'>
+                                    <a>
+                                        <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all NFT</button>
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                         }
@@ -383,19 +383,33 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <span className="mobileValue">{item.value} CAPS</span>
                                         </div>
                                         <div className="flex flex-col">
-                                            <button onClick={() => goTransDetail(item.block)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                            <Link href={`/trans/${item.block}`}>
+                                                <a>
+                                                    <button className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                                </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                                 )})
                                 }
 
-                                {isLaptop && 
-                                    <button onClick={goTransIndex} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Transactions</button>
-                                }
-                                {!isLaptop && <div className="d-flex justify-content-center mt-4">
-                                    <button onClick={goTransIndex} className={"btn btn-black rounded-pill mobileNextButton"}>Show all Transactions</button> 
-                                </div>}
+                                {isLaptop && (
+                                    <Link href='/trans'>
+                                        <a>
+                                            <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Transactions</button>
+                                        </a>
+                                    </Link>
+                                )}
+                                {!isLaptop && (
+                                    <div className="d-flex justify-content-center mt-4">
+                                        <Link href='/trans'>
+                                            <a>
+                                                <button className={"btn btn-black rounded-pill mobileNextButton"}>Show all Transactions</button>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
                         </div>
 
@@ -428,7 +442,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             <td className="text-large text-opacity">{item.comissions}%</td>
                                             <td className="text-large text-opacity">{item.returns}%</td>
                                             <td className="text-left pe-5">
-                                                <button onClick={() => goValidatorDetail(item.name)} className="btn btn-secondary rounded-pill px-4 py-2">Details</button>
+                                                <Link href={`/validator/${item.name}`}>
+                                                    <a>
+                                                        <button className="btn btn-secondary rounded-pill px-4 py-2">Details</button>
+                                                    </a>
+                                                </Link>
                                             </td>
                                         </tr>
                                         )})}
@@ -462,18 +480,32 @@ const HomeScan: React.FC<HomeScanProps> = () => {
                                             </div>
                                         </div>
                                         <div className="flex flex-col">
-                                            <button onClick={() => goValidatorDetail(item.name)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                            <Link href={`/validator/${item.name}`}>
+                                                <a>
+                                                    <button className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                                </a>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                                 )})
                                 }
-                                {isLaptop && 
-                                    <button onClick={goValidatorList} className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Validators</button>
-                                }
-                                {!isLaptop && <div className="d-flex justify-content-center mt-4">
-                                    <button onClick={goValidatorList} className={"btn btn-black rounded-pill mobileNextButton"}>Show all Validators</button>
-                                </div>}
+                                {isLaptop && (
+                                    <Link href='/validator'>
+                                        <a>
+                                            <button className={"btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5 "+ style.blockButton}>Show all Validators</button>
+                                        </a>
+                                    </Link>
+                                )}
+                                {!isLaptop && (
+                                    <div className="d-flex justify-content-center mt-4">
+                                        <Link href='/validator'>
+                                            <a>
+                                                <button className={"btn btn-black rounded-pill mobileNextButton"}>Show all Validators</button>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
