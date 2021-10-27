@@ -21,37 +21,90 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+
 // Include all of Bootstrap
 // After this line you can custom all boostrap classes
 @import "~bootstrap/scss/bootstrap.scss";
+@import "color";
 
 
 .btn {
 	&-primary {
 		font-family: "Airbnb Cereal App Bold", sans-serif;
-		color: white;
+		color: $white;
 		transition: all 0.2s;
 		border: solid 2px transparent;
 		background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-			linear-gradient(101deg,  #ff8500, #ff0062, #cb06ed, #004fff);
+			linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
 		background-origin: border-box;
 		background-clip: content-box, border-box;
 		&:hover {
-			border: solid 2px #fff;
+			border: solid 2px $white;
+		}
+	}
+	&-secondary {
+		font-family: "Airbnb Cereal App Bold", sans-serif;
+		font-size: smaller;
+		color: $white;
+		transition: all 0.2s;
+		border: solid 1px transparent;
+		background-image: linear-gradient($dark-blue, $dark-blue),
+			linear-gradient(101deg,  $dark-blue, $dark-blue, $dark-blue, $dark-blue);
+		background-color: $dark-blue;
+		background-origin: border-box;
+		background-clip: content-box, border-box;
+		&:hover {
+			border: solid 1px $white-blue;
+		}
+		&:active, &:focus {
+			border: solid 2px $white-blue;
+			box-shadow: 2px 1000px 1px $light-blue inset;
+		}
+	}
+	&-black {
+		font-family: "Airbnb Cereal App Bold", sans-serif;
+		font-size: smaller;
+		color: $white;
+		transition: all 0.2s;
+		border: solid 1px transparent;
+		background-image: linear-gradient($black, $black),
+			linear-gradient(101deg,  $black, $black, $black, $black);
+		background-color: $black;
+		background-origin: border-box;
+		background-clip: content-box, border-box;
+		&:hover {
+			border: solid 1px $dark-blue;
+		}
+		&:active, &:focus {
+			border: solid 2px $dark-blue;
+			box-shadow: 2px 1000px 1px $medium-blue inset;
+		}
+	}
+	&-transparent {
+		font-family: "Airbnb Cereal App Bold", sans-serif;
+		color: $white;
+		transition: all 0.2s;
+		border: solid 2px transparent;
+		background-color: $semi-blue;
+		background-origin: border-box;
+		background-clip: content-box, border-box;
+		border: solid 3px $white-blue;
+		&:hover {
+			border: solid 3px $light-blue;
 		}
 	}
 	&-outline {
 		&-primary {
 			font-family: "Airbnb Cereal App Book", sans-serif;
-			color: white;
+			color: $white;;
 			transition: all 0.2s;
 			box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
 			border: solid 2px transparent;
             background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-                linear-gradient(101deg,  #ff8500, #ff0062, #cb06ed, #004fff);
+                linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
 			background-origin: border-box;
 			background-clip: content-box, border-box;
-			box-shadow: 2px 1000px 1px #00001e inset;
+			box-shadow: 2px 1000px 1px $dark-blue inset;
 			&:hover {
 				box-shadow: none;
 				border: solid 2px transparent;
@@ -59,7 +112,7 @@ input[type=number] {
 		}
 		&-error {
 			font-family: "Airbnb Cereal App Book", sans-serif;
-			color: white;
+			color: $white;;
 			transition: all 0.2s;
 			box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
 			border: solid 2px transparent;
@@ -67,7 +120,7 @@ input[type=number] {
                 linear-gradient(101deg, #ff0062, #ff8500);
 			background-origin: border-box;
 			background-clip: content-box, border-box;
-			box-shadow: 2px 1000px 1px #00001e inset;
+			box-shadow: 2px 1000px 1px $dark-blue inset;
 			&:hover {
 				box-shadow: none;
 				border: solid 2px transparent;
@@ -75,13 +128,20 @@ input[type=number] {
 		}
 	}
 }
+
 .disabled {
 	border: solid 2px transparent !important;
-	color:white !important;
+	color: $white !important;
 }
-
+.tag-for-scroll{
+	overflow-y: auto;
+}
 .table > tbody > tr:nth-child(2n+1) > td, .table > tbody > tr:nth-child(2n+1) > th {
-	background-color: #111129;
+	background-color: $medium-blue;
+
+	&:last-child {
+		background-color: rgba(17, 17, 41, 0.7)!important;
+	}
 }
 
 .table > tbody > tr:nth-child(2n) > td {
@@ -89,18 +149,258 @@ input[type=number] {
 }
 
 .table > tbody > tr > td {
-		height: 65px;
-    text-align: center;
-    vertical-align: middle;
+	height: 65px;
+	text-align: center;
+	vertical-align: middle;
+	@media (max-width: 1280px) {
+		height: 50px;
+		font-size: 10px;
+		line-height: 13px;
+	}
+}
+
+.table > tbody {
+	border-radius: 20px;
+
+	tr:last-child {
+		td:first-child {
+			border-bottom-left-radius: 20px;
+		}
+		td:last-child {
+			border-bottom-right-radius: 20px;
+		}
+	}
 }
 
 .table > thead > tr > th {
-		height: 65px;
-    text-align: center;
-    vertical-align: middle;
-		color: #9C9CBA;
-		font-family: Airbnb Cereal App;
-		font-style: normal;
-		font-weight: normal;
-		opacity: 0.4;
+	height: 75px;
+	text-align: center;
+	vertical-align: middle;
+	color: $grey;
+	font-family: Airbnb Cereal App Book;
+	font-style: normal;
+	font-weight: normal;
+	opacity: 0.4;
+	
+	@media (max-width: 1024px) {
+		height: 55px;
+		font-size: 10px;
+		line-height: 13px;
+	}
+}
+
+.tbody-detail > tr > td:nth-child(1) {
+	width: 40%;
+	text-align: start;
+	padding-left: 4rem;
+	@media (max-width: 1024px) {
+		padding-left: 2rem;
+	}
+}
+
+.tbody-detail {
+	tr:first-child {
+		td:first-child {
+			border-top-left-radius: 20px;
+		}
+		td:last-child {
+			border-top-right-radius: 20px;
+		}
+	}
+}
+
+.tbody-detail > tr > td:nth-child(2) {
+	width: 60%;
+	text-align: start;
+	padding-left: 120px;
+	@media (max-width: 1024px) {
+		padding-left: 20px;
+	}
+} 
+
+.title {
+	font-family: Airbnb Cereal App Bold;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30.798px;
+	line-height: 40px;
+
+	@media (max-width : 1024px) {
+        font-size: 16px;
+		line-height: 20px;
+    }
+}
+
+.text-large {
+	color: white;
+	font-family: Airbnb Cereal App Book;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 21px;
+}
+
+.text-small {
+	color: white;
+	font-family: Airbnb Cereal App Book;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+.text-medium {
+	color: white;
+	font-family: Airbnb Cereal App Book;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.text-opacity {
+	opacity: 0.7;
+}
+
+.text-opacity-4 {
+	opacity: 0.4;
+}
+
+.border-radius {
+	border-radius: 20px;
+}
+
+.font-08 {
+	font-size: 1rem!important;
+	@media (max-width : 1024px) {
+        font-size: 0.8rem!important;
+    }
+}
+
+.text-no-wrap {
+	white-space: nowrap;
+}
+
+@media (max-width : 1024px) {
+	.detailButton {
+		position: absolute;
+		right: 7px;
+		/* width: 46px; */
+		font-size: 10px;
+		padding: 4px 12px!important;
+		top: 15px;
+		border: 1px solid #9F9FFF;
+	}
+}
+
+@media (min-width : 1024px) {
+	.header35 {
+		margin-top: 35px;
+	}
+	.header20 {
+		margin-top: 20px;
+	}
+}
+
+.recharts-tooltip-wrapper {
+	.recharts-default-tooltip{
+		background-color: rgba(20,20,46,0.6)!important;
+		border: 1px solid rgba(204, 204, 204,0.2)!important;
+		border-radius: 10px;
+
+		.recharts-tooltip-item {
+			color: rgb(159, 159, 255)!important;
+			padding-bottom: 0px!important;
+			padding-top: 0px!important;
+		}
+	}
+}
+.react-responsive-modal-overlay {
+	background: rgba(0, 0, 0, 0.3)!important
+}
+
+@keyframes mobileMenuAnimationIn {
+	0% {
+		opacity: 0;
+		transform: translateY(200px);
+  		transition: all 800ms ease-in-out;
+	  }
+	100% {
+		opacity: 1;
+  		transform: translateY(0px);
+	}
+}
+
+@keyframes mobileMenuAnimationOut {
+	0% {
+		opacity: 1;
+		transform: translateY(0px);
+  		transition: all 800ms ease-in-out;
+	  }
+	100% {
+		opacity: 0;
+  		transform: translateY(200px);
+	}
+}
+
+.react-responsive-modal-modal {
+	max-width: unset!important;
+    position: absolute!important;
+	bottom: 0px;
+	left: 0px;
+    // padding: 1.2rem;
+    background: rgba(136, 136, 136, 0.15)!important;
+    background-clip: padding-box;
+	backdrop-filter: blur(4px);
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.45)!important;
+	width: 100%!important;
+    margin: 0px!important;
+	border-top-left-radius: 35px;
+	border-top-right-radius: 35px;
+
+	.react-responsive-modal-closeButton {
+		outline: unset!important;
+		svg {
+			background-color: rgba(255,255,255,0.1);
+			padding: 7px;
+			border-radius: 50%;
+			margin-top: 15px;
+			margin-right: 5px;
+			path {
+				fill: white;
+			}
+		}
+	}
+}
+
+.input-over-effect {
+	z-index: 1;
+	&:focus {
+		&::placeholder {
+			color: transparent;
+		}
+	}
+}
+
+.search-gradient{
+	background: linear-gradient(
+		90deg, #FF0062);
+	filter: blur(10px);
+	position: absolute;
+	width: 100%;
+	margin-left: 5px;
+	height: 50px;
+	z-index: 0;
+	top: 2px;
+	left: -5px;
+	border-radius: 25px;
+}
+
+.headerNoSearchBar {
+	margin-top: 11px!important;
+}
+
+.no-padding-vertical {
+	padding-left: 0px!important;
+	padding-right: 0px!important;
 }

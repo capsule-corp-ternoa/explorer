@@ -1,0 +1,279 @@
+@import "styles/color";
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    z-index: 1001;
+    margin: 30px auto;
+    margin-bottom: 10px;
+    border: solid 2px transparent;
+    @media (min-width: 1280px) { 
+        padding: 30px 80px;
+    }
+    padding: 25px 14px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+                linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px $black-blue inset;
+    border-radius: 10px;
+}
+
+.searchTitle {
+    width: 100%;
+    font-family: "Airbnb Cereal App Bold";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 29.9791px;
+    line-height: 39px;
+    @media (max-width : 1280px) {
+        font-size: 20px;
+        line-height: 26px;
+    }
+}
+
+.searchBarInfo {
+    border-color: #242448 !important;
+}
+
+.Logo {
+    width: 40px;
+    height: 40px;
+    @media (max-width: 1280px) {
+        width: 30px;
+        height: 30px;
+    }
+}
+.blockButton {
+    @media (max-width: 1280px) {
+        // border: solid 3.25px transparent;
+        // background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+        //             linear-gradient(101deg,#FF850059, #FF006259, #CB06ED59, #004FFF59 );
+        // background-origin: border-box;
+        // background-clip: content-box, border-box;
+        // box-shadow: 3.25px 1000px 1px $semi-blue inset;
+        font-size: 16px!important;
+        padding: 4px 12px!important;
+    }
+}
+
+.blockLogo {
+    width: 15px;
+    height: 15px;
+    opacity: 0.5;
+    margin-left: 18px;
+    margin-right: 4px;
+}
+
+.block {
+    background-color: $semi-blue;
+    border-radius: 30px;
+    @media (max-width: 1280px) {
+        border-radius: 12px;
+    }
+}
+
+.blockTable {
+    table-layout: fixed;
+}
+
+.chartBlock {
+    border-radius: 45px;
+    border: solid 2px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(134deg, rgba(255, 255, 255, 0.19), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px $semi-blue inset;
+    padding: 88px 112px;
+    height: 520px;
+
+    @media (max-width: 1280px) {
+        padding: 40px 0px; 
+        height: 360px;
+        border-width: 1px;
+    }
+
+    .mMinus50 {
+        margin-left: -50px;
+        @media (max-width: 1280px) {
+            padding:0px 40px;
+            margin-left: 0px;
+        }
+    }
+
+    .activeChartRect {
+        width: 16px;
+        height: 16px;
+        background-color: #9F9FFF;
+        border-radius: 4px;
+        @media (max-width: 1280px) {
+            width: 11px;
+            height: 11px;
+            border-radius: 2px;
+        }
+    }
+
+    .inactiveChartRect {
+        width: 16px;
+        height: 16px;
+        background-color: #21244A;
+        border-radius: 4px;
+        margin-left: 30px;
+        @media (max-width: 1280px) {
+            margin-left: 15px;
+            width: 11px;
+            height: 11px;
+            border-radius: 2px;
+        }
+    }
+
+    .chartLabel {
+        color: white;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 700;
+        font-family: "Airbnb Cereal App Bold";
+        margin-left: 8px;
+        white-space: nowrap;
+        @media (max-width: 1280px) {
+            margin-left: 4px;
+            font-size: 10px;
+        }
+    }
+
+    .chartInactiveLabel {
+        color: white;
+        opacity: 0.3;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 700;
+        font-family: "Airbnb Cereal App Bold";
+        margin-left: 8px;
+        white-space: nowrap;
+        @media (max-width: 1280px) {
+            margin-left: 4px;
+            font-size: 10px;
+        }
+    }
+
+    .chartView {
+        height: 255px;
+        margin-top: 60px;
+        @media (max-width: 1280px) {
+            margin-top: 30px;
+        }
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+    .searchBtn {
+        width: 15%;
+        margin-left: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .searchBtn {
+        display: none!important;
+    }
+
+    .gradientBack{
+        background: linear-gradient(
+            90deg, #004FFF 0%, #CB06ED 33.3%, #FF0062 68.16%, #FF8500 99.9%);
+        filter: blur(13px);
+        position: absolute;
+        width: calc(100% - 10px);
+        margin-left: 5px;
+        height: 278px;
+        z-index: 0;
+        top: 35px;
+        border-radius: 10px;
+    }
+}
+
+
+.logoPercent {
+    font-size: small;
+    color: green;
+
+    &.minus {
+        color: red;
+    }
+}
+
+
+@media (max-width: 1280px) {
+    
+    
+
+    .validatorColorMobile {
+        color: #9F9FFF;
+    }
+
+    .valiIcon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .logoSummary {
+        font-size: 14px!important;
+    }
+
+    .whiteText {
+        color: $white !important;
+    }
+
+    .whiteBlueText {
+        color: $white-blue !important;
+    }
+    
+    .blockTitle {
+        line-height: 16px!important;
+    }    
+}
+
+.showAllButton {
+    font-family: Airbnb Cereal App Bold;
+    font-weight: bold; 
+    color: white;
+    font-size: 12px;
+    padding: 12px 50px!important;
+    background-color: black;
+}
+
+ .chartCheckbox {
+    -webkit-appearance: none;
+	// background-color: $white-blue;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 4px;
+	display: inline-block;
+	position: relative;
+    transform: scale(0.9);
+    @media (max-width: 1280px) {
+        transform: scale(0.7);
+    }
+ }
+
+ .chartCheckbox:active, .chartCheckbox:checked:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+
+.chartCheckbox:checked {
+	// background-color: $white-blue;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+	color: white;
+}
+.chartCheckbox:checked:after {
+	content: '\2714';
+	font-size: 14px;
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: white;
+}
