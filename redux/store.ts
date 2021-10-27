@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from "redux";
-import { reducer as userWalletReducer } from "redux/walletUser/reducer";
+import { reducer as explorerReducer } from "redux/explorer/reducer";
 
 export const store = createStore(
     combineReducers({
-        user: userWalletReducer
+        user: explorerReducer
     })
 )
 
