@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from "next/router";
 import CAPSDark from 'components/assets/CAPSDark';
 import Pagination from 'components/base/Pagination';
@@ -7,14 +8,27 @@ import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { useMediaQuery } from 'react-responsive';
 import dummyData from 'components/data/accounts.json'
+import { allAccounts } from 'apis/account'
+import { API_PAGE_SIZE } from 'helpers/constants';
+import Table from 'components/base/Table';
+import { columns, render } from './table';
 
-export interface AccountIndexProps {
-}
+export interface AccountIndexProps { }
 
 const AccountIndex: React.FC<AccountIndexProps> = () => {
     const [isLaptop, setIsLaptop] = useState(false);
+    const [totalCount, setTotalCount] = useState(0)
+    const [data, setData] = useState(null)
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
-    const router = useRouter();
+    const router = useRouter()
+    const page = router.query.page ?? 0
+
+    useEffect(() => {
+      allAccounts(Number(page) * API_PAGE_SIZE).then(res => {
+        setTotalCount(res.totalCount)
+        setData(res.data)
+      })
+    }, [])
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -22,10 +36,26 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
         }
     }, [mediaQuery])
 
-    function goAccountDetail(key:any) {
-        router.push('/account/' + key)
-    }
-
+    return (
+      <>
+        <Head>
+          <title>Ternoa scan</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <meta name="description" content="Ternoa scan, by Ternoa." />
+        </Head>
+        <div className={"mainContainer"}>
+          <Header/>
+          <div className="mainBody">
+            <h1 className="subTitle subTitleMarginTop">All Accounts</h1>
+            <div className="mainBlock pb-4 mt-2">
+              <div className = "tag-for-scroll">
+                <Table data={data} columns={columns} renderCell={render} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
     return (
         <>
             <Head>
@@ -59,7 +89,11 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                                     <td className="text-large text-opacity">{item.transactions}</td>
                                     <td className="text-large text-opacity">{item.amount} CAPS</td>
                                     <td className="text-right pe-4p0">
-                                        <button onClick={() => goAccountDetail(item.address)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                      <Link href={`/account/${key}`}>
+                                        <a>
+                                          <button className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                        </a>
+                                      </Link>
                                     </td>
                                 </tr>
                                 )})}
@@ -86,7 +120,11 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goAccountDetail(item.address)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                  <Link href={`/account/${item.address}`}>
+                                    <a>
+                                      <button className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    </a>
+                                  </Link>
                                 </div>
                             </div>
                         )})

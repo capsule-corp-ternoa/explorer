@@ -6,10 +6,16 @@ type Row = {
   [dataKey in string]: any
 }
 
+type Column = {
+  text: string
+  dataKey: string
+  className?: string
+  mobileClassName?: string
+}
+
 interface TableProps {
-  columns: string[]
-  data: Row[]
-  dataKeys: string[]
+  columns: Column[]
+  data: Row[] | null
   renderCell: (data: Row, dataKey: string) => React.ReactNode
   footer?: React.ReactNode
   className?: string
@@ -18,7 +24,6 @@ interface TableProps {
 const Table: React.FC<TableProps> = ({
   columns,
   data,
-  dataKeys,
   renderCell,
   className
 }) => (
@@ -26,25 +31,32 @@ const Table: React.FC<TableProps> = ({
     <table className={clsx('table table-borderless', style.Table__desktop)}>
       <thead>
         <tr>
-          {columns.map((column, key) => (
+          {columns.map((col, key) => (
             <th
-              className={clsx({'ps-4': key === 0, 'pe-4': key === columns.length - 1 })}
+              className={clsx(
+                col.className,
+                {'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
+              )}
               key={key}
             >
-              {column}
+              {col.text}
             </th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {data.map((record, rowKey) => (
+        {data && data.map((record, rowKey) => (
           <tr key={rowKey}>
-            {dataKeys.map((dataKey, key) => (
+            {columns.map((col, key) => (
               <td
                 key={key}
-                className={clsx('text-large text-opacity', { 'ps-4': key === 0, 'pe-4': key === dataKeys.length - 1 })}
+                className={clsx(
+                  'text-large text-opacity',
+                  col.className,
+                  { 'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
+                )}
               >
-                {renderCell(record, dataKey)}
+                {renderCell(record, col.dataKey)}
               </td>
             ))}
           </tr>
@@ -52,13 +64,17 @@ const Table: React.FC<TableProps> = ({
       </tbody>
     </table>
     <div className={style.Table__mobile}>
-      {data.map((record, rowKey) => (
-        <div key={rowKey} className={clsx('mobileView', { mobileDarkView: rowKey % 2 === 1 })}>
+      {data && data.map((record, rowKey) => (
+        <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
           <div className='row'>
-            {dataKeys.map((dataKey, key) => (
-              <div key={key} className='col col-auto flex flex-items-center'>
-                <div className='mobileRowLabel me-2'>{columns[key]}</div>
-                <div className='mobileValue'>{renderCell(record, dataKey)}</div>
+            {columns.map(({ dataKey, mobileClassName }, key) => (
+              <div key={key} className={clsx('col col-auto py-2', mobileClassName)}>
+                <div className='mobileRowLabel mb-1'>
+                  {columns[key].text}
+                </div>
+                <div className='mobileValue'>
+                  {renderCell(record, dataKey)}
+                </div>
               </div>
             ))}
           </div>

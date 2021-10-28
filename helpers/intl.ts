@@ -8,7 +8,11 @@ export default {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       },
-      noDecimal: {
+      decimal: {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      },
+      noDecimal: { // todo: priceDecimal
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 0,

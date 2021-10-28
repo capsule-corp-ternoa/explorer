@@ -24,7 +24,7 @@ import nftData from 'components/data/nft.json'
 import transData from 'components/data/trans.json'
 import validatorData from 'components/data/validators.json'
 import statData from 'components/data/statast.json'
-import { renderLatestBlockCell } from 'components/base/Table/renders';
+import { renderLatestBlockCell } from './table';
 
 export interface HomeScanProps {
 }

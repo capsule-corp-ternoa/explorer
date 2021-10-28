@@ -17,3 +17,7 @@ export const renderLatestBlockCell = (record: any, dataKey: string) => {
     )
   }
 }
+
+export default {
+  renderLatestBlockCell
+}

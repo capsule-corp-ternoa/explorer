@@ -95,23 +95,20 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </div>
                         </DropdownToggle>
                         <DropdownMenu className={style.dropdownMenu} right>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/validator")}
-                            >
-                                Validator
+                            <p className={style.dropdownItem}>
+                                <Link href="/validator">
+                                    <a>Validator</a>
+                                </Link>
                             </p>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/extrinsic")}
-                            >
-                                Nominator
+                            <p className={style.dropdownItem}>
+                                <Link href="/extrinsic">
+                                    <a>Nominator</a>
+                                </Link>
                             </p>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/account")}
-                            >
-                                All Account
+                            <p className={style.dropdownItem}>
+                                <Link href="/account">
+                                    <a>All Account</a>
+                                </Link>
                             </p>
                         </DropdownMenu>
                     </Dropdown>
