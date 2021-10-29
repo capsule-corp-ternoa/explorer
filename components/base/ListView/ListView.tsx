@@ -21,13 +21,13 @@ interface TableProps {
   className?: string
 }
 
-const Table: React.FC<TableProps> = ({
+const ListView: React.FC<TableProps> = ({
   columns,
   data,
   renderCell,
   className
 }) => (
-  <div className={clsx(style.Table, className)}>
+  <div className={clsx(style.ListView, className)}>
     <table className={clsx('table table-borderless only-desktop')}>
       <thead>
         <tr>
@@ -84,4 +84,4 @@ const Table: React.FC<TableProps> = ({
   </div>
 )
 
-export default Table
+export default ListView
