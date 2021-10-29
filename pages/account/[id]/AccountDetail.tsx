@@ -14,7 +14,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
 
   useEffect(() => {
     getAccount(id).then(setData)
-  }, [])
+  }, [id])
 
   return (
     <Layout back='/account' title={id}>

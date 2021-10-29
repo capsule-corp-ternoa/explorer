@@ -15,7 +15,7 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
   const { page } = usePagination()
 
   useEffect(() => {
-    getAccountList(Number(page) * API_PAGE_SIZE).then(data => {
+    getAccountList(page * API_PAGE_SIZE).then(data => {
       setTotalCount(data.totalCount)
       setData(data.data)
     })
