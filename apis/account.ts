@@ -23,14 +23,13 @@ const queryAccount = (id: string) => gql`
 {
   accountEntities(
     filter: {
-      and: ${id}
+      id: { equalTo: "${id}" }
     }
   ) {
-    totalCount
     nodes {
       id
-      capsAmount # FREE BALANCE
-      capsAmountTotal # TOTAL
+      capsAmount
+      capsAmountTotal
     }
   }
 }
@@ -40,19 +39,31 @@ const queryTransactionCounts = (signers: string[]) => gql`
 {
   extrinsicEntities(
     filter: {
-      and: [
-        {
-          signer: {
-            in: [
-              ${signers.map(signer => `"${signer}"`).join('')}
-            ]
-          }
-        }
-      ]
+      signer: {
+        in: [
+          ${signers.map(signer => `"${signer}"`).join('')}
+        ]
+      }
     }
   ) {
     nodes {
       signer
+    }
+  }
+}
+`
+
+const queryAccountLatestTransaction = (signer: string) => gql`
+{
+  extrinsicEntities(
+    first: 1
+    orderBy: NONCE_DESC
+    filter: {
+      signer: { equalTo: "${signer}" }
+    }
+  ) {
+    nodes {
+      nonce
     }
   }
 }
@@ -80,7 +91,6 @@ export const getAccountList = async (offset: number, pageSize: number = API_PAGE
   return {
     totalCount: accounts.accountEntities.totalCount,
     data: accounts.accountEntities.nodes.map((account: any) => ({
-      ...account,
       address: account.id,
       amount: account.capsAmount,
       transactions: count[account.id]
@@ -89,17 +99,32 @@ export const getAccountList = async (offset: number, pageSize: number = API_PAGE
 }
 
 export const getAccount = async (id: string) => {
-  const account = await request(
-    queryAccount(id)
-  )
+  const [account, transaction] = await Promise.all([
+    request(
+      queryAccount(id)
+    ),
+    request(
+      queryAccountLatestTransaction(id)
+    )
+  ])
 
-  if (account.accountEntities.totalCount === 0) {
+
+  if (account.accountEntities.nodes.length === 0) {
     return null
   } else {
     const acc = account.accountEntities.nodes[0]
-    return {
-      ...acc,
-      address: account.id
+    const data: any = {
+      address: acc.id,
+      free_balance: acc.capsAmount,
+      total_balance: acc.capsAmountTotal,
+      active: acc.capsAmountTotal > 0
     }
+
+    if (transaction.extrinsicEntities.nodes.length) {
+      const tx = transaction.extrinsicEntities.nodes[0]
+      data.nonce = tx.nonce + 1
+    }
+
+    return data
   }
 }

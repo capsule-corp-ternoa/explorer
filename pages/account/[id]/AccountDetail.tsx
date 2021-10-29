@@ -13,7 +13,9 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   const id = router.query.id as string
 
   useEffect(() => {
-    getAccount(id).then(setData)
+    if (id) {
+      getAccount(id).then(setData)
+    }
   }, [id])
 
   return (

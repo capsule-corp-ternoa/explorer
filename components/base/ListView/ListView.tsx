@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import style from './Table.module.scss'
+import style from './ListView.module.scss'
 
 type Row = {
   [dataKey in string]: any
