@@ -2,8 +2,8 @@ import { FormattedNumber } from 'react-intl';
 import Check from 'components/assets/Check';
 
 export const fields = [
-  { text: 'Total Balance', dataKey: 'total_balance' },
-  { text: 'Free Balance', dataKey: 'free_balance' },
+  { text: 'Total Balance', dataKey: 'total_balance', mobileClassName: 'col-12 col-sm-6' },
+  { text: 'Free Balance', dataKey: 'free_balance', mobileClassName: 'col-12 col-sm-6' },
   { text: 'Nonce', dataKey: 'nonce' },
   { text: 'Active', dataKey: 'active' },
   { text: 'Past Roles', dataKey: 'past_roles' },

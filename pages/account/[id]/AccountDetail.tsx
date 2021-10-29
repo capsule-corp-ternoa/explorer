@@ -4,6 +4,7 @@ import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import { fields, render } from './table'
 import { getAccount } from 'apis/account';
+import { ellipsifyMiddle } from 'helpers/lib';
 
 export interface AccountDetailProps {}
 
@@ -18,8 +19,12 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     }
   }, [id])
 
+  if (!id) {
+    return null
+  }
+
   return (
-    <Layout back='/account' title={id}>
+    <Layout back='/account' title={ellipsifyMiddle(id)}>
       <DetailView fields={fields} data={data} renderCell={render}/>
     </Layout>
   )
