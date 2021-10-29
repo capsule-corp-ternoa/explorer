@@ -6,12 +6,20 @@ import Footer from 'components/base/Footer';
 import Back from 'components/assets/Back';
 
 interface LayoutProps {
+  searchBar?: boolean
   children?: React.ReactNode
+  summary?: React.ReactNode
   back?: string
   title?: string
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, back, title }) => (
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  searchBar,
+  back,
+  summary,
+  title
+}) => (
   <>
     <Head>
       <title>Ternoa Scan</title>
@@ -19,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children, back, title }) => (
       <meta name="description" content="Ternoa scan, by Ternoa." />
     </Head>
     <div className="mainContainer">
-      <Header/>
+      <Header searchBar={searchBar} />
       <div className="mainBody">
         {back && (
           <Link href={back}>
@@ -30,9 +38,12 @@ const Layout: React.FC<LayoutProps> = ({ children, back, title }) => (
             </a>
           </Link>
         )}
-        <h1 className="subTitle">{title}</h1>
+        {summary}
+        {title && (
+          <h1 className="subTitle">{title}</h1>
+        )}
         <div className="mainBlock pb-4 mt-2">
-          <div className = "tag-for-scroll">
+          <div className="tag-for-scroll">
             {children}
           </div>
         </div>
@@ -41,5 +52,9 @@ const Layout: React.FC<LayoutProps> = ({ children, back, title }) => (
     </div>
   </>
 )
+
+Layout.defaultProps = {
+  searchBar: true
+}
 
 export default Layout

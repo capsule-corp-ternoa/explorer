@@ -13,7 +13,6 @@ import MarketLogo from 'components/assets/MarketLogo';
 import TransactionLogo from 'components/assets/TransactionLogo';
 import BlockLogo from 'components/assets/BlockLogo';
 import SearchBar from 'components/base/SearchBar';
-import Table from 'components/base/Table';
 import style from './HomeScan.module.scss';
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
@@ -25,6 +24,8 @@ import transData from 'components/data/trans.json'
 import validatorData from 'components/data/validators.json'
 import statData from 'components/data/statast.json'
 import { renderLatestBlockCell } from './table';
+import Layout from 'components/base/Layout';
+import Summary from './Summary';
 
 export interface HomeScanProps {
 }
@@ -58,6 +59,23 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             .then(res => setData(res['coin-capsule']))
             .catch(() => {})
     }, [])
+
+    // return (
+    //   <Layout
+    //     searchBar={false}
+    //     // summary={
+    //     //   <Summary
+    //     //     capsPrice={data && data.usd}
+    //     //     marketCap={data && data.usd_market_cap}
+    //     //     change24h={data && data.usd_24h_change}
+    //     //     transactions={null}
+    //     //     finalizedBlock={null}
+    //     //   />
+    //     // }
+    //   >
+    //     <div>sdf</div>
+    //   </Layout>
+    // )
 
     return (
         <>
