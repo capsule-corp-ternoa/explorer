@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Pagination from 'components/base/Pagination';
-import { allAccounts } from 'apis/account'
-import { API_PAGE_SIZE } from 'helpers/constants';
 import ListView from 'components/base/ListView';
-import { columns, render } from './table';
-import usePagination from 'hooks/usePagination';
 import Layout from 'components/base/Layout';
+import usePagination from 'hooks/usePagination';
+import { getAccountList } from 'apis/account'
+import { API_PAGE_SIZE } from 'helpers/constants';
+import { columns, render } from './table';
 
 export interface AccountIndexProps { }
 
@@ -15,9 +15,9 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
   const { page } = usePagination()
 
   useEffect(() => {
-    allAccounts(Number(page) * API_PAGE_SIZE).then(res => {
-      setTotalCount(res.totalCount)
-      setData(res.data)
+    getAccountList(Number(page) * API_PAGE_SIZE).then(data => {
+      setTotalCount(data.totalCount)
+      setData(data.data)
     })
   }, [page])
 

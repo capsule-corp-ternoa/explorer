@@ -2,12 +2,29 @@ import { gql } from "graphql-request"
 import request from './api'
 import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryAccounts = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryAccountList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
 {
   accountEntities(
     first: ${pageSize}
     offset: ${offset}
     orderBy: CAPS_AMOUNT_DESC
+  ) {
+    totalCount
+    nodes {
+      id
+      capsAmount # FREE BALANCE
+      capsAmountTotal # TOTAL
+    }
+  }
+}
+`
+
+const queryAccount = (id: string) => gql`
+{
+  accountEntities(
+    filter: {
+      and: ${id}
+    }
   ) {
     totalCount
     nodes {
@@ -41,9 +58,9 @@ const queryTransactionCounts = (signers: string[]) => gql`
 }
 `
 
-export const allAccounts = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getAccountList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
   const accounts = await request(
-    queryAccounts(offset, pageSize)
+    queryAccountList(offset, pageSize)
   )
 
   const transactions = await request(
@@ -68,5 +85,21 @@ export const allAccounts = async (offset: number, pageSize: number = API_PAGE_SI
       amount: account.capsAmount,
       transactions: count[account.id]
     }))
+  }
+}
+
+export const getAccount = async (id: string) => {
+  const account = await request(
+    queryAccount(id)
+  )
+
+  if (account.accountEntities.totalCount === 0) {
+    return null
+  } else {
+    const acc = account.accountEntities.nodes[0]
+    return {
+      ...acc,
+      address: account.id
+    }
   }
 }

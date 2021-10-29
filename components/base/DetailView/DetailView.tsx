@@ -9,7 +9,7 @@ type DetailViewField = {
 
 interface DetailViewProps {
   fields: DetailViewField[]
-  data: { [dataKey in string]: any }
+  data: { [dataKey in string]: any } | null
   renderCell: (data: any, dataKey: string) => React.ReactNode
 }
 
@@ -27,7 +27,7 @@ const DetailView: React.FC<DetailViewProps> = ({
               {text}
             </td>
             <td className="text-large text-opacity">
-              {renderCell(data, dataKey)}
+              {data && renderCell(data, dataKey)}
             </td>
           </tr>
         ))}
@@ -41,7 +41,7 @@ const DetailView: React.FC<DetailViewProps> = ({
               {text}
             </div>
             <div className="mobileValue">
-              {renderCell(data, dataKey)}
+              {data && renderCell(data, dataKey)}
             </div>
           </div>
         ))}
