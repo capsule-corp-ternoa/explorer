@@ -22,7 +22,7 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
   }, [page])
 
   return (
-    <Layout>
+    <Layout title='All Accounts'>
       <Table data={data} columns={columns} renderCell={render} />
       <Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />
     </Layout>

@@ -3,16 +3,4 @@
 .Table {
   background-color: $semi-blue;
   border-radius: 1.5em;
-
-  &__desktop {
-    @media (max-width: 1280px) { 
-      display: none;
-    }
-  }
-
-  &__mobile {
-    @media (min-width: 1280px) { 
-      display: none;
-    }
-  }
 }

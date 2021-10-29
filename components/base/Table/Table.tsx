@@ -28,7 +28,7 @@ const Table: React.FC<TableProps> = ({
   className
 }) => (
   <div className={clsx(style.Table, className)}>
-    <table className={clsx('table table-borderless', style.Table__desktop)}>
+    <table className={clsx('table table-borderless only-desktop')}>
       <thead>
         <tr>
           {columns.map((col, key) => (
@@ -63,12 +63,12 @@ const Table: React.FC<TableProps> = ({
         ))}
       </tbody>
     </table>
-    <div className={style.Table__mobile}>
+    <div className='only-mobile'>
       {data && data.map((record, rowKey) => (
         <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
           <div className='row'>
             {columns.map(({ dataKey, mobileClassName }, key) => (
-              <div key={key} className={clsx('col col-auto py-2', mobileClassName)}>
+              <div key={key} className={clsx('col col-auto py-2', mobileClassName ?? 'col-6')}>
                 <div className='mobileRowLabel mb-1'>
                   {columns[key].text}
                 </div>
