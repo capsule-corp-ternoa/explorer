@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
-import { formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
+import { formatSec } from 'helpers/lib';
 
 export const blockFields = [
   { text: 'Timestamp', dataKey: 'timestamp' },
