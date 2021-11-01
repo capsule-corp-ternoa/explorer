@@ -1,6 +1,7 @@
 import { FormattedNumber } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import { formatSec } from 'helpers/lib';
+import Check from 'components/assets/Check';
 
 export const blockFields = [
   { text: 'Timestamp', dataKey: 'timestamp' },
@@ -14,6 +15,14 @@ export const blockFields = [
   { text: 'Block Time', dataKey: 'age' },
   { text: 'Session ID', dataKey: 'session_id' },
   { text: 'Block Author', dataKey: 'block_author', mobileClassName: 'col-12' },
+]
+
+export const transactionColumns = [
+  { text: 'Transaction ID', dataKey: 'transaction_id' },
+  { text: 'Module', dataKey: 'module' },
+  { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
+  { text: 'Call', dataKey: 'call' },
+  { text: 'Success', dataKey: 'success' },
 ]
 
 export const blockRender = (data: any, dataKey: string) => {
@@ -37,7 +46,27 @@ export const blockRender = (data: any, dataKey: string) => {
   }
 }
 
+export const transactionRender = (record: any, dataKey: string) => {
+  switch (dataKey) {
+    case 'from':
+      return (
+        <>
+          <CAPSDark className="webIcon me-2" />
+          <span className="textToken">{record[dataKey]}</span>
+        </>
+      )
+
+    case 'success':
+      return record[dataKey] ? <Check className="webCheckIcon" /> : null
+
+    default:
+      return record[dataKey]
+  }
+}
+
 export default {
   blockFields,
-  blockRender
+  blockRender,
+  transactionColumns,
+  transactionRender
 }
