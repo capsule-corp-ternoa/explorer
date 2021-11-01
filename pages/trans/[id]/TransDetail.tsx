@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
-import ListView from 'components/base/ListView';
-import { fields, render } from './table'
+import { fields, render } from './table';
 import { getTransfer } from 'apis/transfer';
 import { ellipsifyMiddle } from 'helpers/lib';
 
@@ -16,7 +15,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
 
   useEffect(() => {
     if (id) {
-        getTransfer(id).then(setData)
+      getTransfer(id).then(setData)
     }
   }, [id])
 
