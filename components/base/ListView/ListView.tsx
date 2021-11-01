@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import style from './ListView.module.scss'
 
 type Row = {
   [dataKey in string]: any
@@ -27,8 +26,8 @@ const ListView: React.FC<TableProps> = ({
   renderCell,
   className
 }) => (
-  <div className={clsx(style.ListView, className)}>
-    <table className={clsx('table table-borderless only-desktop')}>
+  <>
+    <table className={clsx('table table-borderless data-table only-desktop', className)}>
       <thead>
         <tr>
           {columns.map((col, key) => (
@@ -63,7 +62,7 @@ const ListView: React.FC<TableProps> = ({
         ))}
       </tbody>
     </table>
-    <div className='only-mobile'>
+    <div className={clsx('only-mobile data-table', className)}>
       {data && data.map((record, rowKey) => (
         <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
           <div className='row'>
@@ -81,7 +80,7 @@ const ListView: React.FC<TableProps> = ({
         </div>
       ))}
     </div>
-  </div>
+  </>
 )
 
 export default ListView

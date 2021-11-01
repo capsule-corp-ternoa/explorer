@@ -8,17 +8,13 @@ import Back from 'components/assets/Back';
 interface LayoutProps {
   searchBar?: boolean
   children?: React.ReactNode
-  summary?: React.ReactNode
   back?: string
-  title?: string
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   searchBar,
   back,
-  summary,
-  title
 }) => (
   <>
     <Head>
@@ -38,15 +34,7 @@ const Layout: React.FC<LayoutProps> = ({
             </a>
           </Link>
         )}
-        {summary}
-        {title && (
-          <h1 className="subTitle">{title}</h1>
-        )}
-        <div className="mainBlock pb-4 mt-2">
-          <div className="tag-for-scroll">
-            {children}
-          </div>
-        </div>
+        {children}
       </div>
       <Footer/>
     </div>

@@ -24,7 +24,8 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   }
 
   return (
-    <Layout back='/account' title={ellipsifyMiddle(id)}>
+    <Layout back='/account'>
+      <h1 className="subTitle">{ellipsifyMiddle(id)}</h1>
       <DetailView fields={fields} data={data} renderCell={render}/>
     </Layout>
   )

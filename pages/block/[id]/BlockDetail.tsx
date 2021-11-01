@@ -26,7 +26,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     <Layout back='/block'>
       <h1 className="subTitle">Block #{id}</h1>
       <DetailView fields={blockFields} data={data} renderCell={blockRender}/>
-      <h1 className="subTitle">Transactions</h1>
+      <h1 className="subTitle mt-4">Transactions</h1>
     </Layout>
   )
 }

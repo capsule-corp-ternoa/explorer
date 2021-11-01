@@ -22,7 +22,8 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
   }, [page])
 
   return (
-    <Layout title='Blocks'>
+    <Layout>
+      <h1 className="subTitle">Blocks</h1>
       <ListView data={data} columns={columns} renderCell={render} />
       <Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />
     </Layout>

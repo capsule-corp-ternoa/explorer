@@ -22,7 +22,8 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
   }, [page])
 
   return (
-    <Layout title='All Accounts'>
+    <Layout>
+      <h1 className="subTitle">All Accounts</h1>
       <ListView data={data} columns={columns} renderCell={render} />
       <Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />
     </Layout>

@@ -19,7 +19,7 @@ const DetailView: React.FC<DetailViewProps> = ({
   renderCell
 }) => (
   <>
-    <table className="only-desktop table table-borderless mb-0">
+    <table className="only-desktop table table-borderless mb-0 data-table">
       <tbody className="tbody-detail">
         {fields.map(({ text, dataKey }) => (
           <tr key={dataKey}>
@@ -33,7 +33,7 @@ const DetailView: React.FC<DetailViewProps> = ({
         ))}
       </tbody>
     </table>
-    <div className="only-mobile mobileView">
+    <div className="only-mobile mobileView data-table">
       <div className='row'>
         {fields && fields.map(({ text, dataKey, mobileClassName }) => (
           <div className={clsx('col col-auto py-2', mobileClassName ?? 'col-6')} key={dataKey}>
