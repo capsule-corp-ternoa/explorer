@@ -1,7 +1,6 @@
 import { gql } from "graphql-request"
 import request from './api'
 import { API_PAGE_SIZE } from 'helpers/constants'
-import { BlockIndexProps } from "pages/block/BlockIndex"
 
 const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
 {
@@ -26,6 +25,35 @@ const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
   }
 }
 `
+
+// session id and block author is missing
+const queryBlock = (id: string) => gql`
+{
+  blockEntities(
+    filter: {
+      id: { equalTo: "${id}" }
+    }
+  ) {
+    totalCount
+    nodes {
+      id
+      timestamp
+      hash
+      parentHash
+      stateRoot
+      extrinsicsRoot
+      runtimeVersion
+      extrinsicEntitiesByBlockId {
+        totalCount
+        nodes {
+          nbEvents
+        }
+      }
+    }
+  }
+}
+`
+
 export const getBlockList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
   const blocks = await request(
     queryBlockList(offset, pageSize)
@@ -42,5 +70,30 @@ export const getBlockList = async (offset: number, pageSize: number = API_PAGE_S
       signed_extrinsics: block.extrinsicEntitiesByBlockId.totalCount,
       module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0)
     }))
+  }
+}
+
+export const getBlock = async (id: string) => {
+  const blockResponse = await request(
+    queryBlock(id)
+  )
+
+  if (blockResponse.blockEntities.nodes.length === 0) {
+    return null
+  } else {
+    const block = blockResponse.blockEntities.nodes[0]
+    const now = Date.now()
+  
+    return {
+      timestamp: block.timestamp,
+      block_hash: block.hash,
+      parent_hash: block.parentHash,
+      state_root: block.stateRoot,
+      extrinsics_root: block.extrinsicsRoot,
+      transactions: block.extrinsicEntitiesByBlockId.totalCount,
+      module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
+      runtime_version: block.runtimeVersion,
+      age: (now - new Date(block.timestamp).getTime()) / 1000
+    }
   }
 }
