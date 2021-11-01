@@ -46,6 +46,7 @@ const queryBlock = (id: string) => gql`
       extrinsicEntitiesByBlockId {
         totalCount
         nodes {
+          id
           nbEvents
           signer
           module
@@ -99,7 +100,8 @@ export const getBlock = async (id: string) => {
       runtime_version: block.runtimeVersion,
       age: (now - new Date(block.timestamp).getTime()) / 1000,
       transaction_detail: block.extrinsicEntitiesByBlockId.nodes.map(tx => ({
-        id: 'stacking', // ???????
+        id: tx.id,
+        block_id: id,
         from: tx.signer,
         module: tx.module,
         call: tx.call,

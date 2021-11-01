@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import CAPSDark from 'components/assets/CAPSDark';
-import { FormattedNumber } from 'react-intl';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const columns = [

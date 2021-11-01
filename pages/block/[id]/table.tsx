@@ -1,4 +1,5 @@
-import { FormattedNumber } from 'react-intl';
+import Link from 'next/link';
+import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import { formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
@@ -18,11 +19,12 @@ export const blockFields = [
 ]
 
 export const transactionColumns = [
-  { text: 'Transaction ID', dataKey: 'transaction_id' },
+  { text: 'Transaction ID', dataKey: 'id' },
   { text: 'Module', dataKey: 'module' },
   { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
   { text: 'Call', dataKey: 'call' },
   { text: 'Success', dataKey: 'success' },
+  { text: '', dataKey: 'detail' },
 ]
 
 export const blockRender = (data: any, dataKey: string) => {
@@ -48,6 +50,11 @@ export const blockRender = (data: any, dataKey: string) => {
 
 export const transactionRender = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'timestamp':
+      return (
+        <FormattedDate value={record[dataKey]} />
+      )
+
     case 'from':
       return (
         <>
@@ -58,6 +65,17 @@ export const transactionRender = (record: any, dataKey: string) => {
 
     case 'success':
       return record[dataKey] ? <Check className="webCheckIcon" /> : null
+
+    case 'detail':
+      return (
+        <Link href={`/block/${record.block_id}/${record.id}`}>
+          <a>
+            <button className="btn btn-secondary rounded-pill px-4 py-2">
+              Details
+            </button>
+          </a>
+        </Link>
+      )
 
     default:
       return record[dataKey]
