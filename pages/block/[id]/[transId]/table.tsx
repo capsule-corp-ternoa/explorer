@@ -35,7 +35,6 @@ export const transactionRender = (record: any, dataKey: string) => {
       )
 
     case 'hash':
-    case 'signer':
     case 'signature':
       return (
         <>
@@ -44,6 +43,13 @@ export const transactionRender = (record: any, dataKey: string) => {
             {ellipsifyMiddle(record[dataKey])}
           </span>
         </>
+      )
+
+    case 'signer':
+      return (
+        <span className="textToken" title={record[dataKey]}>
+          {ellipsifyMiddle(record[dataKey])}
+        </span>
       )
 
     case 'success':
