@@ -25,7 +25,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <>
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken">
+          <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
         </>

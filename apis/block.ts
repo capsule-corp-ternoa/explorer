@@ -34,7 +34,6 @@ const queryBlock = (id: string) => gql`
       id: { equalTo: "${id}" }
     }
   ) {
-    totalCount
     nodes {
       id
       timestamp
