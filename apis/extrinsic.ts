@@ -1,5 +1,26 @@
 import { gql } from "graphql-request"
 import request from './api'
+import { API_PAGE_SIZE } from 'helpers/constants'
+
+const queryExtrinsicList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+{
+  extrinsicEntities(
+    first: ${pageSize}
+    offset: ${offset}
+    orderBy: TIMESTAMP_DESC
+  ) {
+    totalCount
+    nodes {
+      id
+      blockId
+      module
+      call
+      isSigned
+      success
+    }
+  }
+}
+`
 
 const queryExtrinsic = (id: string) => gql`
 {
@@ -10,6 +31,7 @@ const queryExtrinsic = (id: string) => gql`
   ) {
     nodes {
       id
+      blockId
       timestamp
       extrinsicIndex
       hash
@@ -27,6 +49,24 @@ const queryExtrinsic = (id: string) => gql`
 }
 `
 
+export const getExtrinsicList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+  const response = await request(
+    queryExtrinsicList(offset, pageSize)
+  )
+
+  return {
+    totalCount: response.extrinsicEntities.totalCount,
+    data: response.extrinsicEntities.nodes.map((item: any) => ({
+      id: item.id,
+      block_id: item.blockId,
+      module: item.module,
+      call: item.call,
+      signed: item.isSigned,
+      success: item.success
+    }))
+  }
+}
+
 export const getExtrinsic = async (id: string) => {
   const extrinsicResponse = await request(
     queryExtrinsic(id)
@@ -39,6 +79,7 @@ export const getExtrinsic = async (id: string) => {
     // console.log(JSON.parse(data.args_value))
     return {
       id: data.id,
+      block_id: data.blockId,
       timestamp: data.timestamp,
       transaction_index: data.extrinsicIndex,
       hash: data.hash,
