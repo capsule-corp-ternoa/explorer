@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Layout from 'components/base/Layout';
+import ListView from 'components/base/ListView';
 import DetailView from 'components/base/DetailView';
 import { fields, render } from './table'
+import { columns as extrinsicColumns, render as renderExtrinsic } from 'pages/extrinsic/table'
 import { getAccount } from 'apis/account';
 import { ellipsifyMiddle } from 'helpers/lib';
 
 export interface AccountDetailProps {}
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<any>(null)
   const router = useRouter()
   const id = router.query.id as string
 
   useEffect(() => {
     if (id) {
-      getAccount(id).then(setData)
+      getAccount(id, 3).then(setData)
     }
   }, [id])
 
@@ -26,7 +28,16 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   return (
     <Layout back='/account'>
       <h1 className="subTitle">{ellipsifyMiddle(id)}</h1>
-      <DetailView fields={fields} data={data} renderCell={render}/>
+      <DetailView fields={fields} data={data} renderCell={render} />
+
+      {data && data.last_transactions && (
+        <>
+          <h1 className="subTitle mt-4">
+            {data.last_transactions.length} last {data.last_transactions.length > 1 ? 'transactions' : 'transaction'}
+          </h1>
+          <ListView columns={extrinsicColumns} data={data.last_transactions} renderCell={renderExtrinsic} />
+        </>
+      )}
     </Layout>
   )
 }

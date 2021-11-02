@@ -53,10 +53,10 @@ const queryTransactionCounts = (signers: string[]) => gql`
 }
 `
 
-const queryAccountLatestTransaction = (signer: string) => gql`
+const queryAccountLatestTransaction = (signer: string, count: number) => gql`
 {
   extrinsicEntities(
-    first: 1
+    first: ${count}
     orderBy: NONCE_DESC
     filter: {
       signer: { equalTo: "${signer}" }
@@ -64,6 +64,11 @@ const queryAccountLatestTransaction = (signer: string) => gql`
   ) {
     nodes {
       nonce
+      id
+      blockId
+      module
+      call
+      success
     }
   }
 }
@@ -98,13 +103,13 @@ export const getAccountList = async (offset: number, pageSize: number = API_PAGE
   }
 }
 
-export const getAccount = async (id: string) => {
-  const [account, transaction] = await Promise.all([
+export const getAccount = async (id: string, lastTransactionCount: number) => {
+  const [account, transactions] = await Promise.all([
     request(
       queryAccount(id)
     ),
     request(
-      queryAccountLatestTransaction(id)
+      queryAccountLatestTransaction(id, lastTransactionCount)
     )
   ])
 
@@ -120,9 +125,16 @@ export const getAccount = async (id: string) => {
       active: acc.capsAmountTotal > 0
     }
 
-    if (transaction.extrinsicEntities.nodes.length) {
-      const tx = transaction.extrinsicEntities.nodes[0]
+    if (transactions.extrinsicEntities.nodes.length) {
+      const tx = transactions.extrinsicEntities.nodes[0]
       data.nonce = tx.nonce + 1
+      data.last_transactions = transactions.extrinsicEntities.nodes.map(tx => ({
+        id: tx.id,
+        block_id: tx.blockId,
+        module: tx.module,
+        call: tx.call,
+        success: tx.success
+      }))
     }
 
     return data
