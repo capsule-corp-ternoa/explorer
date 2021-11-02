@@ -6,6 +6,7 @@ import Check from 'components/assets/Check';
 
 export const transactionFields = [
   { text: 'ID', dataKey: 'id' },
+  { text: 'Block', dataKey: 'block_id' },
   { text: 'Timestamp', dataKey: 'timestamp' },
   { text: 'Transaction Index', dataKey: 'transaction_index' },
   { text: 'Transaction Hash', dataKey: 'hash', mobileClassName: 'col-12' },

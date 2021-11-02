@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
-import { transactionFields, transactionRender } from './table'
+import { transactionFields, transactionRender } from 'pages/extrinsic/[id]/table'
 import { getExtrinsic } from 'apis/extrinsic';
 import { ellipsifyMiddle } from 'helpers/lib';
 
