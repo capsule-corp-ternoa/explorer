@@ -24,8 +24,14 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
   return (
     <Layout>
       <h1 className="subTitle">Extrinsics</h1>
-      <ListView data={data} columns={columns} renderCell={render} />
-      <Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />
+      <ListView
+        data={data}
+        columns={columns}
+        renderCell={render}
+        footer={(
+          <Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />
+        )}
+      />
     </Layout>
   )
 }

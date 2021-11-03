@@ -28,7 +28,9 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
         data={data}
         columns={columns}
         renderCell={render}
-        footer={<Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />}
+        footer={(
+          <Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />
+        )}
       />
     </Layout>
   )
