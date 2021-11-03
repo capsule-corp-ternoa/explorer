@@ -22,7 +22,24 @@ import statData from 'components/data/statast.json'
 
 export interface HomeScanProps { }
 
+interface DetailButtonProps {
+  href: string
+  label: string
+}
+
 const TABLE_ROWS = 5
+
+const DetailButton: React.FC<DetailButtonProps> = ({
+  href, label
+}) => (
+  <Link href={href}>
+    <a>
+      <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
+        {label}
+      </button>
+    </a>
+  </Link>
+)
 
 const HomeScan: React.FC<HomeScanProps> = () => {
     
@@ -59,13 +76,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
               renderCell={renderBlock}
               data={latestBlocks && latestBlocks.data}
               footer={(
-                <Link href='/block'>
-                  <a>
-                    <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
-                      Show all Blocks
-                    </button>
-                  </a>
-                </Link>
+                <DetailButton href='/block' label='Show all Blocks' />
               )}
             />
           </div>
@@ -78,13 +89,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
               renderCell={renderNftTx}
               data={nftTransfers && nftTransfers.data}
               footer={(
-                <Link href='/nft'>
-                  <a>
-                    <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
-                      Show all NFT
-                    </button>
-                  </a>
-                </Link>
+                <DetailButton href='/nft' label='Show all NFT' />
               )}
             />
           </div>
@@ -97,13 +102,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
               renderCell={renderTransfer}
               data={transfers && transfers.data}
               footer={(
-                <Link href='/trans'>
-                  <a>
-                    <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
-                      Show all Transfers
-                    </button>
-                  </a>
-                </Link>
+                <DetailButton href='/trans' label='Show all Transfers' />
               )}
             />
           </div>
