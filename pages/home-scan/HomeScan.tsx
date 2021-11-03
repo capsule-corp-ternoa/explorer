@@ -23,29 +23,34 @@ import nftData from 'components/data/nft.json'
 import transData from 'components/data/trans.json'
 import validatorData from 'components/data/validators.json'
 import statData from 'components/data/statast.json'
-import { renderLatestBlockCell } from './table';
 import Layout from 'components/base/Layout';
 import Summary from './Summary';
+import ListView from 'components/base/ListView';
 
-export interface HomeScanProps {
-}
+import { getBlockList } from 'apis/block';
+import { blockColumns, nftTxColumns, transferColumns, renderBlock, renderNftTx, renderTransfer } from './table'
+import { getNftTransferList } from 'apis/nft-transfer';
+import { getTransferList } from 'apis/transfer';
+import { getSummary } from 'apis/summary';
 
-type CoinCapsule = {
-  usd: number
-  usd_24h_change: number
-  usd_market_cap: number
-}
+export interface HomeScanProps { }
+
+const TABLE_ROWS = 5
 
 const HomeScan: React.FC<HomeScanProps> = () => {
     
     const [isLaptop, setIsLaptop] = useState(false);
-    const [data, setData] = useState<CoinCapsule | null>(null)
+    const [summary, setSummary] = useState<any>(null)
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
 
     const [totalTrans, setTotalTrans] = useState(true);
     const [newAccount, setNewAccount] = useState(true);
     const [averBlock, setAverBlock] = useState(true);
     const rowCount = 4;
+
+    const [latestBlocks, setLatestBlocks] = useState<any>(null)
+    const [nftTransfers, setNftTransfers] = useState<any>(null)
+    const [transfers, setTransfers] = useState<any>(null)
 
     useEffect(() => {
         if(mediaQuery !== isLaptop){
@@ -54,28 +59,89 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     }, [mediaQuery])
 
     useEffect(() => {
-        fetch('https://api.coingecko.com/api/v3/simple/price?ids=coin-capsule&vs_currencies=usd&include_24hr_change=true&include_market_cap=true')
-            .then(res => res.json())
-            .then(res => setData(res['coin-capsule']))
-            .catch(() => {})
+      getSummary().then(setSummary).catch(() => {})
+      getBlockList(0, TABLE_ROWS).then(setLatestBlocks)
+      getNftTransferList(0, TABLE_ROWS).then(setNftTransfers)
+      getTransferList(0, TABLE_ROWS).then(setTransfers)
     }, [])
 
-    // return (
-    //   <Layout
-    //     searchBar={false}
-    //     // summary={
-    //     //   <Summary
-    //     //     capsPrice={data && data.usd}
-    //     //     marketCap={data && data.usd_market_cap}
-    //     //     change24h={data && data.usd_24h_change}
-    //     //     transactions={null}
-    //     //     finalizedBlock={null}
-    //     //   />
-    //     // }
-    //   >
-    //     <div>sdf</div>
-    //   </Layout>
-    // )
+    return (
+      <Layout searchBar={false}>
+        <Summary
+          capsPrice={summary && summary.usd}
+          marketCap={summary && summary.usd_market_cap}
+          change24h={summary && summary.usd_24h_change}
+          transactions={null}
+          finalizedBlock={null}
+        />
+
+        <div className="row">
+          <div className="col-12">
+            <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
+              Latest Blocks
+            </div>
+            <ListView
+              columns={blockColumns}
+              renderCell={renderBlock}
+              data={latestBlocks && latestBlocks.data}
+              footer={(
+                <Link href='/block'>
+                  <a>
+                    <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
+                      Show all Blocks
+                    </button>
+                  </a>
+                </Link>
+              )}
+            />
+          </div>
+          <div className="col-12">
+            <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
+              NFT Transactions
+            </div>
+            <ListView
+              columns={nftTxColumns}
+              renderCell={renderNftTx}
+              data={nftTransfers && nftTransfers.data}
+              footer={(
+                <Link href='/nft'>
+                  <a>
+                    <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
+                      Show all NFT
+                    </button>
+                  </a>
+                </Link>
+              )}
+            />
+          </div>
+          <div className="col-12">
+            <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
+              Transfers
+            </div>
+            <ListView
+              columns={transferColumns}
+              renderCell={renderTransfer}
+              data={transfers && transfers.data}
+              footer={(
+                <Link href='/trans'>
+                  <a>
+                    <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
+                      Show all Transfers
+                    </button>
+                  </a>
+                </Link>
+              )}
+            />
+          </div>
+          <div className="col-6">
+          </div>
+          <div className="col-6">
+          </div>
+          <div className="col-6">
+          </div>
+        </div>
+      </Layout>
+    )
 
     return (
         <>

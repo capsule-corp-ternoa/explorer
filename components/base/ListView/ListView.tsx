@@ -24,6 +24,7 @@ const ListView: React.FC<TableProps> = ({
   columns,
   data,
   renderCell,
+  footer,
   className
 }) => (
   <>
@@ -60,6 +61,11 @@ const ListView: React.FC<TableProps> = ({
             ))}
           </tr>
         ))}
+        {footer && (
+          <tr>
+            <td colSpan={99} className='py-4'>{footer}</td>
+          </tr>
+        )}
       </tbody>
     </table>
     <div className={clsx('only-mobile data-table', className)}>
@@ -79,6 +85,11 @@ const ListView: React.FC<TableProps> = ({
           </div>
         </div>
       ))}
+      {footer && (
+        <div className='col col-12 py-3'>
+          {footer}
+        </div>
+      )}
     </div>
   </>
 )

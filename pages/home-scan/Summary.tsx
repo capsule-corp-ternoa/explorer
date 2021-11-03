@@ -35,8 +35,8 @@ const Summary: React.FC<SummaryProps> = ({
   }, [mediaQuery])
   
   return (
-    <>
-    <div className={style.gradientBack}></div>
+    <div className="position-relative">
+      <div className={style.gradientBack}></div>
       <div className={style.searchForm + " position-relative"}>
         <div className={`${style.searchTitle} ${isLaptop ? 'mb-4 ms-4' : 'mb-4'}`}>The Ternoa blockchain explorer</div>
         <SearchBar hasButton={true} isLarge={true} />
@@ -155,7 +155,7 @@ const Summary: React.FC<SummaryProps> = ({
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }
 

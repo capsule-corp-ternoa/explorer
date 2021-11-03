@@ -18,6 +18,7 @@ const queryNftTransferList = (offset: number, pageSize: number = API_PAGE_SIZE) 
       amount
       nft {
         id
+        creator
       }
     }
   }
@@ -62,7 +63,8 @@ export const getNftTransferList = async (offset: number, pageSize: number = API_
       from: transfer.from,
       to: transfer.to,
       amount: transfer.amount,
-      nft_id: transfer.nft.id
+      nft_id: transfer.nft.id,
+      creator: transfer.nft.creator,
     }))
   }
 }
