@@ -107,11 +107,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
               )}
             />
           </div>
-          <div className="col-12 col-sm-6">
-            <TransactionChart data={statData} />
+          <div className="col-12 col-md-6">
+            <TransactionChart data={statData} className='mt-4' />
           </div>
-          <div className="col-12 col-sm-6">
-            <BlockChart data={statData} />
+          <div className="col-12 col-md-6">
+            <BlockChart data={statData} className='mt-4' />
           </div>
         </div>
       </Layout>

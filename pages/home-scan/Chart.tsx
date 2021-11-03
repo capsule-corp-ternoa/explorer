@@ -12,6 +12,7 @@ const chartMargin = {
 
 interface ChartProps {
   data: any
+  className?: string
 }
 
 interface ChartCheckboxProps {
@@ -42,12 +43,15 @@ const ChartCheckbox: React.FC<ChartCheckboxProps> = ({
   </div>
 )
 
-export const TransactionChart: React.FC<ChartProps> = ({ data }) => {
+export const TransactionChart: React.FC<ChartProps> = ({
+  data,
+  className
+}) => {
   const [totalTrans, setTotalTrans] = useState(true)
   const [newAccount, setNewAccount] = useState(true)
 
   return (
-    <div className={style.chartBlock}>
+    <div className={clsx(style.chartBlock, className)}>
       <div className={clsx("flex flex-row flex-items-center flex-between", style.mMinus50)}>
         <ChartCheckbox
           checked={totalTrans}
@@ -89,11 +93,16 @@ export const TransactionChart: React.FC<ChartProps> = ({ data }) => {
   )
 }
 
-export const BlockChart: React.FC<ChartProps> = ({ data }) => {
+export const BlockChart: React.FC<ChartProps> = ({
+  data,
+  className
+}) => {
   const [averBlock, setAverBlock] = useState(true)
   return (
-    <div className={style.chartBlock}>
-      <ChartCheckbox onChange={setAverBlock} label='Average block time by day' checked={averBlock} />
+    <div className={clsx(style.chartBlock, className)}>
+      <div className={clsx("flex flex-row flex-items-center flex-between", style.mMinus50)}>
+        <ChartCheckbox onChange={setAverBlock} label='Average block time by day' checked={averBlock} />
+      </div>
       <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
         <AreaChart
           width={500}
