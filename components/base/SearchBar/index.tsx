@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useRouter } from "next/router";
 import style from './style.module.scss';
 import Search from 'components/assets/Search';
@@ -17,44 +17,9 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const [isFocus, setIsFocus] = useState(false)
   const router = useRouter();
 
-  const isNumber = (n:any) => { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); }
-
-  const searchAll = () => {
-    var searchKey = keyword.trim()
-    if (isNumber(searchKey)) {
-      var number = parseInt(searchKey)
-      var block = blockData.filter(function(item) {
-        return item.number == number
-      })
-      if (block.length != 0) {
-        router.push({
-          pathname: '/block/' + searchKey
-        })
-        return
-      }
-    } else {
-      var nft = nftData.filter(function(item) {
-        return item.name_id == searchKey
-      })
-      if (nft.length != 0) {
-        router.push({
-          pathname: '/nft/' + searchKey
-        })
-        return
-      }
-  
-      var account = accountData.filter(function(item) {
-        return item.address == searchKey
-      })
-      if (account.length != 0) {
-        router.push({
-          pathname: '/account/' + searchKey
-        })
-        return
-      }
-    }
-    router.push("/result?search=" + searchKey)
-  }
+  const searchAll = useCallback(() => {
+    const searchKey = keyword.trim()
+  }, [keyword])
 
   return (
     <div className="flex flex-row flex-items-center">

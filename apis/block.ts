@@ -26,6 +26,14 @@ const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
 }
 `
 
+const queryBlockNumber = () => gql`
+{
+  blockEntities {
+    totalCount
+  }
+}
+`
+
 // session id and block author is missing
 const queryBlock = (id: string) => gql`
 {
@@ -57,6 +65,11 @@ const queryBlock = (id: string) => gql`
   }
 }
 `
+
+export const getBlockCount = async () => {
+  const response = await request(queryBlockNumber())
+  return response.blockEntities.totalCount
+}
 
 export const getBlockList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
   const blocks = await request(

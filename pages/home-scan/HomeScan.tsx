@@ -61,7 +61,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         marketCap={summary && summary.usd_market_cap}
         change24h={summary && summary.usd_24h_change}
         transactions={summary && summary.extrinsic_count}
-        finalizedBlock={null}
+        finalizedBlock={summary && summary.block_count}
       />
 
       <div className="row">

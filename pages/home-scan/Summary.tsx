@@ -97,7 +97,9 @@ const Summary: React.FC<SummaryProps> = ({
                   </div>
                   <div className={`d-flex flex-column ms-3`}>
                     <div className="fs-6 text-opacity-4 text-ellipsis">Finalized Block</div>
-                    <div className="fs-5 fw-bold">$2.000.000</div>
+                    <div className="fs-5 fw-bold">
+                      {finalizedBlock != null && <FormattedNumber value={finalizedBlock} format='decimal' />}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -140,7 +142,11 @@ const Summary: React.FC<SummaryProps> = ({
                   <BlockLogo className={style.Logo}></BlockLogo>
                   <div className="flex-1 flex flex-col ms-2">
                     <span className="fs-6 text-opacity-4 text-ellipsis">Finalized Block</span>
-                    <span className={style.logoSummary}>2.000.000</span>
+                    <span className={style.logoSummary}>
+                      {finalizedBlock != null && (
+                        <FormattedNumber value={finalizedBlock} format='decimal' />
+                      )}
+                    </span>
                   </div>
                 </div>
               </div>
