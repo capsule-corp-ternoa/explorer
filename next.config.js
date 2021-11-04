@@ -26,7 +26,9 @@ module.exports = {
 
     return config
   },
-
+  pageExtensions: [
+    'page.tsx',
+  ],
   target: 'experimental-serverless-trace'
 
 }
