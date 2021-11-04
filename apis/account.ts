@@ -135,7 +135,7 @@ export const getAccount = async (id: string, lastTransactionCount: number) => {
     if (transactions.extrinsicEntities.nodes.length) {
       const tx = transactions.extrinsicEntities.nodes[0]
       data.nonce = tx.nonce + 1
-      data.last_transactions = transactions.extrinsicEntities.nodes.map(tx => ({
+      data.last_transactions = transactions.extrinsicEntities.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: tx.blockId,
         module: tx.module,

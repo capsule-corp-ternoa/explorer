@@ -1,3 +1,5 @@
+import { CustomFormats } from "@formatjs/intl";
+
 export default {
   locale: 'en',
   formats: {
@@ -23,7 +25,7 @@ export default {
         minimumFractionDigits: 0,
         maximumFractionDigits: 0
       },
-      noDecimal: { // todo: priceDecimal
+      priceDecimal: {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 0,
@@ -36,5 +38,5 @@ export default {
         signDisplay: 'exceptZero'
       }
     }
-  }
+  } as CustomFormats
 }

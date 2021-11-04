@@ -141,7 +141,7 @@ export const getBlock = async (id: string) => {
       author: block.author,
       session_id: block.sessionId,
       age: (now - new Date(block.timestamp).getTime()) / 1000,
-      transaction_detail: block.extrinsicEntitiesByBlockId.nodes.map(tx => ({
+      transaction_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: id,
         from: tx.signer,

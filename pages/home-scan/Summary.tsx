@@ -72,7 +72,7 @@ const Summary: React.FC<SummaryProps> = ({
                   <div className={`d-flex flex-column ms-3`}>
                     <div className="fs-6 text-opacity-4 text-ellipsis">Market cap</div>
                     <div className="fs-5 fw-bold">
-                      {marketCap !== null && <FormattedNumber value={marketCap} format='noDecimal' />}
+                      {marketCap !== null && <FormattedNumber value={marketCap} format='priceDecimal' />}
                     </div>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ const Summary: React.FC<SummaryProps> = ({
                   <div className="flex-1 flex flex-col ms-2">
                     <span className="fs-6 text-opacity-4 text-ellipsis">Market cap</span>
                     <span className={style.logoSummary}>
-                      {marketCap !== null && <FormattedNumber format='noDecimal' value={marketCap} />}
+                      {marketCap !== null && <FormattedNumber format='priceDecimal' value={marketCap} />}
                     </span>
                   </div>
                 </div>
