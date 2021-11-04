@@ -103,6 +103,13 @@ export const getAccountList = async (offset: number, pageSize: number = API_PAGE
   }
 }
 
+export const searchAccount = async (id: string) => {
+  const response = await request(
+    queryAccount(id)
+  )
+  return response.accountEntities.nodes
+}
+
 export const getAccount = async (id: string, lastTransactionCount: number) => {
   const [account, transactions] = await Promise.all([
     request(

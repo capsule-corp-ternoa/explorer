@@ -6,6 +6,10 @@ import Search from 'components/assets/Search';
 import blockData from 'components/data/blocks.json'
 import nftData from 'components/data/nft.json'
 import accountData from 'components/data/accounts.json'
+import { searchAccount } from 'apis/account';
+import { searchExtrinsic } from 'apis/extrinsic';
+import { searchBlock } from 'apis/block';
+import { searchNftTransfer } from 'apis/nft-transfer';
 
 export interface SearchBarProps {
   hasButton?: Boolean
@@ -18,7 +22,26 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const router = useRouter();
 
   const searchAll = useCallback(() => {
+    // Search should look into : address, transaction hash, transaction nft ID, block number
     const searchKey = keyword.trim()
+    Promise.all([
+      searchAccount(searchKey),
+      searchExtrinsic(searchKey),
+      searchBlock(searchKey),
+      searchNftTransfer(searchKey)
+    ]).then(([accounts, extrinsics, blocks, nftTransfers]) => {
+      if (accounts.length) {
+        router.push(`/account/${accounts[0].id}`)
+      } else if (extrinsics.length) {
+        router.push(`/extrinsic/${extrinsics[0].id}`)
+      } else if (blocks.length) {
+        router.push(`/block/${blocks[0].number}`)
+      } else if (nftTransfers.length) {
+        router.push(`/nft/${nftTransfers[0].number}`)
+      } else {
+        router.push(`/result?search=${searchKey}`)
+      }
+    })
   }, [keyword])
 
   return (

@@ -30,6 +30,20 @@ const queryExtrinsicCount  = () => gql`
 }
 `
 
+const queryExtrinsicSearch = (keyword: string) => gql`
+{
+  extrinsicEntities(
+    filter: {
+      hash: { equalTo: "${keyword}" }
+    }
+  ) {
+    nodes {
+      id
+    }
+  }
+}
+`
+
 const queryExtrinsic = (id: string) => gql`
 {
   extrinsicEntities(
@@ -56,6 +70,13 @@ const queryExtrinsic = (id: string) => gql`
   }
 }
 `
+
+export const searchExtrinsic = async (keyword: string) => {
+  const response = await request(
+    queryExtrinsicSearch(keyword)
+  )
+  return response.extrinsicEntities.nodes
+}
 
 export const getExtrinsicList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
   const response = await request(

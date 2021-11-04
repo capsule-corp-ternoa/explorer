@@ -26,7 +26,7 @@ const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
 }
 `
 
-const queryBlockNumber = () => gql`
+const queryBlockCount = () => gql`
 {
   blockEntities {
     totalCount
@@ -34,7 +34,20 @@ const queryBlockNumber = () => gql`
 }
 `
 
-// session id and block author is missing
+const queryBlockSearch = (keyword: string) => gql`
+{
+  blockEntities(
+    filter: {
+      number: { equalTo: ${Number(keyword)} }
+    }
+  ) {
+    nodes {
+      number
+    }
+  }
+}
+`
+
 const queryBlock = (id: string) => gql`
 {
   blockEntities(
@@ -49,6 +62,8 @@ const queryBlock = (id: string) => gql`
       parentHash
       stateRoot
       extrinsicsRoot
+      sessionId
+      author
       runtimeVersion
       extrinsicEntitiesByBlockId {
         totalCount
@@ -66,8 +81,21 @@ const queryBlock = (id: string) => gql`
 }
 `
 
+export const searchBlock = async (keyword: string) => {
+  if (Number(keyword).toString(10) !== keyword) {
+    return []
+  }
+
+  const response = await request(
+    queryBlockSearch(keyword)
+  )
+  return response.blockEntities.nodes
+}
+
 export const getBlockCount = async () => {
-  const response = await request(queryBlockNumber())
+  const response = await request(
+    queryBlockCount()
+  )
   return response.blockEntities.totalCount
 }
 
@@ -110,6 +138,8 @@ export const getBlock = async (id: string) => {
       transactions: block.extrinsicEntitiesByBlockId.totalCount,
       module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
       runtime_version: block.runtimeVersion,
+      author: block.author,
+      session_id: block.sessionId,
       age: (now - new Date(block.timestamp).getTime()) / 1000,
       transaction_detail: block.extrinsicEntitiesByBlockId.nodes.map(tx => ({
         id: tx.id,

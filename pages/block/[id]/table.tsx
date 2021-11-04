@@ -15,7 +15,7 @@ export const blockFields = [
   { text: 'Runtime Version', dataKey: 'runtime_version' },
   { text: 'Block Time', dataKey: 'age' },
   { text: 'Session ID', dataKey: 'session_id' },
-  { text: 'Block Author', dataKey: 'block_author', mobileClassName: 'col-12' },
+  { text: 'Block Author', dataKey: 'author', mobileClassName: 'col-12' },
 ]
 
 export const transactionColumns = [

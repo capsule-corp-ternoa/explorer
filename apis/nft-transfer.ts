@@ -25,6 +25,20 @@ const queryNftTransferList = (offset: number, pageSize: number = API_PAGE_SIZE) 
 }
 `
 
+const queryNftTransferSearch = (keyword: string) => gql`
+{
+  nftTransferEntities(
+    filter: {
+      nftId: { equalTo: "${keyword}" }
+    }
+  ) {
+    nodes {
+      id
+    }
+  }
+}
+`
+
 // minting contract, nft asset address, quantity missing
 const queryNftTransfer = (id: string) => gql`
 {
@@ -49,6 +63,13 @@ const queryNftTransfer = (id: string) => gql`
   }
 }
 `
+
+export const searchNftTransfer = async (keyword: string) => {
+  const response = await request(
+    queryNftTransferSearch(keyword)
+  )
+  return response.nftTransferEntities.nodes
+}
 
 export const getNftTransferList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
   const transferResponse = await request(
