@@ -22,6 +22,14 @@ const queryExtrinsicList = (offset: number, pageSize: number = API_PAGE_SIZE) =>
 }
 `
 
+const queryExtrinsicCount  = () => gql`
+{
+  extrinsicEntities {
+    totalCount
+  }
+}
+`
+
 const queryExtrinsic = (id: string) => gql`
 {
   extrinsicEntities(
@@ -65,6 +73,14 @@ export const getExtrinsicList = async (offset: number, pageSize: number = API_PA
       success: item.success
     }))
   }
+}
+
+export const getExtrinsicCount = async () => {
+  const response = await request(
+    queryExtrinsicCount()
+  )
+
+  return response.extrinsicEntities.totalCount
 }
 
 export const getExtrinsic = async (id: string) => {

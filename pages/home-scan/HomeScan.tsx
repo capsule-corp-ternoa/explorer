@@ -49,9 +49,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
 
   useEffect(() => {
     getSummary().then(setSummary).catch(() => {})
-    getBlockList(0, TABLE_ROWS).then(setLatestBlocks)
-    getNftTransferList(0, TABLE_ROWS).then(setNftTransfers)
-    getTransferList(0, TABLE_ROWS).then(setTransfers)
+    getBlockList(0, TABLE_ROWS).then(setLatestBlocks).catch(() => {})
+    getNftTransferList(0, TABLE_ROWS).then(setNftTransfers).catch(() => {})
+    getTransferList(0, TABLE_ROWS).then(setTransfers).catch(() => {})
   }, [])
 
   return (
@@ -60,7 +60,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         capsPrice={summary && summary.usd}
         marketCap={summary && summary.usd_market_cap}
         change24h={summary && summary.usd_24h_change}
-        transactions={null}
+        transactions={summary && summary.extrinsic_count}
         finalizedBlock={null}
       />
 
