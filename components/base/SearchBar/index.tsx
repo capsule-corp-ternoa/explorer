@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useRouter } from "next/router";
 import style from './style.module.scss';
 import Search from 'components/assets/Search';
@@ -6,6 +6,10 @@ import Search from 'components/assets/Search';
 import blockData from 'components/data/blocks.json'
 import nftData from 'components/data/nft.json'
 import accountData from 'components/data/accounts.json'
+import { searchAccount } from 'apis/account';
+import { searchExtrinsic } from 'apis/extrinsic';
+import { searchBlock } from 'apis/block';
+import { searchNftTransfer } from 'apis/nft-transfer';
 
 export interface SearchBarProps {
   hasButton?: Boolean
@@ -17,44 +21,28 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const [isFocus, setIsFocus] = useState(false)
   const router = useRouter();
 
-  const isNumber = (n:any) => { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); }
-
-  const searchAll = () => {
-    var searchKey = keyword.trim()
-    if (isNumber(searchKey)) {
-      var number = parseInt(searchKey)
-      var block = blockData.filter(function(item) {
-        return item.number == number
-      })
-      if (block.length != 0) {
-        router.push({
-          pathname: '/block/' + searchKey
-        })
-        return
+  const searchAll = useCallback(() => {
+    // Search should look into : address, transaction hash, transaction nft ID, block number
+    const searchKey = keyword.trim()
+    Promise.all([
+      searchAccount(searchKey),
+      searchExtrinsic(searchKey),
+      searchBlock(searchKey),
+      searchNftTransfer(searchKey)
+    ]).then(([accounts, extrinsics, blocks, nftTransfers]) => {
+      if (accounts.length) {
+        router.push(`/account/${accounts[0].id}`)
+      } else if (extrinsics.length) {
+        router.push(`/extrinsic/${extrinsics[0].id}`)
+      } else if (blocks.length) {
+        router.push(`/block/${blocks[0].number}`)
+      } else if (nftTransfers.length) {
+        router.push(`/nft/${nftTransfers[0].number}`)
+      } else {
+        router.push(`/result?search=${searchKey}`)
       }
-    } else {
-      var nft = nftData.filter(function(item) {
-        return item.name_id == searchKey
-      })
-      if (nft.length != 0) {
-        router.push({
-          pathname: '/nft/' + searchKey
-        })
-        return
-      }
-  
-      var account = accountData.filter(function(item) {
-        return item.address == searchKey
-      })
-      if (account.length != 0) {
-        router.push({
-          pathname: '/account/' + searchKey
-        })
-        return
-      }
-    }
-    router.push("/result?search=" + searchKey)
-  }
+    })
+  }, [keyword])
 
   return (
     <div className="flex flex-row flex-items-center">
