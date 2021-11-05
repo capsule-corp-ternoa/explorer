@@ -26,14 +26,6 @@ const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
 }
 `
 
-const queryBlockCount = () => gql`
-{
-  blockEntities {
-    totalCount
-  }
-}
-`
-
 const queryBlockSearch = (keyword: string) => gql`
 {
   blockEntities(
@@ -86,13 +78,6 @@ export const searchBlock = async (keyword: string) => {
     queryBlockSearch(keyword)
   )
   return response.blockEntities.nodes
-}
-
-export const getBlockCount = async () => {
-  const response = await request(
-    queryBlockCount()
-  )
-  return response.blockEntities.totalCount
 }
 
 export const getBlockList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
