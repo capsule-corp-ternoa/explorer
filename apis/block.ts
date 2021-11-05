@@ -82,10 +82,6 @@ const queryBlock = (id: string) => gql`
 `
 
 export const searchBlock = async (keyword: string) => {
-  if (Number(keyword).toString(10) !== keyword) {
-    return []
-  }
-
   const response = await request(
     queryBlockSearch(keyword)
   )
