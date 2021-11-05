@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from "next/router";
-import HomeScan from './home-scan'
+import HomeScan from './home-scan/index.page'
 import { NextPage } from 'next'
 
 export interface HomeProps {

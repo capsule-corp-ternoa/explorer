@@ -45,6 +45,7 @@
 // IMPORT SCSS
 @import "custom";
 @import "color";
+@import "layout";
 
 // GLOBAL CSS
 html,
@@ -357,7 +358,7 @@ a {
   color: $light-grey;
   font-size: 14px;
   line-height: 18px;
-  margin-bottom: 13px;
+  margin-bottom: 5px;
 }
 
 .mobileValue {
@@ -391,4 +392,9 @@ a {
   color: white;
   font-size: 12px;
   padding: 12px 50px !important;
+}
+
+.data-table {
+	background-color: #14142e;
+	border-radius: 1.5em;
 }

@@ -82,7 +82,13 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </div>
                 <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
                 <div className={'flex flex-cont-end flex-items-center '}>
-                    <span className={style.navBarItem} onClick={()=>router.push("/")}>Dashboard</span>
+                    <span className={style.navBarItem}>
+                        <Link href="/">
+                            <a>
+                                Dashboard
+                            </a>
+                        </Link>
+                    </span>
                     <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
                         <DropdownToggle
                             className={style.navBarDropdownItem}
@@ -95,23 +101,15 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </div>
                         </DropdownToggle>
                         <DropdownMenu className={style.dropdownMenu} right>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/validator")}
-                            >
-                                Validator
+                            <p className={style.dropdownItem}>
+                                <Link href="/extrinsic">
+                                    <a>Exrinsics</a>
+                                </Link>
                             </p>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/extrinsic")}
-                            >
-                                Nominator
-                            </p>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/account")}
-                            >
-                                All Account
+                            <p className={style.dropdownItem}>
+                                <Link href="/account">
+                                    <a>All Account</a>
+                                </Link>
                             </p>
                         </DropdownMenu>
                     </Dropdown>
@@ -128,23 +126,26 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </div>
                         </DropdownToggle>
                         <DropdownMenu className={style.dropdownMenu} right>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/block")}
-                            >
-                                Blocks
+                            <p className={style.dropdownItem}>
+                                <Link href='/block'>
+                                    <a>
+                                        Blocks
+                                    </a>
+                                </Link>
                             </p>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/trans")}
-                            >
-                                Transactions
+                            <p className={style.dropdownItem}>
+                                <Link href='/trans'>
+                                    <a>
+                                        Transactions
+                                    </a>
+                                </Link>
                             </p>
-                            <p
-                                className={style.dropdownItem}
-                                onClick={()=>router.push("/nft")}
-                            >
-                                NFT/ Capsule
+                            <p className={style.dropdownItem}>
+                                <Link href='/nft'>
+                                    <a>
+                                        NFT/ Capsule
+                                    </a>
+                                </Link>
                             </p>
                         </DropdownMenu>
                     </Dropdown>

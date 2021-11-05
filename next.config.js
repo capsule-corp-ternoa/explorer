@@ -1,32 +1,34 @@
 /*const nodeExternals = require('webpack-node-externals');
 module.exports = {
-  webpack: (config, { isServer }) => {
-    // Fixes npm packages that depend on fs module
-    if (!isServer) {
-      config.node = {
-        fs: 'empty',
-      };
-    }
-    else {
-      config.externals = [nodeExternals()];
-    }
-    return config;
-  },
-  target: 'serverless',
+webpack: (config, { isServer }) => {
+  // Fixes npm packages that depend on fs module
+  if (!isServer) {
+    config.node = {
+      fs: 'empty',
+    };
+  }
+  else {
+    config.externals = [nodeExternals()];
+  }
+  return config;
+},
+target: 'serverless',
 };
 */
 module.exports = {
-    webpack: (config, { isServer }) => {
-      // Fixes npm packages that depend on `fs` module
-      if (!isServer) {
-        config.node = {
-          fs: 'empty'
-        }
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.node = {
+        fs: 'empty'
       }
-  
-      return config
-    },
-  
-    target: 'experimental-serverless-trace'
-  
-  }
+    }
+
+    return config
+  },
+  pageExtensions: [
+    'page.tsx',
+  ],
+  target: 'experimental-serverless-trace'
+
+}

@@ -1,6 +1,19 @@
+import { CustomFormats } from "@formatjs/intl";
+
 export default {
   locale: 'en',
   formats: {
+    time: {
+      default: {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }
+    },
     number: {
       caps: {
         style: 'currency',
@@ -8,7 +21,11 @@ export default {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       },
-      noDecimal: {
+      decimal: {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      },
+      priceDecimal: {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 0,
@@ -21,5 +38,5 @@ export default {
         signDisplay: 'exceptZero'
       }
     }
-  }
+  } as CustomFormats
 }

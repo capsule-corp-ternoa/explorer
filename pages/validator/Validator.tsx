@@ -109,9 +109,9 @@ const Validator: React.FC<ValidatorProps> = () => {
                         )})
                         }
                     </div>
-                    {isLaptop &&
+                    {/* {isLaptop &&
                     <Pagination curPage={1} totalPage={9} />
-                    }
+                    } */}
                     {!isLaptop && <div className="d-flex justify-content-center mt-4">
                         <button className="btn btn-black rounded-pill mobileNextButton">View Next</button> 
                     </div>}
