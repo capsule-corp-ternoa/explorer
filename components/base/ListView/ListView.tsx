@@ -73,7 +73,7 @@ const ListView: React.FC<TableProps> = ({
         <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
           <div className='row'>
             {columns.map(({ dataKey, mobileClassName }, key) => (
-              <div key={key} className={clsx('col col-auto py-2', mobileClassName ?? 'col-6')}>
+              <div key={key} className={clsx('col col-auto py-2 data-overflow', mobileClassName ?? 'col-6')}>
                 <div className='mobileRowLabel mb-1'>
                   {columns[key].text}
                 </div>

@@ -21,7 +21,7 @@ export const nftTxColumns = [
 export const transferColumns = [
   { text: 'From', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'To', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-right' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-right', mobileClassName: 'col-12' },
   { text: '', dataKey: 'details', className: 'text-right' },
 ]
 

@@ -1,13 +1,35 @@
 @import "styles/color";
 
 .footer{
-    margin-top: auto;
-    margin-left: 0;
-    margin-right: 0;
-    @media (min-width: 1024px) {
-        padding: 0px 170px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0px auto;
+    width: 1440px;
+    padding: 16px 25px;
     background-color: $black-blue;
+    @media (max-width: 1700px) {
+        width: 1440px;
+    }
+    
+    @media (max-width: 1500px) {
+        width: 1280px;
+    }
+    
+    @media (max-width: 1320px) {
+        width: 1160px;
+    }
+    
+    @media (max-width: 1200px) {
+        width: 980px;
+    }
+    
+    @media (max-width: 1024px) {
+        width: unset;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
 }
 
 .socialLogo{

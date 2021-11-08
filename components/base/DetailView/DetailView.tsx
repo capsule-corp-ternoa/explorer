@@ -36,7 +36,7 @@ const DetailView: React.FC<DetailViewProps> = ({
     <div className="only-mobile mobileView data-table">
       <div className='row'>
         {fields && fields.map(({ text, dataKey, mobileClassName }) => (
-          <div className={clsx('col col-auto py-2', mobileClassName ?? 'col-6')} key={dataKey}>
+          <div className={clsx('col col-auto py-2 data-overflow', mobileClassName ?? 'col-6')} key={dataKey}>
             <div className="mobileLabel">
               {text}
             </div>
