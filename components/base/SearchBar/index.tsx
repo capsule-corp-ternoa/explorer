@@ -42,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         <input
           type="text"
           value={keyword}
-          placeholder="Search by address / Txn Hash / Block / NFT"
+          placeholder="Search by address / Txn Hash / Block"
           className={style.searchInput + " " + (props.isLarge?style.inputLarge:style.inputMedium)}
           onChange={(e) => setKeyword(e.target.value)}
           onFocus={(e) => setIsFocus(true)}

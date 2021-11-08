@@ -18,8 +18,8 @@ export const blockFields = [
 
 export const transactionColumns = [
   { text: 'Transaction ID', dataKey: 'id' },
-  { text: 'Module', dataKey: 'module' },
   { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
+  { text: 'Module', dataKey: 'module' },
   { text: 'Call', dataKey: 'call' },
   { text: 'Success', dataKey: 'success' },
   { text: '', dataKey: 'detail' },

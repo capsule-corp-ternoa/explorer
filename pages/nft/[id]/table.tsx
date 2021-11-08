@@ -4,7 +4,7 @@ import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle } from 'helpers/lib';
 
 export const fields = [
-  { text: 'NFT Name', dataKey: 'nft_id' },
+  { text: 'NFT Id', dataKey: 'nft_id' },
   { text: 'Type of Transaction', dataKey: 'transaction_type' },
   { text: 'Amount', dataKey: 'amount' },
   { text: 'Sender', dataKey: 'from', mobileClassName: 'col-12' },
