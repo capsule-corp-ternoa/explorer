@@ -19,15 +19,6 @@ export const transactionFields = [
   { text: 'Result', dataKey: 'success' },
 ]
 
-// export const parameterFields = [
-//   { text: 'Transaction ID', dataKey: 'id' },
-//   { text: 'Module', dataKey: 'module' },
-//   { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
-//   { text: 'Call', dataKey: 'call' },
-//   { text: 'Success', dataKey: 'success' },
-//   { text: '', dataKey: 'detail' },
-// ]
-
 export const transactionRender = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'timestamp':
@@ -61,7 +52,37 @@ export const transactionRender = (record: any, dataKey: string) => {
   }
 }
 
+export const parameterFields = [
+  { text: 'Destination', dataKey: 'signer' },
+  { text: 'Value', dataKey: 'args_value' },
+]
+
+export const parameterRender = (record: any, dataKey: string) => {
+  switch (dataKey) {
+    case 'signer':
+      return (
+        <>
+          <span className="textToken" title={record[dataKey]}>
+            {record[dataKey]}
+          </span>
+        </> 
+      );
+    case 'args_value':
+      return (
+        <>
+          <span className="textToken" title={record[dataKey]}>
+            {record[dataKey] && record[dataKey][0]}
+          </span>
+        </> 
+      );
+    default:
+      return record[dataKey]
+  }
+}
+
 export default {
   transactionFields,
-  transactionRender
+  transactionRender,
+  parameterFields,
+  parameterRender
 }
