@@ -1,22 +1,36 @@
 import { gql } from "graphql-request"
 import request from './api'
 import { API_PAGE_SIZE } from 'helpers/constants'
+import { blockColumns } from "pages/home-scan/table"
+import { blockFields } from "pages/block/[id]/table"
 
 const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
 {
-  extrinsicEntities(
+  eventEntities(
     first: ${pageSize}
     offset: ${offset}
-    orderBy: TIMESTAMP_DESC
+    filter: {
+      and: [
+      ]
+    }
   ) {
     totalCount
     nodes {
       id
       blockId
+      extrinsicId
+      eventIndex
       module
       call
-      isSigned
-      success
+      description
+      argsName
+      argsValue
+      block{
+        timestamp
+        id
+        number
+        hash
+      }
     }
   }
 }
@@ -24,7 +38,7 @@ const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
 
 const queryEventCount  = () => gql`
 {
-  extrinsicEntities {
+  eventEntities {
     totalCount
   }
 }
@@ -32,9 +46,9 @@ const queryEventCount  = () => gql`
 
 const queryEventSearch = (keyword: string) => gql`
 {
-  extrinsicEntities(
+  eventEntities(
     filter: {
-      hash: { equalTo: "${keyword}" }
+      blockId: { equalTo: "${keyword}" }
     }
   ) {
     nodes {
@@ -46,7 +60,7 @@ const queryEventSearch = (keyword: string) => gql`
 
 const queryEvent = (id: string) => gql`
 {
-  extrinsicEntities(
+  eventEntities(
     filter: {
       id: { equalTo: "${id}" }
     }
@@ -54,18 +68,27 @@ const queryEvent = (id: string) => gql`
     nodes {
       id
       blockId
-      timestamp
-      extrinsicIndex
-      hash
+      extrinsicId
+      eventIndex
       module
       call
       description
-      signer
-      nonce
-      signature
-      success
       argsName
       argsValue
+    }
+  }
+}
+`
+
+const queryExtrinsic = (id: string) => gql`
+{
+  extrinsicEntities(
+    filter: {
+      id: { equalTo: "${id}" }
+    }
+  ) {
+    nodes {
+      hash
     }
   }
 }
@@ -75,7 +98,7 @@ export const searchEvent = async (keyword: string) => {
   const response = await request(
     queryEventSearch(keyword)
   )
-  return response.extrinsicEntities.nodes
+  return response.eventEntities.nodes
 }
 
 export const getEventList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
@@ -83,16 +106,17 @@ export const getEventList = async (offset: number, pageSize: number = API_PAGE_S
     queryEventList(offset, pageSize)
   )
 
+  const now = Date.now()
+  
   return {
-    totalCount: response.extrinsicEntities.totalCount,
-    data: response.extrinsicEntities.nodes.map((item: any) => ({
+    totalCount: response.eventEntities.totalCount,
+    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
-      block_id: item.blockId,
-      module: item.module,
-      call: item.call,
-      signed: item.isSigned,
-      success: item.success
-    }))
+      blockId: item.blockId,
+      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      action: item.module + '(' + item.call + ')'
+    })))
   }
 }
 
@@ -101,7 +125,7 @@ export const getEventCount = async () => {
     queryEventCount()
   )
 
-  return response.extrinsicEntities.totalCount
+  return response.eventEntities.totalCount
 }
 
 export const getEvent = async (id: string) => {
@@ -109,10 +133,10 @@ export const getEvent = async (id: string) => {
     queryEvent(id)
   )
 
-  if (extrinsicResponse.extrinsicEntities.nodes.length === 0) {
+  if (extrinsicResponse.eventEntities.nodes.length === 0) {
     return null
   } else {
-    const data = extrinsicResponse.extrinsicEntities.nodes[0]
+    const data = extrinsicResponse.eventEntities.nodes[0]
     // console.log(JSON.parse(data.args_value))
     return {
       id: data.id,
