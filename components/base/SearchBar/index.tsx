@@ -2,10 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { useRouter } from "next/router";
 import style from './style.module.scss';
 import Search from 'components/assets/Search';
-
-import blockData from 'components/data/blocks.json'
-import nftData from 'components/data/nft.json'
-import accountData from 'components/data/accounts.json'
 import { searchAccount } from 'apis/account';
 import { searchExtrinsic } from 'apis/extrinsic';
 import { searchBlock } from 'apis/block';
@@ -22,26 +18,22 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   const router = useRouter();
 
   const searchAll = useCallback(() => {
-    // Search should look into : address, transaction hash, transaction nft ID, block number
     const searchKey = keyword.trim()
-    Promise.all([
-      searchAccount(searchKey),
-      searchExtrinsic(searchKey),
-      searchBlock(searchKey),
+    const noResult = `/result?search=${searchKey}`
+
+    if (searchKey.startsWith('0x')) {
+      searchExtrinsic(searchKey)
+        .then(res => router.push(res.length ? `/extrinsic/${res[0].id}` : noResult))
+    } else if (/^5[a-zA-Z]/.test(searchKey)) {
+      searchAccount(searchKey)
+        .then(res => router.push(res.length ? `/account/${res[0].id}` : noResult))
+    } else if (Number(keyword).toString() === keyword) {
+      searchBlock(searchKey)
+        .then(res => router.push(res.length ? `/block/${res[0].number}` : noResult))
+    } else {
       searchNftTransfer(searchKey)
-    ]).then(([accounts, extrinsics, blocks, nftTransfers]) => {
-      if (accounts.length) {
-        router.push(`/account/${accounts[0].id}`)
-      } else if (extrinsics.length) {
-        router.push(`/extrinsic/${extrinsics[0].id}`)
-      } else if (blocks.length) {
-        router.push(`/block/${blocks[0].number}`)
-      } else if (nftTransfers.length) {
-        router.push(`/nft/${nftTransfers[0].number}`)
-      } else {
-        router.push(`/result?search=${searchKey}`)
-      }
-    })
+        .then(res => router.push(res.length ? `/nft/${res[0].number}` : noResult))
+    }
   }, [keyword])
 
   return (
@@ -50,7 +42,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         <input
           type="text"
           value={keyword}
-          placeholder="Search by address / Txn Hash / Block / NFT"
+          placeholder="Search by address / Txn Hash / Block"
           className={style.searchInput + " " + (props.isLarge?style.inputLarge:style.inputMedium)}
           onChange={(e) => setKeyword(e.target.value)}
           onFocus={(e) => setIsFocus(true)}

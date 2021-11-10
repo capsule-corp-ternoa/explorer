@@ -11,11 +11,11 @@ import CAPSFlat from 'components/assets/CAPSFlat';
 import style from './HomeScan.module.scss';
 
 interface SummaryProps {
-  capsPrice: number | null
-  marketCap: number | null
-  change24h: number | null
-  transactions: number | null
-  finalizedBlock: number | null
+  capsPrice?: number
+  marketCap?: number
+  change24h?: number
+  transactions?: number
+  finalizedBlock?: number
 }
 
 const Summary: React.FC<SummaryProps> = ({
@@ -50,13 +50,13 @@ const Summary: React.FC<SummaryProps> = ({
                 <div className={"d-flex flex-column ms-3"}>
                   <div className="fs-6 text-opacity-4 text-ellipsis">CAPS price</div>
                   <div className="fs-5 fw-bold">
-                    {capsPrice !== null && <FormattedNumber value={capsPrice} format='caps' />}
+                    {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
                     <span className={clsx(
                       style.logoPercent,
                       'ms-2',
-                      {[style.minus]: change24h !== null && (change24h < 0)})
+                      {[style.minus]: change24h !== undefined && (change24h < 0)})
                     }>
-                      {change24h !== null && (
+                      {change24h !== undefined && (
                         <FormattedNumber value={change24h / 100} format='percentChange' />
                       )}
                     </span>
@@ -72,7 +72,7 @@ const Summary: React.FC<SummaryProps> = ({
                   <div className={`d-flex flex-column ms-3`}>
                     <div className="fs-6 text-opacity-4 text-ellipsis">Market cap</div>
                     <div className="fs-5 fw-bold">
-                      {marketCap !== null && <FormattedNumber value={marketCap} format='priceDecimal' />}
+                      {marketCap !== undefined && <FormattedNumber value={marketCap} format='priceDecimal' />}
                     </div>
                   </div>
                 </div>
@@ -125,9 +125,9 @@ const Summary: React.FC<SummaryProps> = ({
                   <div className="flex-1 flex flex-col ms-2">
                     <span className="fs-6 text-opacity-4 text-ellipsis">CAPS price</span>
                     <div className={style.logoSummary}>
-                      {capsPrice !== null && <FormattedNumber value={capsPrice} />}
-                      <span className={clsx(style.logoPercent, 'ms-2', {[style.minus]: change24h !== null && change24h < 0})}>
-                        {change24h !== null && (
+                      {capsPrice !== undefined && <FormattedNumber value={capsPrice} />}
+                      <span className={clsx(style.logoPercent, 'ms-2', {[style.minus]: change24h !== undefined && change24h < 0})}>
+                        {change24h !== undefined && (
                           <FormattedNumber value={change24h / 100} format='percentChange' />
                         )}
                       </span>
@@ -156,7 +156,7 @@ const Summary: React.FC<SummaryProps> = ({
                   <div className="flex-1 flex flex-col ms-2">
                     <span className="fs-6 text-opacity-4 text-ellipsis">Market cap</span>
                     <span className={style.logoSummary}>
-                      {marketCap !== null && <FormattedNumber format='priceDecimal' value={marketCap} />}
+                      {marketCap !== undefined && <FormattedNumber format='priceDecimal' value={marketCap} />}
                     </span>
                   </div>
                 </div>

@@ -20,14 +20,16 @@ interface TableProps {
   className?: string
 }
 
-const ListView: React.FC<TableProps> = ({
+const EventView: React.FC<TableProps> = ({
   columns,
   data,
   renderCell,
   footer,
   className
-}) => (
+}) => {
+  return(
   <>
+    <h1 className="subTitle mt-4">Events ()</h1>
     <table className={clsx('table table-borderless data-table only-desktop', className)}>
       <thead>
         <tr>
@@ -92,6 +94,6 @@ const ListView: React.FC<TableProps> = ({
       )}
     </div>
   </>
-)
+)}
 
-export default ListView
+export default EventView

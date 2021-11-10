@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
-import Check from 'components/assets/Check';
-import { formatSec } from 'helpers/lib';
+import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const blockFields = [
   { text: 'Timestamp', dataKey: 'timestamp' },
@@ -16,13 +15,11 @@ export const blockFields = [
   { text: 'Block Time', dataKey: 'age' },
 ]
 
-export const transactionColumns = [
-  { text: 'Transaction ID', dataKey: 'id' },
-  { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
-  { text: 'Module', dataKey: 'module' },
-  { text: 'Call', dataKey: 'call' },
-  { text: 'Success', dataKey: 'success' },
-  { text: '', dataKey: 'detail' },
+export const columns = [
+  { text: 'Event ID', dataKey: 'id', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-right' },
+  { text: 'Time', dataKey: 'timestamp', className: 'text-right' },
+  { text: 'Action', dataKey: 'action', className: 'text-right' },
 ]
 
 export const blockRender = (data: any, dataKey: string) => {
@@ -46,43 +43,41 @@ export const blockRender = (data: any, dataKey: string) => {
   }
 }
 
-export const transactionRender = (record: any, dataKey: string) => {
+export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
-    case 'timestamp':
-      return (
-        <FormattedDate value={record[dataKey]} />
-      )
-
-    case 'from':
+    case 'id':
       return (
         <>
-          <CAPSDark className="webIcon me-2" />
-          <span className="textToken">{record[dataKey]}</span>
+          {/* <Link href={`/extrinsic/${record.address}`}> */}
+          <Link href={`/extrinsic/513569-0`}>
+            <a className="textToken">{ "7440231-2" }</a>
+          </Link>
         </>
       )
-
-    case 'success':
-      return record[dataKey] ? <Check className="webCheckIcon" /> : null
-
-    case 'detail':
+    case 'hash':
       return (
-        <Link href={`/block/${record.block_id}/${record.id}`}>
-          <a>
-            <button className="btn btn-secondary rounded-pill px-4 py-2">
-              Details
-            </button>
-          </a>
-        </Link>
+        <>
+          <span className="textToken" title={record[dataKey]}>
+            {ellipsifyMiddle("0xfe67b...01d1d07cce37")}
+          </span>
+        </>
       )
-
+    case 'timestamp':
+      return (
+        `${formatSec(9999999)} ago`
+      )
+    case 'action':
+      return (
+        <span className="textToken">{"balance(Transfer)"}</span>
+      )
     default:
-      return record[dataKey]
+      return record[dataKey];
   }
 }
 
 export default {
   blockFields,
   blockRender,
-  transactionColumns,
-  transactionRender
+  columns,
+  render
 }

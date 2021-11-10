@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
-import ParameterView from 'components/base/ParameterView';
-import { parameterFields, parameterRender, transactionFields, transactionRender } from './table'
+import EventView from 'components/base/EventView';
+import { columns, render, transactionFields, transactionRender } from './table'
 import { getExtrinsic } from 'apis/extrinsic';
 import { ellipsifyMiddle } from 'helpers/lib';
 
@@ -28,7 +28,11 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
     <Layout back='/extrinsic'>
       <h1 className="subTitle">Extrinsics: {data && ellipsifyMiddle(data.hash)}</h1>
       <DetailView fields={transactionFields} data={data} renderCell={transactionRender}/>
-      <ParameterView fields={parameterFields} data={data} renderCell={parameterRender}/>
+      <EventView
+        data={data}
+        columns={columns}
+        renderCell={render}
+      />
     </Layout>
   )
 }

@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { useRouter } from "next/router";
 
-export default () => {
+const pagination = () => {
   const router = useRouter()
 
   const page = router.query.page ?? 1
@@ -16,3 +16,5 @@ export default () => {
     page: Number(page) - 1
   }
 }
+
+export default pagination;

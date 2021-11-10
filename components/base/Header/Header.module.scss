@@ -12,10 +12,10 @@
         margin-top: 20px;
     }
     margin: 0px auto;
-    width: 1600px;
+    width: 1400px;
     
     @media (max-width: 1700px) {
-        width: 1440px;
+        width: 1400px;
     }
     
     @media (max-width: 1500px) {
@@ -52,11 +52,12 @@
 }
 
 .navBarItem {
-    font-family: "Airbnb Cereal App Bold";
+    font-family: "Airbnb Cereal App";
     color: white;
+    font-style: normal;
+    font-weight: normal;
     font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
+    line-height: 23px;
     cursor: pointer;
     @media (max-width: 1200px) {
         font-size: 16px;
@@ -76,7 +77,7 @@
         cursor: pointer;
         color: white;
         font-family: "Airbnb Cereal App Bold";
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 700;
         line-height: 20px;
         margin-bottom: 14px;
@@ -106,8 +107,33 @@
   		// transition: all 1000ms ease-out;
         padding: 11px 17px;
         margin-top: 8px;
-        z-index: 1000001;
+        z-index: 1001;
     }
+}
+
+.downArrowMobile {
+    margin-left: 10px;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.submenuMobile {
+    font-family: "Airbnb Cereal App";
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.activeSubmenuMobile {
+    color: $white-blue!important;
+}
+
+.menuContainerMobile {
+    margin-top: -10px;
+}
+
+.activeMobileMenuItem {
+    color: $white-blue!important;
 }
 
 @media (max-width:1024px) {

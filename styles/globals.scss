@@ -264,15 +264,13 @@ a {
 }
 
 .mainBody {
-  // margin-left: 170px;
-  // margin-right: 170px;
   margin: 0px auto;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
   margin-top: 30px;
-  width: 1600px;
+  width: 1400px;
   
   @media (max-width: 1700px) {
-    width: 1440px;
+    width: 1400px;
   }
   
   @media (max-width: 1500px) {
@@ -397,4 +395,8 @@ a {
 .data-table {
 	background-color: #14142e;
 	border-radius: 1.5em;
+}
+
+.data-overflow {
+  overflow-wrap: break-word;
 }

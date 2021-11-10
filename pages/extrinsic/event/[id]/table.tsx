@@ -52,37 +52,48 @@ export const transactionRender = (record: any, dataKey: string) => {
   }
 }
 
-export const parameterFields = [
-  { text: 'Destination', dataKey: 'args_name' },
-  { text: 'Value', dataKey: 'args_value' },
+export const columns = [
+  { text: 'Event ID', dataKey: 'id', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-right' },
+  { text: 'Time', dataKey: 'timestamp', className: 'text-right' },
+  { text: 'Action', dataKey: 'action', className: 'text-right' },
 ]
 
-export const parameterRender = (record: any, dataKey: string) => {
+export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
-    case 'args_name':
+    case 'id':
+      return (
+        <>
+          {/* <Link href={`/extrinsic/${record.address}`}> */}
+          <Link href={`/extrinsic/513569-0`}>
+            <a className="textToken">{ "7440231-2" }</a>
+          </Link>
+        </>
+      )
+    case 'hash':
       return (
         <>
           <span className="textToken" title={record[dataKey]}>
-            {record[dataKey] && record[dataKey][0]}
+            {ellipsifyMiddle("0xfe67b...01d1d07cce37")}
           </span>
-        </> 
-      );
-    case 'args_value':
+        </>
+      )
+    case 'timestamp':
       return (
-        <>
-          <span className="textToken" title={record[dataKey]}>
-            {record[dataKey] && record[dataKey][0]}
-          </span>
-        </> 
-      );
+        `${formatSec(9999999)} ago`
+      )
+    case 'action':
+      return (
+        <span className="textToken">{"balance(Transfer)"}</span>
+      )
     default:
-      return record[dataKey]
+      return record[dataKey];
   }
 }
 
 export default {
   transactionFields,
   transactionRender,
-  parameterFields,
-  parameterRender
+  columns,
+  render
 }

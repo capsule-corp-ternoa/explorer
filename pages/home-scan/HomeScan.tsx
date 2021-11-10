@@ -16,9 +16,9 @@ import {
 } from './table'
 import { getNftTransferList } from 'apis/nft-transfer';
 import { getTransferList } from 'apis/transfer';
-import { getSummary } from 'apis/summary';
 import { TransactionChart, BlockChart } from './Chart';
 import statData from 'components/data/statast.json'
+import { getExtrinsicCount } from 'apis/extrinsic';
 
 export interface HomeScanProps { }
 
@@ -42,26 +42,53 @@ const DetailButton: React.FC<DetailButtonProps> = ({
 )
 
 const HomeScan: React.FC<HomeScanProps> = () => {
-  const [summary, setSummary] = useState<any>(null)
+  const [summary, setSummary] = useState<any>({})
   const [latestBlocks, setLatestBlocks] = useState<any>(null)
   const [nftTransfers, setNftTransfers] = useState<any>(null)
   const [transfers, setTransfers] = useState<any>(null)
 
   useEffect(() => {
-    getSummary().then(setSummary).catch(() => {})
-    getBlockList(0, TABLE_ROWS).then(setLatestBlocks).catch(() => {})
-    getNftTransferList(0, TABLE_ROWS).then(setNftTransfers).catch(() => {})
-    getTransferList(0, TABLE_ROWS).then(setTransfers).catch(() => {})
+    const url = 'https://api.coingecko.com/api/v3/simple/price?ids=coin-capsule&vs_currencies=usd&include_24hr_change=true&include_market_cap=true'
+
+    getExtrinsicCount()
+      .then(extrinsic_count =>
+        setSummary((prev: any) => ({
+          ...prev, extrinsic_count
+        }))
+      ).catch(() => {})
+
+    fetch(url)
+      .then(res => res.json())
+      .then(res =>
+        setSummary((prev: any) => ({
+          ...prev, ...res['coin-capsule']
+        }))
+      ).catch(() => {})
+
+    getBlockList(0, TABLE_ROWS).then(res => {
+      setSummary((prev: any) => ({
+        ...prev, block_count: res.totalCount
+      }))
+      setLatestBlocks(res)
+    }).catch(() => {})
+
+    getNftTransferList(0, TABLE_ROWS)
+      .then(setNftTransfers)
+      .catch(() => {})
+
+    getTransferList(0, TABLE_ROWS)
+      .then(setTransfers)
+      .catch(() => {})
   }, [])
 
   return (
     <Layout searchBar={false}>
       <Summary
-        capsPrice={summary && summary.usd}
-        marketCap={summary && summary.usd_market_cap}
-        change24h={summary && summary.usd_24h_change}
-        transactions={summary && summary.extrinsic_count}
-        finalizedBlock={summary && summary.block_count}
+        capsPrice={summary.usd}
+        marketCap={summary.usd_market_cap}
+        change24h={summary.usd_24h_change}
+        transactions={summary.extrinsic_count}
+        finalizedBlock={summary.block_count}
       />
 
       <div className="row">

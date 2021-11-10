@@ -1,6 +1,7 @@
 import { gql } from "graphql-request"
 import request from './api'
 import { API_PAGE_SIZE } from 'helpers/constants'
+import * as ethers from 'ethers';
 
 const queryAccountList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
 {
@@ -97,7 +98,7 @@ export const getAccountList = async (offset: number, pageSize: number = API_PAGE
     totalCount: accounts.accountEntities.totalCount,
     data: accounts.accountEntities.nodes.map((account: any) => ({
       address: account.id,
-      amount: account.capsAmount,
+      amount: ethers.utils.formatEther(account.capsAmount),
       transactions: count[account.id]
     }))
   }
@@ -127,8 +128,8 @@ export const getAccount = async (id: string, lastTransactionCount: number) => {
     const acc = account.accountEntities.nodes[0]
     const data: any = {
       address: acc.id,
-      free_balance: acc.capsAmount,
-      total_balance: acc.capsAmountTotal,
+      free_balance: ethers.utils.formatEther(acc.capsAmount),
+      total_balance: ethers.utils.formatEther(acc.capsAmountTotal),
       active: acc.capsAmountTotal > 0
     }
 

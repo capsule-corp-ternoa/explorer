@@ -1,24 +1,25 @@
 import clsx from 'clsx'
 import React from 'react'
 
-type DetailViewField = {
+type ParameterViewField = {
   text: string
   dataKey: string
   mobileClassName?: string
 }
 
-interface DetailViewProps {
-  fields: DetailViewField[]
+interface ParameterViewProps {
+  fields: ParameterViewField[]
   data: { [dataKey in string]: any } | null
   renderCell: (data: any, dataKey: string) => React.ReactNode
 }
 
-const DetailView: React.FC<DetailViewProps> = ({
+const ParameterView: React.FC<ParameterViewProps> = ({
   fields,
   data,
   renderCell
 }) => (
   <>
+    <h1 className="subTitle mt-4">Parameters</h1>
     <table className="only-desktop table table-borderless mb-0 data-table">
       <tbody className="tbody-detail">
         {fields.map(({ text, dataKey }) => (
@@ -50,4 +51,4 @@ const DetailView: React.FC<DetailViewProps> = ({
   </>
 )
 
-export default DetailView
+export default ParameterView
