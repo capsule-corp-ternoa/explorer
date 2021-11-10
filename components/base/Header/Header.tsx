@@ -19,6 +19,8 @@ export interface HeaderProps {
 const Header: React.FC<HeaderProps> = (props) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isLaptop, setIsLaptop] = useState(false);
+    const [isChain, setIsChain] = useState(false);
+    const [isAccount, setIsAccount] = useState(false);
     const mediaQuery = useMediaQuery({ query: '(min-width: 1024px)' });
     const router = useRouter();
     const [menu, setMenu] = useState(false);
@@ -63,6 +65,27 @@ const Header: React.FC<HeaderProps> = (props) => {
         setMenu1(true)
     }
 
+    const onClickChain = () => {
+        if(isChain) setIsChain(false);
+        else setIsChain(true);
+    }
+    
+    const onClickAccount = () => {
+        if(isAccount) setIsAccount(false);
+        else setIsAccount(true);
+    }
+
+    const openMenu = () => {
+        if(router.route == '/block' || router.route == '/extrinsic' || router.route == '/nft' || router.route == '/event') {
+            setIsChain(true);
+        } 
+        if (router.route == '/account' || router.route == '/trans') {
+            setIsAccount(true);
+        }
+        if(isMenuOpen) setIsMenuOpen(false);
+        else setIsMenuOpen(true);
+    }
+
     return (
         <header>
             <div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
@@ -72,7 +95,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </Link>
                 </div>
                 <div className="d-block d-md-none col no-padding-vertical">
-                    <div className="flex flex-cont-end" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <div className="flex flex-cont-end" onClick={() => openMenu()}>
                         <Hamburger className={style.hamburger + " mx-2"} />
                     </div>
                 </div>
@@ -102,13 +125,23 @@ const Header: React.FC<HeaderProps> = (props) => {
                         </DropdownToggle>
                         <DropdownMenu className={style.dropdownMenu} right>
                             <p className={style.dropdownItem}>
-                                <Link href="/extrinsic">
-                                    <a>Exrinsics</a>
+                                <Link href="/block">
+                                    <a>Blocks</a>
                                 </Link>
                             </p>
                             <p className={style.dropdownItem}>
-                                <Link href="/account">
-                                    <a>All Account</a>
+                                <Link href="/extrinsic">
+                                    <a>Transactions</a>
+                                </Link>
+                            </p>
+                            <p className={style.dropdownItem}>
+                                <Link href="/nft">
+                                    <a>NFT Transactions</a>
+                                </Link>
+                            </p>
+                            <p className={style.dropdownItem}>
+                                <Link href="/event">
+                                    <a>Events</a>
                                 </Link>
                             </p>
                         </DropdownMenu>
@@ -127,23 +160,16 @@ const Header: React.FC<HeaderProps> = (props) => {
                         </DropdownToggle>
                         <DropdownMenu className={style.dropdownMenu} right>
                             <p className={style.dropdownItem}>
-                                <Link href='/block'>
+                                <Link href='/account'>
                                     <a>
-                                        Blocks
+                                        All accounts
                                     </a>
                                 </Link>
                             </p>
                             <p className={style.dropdownItem}>
                                 <Link href='/trans'>
                                     <a>
-                                        Transactions
-                                    </a>
-                                </Link>
-                            </p>
-                            <p className={style.dropdownItem}>
-                                <Link href='/nft'>
-                                    <a>
-                                        NFT/ Capsule
+                                        Transfers
                                     </a>
                                 </Link>
                             </p>
@@ -164,8 +190,58 @@ const Header: React.FC<HeaderProps> = (props) => {
                     >
                         Dashboard
                     </span>
-                    <span className={style.mobileMenuItem}>Chain</span>
-                    <span className={style.mobileMenuItem}>Account</span>
+                    <div>
+                        <div className="flex flex-row flex-items-center flex-cont-center" onClick={() => onClickChain()}>
+                            <span className={style.mobileMenuItem + " " + (router.route == '/block' || router.route == '/extrinsic' || router.route == '/nft' || router.route == '/event' ? style.activeMobileMenuItem : '')}>Chain</span>
+                            { isChain ? <DownArrow className={style.downArrowMobile} /> : <DownArrow className={style.downArrowMobile} /> }
+                        </div>
+                        { isChain && <div className={style.menuContainerMobile + " flex flex-column flex-items-center"}>
+                            <span
+                                className={style.submenuMobile + " " + (router.route == '/block' ? style.activeSubmenuMobile : '')}
+                                onClick={()=>router.push("/block")}
+                            >
+                                Blocks
+                            </span>
+                            <span
+                                className={style.submenuMobile + " " + (router.route == '/extrinsic' ? style.activeSubmenuMobile : '')}
+                                onClick={()=>router.push("/extrinsic")}
+                            >
+                                Transactions
+                            </span>
+                            <span
+                                className={style.submenuMobile + " " + (router.route == '/nft' ? style.activeSubmenuMobile : '')}
+                                onClick={()=>router.push("/nft")}
+                            >
+                                NFT Transactions
+                            </span>
+                            <span
+                                className={style.submenuMobile + " " + (router.route == '/event' ? style.activeSubmenuMobile : '')}
+                                onClick={()=>router.push("/event")}
+                            >
+                                Events
+                            </span>
+                        </div> }
+                    </div>
+                    <div>
+                        <div className="flex flex-row flex-items-center flex-cont-center" onClick={() => onClickAccount()}>
+                            <span className={style.mobileMenuItem + " " + (router.route == '/account' || router.route == '/trans' ? style.activeMobileMenuItem : '')}>Account</span>
+                            { isAccount ? <DownArrow className={style.downArrowMobile} /> : <DownArrow className={style.downArrowMobile} /> }
+                        </div>
+                        { isAccount && <div className={style.menuContainerMobile + " flex flex-column flex-items-center"}>
+                            <span
+                                className={style.submenuMobile + " " + (router.route == '/account' ? style.activeSubmenuMobile : '')}
+                                onClick={()=>router.push("/account")}
+                            >
+                                All accounts
+                            </span>
+                            <span
+                                className={style.submenuMobile + " " + (router.route == '/trans' ? style.activeSubmenuMobile : '')}
+                                onClick={()=>router.push("/trans")}
+                            >
+                                Transfers
+                            </span>
+                        </div> }
+                    </div>
                 </div>
             </Modal>
 

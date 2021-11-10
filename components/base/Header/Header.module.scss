@@ -111,6 +111,31 @@
     }
 }
 
+.downArrowMobile {
+    margin-left: 10px;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.submenuMobile {
+    font-family: "Airbnb Cereal App";
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.activeSubmenuMobile {
+    color: $white-blue!important;
+}
+
+.menuContainerMobile {
+    margin-top: -10px;
+}
+
+.activeMobileMenuItem {
+    color: $white-blue!important;
+}
+
 @media (max-width:1024px) {
 
     .mobileMenu {
