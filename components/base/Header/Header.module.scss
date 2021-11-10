@@ -76,7 +76,7 @@
     .dropdownItem{
         cursor: pointer;
         color: white;
-        font-family: "Airbnb Cereal App Bold";
+        font-family: "Airbnb Cereal App";
         font-size: 15px;
         font-weight: 700;
         line-height: 20px;
@@ -112,6 +112,7 @@
 }
 
 .downArrowMobile {
+    font-family: "Airbnb Cereal App";
     margin-left: 10px;
     font-size: 30px;
     margin-bottom: 15px;
@@ -122,6 +123,10 @@
     font-weight: 400;
     font-size: 18px;
     margin-bottom: 5px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .activeSubmenuMobile {
@@ -142,12 +147,16 @@
         padding: 80px 0px;
 
         .mobileMenuItem {
-            font-family: "Airbnb Cereal App Bold";
+            font-family: "Airbnb Cereal App";
             color: white;
             font-size: 30px;
             line-height: 40px;
             font-weight: 700;
             margin-bottom: 20px;
+
+            &:hover {
+                cursor: pointer;
+            }
 
             &:last-child {
                 margin-bottom: 0px;
