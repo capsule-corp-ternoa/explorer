@@ -10,14 +10,14 @@ export const blockFields = [
   { text: 'Parent Hash', dataKey: 'parent_hash', mobileClassName: 'col-12' },
   { text: 'State Root', dataKey: 'state_root', mobileClassName: 'col-12' },
   { text: 'Extrinsics Root', dataKey: 'extrinsics_root', mobileClassName: 'col-12' },
-  { text: 'Transactions', dataKey: 'transactions' },
+  { text: 'Extrinsics', dataKey: 'extrinsics' },
   { text: 'Total Module Events', dataKey: 'module_events' },
   { text: 'Runtime Version', dataKey: 'runtime_version' },
   { text: 'Block Time', dataKey: 'age' },
 ]
 
-export const transactionColumns = [
-  { text: 'Transaction ID', dataKey: 'id' },
+export const extrinsicColumns = [
+  { text: 'Extrinsic ID', dataKey: 'id' },
   { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
   { text: 'Module', dataKey: 'module' },
   { text: 'Call', dataKey: 'call' },
@@ -46,7 +46,7 @@ export const blockRender = (data: any, dataKey: string) => {
   }
 }
 
-export const transactionRender = (record: any, dataKey: string) => {
+export const extrinsicRender = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'timestamp':
       return (
@@ -83,6 +83,6 @@ export const transactionRender = (record: any, dataKey: string) => {
 export default {
   blockFields,
   blockRender,
-  transactionColumns,
-  transactionRender
+  extrinsicColumns,
+  extrinsicRender
 }

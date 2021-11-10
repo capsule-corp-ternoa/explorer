@@ -4,12 +4,12 @@ import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
 
-export const transactionFields = [
+export const extrinsicFields = [
   { text: 'ID', dataKey: 'id' },
   { text: 'Block', dataKey: 'block_id' },
   { text: 'Timestamp', dataKey: 'timestamp' },
-  { text: 'Transaction Index', dataKey: 'transaction_index' },
-  { text: 'Transaction Hash', dataKey: 'hash', mobileClassName: 'col-12' },
+  { text: 'Extrinsic Index', dataKey: 'extrinsic_index' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', mobileClassName: 'col-12' },
   { text: 'Module', dataKey: 'module' },
   { text: 'Call', dataKey: 'call' },
   { text: 'Description', dataKey: 'description', mobileClassName: 'col-12' },
@@ -19,7 +19,7 @@ export const transactionFields = [
   { text: 'Result', dataKey: 'success' },
 ]
 
-export const transactionRender = (record: any, dataKey: string) => {
+export const extrinsicRender = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'timestamp':
       return (
@@ -92,8 +92,8 @@ export const render = (record: any, dataKey: string) => {
 }
 
 export default {
-  transactionFields,
-  transactionRender,
+  extrinsicFields,
+  extrinsicRender,
   columns,
   render
 }

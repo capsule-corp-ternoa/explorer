@@ -6,7 +6,7 @@ import { FormattedNumber } from 'react-intl';
 export const blockColumns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
   { text: 'Age', dataKey: 'age', className: 'text-left' },
-  { text: 'Transactions', dataKey: 'signed_extrinsics', className: 'text-right' },
+  { text: 'Extrinsics', dataKey: 'signed_extrinsics', className: 'text-right' },
   { text: 'Module Events', dataKey: 'module_events', className: 'text-right' },
   { text: '', dataKey: 'details', className: 'text-right' },
 ]

@@ -5,7 +5,7 @@ import { ellipsifyMiddle } from 'helpers/lib';
 
 export const fields = [
   { text: 'NFT Id', dataKey: 'nft_id' },
-  { text: 'Type of Transaction', dataKey: 'transaction_type' },
+  { text: 'Type of Extrinsic', dataKey: 'extrinsic_type' },
   { text: 'Amount', dataKey: 'amount' },
   { text: 'Sender', dataKey: 'from', mobileClassName: 'col-12' },
   { text: 'Receiver', dataKey: 'to', mobileClassName: 'col-12' },

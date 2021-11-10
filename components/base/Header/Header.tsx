@@ -131,12 +131,12 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </p>
                             <p className={style.dropdownItem}>
                                 <Link href="/extrinsic">
-                                    <a>Transactions</a>
+                                    <a>Extrinsics</a>
                                 </Link>
                             </p>
                             <p className={style.dropdownItem}>
                                 <Link href="/nft">
-                                    <a>NFT Transactions</a>
+                                    <a>NFT Extrinsics</a>
                                 </Link>
                             </p>
                             <p className={style.dropdownItem}>
@@ -206,13 +206,13 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 className={style.submenuMobile + " " + (router.route == '/extrinsic' ? style.activeSubmenuMobile : '')}
                                 onClick={()=>router.push("/extrinsic")}
                             >
-                                Transactions
+                                Extrinsics
                             </span>
                             <span
                                 className={style.submenuMobile + " " + (router.route == '/nft' ? style.activeSubmenuMobile : '')}
                                 onClick={()=>router.push("/nft")}
                             >
-                                NFT Transactions
+                                NFT Extrinsics
                             </span>
                             <span
                                 className={style.submenuMobile + " " + (router.route == '/event' ? style.activeSubmenuMobile : '')}
