@@ -128,7 +128,7 @@ export const getExtrinsic = async (id: string) => {
       signature: data.signature,
       success: data.success,
       args_name: data.argsName,
-      args_value: data.artgsValue
+      args_value: data.argsValue
     }
   }
 }
