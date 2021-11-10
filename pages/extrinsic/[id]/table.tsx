@@ -53,17 +53,17 @@ export const transactionRender = (record: any, dataKey: string) => {
 }
 
 export const parameterFields = [
-  { text: 'Destination', dataKey: 'signer' },
+  { text: 'Destination', dataKey: 'args_name' },
   { text: 'Value', dataKey: 'args_value' },
 ]
 
 export const parameterRender = (record: any, dataKey: string) => {
   switch (dataKey) {
-    case 'signer':
+    case 'args_name':
       return (
         <>
           <span className="textToken" title={record[dataKey]}>
-            {record[dataKey]}
+            {record[dataKey] && record[dataKey][0]}
           </span>
         </> 
       );
