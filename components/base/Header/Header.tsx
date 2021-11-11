@@ -104,77 +104,77 @@ const Header: React.FC<HeaderProps> = (props) => {
                     {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
                 </div>
                 <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
-                <div className={'flex flex-cont-end flex-items-center '}>
-                    <span className={style.navBarItem}>
-                        <Link href="/">
-                            <a>
-                                Dashboard
-                            </a>
-                        </Link>
-                    </span>
-                    <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
-                        <DropdownToggle
-                            className={style.navBarDropdownItem}
-                            id="page-header-user-dropdown"
-                            tag="button"
-                        >
-                            <div className="flex flex-row flex-items-center">
-                                <span className={style.navBarItem}>Chain</span>
-                                <DownArrow className={style.downArrowItem} />
-                            </div>
-                        </DropdownToggle>
-                        <DropdownMenu className={style.dropdownMenu} right>
-                            <p className={style.dropdownItem}>
-                                <Link href="/block">
-                                    <a>Blocks</a>
-                                </Link>
-                            </p>
-                            <p className={style.dropdownItem}>
-                                <Link href="/extrinsic">
-                                    <a>Extrinsics</a>
-                                </Link>
-                            </p>
-                            <p className={style.dropdownItem}>
-                                <Link href="/nft">
-                                    <a>NFT Extrinsics</a>
-                                </Link>
-                            </p>
-                            <p className={style.dropdownItem}>
-                                <Link href="/event">
-                                    <a>Events</a>
-                                </Link>
-                            </p>
-                        </DropdownMenu>
-                    </Dropdown>
+                    <div className={'flex flex-cont-end flex-items-center '}>
+                        <span className={style.navBarItem}>
+                            <Link href="/">
+                                <a>
+                                    Dashboard
+                                </a>
+                            </Link>
+                        </span>
+                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
+                            <DropdownToggle
+                                className={style.navBarDropdownItem}
+                                id="page-header-user-dropdown"
+                                tag="button"
+                            >
+                                <div className="flex flex-row flex-items-center">
+                                    <span className={style.navBarItem}>Chain</span>
+                                    <DownArrow className={style.downArrowItem} />
+                                </div>
+                            </DropdownToggle>
+                            <DropdownMenu className={style.dropdownMenu} right>
+                                <p className={style.dropdownItem}>
+                                    <Link href="/block">
+                                        <a>Blocks</a>
+                                    </Link>
+                                </p>
+                                <p className={style.dropdownItem}>
+                                    <Link href="/extrinsic">
+                                        <a>Extrinsics</a>
+                                    </Link>
+                                </p>
+                                <p className={style.dropdownItem}>
+                                    <Link href="/nft">
+                                        <a>NFT Extrinsics</a>
+                                    </Link>
+                                </p>
+                                <p className={style.dropdownItem}>
+                                    <Link href="/event">
+                                        <a>Events</a>
+                                    </Link>
+                                </p>
+                            </DropdownMenu>
+                        </Dropdown>
 
-                    <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
-                        <DropdownToggle
-                            className={style.navBarDropdownItem}
-                            id="page-header-user-dropdown"
-                            tag="button"
-                        >
-                            <div className="flex flex-row flex-items-center">
-                                <span className={style.navBarItem}>Accounts</span>
-                                <DownArrow className={style.downArrowItem} />
-                            </div>
-                        </DropdownToggle>
-                        <DropdownMenu className={style.dropdownMenu} right>
-                            <p className={style.dropdownItem}>
-                                <Link href='/account'>
-                                    <a>
-                                        All accounts
-                                    </a>
-                                </Link>
-                            </p>
-                            <p className={style.dropdownItem}>
-                                <Link href='/trans'>
-                                    <a>
-                                        Transfers
-                                    </a>
-                                </Link>
-                            </p>
-                        </DropdownMenu>
-                    </Dropdown>
+                        <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
+                            <DropdownToggle
+                                className={style.navBarDropdownItem}
+                                id="page-header-user-dropdown"
+                                tag="button"
+                            >
+                                <div className="flex flex-row flex-items-center">
+                                    <span className={style.navBarItem}>Accounts</span>
+                                    <DownArrow className={style.downArrowItem} />
+                                </div>
+                            </DropdownToggle>
+                            <DropdownMenu className={style.dropdownMenu} right>
+                                <p className={style.dropdownItem}>
+                                    <Link href='/account'>
+                                        <a>
+                                            All accounts
+                                        </a>
+                                    </Link>
+                                </p>
+                                <p className={style.dropdownItem}>
+                                    <Link href='/trans'>
+                                        <a>
+                                            Transfers
+                                        </a>
+                                    </Link>
+                                </p>
+                            </DropdownMenu>
+                        </Dropdown>
                     </div>
                 </div>
             </div>
