@@ -6,7 +6,7 @@ import DetailView from 'components/base/DetailView';
 import ListView from 'components/base/ListView';
 import { eventColumns, eventRender, blockFields, extrinsicColumns, blockRender, extrinsicRender } from './table'
 import { getBlock } from 'apis/block';
-import { searchEvent } from 'apis/event';
+import { searchEventbyBlock } from 'apis/event';
 
 export interface AccountDetailProps {}
 
@@ -19,7 +19,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   useEffect(() => {
     if (id) {
       getBlock(id).then(setData)
-      searchEvent(id).then(setData1);
+      searchEventbyBlock(id).then(setData1);
     }
   }, [id])
 
