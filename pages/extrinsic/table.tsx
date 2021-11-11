@@ -4,10 +4,10 @@ import Check from 'components/assets/Check';
 export const columns = [
   { text: 'Extrinsic ID', dataKey: 'id', className: 'text-left' },
   { text: 'Block', dataKey: 'block_id', className: 'text-left' },
-  { text: 'Module', dataKey: 'module' },
-  { text: 'Call', dataKey: 'call' },
-  { text: 'Signed', dataKey: 'signed' },
-  { text: 'Success', dataKey: 'success' },
+  { text: 'Module', dataKey: 'module', className: 'text-left' },
+  { text: 'Call', dataKey: 'call', className: 'text-left' },
+  { text: 'Signed', dataKey: 'signed', className: 'text-left' },
+  { text: 'Success', dataKey: 'success', className: 'text-left' },
   { text: '', dataKey: 'detail' },
 ]
 

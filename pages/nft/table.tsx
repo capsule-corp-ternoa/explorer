@@ -8,7 +8,7 @@ export const columns = [
   { text: 'Date', dataKey: 'timestamp', className: 'text-left' },
   { text: 'Sender', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Receiver', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-right' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
   { text: '', dataKey: 'details', mobileClassName: 'col-12' },
 ]
 

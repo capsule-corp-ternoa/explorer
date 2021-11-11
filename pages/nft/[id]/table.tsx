@@ -5,13 +5,13 @@ import { ellipsifyMiddle } from 'helpers/lib';
 
 export const fields = [
   { text: 'NFT Id', dataKey: 'nft_id' },
-  { text: 'Type of Extrinsic', dataKey: 'extrinsic_type' },
-  { text: 'Amount', dataKey: 'amount' },
-  { text: 'Sender', dataKey: 'from', mobileClassName: 'col-12' },
-  { text: 'Receiver', dataKey: 'to', mobileClassName: 'col-12' },
-  { text: 'Creator', dataKey: 'creator', mobileClassName: 'col-12' },
-  { text: 'Date', dataKey: 'timestamp' },
-  { text: 'Content URL', dataKey: 'uri', mobileClassName: 'col-12' },
+  { text: 'Type of Extrinsic', dataKey: 'extrinsic_type', className: 'text-left' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
+  { text: 'Sender', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Receiver', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Creator', dataKey: 'creator', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Date', dataKey: 'timestamp', className: 'text-left' },
+  { text: 'Content URL', dataKey: 'uri', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const render = (data: any, dataKey: string) => {
