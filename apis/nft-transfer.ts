@@ -54,7 +54,7 @@ const queryNftTransfer = (id: string) => gql`
       from
       to
       amount
-      typeOfExtrinsic
+      typeOfTransaction
       nft {
         id
         creator
