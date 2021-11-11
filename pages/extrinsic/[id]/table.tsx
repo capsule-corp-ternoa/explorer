@@ -3,6 +3,7 @@ import { FormattedTime } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
+import JSONPretty from 'react-json-pretty';
 
 export const extrinsicFields = [
   { text: 'ID', dataKey: 'id', className: 'text-left' },
@@ -21,7 +22,7 @@ export const extrinsicFields = [
 
 export const parameterFields = [
   { text: 'Destination', dataKey: 'args_name', className: 'text-left' },
-  { text: 'Value', dataKey: 'args_value', className: 'text-left' },
+  { text: 'Value', dataKey: 'args_value', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const eventColumns = [
@@ -77,9 +78,7 @@ export const parameterRender = (record: any, dataKey: string) => {
     case 'args_value':
       return (
         <>
-          <span className="textToken" title={record[dataKey]}>
-            {record[dataKey] && record[dataKey][0]}
-          </span>
+          <JSONPretty id="json-pretty" data={JSON.parse(record[dataKey])}></JSONPretty>
         </> 
       );
     default:
