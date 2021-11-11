@@ -420,3 +420,9 @@ a {
 .data-overflow {
   overflow-wrap: break-word;
 }
+
+.down {
+  @media (max-width: 1024px) {
+    margin-top: -23px;
+  }
+}

@@ -47,7 +47,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
         <>
           <div className="d-flex mt-1">
             <h1 className="subTitle1 mt-3">Extrinsics</h1>
-            <div onClick={() => onClickParameters()}>
+            <div className="down" onClick={() => onClickParameters()}>
               <Down className="ms-3 mt-5 cursor-point"/>
             </div>
           </div>
@@ -58,7 +58,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
         <>
           <div className="d-flex mt-1">
             <h1 className="subTitle1 mt-3">Events({data1 && data1.totalCount})</h1>
-            <div onClick={() => onClickEvents()}>
+            <div className="down" onClick={() => onClickEvents()}>
               <Down className="ms-3 mt-5 cursor-point"/>
             </div>
           </div>
