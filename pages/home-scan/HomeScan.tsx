@@ -131,10 +131,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6 only-desktop only-mobile">
           <ExtrinsicChart data={statData} className='mt-4' />
         </div>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6 only-desktop only-mobile">
           <BlockChart data={statData} className='mt-4' />
         </div>
       </div>
