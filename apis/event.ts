@@ -13,6 +13,7 @@ const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
       and: [
       ]
     }
+    orderBy: CREATED_AT_DESC
   ) {
     totalCount
     nodes {
@@ -50,9 +51,24 @@ const queryEventSearch = (keyword: string) => gql`
     filter: {
       blockId: { equalTo: "${keyword}" }
     }
+    orderBy: CREATED_AT_DESC
   ) {
     nodes {
       id
+      blockId
+      extrinsicId
+      eventIndex
+      module
+      call
+      description
+      argsName
+      argsValue
+      block{
+        timestamp
+        id
+        number
+        hash
+      }
     }
   }
 }
@@ -64,6 +80,7 @@ const queryEvent = (id: string) => gql`
     filter: {
       id: { equalTo: "${id}" }
     }
+    orderBy: CREATED_AT_DESC
   ) {
     nodes {
       id
@@ -98,7 +115,19 @@ export const searchEvent = async (keyword: string) => {
   const response = await request(
     queryEventSearch(keyword)
   )
-  return response.eventEntities.nodes
+  
+  const now = Date.now()
+  
+  return {
+    totalCount: response.eventEntities.nodes.length,
+    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
+      id: item.id,
+      blockId: item.blockId,
+      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      action: item.module + '(' + item.call + ')'
+    })))
+  }
 }
 
 export const getEventList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
@@ -141,18 +170,13 @@ export const getEvent = async (id: string) => {
     return {
       id: data.id,
       block_id: data.blockId,
-      timestamp: data.timestamp,
-      extrinsic_index: data.extrinsicIndex,
-      hash: data.hash,
+      extrinsic_index: data.extrinsicId,
+      event_index: data.eventIndex,
       module: data.module,
       call: data.call,
       description: data.description,
-      signer: data.signer,
-      nonce: data.nonce,
-      signature: data.signature,
-      success: data.success,
       args_name: data.argsName,
-      args_value: data.artgsValue
+      args_value: data.argsValue
     }
   }
 }

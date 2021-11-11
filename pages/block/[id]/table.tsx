@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import Check from 'components/assets/Check';
-import { formatSec } from 'helpers/lib';
+import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const blockFields = [
   { text: 'Timestamp', dataKey: 'timestamp' },
@@ -23,6 +23,13 @@ export const extrinsicColumns = [
   { text: 'Call', dataKey: 'call' },
   { text: 'Success', dataKey: 'success' },
   { text: '', dataKey: 'detail' },
+]
+
+export const eventColumns = [
+  { text: 'Event ID', dataKey: 'id' },
+  { text: 'Extrinsic Hash', dataKey: 'hash' },
+  { text: 'Time', dataKey: 'age' },
+  { text: 'Action', dataKey: 'action' },
 ]
 
 export const blockRender = (data: any, dataKey: string) => {
@@ -77,6 +84,34 @@ export const extrinsicRender = (record: any, dataKey: string) => {
 
     default:
       return record[dataKey]
+  }
+}
+
+export const eventRender = (record: any, dataKey: string) => {
+  switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/event/${record[dataKey]}`}>
+            <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
+    case 'hash':
+      return (
+        <>
+          <span className="textToken" title={record[dataKey]}>
+            {ellipsifyMiddle(record[dataKey])}
+          </span>
+        </>
+      )
+    case 'age':
+      return `${formatSec(record[dataKey])} ago`
+    case 'action':
+      return (
+        <span className="textToken">{record[dataKey]}</span>
+      )
+    default:
   }
 }
 

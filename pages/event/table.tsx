@@ -14,7 +14,7 @@ export const render = (record: any, dataKey: string) => {
     case 'id':
       return (
         <>
-          <Link href={`/extrinsic/e/${record[dataKey]}`}>
+          <Link href={`/event/${record[dataKey]}`}>
             <a className="textToken">{record[dataKey]}</a>
           </Link>
         </>
@@ -22,7 +22,7 @@ export const render = (record: any, dataKey: string) => {
     case 'blockId':
       return (
         <>
-          <Link href={`/block/e/${record[dataKey]}`}>
+          <Link href={`/block/${record[dataKey]}`}>
               <a className="textToken">{record[dataKey]}</a>
           </Link>
         </>
@@ -42,6 +42,7 @@ export const render = (record: any, dataKey: string) => {
         <span className="textToken">{record[dataKey]}</span>
       )
     default:
+      return record[dataKey]
   }
 }
 

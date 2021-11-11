@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import Layout from 'components/base/Layout';
+import Down from 'components/assets/Down';
 import DetailView from 'components/base/DetailView';
 import ListView from 'components/base/ListView';
-import { blockFields, extrinsicColumns, blockRender, extrinsicRender } from './table'
+import { eventColumns, eventRender, blockFields, extrinsicColumns, blockRender, extrinsicRender } from './table'
 import { getBlock } from 'apis/block';
+import { searchEvent } from 'apis/event';
 
 export interface AccountDetailProps {}
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
   const [data, setData] = useState<any>(null)
+  const [data1, setData1] = useState<any>(null)
   const router = useRouter()
   const id = router.query.id as string
 
   useEffect(() => {
     if (id) {
       getBlock(id).then(setData)
+      searchEvent(id).then(setData1);
     }
   }, [id])
 
@@ -27,8 +31,16 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     <Layout back='/block'>
       <h1 className="subTitle">Block #{id}</h1>
       <DetailView fields={blockFields} data={data} renderCell={blockRender}/>
-      <h1 className="subTitle mt-4">Extrinsics</h1>
+      <div className="d-flex mt-1">
+        <h1 className="subTitle1 mt-3">Extrinsics</h1>
+        <Down className="ms-3 mt-5"/>
+      </div>
       <ListView columns={extrinsicColumns} data={data && data.extrinsic_detail} renderCell={extrinsicRender}/>
+      <div className="d-flex mt-1">
+        <h1 className="subTitle1 mt-3">Events({data1 && data1.totalCount})</h1>
+        <Down className="ms-3 mt-5"/>
+      </div>
+      <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
     </Layout>
   )
 }
