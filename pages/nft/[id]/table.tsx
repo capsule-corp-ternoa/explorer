@@ -28,8 +28,8 @@ export const render = (data: any, dataKey: string) => {
 
     case 'uri':
       return (
-        <Link href={data[dataKey]}>
-          <a target='_blank'>{data[dataKey]}</a>
+        <Link href={'https://www.secret-nft.com/nft/' + data['nft_id']}>
+          <a target='_blank'>{'https://www.secret-nft.com/nft/' + data['nft_id']}</a>
         </Link>
       )
 
