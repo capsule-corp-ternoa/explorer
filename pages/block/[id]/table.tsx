@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import Check from 'components/assets/Check';
+import Copy from 'components/assets/Copy';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const blockFields = [
@@ -39,10 +40,13 @@ export const blockRender = (data: any, dataKey: string) => {
     case 'state_root':
     case 'extrinsics_root':
       return (
-        <>
+        <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken">{data[dataKey]}</span>
-        </>
+          <span className="textToken mt-1">{data[dataKey]}</span>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(data[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
 
     case 'age':
@@ -62,10 +66,13 @@ export const extrinsicRender = (record: any, dataKey: string) => {
 
     case 'from':
       return (
-        <>
+        <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken">{record[dataKey]}</span>
-        </>
+          <span className="textToken mt-1">{record[dataKey]}</span>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
 
     case 'success':
@@ -99,11 +106,14 @@ export const eventRender = (record: any, dataKey: string) => {
       )
     case 'hash':
       return (
-        <>
-          <span className="textToken" title={record[dataKey]}>
+        <div className="d-flex">
+          <span className="textToken mt-1" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-        </>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
     case 'age':
       return `${formatSec(record[dataKey])} ago`

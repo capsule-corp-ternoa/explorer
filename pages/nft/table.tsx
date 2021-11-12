@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import CAPSDark from 'components/assets/CAPSDark';
+import Copy from 'components/assets/Copy';
 import { FormattedTime, FormattedNumber } from 'react-intl';
 import { ellipsifyMiddle } from 'helpers/lib';
 
@@ -30,12 +31,15 @@ export const render = (record: any, dataKey: string) => {
     case 'from':
     case 'to':
       return (
-        <>
+        <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken" title={record[dataKey]}>
+          <span className="textToken mt-1" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-        </>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
     case 'details':
       return (

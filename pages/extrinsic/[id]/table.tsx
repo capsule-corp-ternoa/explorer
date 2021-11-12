@@ -3,6 +3,7 @@ import { FormattedTime } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
+import Copy from 'components/assets/Copy';
 import JSONPretty from 'react-json-pretty';
 
 export const extrinsicFields = [
@@ -42,19 +43,27 @@ export const extrinsicRender = (record: any, dataKey: string) => {
     case 'hash':
     case 'signature':
       return (
-        <>
+        <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken" title={record[dataKey]}>
+          <span className="textToken mt-1" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-        </>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
 
     case 'signer':
       return (
-        <span className="textToken" title={record[dataKey]}>
-          {ellipsifyMiddle(record[dataKey])}
-        </span>
+        <div className="d-flex">
+          <span className="textToken mt-1" title={record[dataKey]}>
+            {ellipsifyMiddle(record[dataKey])}
+          </span>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <Copy className="cursor-point" />
+          </div>
+        </div>
       )
 
     case 'success':
@@ -98,11 +107,14 @@ export const eventRender = (record: any, dataKey: string) => {
       )
     case 'hash':
       return (
-        <>
-          <span className="textToken" title={record[dataKey]}>
+        <div className="d-flex">
+          <span className="textToken mt-1" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-        </>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
     case 'age':
       return `${formatSec(record[dataKey])} ago`

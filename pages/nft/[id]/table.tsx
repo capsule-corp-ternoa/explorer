@@ -1,6 +1,7 @@
 import { FormattedTime, FormattedNumber } from 'react-intl';
 import Link from 'next/link'
 import CAPSDark from 'components/assets/CAPSDark';
+import Copy from 'components/assets/Copy';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const fields = [
@@ -52,12 +53,15 @@ export const render = (data: any, dataKey: string) => {
     case 'from':
     case 'creator':
       return (
-        <>
+        <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken" title={data[dataKey]}>
+          <span className="textToken mt-1" title={data[dataKey]}>
             {ellipsifyMiddle(data[dataKey])}
           </span>
-        </>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(data[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
 
     default:
@@ -77,11 +81,14 @@ export const eventRender = (record: any, dataKey: string) => {
       )
     case 'hash':
       return (
-        <>
+        <div className="d-flex">
           <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-        </>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
     case 'age':
       return `${formatSec(record[dataKey])} ago`
