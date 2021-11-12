@@ -1,7 +1,7 @@
 import { FormattedTime, FormattedNumber } from 'react-intl';
 import Link from 'next/link'
 import CAPSDark from 'components/assets/CAPSDark';
-import { ellipsifyMiddle } from 'helpers/lib';
+import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const fields = [
   { text: 'NFT Id', dataKey: 'nft_id' },
@@ -12,6 +12,13 @@ export const fields = [
   { text: 'Creator', dataKey: 'creator', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Date', dataKey: 'timestamp', className: 'text-left' },
   { text: 'Content URL', dataKey: 'uri', className: 'text-left', mobileClassName: 'col-12' },
+]
+
+export const eventColumns = [
+  { text: 'Event ID', dataKey: 'id', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left' },
+  { text: 'Time', dataKey: 'age', className: 'text-left' },
+  { text: 'Action', dataKey: 'action', className: 'text-left' },
 ]
 
 export const render = (data: any, dataKey: string) => {
@@ -55,6 +62,34 @@ export const render = (data: any, dataKey: string) => {
 
     default:
       return data[dataKey]
+  }
+}
+
+export const eventRender = (record: any, dataKey: string) => {
+  switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/event/${record[dataKey]}`}>
+            <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
+    case 'hash':
+      return (
+        <>
+          <span className="textToken" title={record[dataKey]}>
+            {ellipsifyMiddle(record[dataKey])}
+          </span>
+        </>
+      )
+    case 'age':
+      return `${formatSec(record[dataKey])} ago`
+    case 'action':
+      return (
+        <span className="textToken">{record[dataKey]}</span>
+      )
+    default:
   }
 }
 
