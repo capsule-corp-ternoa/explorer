@@ -49,11 +49,11 @@ const Summary: React.FC<SummaryProps> = ({
                 </div>
                 <div className={"d-flex flex-column ms-3"}>
                   <div className="fs-6 text-opacity-4 text-ellipsis">CAPS price</div>
-                  <div className="fs-5 fw-bold">
+                  <div className="d-flex fs-5 fw-bold">
                     {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
                     <span className={clsx(
                       style.logoPercent,
-                      'ms-2',
+                      'ms-2 mt-2',
                       {[style.minus]: change24h !== undefined && (change24h < 0)})
                     }>
                       {change24h !== undefined && (
