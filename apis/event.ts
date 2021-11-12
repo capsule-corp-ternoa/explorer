@@ -186,7 +186,7 @@ export const getEventList = async (offset: number, pageSize: number = API_PAGE_S
   
   return {
     totalCount: response.eventEntities.totalCount,
-    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
+    data: await Promise.all<any>(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
       age: (now - new Date(item.block.timestamp).getTime()) / 1000,

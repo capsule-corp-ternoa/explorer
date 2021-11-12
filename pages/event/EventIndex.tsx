@@ -11,7 +11,7 @@ export interface EventIndexProps { }
 
 const EventIndex: React.FC<EventIndexProps> = () => {
   const [totalCount, setTotalCount] = useState(0)
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<any>(null)
   const { page } = usePagination()
 
   useEffect(() => {
