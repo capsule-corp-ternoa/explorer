@@ -26,7 +26,8 @@ const ListView: React.FC<TableProps> = ({
   renderCell,
   footer,
   className
-}) => (
+}) => {
+  return (
   <>
     <table className={clsx('table table-borderless data-table only-desktop', className)}>
       <thead>
@@ -92,6 +93,6 @@ const ListView: React.FC<TableProps> = ({
       )}
     </div>
   </>
-)
+)}
 
 export default ListView

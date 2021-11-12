@@ -6,7 +6,7 @@ import ParameterView from 'components/base/ParameterView';
 import ListView from 'components/base/ListView';
 import Down from 'components/assets/Down';
 import { eventColumns, eventRender, parameterFields, parameterRender, extrinsicFields, extrinsicRender } from './table'
-import { getExtrinsic } from 'apis/extrinsic';
+import { getExtrinsic, getExtrinsicParams } from 'apis/extrinsic';
 import { searchEventbyExtrinsic } from 'apis/event';
 import { ellipsifyMiddle } from 'helpers/lib';
 
@@ -15,6 +15,7 @@ export interface ExtrinsicDetailProps {}
 const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
   const [data, setData] = useState<any>(null)
   const [data1, setData1] = useState<any>(null)
+  const [data2, setData2] = useState<any>(null)
   const [isEvent, setIsEvent] = useState<boolean>(false)
   const router = useRouter()
   const id = router.query.id as string
@@ -22,6 +23,9 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
   useEffect(() => {
     if (id) {
       getExtrinsic(id).then(setData)
+      getExtrinsicParams(id).then(data => {
+        setData2(data?.args);
+      })
       searchEventbyExtrinsic(id).then(setData1)
     }
   }, [id])
@@ -54,7 +58,11 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
               <Down className="ms-3 mt-5 cursor-point" />
             </div>
           </div>
-          <ParameterView fields={parameterFields} data={data} renderCell={parameterRender}/> 
+          <ParameterView 
+            data={data2}
+            columns={parameterFields}
+            renderCell={parameterRender}
+          />
         </>
       }
       { isEvent &&

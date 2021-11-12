@@ -132,3 +132,21 @@ export const getExtrinsic = async (id: string) => {
     }
   }
 }
+
+export const getExtrinsicParams = async (id: string) => {
+  const extrinsicResponse = await request(
+    queryExtrinsic(id)
+  )
+
+  if (extrinsicResponse.extrinsicEntities.nodes.length === 0) {
+    return null
+  } else {
+    const data = extrinsicResponse.extrinsicEntities.nodes[0]
+    return {
+      args: data.argsName.map((item: string, index: number) => ({
+        name: data.argsName[index],
+        value: data.argsValue[index]
+      }))
+    }
+  }
+}

@@ -21,8 +21,8 @@ export const extrinsicFields = [
 ]
 
 export const parameterFields = [
-  { text: 'Destination', dataKey: 'args_name', className: 'text-left' },
-  { text: 'Value', dataKey: 'args_value', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Destination', dataKey: 'name', className: 'text-left' },
+  { text: 'Value', dataKey: 'value', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const eventColumns = [
@@ -67,15 +67,15 @@ export const extrinsicRender = (record: any, dataKey: string) => {
 
 export const parameterRender = (record: any, dataKey: string) => {
   switch (dataKey) {
-    case 'args_name':
+    case 'name':
       return (
         <>
           <span className="textToken" title={record[dataKey]}>
-            {record[dataKey] && record[dataKey][0]}
+            {record[dataKey]}
           </span>
         </> 
       );
-    case 'args_value':
+    case 'value':
       return (
         <>
           <JSONPretty id="json-pretty" data={JSON.parse(record[dataKey])}></JSONPretty>
