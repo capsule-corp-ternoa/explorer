@@ -14,7 +14,9 @@ export const formatSec = (sec: number) => {
   const month = Math.floor(day / 31)
   const year = Math.floor(day / 365)
 
-  if (sec < 60) {
+  if (sec < 0) {
+    return '6 seconds'
+  } else if (sec < 60) {
     return `${sec} seconds`
   } else if (min < 60) {
     return `${min} mins`
