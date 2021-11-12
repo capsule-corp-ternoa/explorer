@@ -43,7 +43,7 @@ const ChartCheckbox: React.FC<ChartCheckboxProps> = ({
   </div>
 )
 
-export const TransactionChart: React.FC<ChartProps> = ({
+export const ExtrinsicChart: React.FC<ChartProps> = ({
   data,
   className
 }) => {
@@ -56,7 +56,7 @@ export const TransactionChart: React.FC<ChartProps> = ({
         <ChartCheckbox
           checked={totalTrans}
           onChange={setTotalTrans}
-          label='Total transaction by day'
+          label='Total extrinsic by day'
         />
         <ChartCheckbox
           checked={newAccount}
@@ -129,6 +129,6 @@ export const BlockChart: React.FC<ChartProps> = ({
 }
 
 export default {
-  TransactionChart,
+  ExtrinsicChart,
   BlockChart
 }

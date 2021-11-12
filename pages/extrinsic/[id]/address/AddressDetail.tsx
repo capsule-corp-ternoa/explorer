@@ -114,7 +114,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                         </div>
                     </div>
                     <div>
-                      <span className={"mt-5 mb-3 subTitle2"}>1 last transactions</span>
+                      <span className={"mt-5 mb-3 subTitle2"}>1 last extrinsics</span>
                       <Down className="ms-3 mb-1"/>
                     </div>
                     <div className={"mainBlock mt-3"}>
@@ -123,7 +123,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                             <table className="table table-borderless mb-0 webBorderTable2">
                                 <thead> 
                                     <tr className="fs-6 text-grey">
-                                        <th style={{width:"20%"}} className="text-left ps-4p0">Transaction ID</th>
+                                        <th style={{width:"20%"}} className="text-left ps-4p0">Extrinsic ID</th>
                                         <th style={{width:"20%"}} className="text-left">From</th>
                                         <th style={{width:"20%"}} className="text-left">Module</th>
                                         <th style={{width:"10%"}} className="text-left">Call</th>
@@ -154,7 +154,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                             <div className={"mobileView"}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Transaction ID</span>
+                                        <span className="mobileLabel">Extrinsic ID</span>
                                         <span className="mobileValue">5556906-2</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">

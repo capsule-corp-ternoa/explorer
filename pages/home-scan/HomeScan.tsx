@@ -16,7 +16,7 @@ import {
 } from './table'
 import { getNftTransferList } from 'apis/nft-transfer';
 import { getTransferList } from 'apis/transfer';
-import { TransactionChart, BlockChart } from './Chart';
+import { ExtrinsicChart, BlockChart } from './Chart';
 import statData from 'components/data/statast.json'
 import { getExtrinsicCount } from 'apis/extrinsic';
 
@@ -87,7 +87,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         capsPrice={summary.usd}
         marketCap={summary.usd_market_cap}
         change24h={summary.usd_24h_change}
-        transactions={summary.extrinsic_count}
+        extrinsics={summary.extrinsic_count}
         finalizedBlock={summary.block_count}
       />
 
@@ -107,7 +107,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         </div>
         <div className="col-12">
           <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
-            NFT Transactions
+            NFT Extrinsics
           </div>
           <ListView
             columns={nftTxColumns}
@@ -131,10 +131,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12 col-md-6">
-          <TransactionChart data={statData} className='mt-4' />
+        <div className="col-12 col-md-6 only-desktop only-mobile">
+          <ExtrinsicChart data={statData} className='mt-4' />
         </div>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6 only-desktop only-mobile">
           <BlockChart data={statData} className='mt-4' />
         </div>
       </div>

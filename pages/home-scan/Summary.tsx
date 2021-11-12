@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import SearchBar from 'components/base/SearchBar';
 import CAPSLogo from 'components/assets/CAPSLogo';
 import MarketLogo from 'components/assets/MarketLogo';
-import TransactionLogo from 'components/assets/TransactionLogo';
+import ExtrinsicLogo from 'components/assets/ExtrinsicLogo';
 import BlockLogo from 'components/assets/BlockLogo';
 import CAPSFlat from 'components/assets/CAPSFlat';
 import style from './HomeScan.module.scss';
@@ -14,7 +14,7 @@ interface SummaryProps {
   capsPrice?: number
   marketCap?: number
   change24h?: number
-  transactions?: number
+  extrinsics?: number
   finalizedBlock?: number
 }
 
@@ -22,7 +22,7 @@ const Summary: React.FC<SummaryProps> = ({
   capsPrice,
   marketCap,
   change24h,
-  transactions,
+  extrinsics,
   finalizedBlock
 }) => {
   const [isLaptop, setIsLaptop] = useState(false);
@@ -80,12 +80,12 @@ const Summary: React.FC<SummaryProps> = ({
               <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
                 <div className="d-flex flex-items-center">
                   <div className='pt-2'>
-                    <TransactionLogo className={style.Logo}></TransactionLogo>
+                    <ExtrinsicLogo className={style.Logo}></ExtrinsicLogo>
                   </div>
                   <div className={`d-flex flex-column ms-3`}>
-                    <div className="fs-6 text-opacity-4 text-ellipsis">Transactions</div>
+                    <div className="fs-6 text-opacity-4 text-ellipsis">Extrinsics</div>
                     <div className="fs-5 fw-bold">
-                      {transactions != null && <FormattedNumber value={transactions} format='decimal' />}
+                      {extrinsics != null && <FormattedNumber value={extrinsics} format='decimal' />}
                     </div>
                   </div>
                 </div>
@@ -110,11 +110,11 @@ const Summary: React.FC<SummaryProps> = ({
             <div className="flex-1 flex flex-row">
               <div className="flex-1 flex flex-col">
                 <div className="flex flex-row flex-items-center">
-                  <TransactionLogo className={style.Logo}></TransactionLogo>
+                  <ExtrinsicLogo className={style.Logo}></ExtrinsicLogo>
                   <div className="flex-1 flex flex-col ms-2">
-                    <span className="fs-6 text-opacity-4 text-ellipsis">Transactions</span>
+                    <span className="fs-6 text-opacity-4 text-ellipsis">Extrinsics</span>
                     <span className={`${style.logoSummary} fs-5 fw-bold`}>
-                      {transactions != null && <FormattedNumber value={transactions} format='decimal' />}
+                      {extrinsics != null && <FormattedNumber value={extrinsics} format='decimal' />}
                     </span>
                   </div>
                 </div>

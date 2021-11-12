@@ -116,13 +116,13 @@ export const getBlock = async (id: string) => {
       parent_hash: block.parentHash,
       state_root: block.stateRoot,
       extrinsics_root: block.extrinsicsRoot,
-      transactions: block.extrinsicEntitiesByBlockId.totalCount,
+      extrinsics: block.extrinsicEntitiesByBlockId.totalCount,
       module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
       runtime_version: block.runtimeVersion,
       author: block.author,
       session_id: block.sessionId,
       age: (now - new Date(block.timestamp).getTime()) / 1000,
-      transaction_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
+      extrinsic_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: id,
         from: tx.signer,

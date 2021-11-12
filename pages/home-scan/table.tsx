@@ -6,23 +6,23 @@ import { FormattedNumber } from 'react-intl';
 export const blockColumns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
   { text: 'Age', dataKey: 'age', className: 'text-left' },
-  { text: 'Transactions', dataKey: 'signed_extrinsics', className: 'text-right' },
-  { text: 'Module Events', dataKey: 'module_events', className: 'text-right' },
-  { text: '', dataKey: 'details', className: 'text-right' },
+  { text: 'Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left' },
+  { text: 'Module Events', dataKey: 'module_events', className: 'text-left' },
+  { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
 export const nftTxColumns = [
   { text: 'Name/ID', dataKey: 'nft_id', className: 'text-left' },
   { text: 'Creator', dataKey: 'creator', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'ID', dataKey: 'id', className: 'text-left', mobileClassName: 'col-12' },
-  { text: '', dataKey: 'details', className: 'text-right' },
+  { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
 export const transferColumns = [
   { text: 'From', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'To', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-right', mobileClassName: 'col-12' },
-  { text: '', dataKey: 'details', className: 'text-right' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left', mobileClassName: 'col-12' },
+  { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
 export const renderBlock = (record: any, dataKey: string) => {

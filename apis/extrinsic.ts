@@ -118,7 +118,7 @@ export const getExtrinsic = async (id: string) => {
       id: data.id,
       block_id: data.blockId,
       timestamp: data.timestamp,
-      transaction_index: data.extrinsicIndex,
+      extrinsic_index: data.extrinsicIndex,
       hash: data.hash,
       module: data.module,
       call: data.call,
@@ -128,7 +128,7 @@ export const getExtrinsic = async (id: string) => {
       signature: data.signature,
       success: data.success,
       args_name: data.argsName,
-      args_value: data.artgsValue
+      args_value: data.argsValue
     }
   }
 }

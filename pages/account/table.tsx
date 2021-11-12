@@ -4,8 +4,8 @@ import { FormattedNumber } from 'react-intl';
 
 export const columns = [
   { text: 'Address', dataKey: 'address', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Transactions', dataKey: 'transactions', className: 'text-right' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-right' },
+  { text: 'Extrinsics', dataKey: 'extrinsics', className: 'text-left' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
   { text: '', dataKey: 'details', mobileClassName: 'col-12' },
 ]
 
@@ -18,7 +18,7 @@ export const render = (record: any, dataKey: string) => {
           &nbsp;CAPS
         </>
       )
-    case 'transactions':
+    case 'extrinsics':
       return (
         <FormattedNumber value={record[dataKey]} format='decimal' />
       )

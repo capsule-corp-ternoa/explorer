@@ -3,23 +3,36 @@ import { FormattedTime } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
+import JSONPretty from 'react-json-pretty';
 
-export const transactionFields = [
-  { text: 'ID', dataKey: 'id' },
-  { text: 'Block', dataKey: 'block_id' },
-  { text: 'Timestamp', dataKey: 'timestamp' },
-  { text: 'Transaction Index', dataKey: 'transaction_index' },
-  { text: 'Transaction Hash', dataKey: 'hash', mobileClassName: 'col-12' },
-  { text: 'Module', dataKey: 'module' },
-  { text: 'Call', dataKey: 'call' },
-  { text: 'Description', dataKey: 'description', mobileClassName: 'col-12' },
-  { text: 'Address', dataKey: 'signer', mobileClassName: 'col-12' },
-  { text: 'Nonce', dataKey: 'nonce' },
-  { text: 'Signature', dataKey: 'signature', mobileClassName: 'col-12' },
-  { text: 'Result', dataKey: 'success' },
+export const extrinsicFields = [
+  { text: 'ID', dataKey: 'id', className: 'text-left' },
+  { text: 'Block', dataKey: 'block_id', className: 'text-left' },
+  { text: 'Timestamp', dataKey: 'timestamp', className: 'text-left' },
+  { text: 'Extrinsic Index', dataKey: 'extrinsic_index', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Module', dataKey: 'module', className: 'text-left' },
+  { text: 'Call', dataKey: 'call', className: 'text-left' },
+  { text: 'Description', dataKey: 'description', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Address', dataKey: 'signer', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Nonce', dataKey: 'nonce', className: 'text-left' },
+  { text: 'Signature', dataKey: 'signature', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Result', dataKey: 'success', className: 'text-left' },
 ]
 
-export const transactionRender = (record: any, dataKey: string) => {
+export const parameterFields = [
+  { text: 'Destination', dataKey: 'args_name', className: 'text-left' },
+  { text: 'Value', dataKey: 'args_value', className: 'text-left', mobileClassName: 'col-12' },
+]
+
+export const eventColumns = [
+  { text: 'Event ID', dataKey: 'id', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left' },
+  { text: 'Time', dataKey: 'age', className: 'text-left' },
+  { text: 'Action', dataKey: 'action', className: 'text-left' },
+]
+
+export const extrinsicRender = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'timestamp':
       return (
@@ -52,11 +65,6 @@ export const transactionRender = (record: any, dataKey: string) => {
   }
 }
 
-export const parameterFields = [
-  { text: 'Destination', dataKey: 'args_name' },
-  { text: 'Value', dataKey: 'args_value' },
-]
-
 export const parameterRender = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'args_name':
@@ -70,9 +78,7 @@ export const parameterRender = (record: any, dataKey: string) => {
     case 'args_value':
       return (
         <>
-          <span className="textToken" title={record[dataKey]}>
-            {record[dataKey] && record[dataKey][0]}
-          </span>
+          <JSONPretty id="json-pretty" data={JSON.parse(record[dataKey])}></JSONPretty>
         </> 
       );
     default:
@@ -80,9 +86,37 @@ export const parameterRender = (record: any, dataKey: string) => {
   }
 }
 
+export const eventRender = (record: any, dataKey: string) => {
+  switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/event/${record[dataKey]}`}>
+            <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
+    case 'hash':
+      return (
+        <>
+          <span className="textToken" title={record[dataKey]}>
+            {ellipsifyMiddle(record[dataKey])}
+          </span>
+        </>
+      )
+    case 'age':
+      return `${formatSec(record[dataKey])} ago`
+    case 'action':
+      return (
+        <span className="textToken">{record[dataKey]}</span>
+      )
+    default:
+  }
+}
+
 export default {
-  transactionFields,
-  transactionRender,
+  extrinsicFields,
+  extrinsicRender,
   parameterFields,
   parameterRender
 }

@@ -1,9 +1,9 @@
 /* Airbnb Cereal App FONT */
 @font-face {
-  font-family: "Airbnb Cereal App Book";
+  font-family: "Airbnb Cereal App";
   font-style: normal;
   font-weight: normal;
-  src: local("Airbnb Cereal App Book"), url(../fonts/AirbnbCerealBook.woff) format("woff");
+  src: local("Airbnb Cereal App"), url(../fonts/AirbnbCerealBook.woff) format("woff");
 }
 
 @font-face {
@@ -52,7 +52,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Airbnb Cereal App Book", sans-serif !important;
+  font-family: "Airbnb Cereal App", sans-serif !important;
 }
 
 a {
@@ -237,6 +237,27 @@ a {
   }
 }
 
+.subTitle1 {
+  font-family: Airbnb Cereal App Bold;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 65px;
+  background: -webkit-linear-gradient(1deg, #004FFF, #CB06ED, #FF0062, #FF8500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @media (max-width: 1024px) {
+    font-family: Airbnb Cereal App Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 23px;
+    background: -webkit-linear-gradient(1deg, #004FFF, #CB06ED, #FF0062, #FF8500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
 .subTitle2 {
   font-family: Airbnb Cereal App Bold;
   font-style: normal;
@@ -249,7 +270,6 @@ a {
     font-size: 16px!important;
   }
 }
-
 .subTitleMarginTop {
   margin-top: 54px; /* < Back icon height + mt-4 */
   @media (max-device-width: 1024px) {
@@ -399,4 +419,10 @@ a {
 
 .data-overflow {
   overflow-wrap: break-word;
+}
+
+.down {
+  @media (max-width: 1024px) {
+    margin-top: -23px;
+  }
 }

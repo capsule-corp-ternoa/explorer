@@ -7,7 +7,7 @@ export const columns = [
   { text: 'Block', dataKey: 'block_id', className: 'text-left', mobileClassName: 'col-6 order-0' },
   { text: 'From', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12 order-2' },
   { text: 'To', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12 order-3' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-right', mobileClassName: 'col-6 order-1' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left', mobileClassName: 'col-6 order-1' },
   { text: '', dataKey: 'details', mobileClassName: 'col-12 order-4' },
 ]
 

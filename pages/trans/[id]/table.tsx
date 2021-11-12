@@ -3,10 +3,10 @@ import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle } from 'helpers/lib';
 
 export const fields = [
-  { text: 'Block', dataKey: 'block_id' },
-  { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
-  { text: 'To', dataKey: 'to', mobileClassName: 'col-12' },
-  { text: 'Amount', dataKey: 'amount'},
+  { text: 'Block', dataKey: 'block_id', className: 'text-left' },
+  { text: 'From', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'To', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left'},
 ]
 
 export const render = (record: any, dataKey: string) => {

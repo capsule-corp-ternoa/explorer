@@ -19,7 +19,6 @@ const ParameterView: React.FC<ParameterViewProps> = ({
   renderCell
 }) => (
   <>
-    <h1 className="subTitle mt-4">Parameters</h1>
     <table className="only-desktop table table-borderless mb-0 data-table">
       <tbody className="tbody-detail">
         {fields.map(({ text, dataKey }) => (

@@ -2,27 +2,34 @@ import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import Check from 'components/assets/Check';
-import { formatSec } from 'helpers/lib';
+import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const blockFields = [
-  { text: 'Timestamp', dataKey: 'timestamp' },
-  { text: 'Hash', dataKey: 'block_hash', mobileClassName: 'col-12' },
-  { text: 'Parent Hash', dataKey: 'parent_hash', mobileClassName: 'col-12' },
-  { text: 'State Root', dataKey: 'state_root', mobileClassName: 'col-12' },
-  { text: 'Extrinsics Root', dataKey: 'extrinsics_root', mobileClassName: 'col-12' },
-  { text: 'Transactions', dataKey: 'transactions' },
-  { text: 'Total Module Events', dataKey: 'module_events' },
-  { text: 'Runtime Version', dataKey: 'runtime_version' },
-  { text: 'Block Time', dataKey: 'age' },
+  { text: 'Timestamp', dataKey: 'timestamp', className: 'text-left' },
+  { text: 'Hash', dataKey: 'block_hash', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Parent Hash', dataKey: 'parent_hash', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'State Root', dataKey: 'state_root', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Extrinsics Root', dataKey: 'extrinsics_root', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Extrinsics', dataKey: 'extrinsics', className: 'text-left' },
+  { text: 'Total Module Events', dataKey: 'module_events', className: 'text-left' },
+  { text: 'Runtime Version', dataKey: 'runtime_version', className: 'text-left' },
+  { text: 'Block Time', dataKey: 'age', className: 'text-left' },
 ]
 
-export const transactionColumns = [
-  { text: 'Transaction ID', dataKey: 'id' },
-  { text: 'From', dataKey: 'from', mobileClassName: 'col-12' },
-  { text: 'Module', dataKey: 'module' },
-  { text: 'Call', dataKey: 'call' },
-  { text: 'Success', dataKey: 'success' },
+export const extrinsicColumns = [
+  { text: 'Extrinsic ID', dataKey: 'id', className: 'text-left' },
+  { text: 'From', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Module', dataKey: 'module', className: 'text-left' },
+  { text: 'Call', dataKey: 'call', className: 'text-left' },
+  { text: 'Success', dataKey: 'success', className: 'text-left' },
   { text: '', dataKey: 'detail' },
+]
+
+export const eventColumns = [
+  { text: 'Event ID', dataKey: 'id', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left' },
+  { text: 'Time', dataKey: 'age', className: 'text-left' },
+  { text: 'Action', dataKey: 'action', className: 'text-left' },
 ]
 
 export const blockRender = (data: any, dataKey: string) => {
@@ -46,7 +53,7 @@ export const blockRender = (data: any, dataKey: string) => {
   }
 }
 
-export const transactionRender = (record: any, dataKey: string) => {
+export const extrinsicRender = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'timestamp':
       return (
@@ -80,9 +87,37 @@ export const transactionRender = (record: any, dataKey: string) => {
   }
 }
 
+export const eventRender = (record: any, dataKey: string) => {
+  switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/event/${record[dataKey]}`}>
+            <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
+    case 'hash':
+      return (
+        <>
+          <span className="textToken" title={record[dataKey]}>
+            {ellipsifyMiddle(record[dataKey])}
+          </span>
+        </>
+      )
+    case 'age':
+      return `${formatSec(record[dataKey])} ago`
+    case 'action':
+      return (
+        <span className="textToken">{record[dataKey]}</span>
+      )
+    default:
+  }
+}
+
 export default {
   blockFields,
   blockRender,
-  transactionColumns,
-  transactionRender
+  extrinsicColumns,
+  extrinsicRender
 }

@@ -1,22 +1,37 @@
 import { gql } from "graphql-request"
 import request from './api'
 import { API_PAGE_SIZE } from 'helpers/constants'
+import { blockColumns } from "pages/home-scan/table"
+import { blockFields } from "pages/block/[id]/table"
 
 const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
 {
-  extrinsicEntities(
+  eventEntities(
     first: ${pageSize}
     offset: ${offset}
-    orderBy: TIMESTAMP_DESC
+    filter: {
+      and: [
+      ]
+    }
+    orderBy: CREATED_AT_DESC
   ) {
     totalCount
     nodes {
       id
       blockId
+      extrinsicId
+      eventIndex
       module
       call
-      isSigned
-      success
+      description
+      argsName
+      argsValue
+      block{
+        timestamp
+        id
+        number
+        hash
+      }
     }
   }
 }
@@ -24,21 +39,64 @@ const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
 
 const queryEventCount  = () => gql`
 {
-  extrinsicEntities {
+  eventEntities {
     totalCount
   }
 }
 `
 
-const queryEventSearch = (keyword: string) => gql`
+const queryEventSearchbyBlock = (keyword: string) => gql`
 {
-  extrinsicEntities(
+  eventEntities(
     filter: {
-      hash: { equalTo: "${keyword}" }
+      blockId: { equalTo: "${keyword}" }
     }
+    orderBy: CREATED_AT_DESC
   ) {
     nodes {
       id
+      blockId
+      extrinsicId
+      eventIndex
+      module
+      call
+      description
+      argsName
+      argsValue
+      block{
+        timestamp
+        id
+        number
+        hash
+      }
+    }
+  }
+}
+`
+const queryEventSearchbyExtrinsic = (keyword: string) => gql`
+{
+  eventEntities(
+    filter: {
+      extrinsicId: { equalTo: "${keyword}" }
+    }
+    orderBy: CREATED_AT_DESC
+  ) {
+    nodes {
+      id
+      blockId
+      extrinsicId
+      eventIndex
+      module
+      call
+      description
+      argsName
+      argsValue
+      block{
+        timestamp
+        id
+        number
+        hash
+      }
     }
   }
 }
@@ -46,24 +104,20 @@ const queryEventSearch = (keyword: string) => gql`
 
 const queryEvent = (id: string) => gql`
 {
-  extrinsicEntities(
+  eventEntities(
     filter: {
       id: { equalTo: "${id}" }
     }
+    orderBy: CREATED_AT_DESC
   ) {
     nodes {
       id
       blockId
-      timestamp
-      extrinsicIndex
-      hash
+      extrinsicId
+      eventIndex
       module
       call
       description
-      signer
-      nonce
-      signature
-      success
       argsName
       argsValue
     }
@@ -71,11 +125,56 @@ const queryEvent = (id: string) => gql`
 }
 `
 
-export const searchEvent = async (keyword: string) => {
+const queryExtrinsic = (id: string) => gql`
+{
+  extrinsicEntities(
+    filter: {
+      id: { equalTo: "${id}" }
+    }
+  ) {
+    nodes {
+      hash
+    }
+  }
+}
+`
+
+export const searchEventbyBlock = async (keyword: string) => {
   const response = await request(
-    queryEventSearch(keyword)
+    queryEventSearchbyBlock(keyword)
   )
-  return response.extrinsicEntities.nodes
+  
+  const now = Date.now()
+  
+  return {
+    totalCount: response.eventEntities.nodes.length,
+    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
+      id: item.id,
+      blockId: item.blockId,
+      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      action: item.module + '(' + item.call + ')'
+    })))
+  }
+}
+
+export const searchEventbyExtrinsic = async (keyword: string) => {
+  const response = await request(
+    queryEventSearchbyExtrinsic(keyword)
+  )
+  
+  const now = Date.now()
+  
+  return {
+    totalCount: response.eventEntities.nodes.length,
+    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
+      id: item.id,
+      blockId: item.blockId,
+      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      action: item.module + '(' + item.call + ')'
+    })))
+  }
 }
 
 export const getEventList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
@@ -83,16 +182,17 @@ export const getEventList = async (offset: number, pageSize: number = API_PAGE_S
     queryEventList(offset, pageSize)
   )
 
+  const now = Date.now()
+  
   return {
-    totalCount: response.extrinsicEntities.totalCount,
-    data: response.extrinsicEntities.nodes.map((item: any) => ({
+    totalCount: response.eventEntities.totalCount,
+    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
-      block_id: item.blockId,
-      module: item.module,
-      call: item.call,
-      signed: item.isSigned,
-      success: item.success
-    }))
+      blockId: item.blockId,
+      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      action: item.module + '(' + item.call + ')'
+    })))
   }
 }
 
@@ -101,7 +201,7 @@ export const getEventCount = async () => {
     queryEventCount()
   )
 
-  return response.extrinsicEntities.totalCount
+  return response.eventEntities.totalCount
 }
 
 export const getEvent = async (id: string) => {
@@ -109,26 +209,21 @@ export const getEvent = async (id: string) => {
     queryEvent(id)
   )
 
-  if (extrinsicResponse.extrinsicEntities.nodes.length === 0) {
+  if (extrinsicResponse.eventEntities.nodes.length === 0) {
     return null
   } else {
-    const data = extrinsicResponse.extrinsicEntities.nodes[0]
+    const data = extrinsicResponse.eventEntities.nodes[0]
     // console.log(JSON.parse(data.args_value))
     return {
       id: data.id,
       block_id: data.blockId,
-      timestamp: data.timestamp,
-      transaction_index: data.extrinsicIndex,
-      hash: data.hash,
+      extrinsic_index: data.extrinsicId,
+      event_index: data.eventIndex,
       module: data.module,
       call: data.call,
       description: data.description,
-      signer: data.signer,
-      nonce: data.nonce,
-      signature: data.signature,
-      success: data.success,
       args_name: data.argsName,
-      args_value: data.artgsValue
+      args_value: data.argsValue
     }
   }
 }

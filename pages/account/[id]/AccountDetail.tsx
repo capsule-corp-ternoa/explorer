@@ -30,12 +30,12 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
       <h1 className="subTitle">{ellipsifyMiddle(id)}</h1>
       <DetailView fields={fields} data={data} renderCell={render} />
 
-      {data && data.last_transactions && (
+      {data && data.last_extrinsics && (
         <>
           <h1 className="subTitle mt-4">
-            {data.last_transactions.length} last {data.last_transactions.length > 1 ? 'transactions' : 'transaction'}
+            {data.last_extrinsics.length} last {data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic'}
           </h1>
-          <ListView columns={extrinsicColumns} data={data.last_transactions} renderCell={renderExtrinsic} />
+          <ListView columns={extrinsicColumns} data={data.last_extrinsics} renderCell={renderExtrinsic} />
         </>
       )}
     </Layout>
