@@ -4,7 +4,7 @@ import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import ListView from 'components/base/ListView';
 import { getNftTransfer } from 'apis/nft-transfer';
-import { searchEventbyExtrinsic } from 'apis/event';
+import { searchEventbyExtrinsicHash } from 'apis/event';
 import { fields, render, eventColumns, eventRender } from './table'
 
 export interface NftTransDetailProps {}
@@ -18,7 +18,7 @@ const NftTransDetail: React.FC<NftTransDetailProps> = () => {
   useEffect(() => {
     if (id) {
       getNftTransfer(id).then(setData)
-      searchEventbyExtrinsic(id).then(setData1)
+      searchEventbyExtrinsicHash(id).then(setData1)
     }
   }, [id])
 
