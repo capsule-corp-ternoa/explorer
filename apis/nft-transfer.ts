@@ -106,7 +106,7 @@ export const getNftTransfer = async (id: string) => {
       from: data.from,
       to: data.to,
       amount: ethers.utils.formatEther(data.amount),
-      extrinsic_type: data.typeOfExtrinsic,
+      extrinsic_type: data.typeOfTransaction,
       nft_id: data.nft.id,
       creator: data.nft.creator,
       uri: data.nft.uri

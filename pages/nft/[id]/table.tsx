@@ -21,6 +21,11 @@ export const render = (data: any, dataKey: string) => {
         <FormattedTime format='default' value={data[dataKey]}/>
       )
 
+    case 'extrinsic_type':
+      return (
+        <span className="textToken">{data[dataKey]}</span>
+      )
+
     case 'uri':
       return (
         <Link href={data[dataKey]}>
