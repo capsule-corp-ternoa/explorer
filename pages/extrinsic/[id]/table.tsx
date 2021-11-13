@@ -86,9 +86,9 @@ export const parameterRender = (record: any, dataKey: string) => {
       );
     case 'value':
       return (
-        <>
+        <div className="mt-3">
           <JSONPretty id="json-pretty" data={JSON.parse(record[dataKey])}></JSONPretty>
-        </> 
+        </div> 
       );
     default:
       return record[dataKey]

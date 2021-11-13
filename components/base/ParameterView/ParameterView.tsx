@@ -29,22 +29,7 @@ const ParameterView: React.FC<TableProps> = ({
 }) => {
   return (
   <>
-    <table className={clsx('table table-borderless data-table only-desktop', className)}>
-      <thead>
-        <tr>
-          {columns.map((col, key) => (
-            <th
-              className={clsx(
-                col.className,
-                {'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
-              )}
-              key={key}
-            >
-              {col.text}
-            </th>
-          ))}
-        </tr>
-      </thead>
+    <table id="parameter" className={clsx('table table-borderless data-table only-desktop', className)}>
       <tbody>
         {data && data.map((record, rowKey) => (
           <tr key={rowKey}>

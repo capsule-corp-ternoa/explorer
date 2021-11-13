@@ -144,6 +144,14 @@ input[type=number] {
 	}
 }
 
+#parameter > tbody > tr:nth-child(1) > td:nth-child(1) {
+	border-top-left-radius: 30px;
+}
+
+#parameter > tbody > tr:nth-child(1) > td:nth-child(2) {
+	border-top-right-radius: 30px;
+}
+
 .table > tbody > tr:nth-child(2n) > td {
 	background-color: transparent;
 }
