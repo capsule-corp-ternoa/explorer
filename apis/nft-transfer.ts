@@ -16,6 +16,7 @@ const queryNftTransferList = (offset: number, pageSize: number = API_PAGE_SIZE) 
       timestamp
       from
       to
+      extrinsicId
       amount
       nft {
         id
@@ -53,6 +54,7 @@ const queryNftTransfer = (id: string) => gql`
       timestamp
       from
       to
+      extrinsicId
       amount
       typeOfTransaction
       nft {
@@ -86,6 +88,7 @@ export const getNftTransferList = async (offset: number, pageSize: number = API_
       to: transfer.to,
       amount: ethers.utils.formatEther(transfer.amount),
       nft_id: transfer.nft.id,
+      extrinsic_id: transfer.extrinsicId,
       creator: transfer.nft.creator,
     }))
   }
@@ -108,6 +111,7 @@ export const getNftTransfer = async (id: string) => {
       amount: ethers.utils.formatEther(data.amount),
       extrinsic_type: data.typeOfTransaction,
       nft_id: data.nft.id,
+      extrinsic_id: data.extrinsicId,
       creator: data.nft.creator,
       uri: data.nft.uri
     }

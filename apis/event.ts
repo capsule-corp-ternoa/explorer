@@ -102,35 +102,6 @@ const queryEventSearchbyExtrinsic = (keyword: string) => gql`
 }
 `
 
-const queryEventSearchbyExtrinsicHash = (keyword: string) => gql`
-{
-  eventEntities(
-    filter: {
-      extrinsicHash  : { equalTo: "${keyword}" }
-    }
-    orderBy: CREATED_AT_DESC
-  ) {
-    nodes {
-      id
-      blockId
-      extrinsicId
-      eventIndex
-      module
-      call
-      description
-      argsName
-      argsValue
-      block{
-        timestamp
-        id
-        number
-        hash
-      }
-    }
-  }
-}
-`
-
 const queryEvent = (id: string) => gql`
 {
   eventEntities(
@@ -192,25 +163,6 @@ export const searchEventbyExtrinsic = async (keyword: string) => {
     queryEventSearchbyExtrinsic(keyword)
   )
   
-  const now = Date.now()
-  
-  return {
-    totalCount: response.eventEntities.nodes.length,
-    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
-      id: item.id,
-      blockId: item.blockId,
-      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
-      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
-      action: item.module + '(' + item.call + ')'
-    })))
-  }
-}
-
-export const searchEventbyExtrinsicHash = async (keyword: string) => {
-  const response = await request(
-    queryEventSearchbyExtrinsicHash(keyword)
-  )
-
   const now = Date.now()
   
   return {
