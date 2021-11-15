@@ -47,14 +47,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
   const [nftTransfers, setNftTransfers] = useState<any>(null)
   const [transfers, setTransfers] = useState<any>(null)
 
-  setInterval(() => {
-    getBlockList(0, TABLE_ROWS).then(res => {
-      setSummary((prev: any) => ({
-        ...prev, block_count: res.totalCount
-      }))
-      setLatestBlocks(res)
-    }).catch(() => {})
-  }, 6000)
+  
 
   useEffect(() => {
     const url = 'https://api.coingecko.com/api/v3/simple/price?ids=coin-capsule&vs_currencies=usd&include_24hr_change=true&include_market_cap=true'
@@ -88,6 +81,15 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     getTransferList(0, TABLE_ROWS)
       .then(setTransfers)
       .catch(() => {})
+
+    setInterval(() => {
+      getBlockList(0, TABLE_ROWS).then(res => {
+        setSummary((prev: any) => ({
+          ...prev, block_count: res.totalCount
+        }))
+        setLatestBlocks(res)
+      }).catch(() => {})
+    }, 6000)
   }, [])
 
   return (
