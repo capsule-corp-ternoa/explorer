@@ -95,8 +95,10 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </Link>
                 </div>
                 <div className="d-block d-md-none col no-padding-vertical">
-                    <div className="flex flex-cont-end" onClick={() => openMenu()}>
-                        <Hamburger className={style.hamburger + " mx-2"} />
+                    <div className="flex flex-cont-end">
+                        <div onClick={() => openMenu()}>
+                            <Hamburger className={style.hamburger + " mx-2"} />
+                        </div>
                     </div>
                 </div>
                 
