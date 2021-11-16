@@ -1,7 +1,6 @@
 import {request} from "graphql-request"
+import env from "react-dotenv";
 
-const BASE_URL = 'https://app-4503b890-cfd1-479a-9045-45eac5dcf009.cleverapps.io/'
-
-const api = (query: string) => request(BASE_URL, query);
+const api = (query: string) => request(env.BASE_URL, query);
 
 export default api;
