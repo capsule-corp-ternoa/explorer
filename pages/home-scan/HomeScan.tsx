@@ -14,9 +14,9 @@ import {
   renderNftTx,
   renderTransfer
 } from './table'
-import { getNftTransferList } from 'apis/nft-transfer';
+import { getNftTransferList, getNftTransferChart } from 'apis/nft-transfer';
 import { getTransferList } from 'apis/transfer';
-import { ExtrinsicChart, BlockChart } from './Chart';
+import { NFTtransfer, NFTcreation, BlockChart } from './Chart';
 import statData from 'components/data/statast.json'
 import { getExtrinsicCount } from 'apis/extrinsic';
 
@@ -75,6 +75,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     }).catch(() => {})
 
     getNftTransferList(0, TABLE_ROWS)
+      .then(setNftTransfers)
+      .catch(() => {})
+    
+    getNftTransferChart()
       .then(setNftTransfers)
       .catch(() => {})
 
@@ -142,11 +146,11 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12 col-md-6 only-desktop only-mobile">
-          <ExtrinsicChart data={statData} className='mt-4' />
+        <div className="col-12 col-md-6">
+          <NFTtransfer data={statData} className='mt-4' />
         </div>
-        <div className="col-12 col-md-6 only-desktop only-mobile">
-          <BlockChart data={statData} className='mt-4' />
+        <div className="col-12 col-md-6">
+          <NFTcreation data={statData} className='mt-4' />
         </div>
       </div>
     </Layout>
