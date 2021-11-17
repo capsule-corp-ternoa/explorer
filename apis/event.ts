@@ -23,7 +23,9 @@ const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
       eventIndex
       module
       call
-      description
+      description {
+        description
+      }
       argsName
       argsValue
       block{
@@ -60,7 +62,9 @@ const queryEventSearchbyBlock = (keyword: string) => gql`
       eventIndex
       module
       call
-      description
+      description {
+        description
+      }
       argsName
       argsValue
       block{
