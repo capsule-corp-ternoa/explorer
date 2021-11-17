@@ -84,15 +84,14 @@ export const getBlockList = async (offset: number, pageSize: number = API_PAGE_S
   const blocks = await request(
     queryBlockList(offset, pageSize)
   )
-    
-  const now = Date.now()
-
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   return {
     totalCount: blocks.blockEntities.totalCount,
     data: blocks.blockEntities.nodes.map((block: any) => ({
       number: block.number,
       block_hash: block.hash,
-      age: (now - new Date(block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(block.timestamp).getTime()) / 1000,
       signed_extrinsics: block.extrinsicEntitiesByBlockId.totalCount,
       module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0)
     }))
