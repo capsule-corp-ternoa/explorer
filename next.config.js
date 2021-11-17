@@ -29,6 +29,8 @@ module.exports = {
   pageExtensions: [
     'page.tsx',
   ],
-  target: 'experimental-serverless-trace'
-
+  target: 'experimental-serverless-trace',
+  env: {
+    BASE_URL: process.env.BASE_URL,
+  }
 }
