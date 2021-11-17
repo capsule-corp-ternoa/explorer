@@ -8,7 +8,7 @@
   color: white;
   border: solid 2px transparent;
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-              linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
+              linear-gradient(101deg,#004fff, #cb06ed);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px $semi-blue inset;
@@ -53,6 +53,13 @@
 }
 
 .searchButton {
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+  background-color: #004FFF;
   margin-left: 50px;
   height: 50px;
+  @media (max-width : 768px) {
+    right: 20px;
+  }
 }

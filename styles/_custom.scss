@@ -42,6 +42,18 @@ input[type=number] {
 			border: solid 2px $white;
 		}
 	}
+	&-info {
+		font-family: "Airbnb Cereal App Bold", sans-serif;
+		background-color: $first-blue;
+		transition: all 0.2s;
+		border: solid 3px rgba(5, 22, 62, 0.5);
+		color: white;
+		&:hover {
+			background-color: $second-blue;
+			color: white;
+			border: solid 3px rgba(3, 14, 36, 0.5);
+		}
+	}
 	&-secondary {
 		font-family: "Airbnb Cereal App Bold", sans-serif;
 		font-size: smaller;
@@ -392,7 +404,7 @@ input[type=number] {
 
 .search-gradient{
 	@media (-webkit-min-device-pixel-ratio:0) {
-		box-shadow: 0px 0px 16px 4px#FF0062;
+		// border: 2px $first-blue solid;
 		position: absolute;
 		width: 100%;
 		margin-left: 5px;

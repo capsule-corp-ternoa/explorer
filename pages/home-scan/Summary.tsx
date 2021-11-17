@@ -38,10 +38,9 @@ const Summary: React.FC<SummaryProps> = ({
     <div className="position-relative">
       <div className={style.gradientBack}></div>
       <div className={style.searchForm + " position-relative"}>
-        <div className={`${style.searchTitle} ${isLaptop ? 'mb-4 ms-4' : 'mb-4'}`}>The Ternoa blockchain explorer</div>
         <SearchBar hasButton={true} isLarge={true} />
         {isLaptop && (
-          <div className="d-flex mt-5 ms-4">
+          <div className="d-flex mt-5 justify-content-center">
             <div className={`${style.searchBarInfo} pe-5 border-end`}>
               <div className="d-flex flex-items-center">
                 <div className='pt-2'>
