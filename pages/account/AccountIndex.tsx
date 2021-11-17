@@ -23,8 +23,9 @@ const AccountIndex: React.FC<AccountIndexProps> = () => {
 
   return (
     <Layout>
-      <h1 className="subTitle">All Accounts</h1>
+      {/* <h1 className="subTitle">All Accounts</h1> */}
       <ListView
+        title="All Accounts"
         data={data}
         columns={columns}
         renderCell={render}

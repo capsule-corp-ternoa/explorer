@@ -30,14 +30,14 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     <Layout back='/block'>
       <h1 className="subTitle">Block #{id}</h1>
       <DetailView fields={blockFields} data={data} renderCell={blockRender}/>
-      <div className="d-flex mt-1">
+      {/* <div className="d-flex mt-1">
         <h1 className="subTitle1 mt-3">Extrinsics</h1>
-      </div>
-      <ListView columns={extrinsicColumns} data={data && data.extrinsic_detail} renderCell={extrinsicRender}/>
-      <div className="d-flex mt-1">
+      </div> */}
+      <ListView title="Extrinsic" columns={extrinsicColumns} data={data && data.extrinsic_detail} renderCell={extrinsicRender}/>
+      {/* <div className="d-flex mt-1">
         <h1 className="subTitle1 mt-3">Events({data1 && data1.totalCount})</h1>
-      </div>
-      <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
+      </div> */}
+      <ListView title={"Events (" + data1 && data1.totalCount + ")"} columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
     </Layout>
   )
 }

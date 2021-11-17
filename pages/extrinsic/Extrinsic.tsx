@@ -23,8 +23,9 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
 
   return (
     <Layout>
-      <h1 className="subTitle">Extrinsics</h1>
+      {/* <h1 className="subTitle">Extrinsics</h1> */}
       <ListView
+        title="Extrinsics"
         data={data}
         columns={columns}
         renderCell={render}

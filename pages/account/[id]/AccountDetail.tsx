@@ -32,10 +32,10 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
 
       {data && data.last_extrinsics && (
         <>
-          <h1 className="subTitle mt-4">
+          {/* <h1 className="subTitle mt-4">
             {data.last_extrinsics.length} last {data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic'}
-          </h1>
-          <ListView columns={extrinsicColumns} data={data.last_extrinsics} renderCell={renderExtrinsic} />
+          </h1> */}
+          <ListView title={data.last_extrinsics.length + 'last' + (data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic')} columns={extrinsicColumns} data={data.last_extrinsics} renderCell={renderExtrinsic} />
         </>
       )}
     </Layout>

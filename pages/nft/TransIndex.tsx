@@ -23,8 +23,9 @@ const NftTransIndex: React.FC<NftTransIndexProps> = () => {
 
   return (
     <Layout>
-      <h1 className="subTitle">NFT Extrinsics</h1>
+      {/* <h1 className="subTitle">NFT Extrinsics</h1> */}
       <ListView
+        title="NFT Extrinsics"
         data={data}
         columns={columns}
         renderCell={render}
