@@ -34,8 +34,7 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
 
   return (
     <Layout back='/extrinsic'>
-      <h1 className="subTitle">Extrinsic: {data && ellipsifyMiddle(data.hash)}</h1>
-      <DetailView fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
+      <DetailView title={"Extrinsic: " + (data && ellipsifyMiddle(data.hash))} fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
       <div className="d-flex mt-1">
         <h1 className="subTitle1 mt-3">Parameters</h1>
       </div>

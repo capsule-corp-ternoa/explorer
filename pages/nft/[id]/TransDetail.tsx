@@ -29,8 +29,7 @@ const NftTransDetail: React.FC<NftTransDetailProps> = () => {
 
   return (
     <Layout back='/nft'>
-      <h1 className="subTitle">{data && data.extrinsic_type + ' of NFT ID : ' + data.nft_id}</h1>
-      <DetailView fields={fields} data={data} renderCell={render}/>
+      <DetailView title={(data && data.extrinsic_type + ' of NFT ID : ' + data.nft_id)} fields={fields} data={data} renderCell={render}/>
       <div className="mt-5">
         <ListView title={"Events(" + (data1 && data1.totalCount) + ")"} columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
       </div>

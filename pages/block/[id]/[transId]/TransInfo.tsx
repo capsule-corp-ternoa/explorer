@@ -32,7 +32,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
   return (
     <Layout back={`/block/${id}`}>
       <h1 className="subTitle">Extrinsic: {data && ellipsifyMiddle(data.hash)}</h1>
-      <DetailView fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
+      <DetailView title={"Extrinsic: " + (data && ellipsifyMiddle(data.hash))} fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
       { data && data.args_name && 
         <>
           <h1 className="subTitle mt-4">Parameters</h1>

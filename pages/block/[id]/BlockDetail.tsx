@@ -28,8 +28,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
 
   return (
     <Layout back='/block'>
-      <h1 className="subTitle">Block #{id}</h1>
-      <DetailView fields={blockFields} data={data} renderCell={blockRender}/>
+      <DetailView title={"Block #" + (id)} fields={blockFields} data={data} renderCell={blockRender}/>
       <div className="mt-5">
         <ListView title="Extrinsic" columns={extrinsicColumns} data={data && data.extrinsic_detail} renderCell={extrinsicRender}/>
       </div>

@@ -31,7 +31,7 @@ const ListView: React.FC<TableProps> = ({
 }) => {
   return (
   <>
-  <div className="list-view">
+  <div className="custom_table">
     <div className="title mt-4 mb-4 blockTitle full-opacity">
       {title}
     </div>
