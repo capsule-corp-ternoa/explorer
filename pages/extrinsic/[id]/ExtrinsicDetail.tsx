@@ -44,10 +44,9 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
         columns={parameterFields}
         renderCell={parameterRender}
       />
-      {/* <div className="d-flex mt-1">
-        <h1 className="subTitle1 mt-3">Events({data1 && data1.totalCount})</h1>
-      </div> */}
-      <ListView title={"Events (" + data1 && data1.totalCount + ")"} columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
+      <div className="mt-5">
+        <ListView title={"Events (" + (data1 && data1.totalCount) + ")"} columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
+      </div>
     </Layout>
   )
 }
