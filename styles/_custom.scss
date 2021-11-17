@@ -148,11 +148,21 @@ input[type=number] {
 .tag-for-scroll{
 	overflow-y: auto;
 }
-.table > tbody > tr:nth-child(2n+1) > td, .table > tbody > tr:nth-child(2n+1) > th {
-	background-color: $medium-blue;
+
+.table {
+	background: linear-gradient(90deg, #0E1439 0%, #121339 22.4%, #171139 51.56%, #1B1038 72.4%, #1F0E38 100%);
+	border-radius: 20px;
+}
+
+.table > thead > tr {
+	border-bottom: 1px solid rgb(70, 68, 68);
+}
+
+.table > tbody > tr {
+	border-bottom: 1px solid rgb(70, 68, 68);
 
 	&:last-child {
-		background-color: rgba(17, 17, 41, 0.7)!important;
+		border-bottom: 0px solid white;
 	}
 }
 
@@ -242,7 +252,7 @@ input[type=number] {
 	font-family: Airbnb Cereal App Bold;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 30.798px;
+	font-size: 30px;
 	line-height: 40px;
 
 	@media (max-width : 1024px) {
