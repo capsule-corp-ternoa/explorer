@@ -34,9 +34,9 @@ const DetailButton: React.FC<DetailButtonProps> = ({
 }) => (
   <Link href={href}>
     <a>
-      <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
-        {label}
-      </button>
+      <div className={clsx("btn-transparent d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
+        <span className="m-auto">{label}</span>
+      </div>
     </a>
   </Link>
 )
@@ -107,11 +107,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
       />
 
       <div className="row">
-        <div className="col-12">
-          <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
-            Latest Blocks
-          </div>
+        <div className="col-12 mb-5">
           <ListView
+            title="Latest Blocks"
             columns={blockColumns}
             renderCell={renderBlock}
             data={latestBlocks && latestBlocks.data}
@@ -120,11 +118,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12">
-          <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
-            NFT Extrinsics
-          </div>
+        <div className="col-12 my-5">
           <ListView
+            title="NFT Extrinsic"
             columns={nftTxColumns}
             renderCell={renderNftTx}
             data={nftTransfers && nftTransfers.data}
@@ -133,11 +129,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12">
-          <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
-            Transfers
-          </div>
+        <div className="col-12 mt-5">
           <ListView
+            title="Transfers"
             columns={transferColumns}
             renderCell={renderTransfer}
             data={transfers && transfers.data}
@@ -146,10 +140,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6 only-desktop only-mobile">
           <NFTtransfer data={statData} className='mt-4' />
         </div>
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6 only-desktop only-mobile">
           <NFTcreation data={statData} className='mt-4' />
         </div>
       </div>

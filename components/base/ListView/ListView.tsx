@@ -13,6 +13,7 @@ type Column = {
 }
 
 interface TableProps {
+  title: string
   columns: Column[]
   data: Row[] | null
   renderCell: (data: Row, dataKey: string) => React.ReactNode
@@ -21,6 +22,7 @@ interface TableProps {
 }
 
 const ListView: React.FC<TableProps> = ({
+  title,
   columns,
   data,
   renderCell,
@@ -29,7 +31,11 @@ const ListView: React.FC<TableProps> = ({
 }) => {
   return (
   <>
-    <table className={clsx('table table-borderless data-table only-desktop', className)}>
+  <div className="list-view">
+    <div className="title mt-4 mb-4 blockTitle full-opacity">
+      {title}
+    </div>
+    <table className={clsx('table table-borderless data-table only-desktop full-opacity', className)}>
       <thead>
         <tr>
           {columns.map((col, key) => (
@@ -62,13 +68,13 @@ const ListView: React.FC<TableProps> = ({
             ))}
           </tr>
         ))}
-        {footer && (
-          <tr>
-            <td colSpan={99} className='py-4'>{footer}</td>
-          </tr>
-        )}
       </tbody>
     </table>
+    <div>
+      {footer && (
+         footer
+        )}
+    </div>
     <div className={clsx('only-mobile data-table', className)}>
       {data && data.map((record, rowKey) => (
         <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
@@ -92,6 +98,7 @@ const ListView: React.FC<TableProps> = ({
         </div>
       )}
     </div>
+  </div>
   </>
 )}
 
