@@ -60,7 +60,7 @@ const ListView: React.FC<TableProps> = ({
                 className={clsx(
                   'text-large text-opacity',
                   col.className,
-                  { 'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
+                  { 'ps-4': key === 0, 'd-flex justify-content-center pe-4': key === columns.length - 1 }
                 )}
               >
                 {renderCell(record, col.dataKey)}
