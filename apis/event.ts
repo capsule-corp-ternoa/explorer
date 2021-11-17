@@ -88,7 +88,9 @@ const queryEventSearchbyExtrinsic = (keyword: string) => gql`
       eventIndex
       module
       call
-      description
+      description {
+        description
+      }
       argsName
       argsValue
       block{

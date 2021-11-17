@@ -59,7 +59,10 @@ const queryExtrinsic = (id: string) => gql`
       hash
       module
       call
-      description
+      fees
+      description {
+        description
+      }
       signer
       nonce
       signature
@@ -122,7 +125,8 @@ export const getExtrinsic = async (id: string) => {
       hash: data.hash,
       module: data.module,
       call: data.call,
-      description: data.description,
+      fees: data.fees,
+      description: data.description.description,
       signer: data.signer,
       nonce: data.nonce,
       signature: data.signature,

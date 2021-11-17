@@ -14,6 +14,7 @@ export const extrinsicFields = [
   { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Module', dataKey: 'module', className: 'text-left' },
   { text: 'Call', dataKey: 'call', className: 'text-left' },
+  { text: 'Fees', dataKey: 'fees', className: 'text-left' },
   { text: 'Description', dataKey: 'description', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Address', dataKey: 'signer', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Nonce', dataKey: 'nonce', className: 'text-left' },
