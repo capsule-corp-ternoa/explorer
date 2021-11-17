@@ -23,9 +23,6 @@ const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
       eventIndex
       module
       call
-      description {
-        description
-      }
       argsName
       argsValue
       block{
@@ -62,9 +59,6 @@ const queryEventSearchbyBlock = (keyword: string) => gql`
       eventIndex
       module
       call
-      description {
-        description
-      }
       argsName
       argsValue
       block{
@@ -92,9 +86,6 @@ const queryEventSearchbyExtrinsic = (keyword: string) => gql`
       eventIndex
       module
       call
-      description {
-        description
-      }
       argsName
       argsValue
       block{
@@ -123,7 +114,9 @@ const queryEvent = (id: string) => gql`
       eventIndex
       module
       call
-      description
+      description {
+        description
+      }
       argsName
       argsValue
     }
@@ -227,7 +220,7 @@ export const getEvent = async (id: string) => {
       event_index: data.eventIndex,
       module: data.module,
       call: data.call,
-      description: data.description,
+      description: data.description.description,
       args_name: data.argsName,
       args_value: data.argsValue
     }
