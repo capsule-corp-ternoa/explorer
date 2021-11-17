@@ -17,7 +17,7 @@ export const formatSec = (sec: number) => {
   if (sec < 0) {
     return '6 seconds'
   } else if (sec < 60) {
-    return `${sec} seconds`
+    return `${Math.floor(sec)} seconds`
   } else if (min < 60) {
     return `${min} mins`
   } else if (hour < 24) {
