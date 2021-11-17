@@ -75,7 +75,9 @@ const queryNftTransfer = (id: string) => gql`
       nft {
         id
         creator
-        uri
+      }
+      extrinsic {
+        fees
       }
     }
   }
@@ -146,7 +148,8 @@ export const getNftTransfer = async (id: string) => {
       nft_id: data.nft.id,
       extrinsic_id: data.extrinsicId,
       creator: data.nft.creator,
-      uri: data.nft.uri
+      fees: data.extrinsic.fees,
+      uri: data.id
     }
   }
 }

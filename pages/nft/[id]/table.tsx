@@ -12,6 +12,7 @@ export const fields = [
   { text: 'Receiver', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Creator', dataKey: 'creator', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Date', dataKey: 'timestamp', className: 'text-left' },
+  { text: 'Fees', dataKey: 'fees', className: 'text-left' },
   { text: 'Content URL', dataKey: 'uri', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
