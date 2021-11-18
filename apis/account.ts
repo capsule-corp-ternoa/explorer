@@ -1,9 +1,8 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
 import * as ethers from 'ethers';
 
-const queryAccountList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryAccountList = (offset: number, pageSize: number) => gql`
 {
   accountEntities(
     first: ${pageSize}
@@ -75,7 +74,7 @@ const queryAccountLatestExtrinsic = (signer: string, count: number) => gql`
 }
 `
 
-export const getAccountList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getAccountList = async (offset: number, pageSize: number) => {
   const accounts = await request(
     queryAccountList(offset, pageSize)
   )

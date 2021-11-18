@@ -40,7 +40,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
         renderCell={render}
         footer={(
           <div className="d-flex justify-content-between align-items-center">
-            <MaxCount count={10} onSelectCount={selectCount}/>
+            <MaxCount count={size} onSelectCount={selectCount}/>
             <Pagination page={page} totalPage={Math.ceil(totalCount / size)} />
           </div>
         )}
