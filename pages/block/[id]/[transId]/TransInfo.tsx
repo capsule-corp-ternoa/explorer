@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
+import Link from 'next/link'
+import Back from 'components/assets/Back';
 import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import ParameterView from 'components/base/ParameterView';
@@ -12,6 +14,8 @@ export interface TransInfoProps {}
 const TransInfo: React.FC<TransInfoProps> = () => {
   const [data, setData] = useState<any>(null)
   const [data1, setData1] = useState<any>(null)
+  const [isFirst, setIsFirst] = useState<boolean>(true)
+  const [isSecond, setIsSecond] = useState<boolean>(false)
   const router = useRouter()
   const id = router.query.id as string
   const transId = router.query.transId as string
@@ -29,20 +33,41 @@ const TransInfo: React.FC<TransInfoProps> = () => {
     return null
   }
 
+  const onSelectFirst = () => {
+    setIsFirst(true)
+    setIsSecond(false)
+  }
+  
+  const onSelectSecond = () => {
+    setIsFirst(false)
+    setIsSecond(true)
+  }
+
   return (
-    <Layout back={`/block/${id}`}>
-      <h1 className="subTitle">Extrinsic: {data && ellipsifyMiddle(data.hash)}</h1>
-      <DetailView title={"Extrinsic: " + (data && ellipsifyMiddle(data.hash))} fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
-      { data && data.args_name && 
-        <>
-          <h1 className="subTitle mt-4">Parameters</h1>
-          <ParameterView 
-            data={data1}
-            columns={parameterFields}
-            renderCell={parameterRender}
-          />
-        </>
-      }
+    <Layout>
+      <div className="custom_table pb-3">
+        <div className="d-flex align-items-center my-3">
+          <div className="cursor-point w-fit-content me-5">
+            <Link href={`/block/${id}`}>
+              <a><Back /></a>
+            </Link>
+          </div>
+          <div className="ui-switch">
+            <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>Erinxtsic: {data && ellipsifyMiddle(data.hash)}</div>
+            <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>Parameters</div>
+          </div>
+        </div>
+        { isFirst && <DetailView fields={extrinsicFields} data={data} renderCell={extrinsicRender}/> }
+        { isSecond && data && data.args_name && 
+          <>
+            <ParameterView 
+              data={data1}
+              columns={parameterFields}
+              renderCell={parameterRender}
+            />
+          </>
+        }
+      </div>
     </Layout>
   )
 }
