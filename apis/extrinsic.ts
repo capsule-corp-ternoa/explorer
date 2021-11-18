@@ -1,8 +1,7 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryExtrinsicList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryExtrinsicList = (offset: number, pageSize: number) => gql`
 {
   extrinsicEntities(
     first: ${pageSize}
@@ -81,7 +80,7 @@ export const searchExtrinsic = async (keyword: string) => {
   return response.extrinsicEntities.nodes
 }
 
-export const getExtrinsicList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getExtrinsicList = async (offset: number, pageSize: number) => {
   const response = await request(
     queryExtrinsicList(offset, pageSize)
   )
@@ -116,7 +115,6 @@ export const getExtrinsic = async (id: string) => {
     return null
   } else {
     const data = extrinsicResponse.extrinsicEntities.nodes[0]
-    // console.log(JSON.parse(data.args_value))
     return {
       id: data.id,
       block_id: data.blockId,
