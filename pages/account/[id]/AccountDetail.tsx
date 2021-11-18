@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
+import Link from 'next/link'
+import Back from 'components/assets/Back';
 import Layout from 'components/base/Layout';
 import ListView from 'components/base/ListView';
 import DetailView from 'components/base/DetailView';
@@ -12,6 +14,8 @@ export interface AccountDetailProps {}
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
   const [data, setData] = useState<any>(null)
+  const [isFirst, setIsFirst] = useState<boolean>(true)
+  const [isSecond, setIsSecond] = useState<boolean>(false)
   const router = useRouter()
   const id = router.query.id as string
 
@@ -25,14 +29,35 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     return null
   }
 
+  const onSelectFirst = () => {
+    setIsFirst(true)
+    setIsSecond(false)
+  }
+  
+  const onSelectSecond = () => {
+    setIsFirst(false)
+    setIsSecond(true)
+  }
+
   return (
-    <Layout back='/account'>
-      <DetailView title={ellipsifyMiddle(id)} fields={fields} data={data} renderCell={render} />
-      {data && data.last_extrinsics && (
-        <div className="mt-5">
-          <ListView title={data.last_extrinsics.length + ' last ' + (data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic')} columns={extrinsicColumns} data={data.last_extrinsics} renderCell={renderExtrinsic} />
+    <Layout>
+      <div className="custom_table pb-3">
+        <div className="d-flex align-items-center my-3">
+          <div className="cursor-point w-fit-content me-5">
+            <Link href={'/account'}>
+              <a><Back /></a>
+            </Link>
+          </div>
+          <div className="ui-switch">
+            <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>{ellipsifyMiddle(id)}</div>
+            <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>{data.last_extrinsics.length + ' last ' + (data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic')}</div>
+          </div>
         </div>
-      )}
+        { isFirst && <DetailView fields={fields} data={data} renderCell={render} /> }
+        { isSecond && data && data.last_extrinsics &&
+          <ListView columns={extrinsicColumns} data={data.last_extrinsics} renderCell={renderExtrinsic} />
+        }
+      </div>
     </Layout>
   )
 }

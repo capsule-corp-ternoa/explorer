@@ -456,3 +456,28 @@ input[type=number] {
 .rounded-pill {
 	border-radius: 20px !important;
 }
+
+.ui-switch {
+	display: inline-flex;
+	background: linear-gradient(90deg, rgba(11, 75, 254, 0.15) 0%, rgba(184, 13, 239, 0.15) 99.9%);
+	border: 2px solid rgba(14, 14, 35, 0.1);
+	box-sizing: border-box;
+	backdrop-filter: blur(50px);
+	border-radius: 60px;
+	font-size: 20px;
+
+	&__btn {
+		padding: 15px 50px 15px 50px;
+		cursor: pointer;
+		font-size: small
+	}
+
+	&__primary {
+		background-color: #004FFF;
+		border-radius: 21.5px;
+	}
+
+	&__secondary {
+		color:white;
+	}
+}
