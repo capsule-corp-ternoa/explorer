@@ -1,10 +1,7 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
-import { blockColumns } from "pages/home-scan/table"
-import { blockFields } from "pages/block/[id]/table"
 
-const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryEventList = (offset: number, pageSize: number) => gql`
 {
   eventEntities(
     first: ${pageSize}
@@ -176,7 +173,7 @@ export const searchEventbyExtrinsic = async (keyword: string) => {
   }
 }
 
-export const getEventList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getEventList = async (offset: number, pageSize: number) => {
   const response = await request(
     queryEventList(offset, pageSize)
   )
@@ -212,7 +209,6 @@ export const getEvent = async (id: string) => {
     return null
   } else {
     const data = extrinsicResponse.eventEntities.nodes[0]
-    // console.log(JSON.parse(data.args_value))
     return {
       id: data.id,
       block_id: data.blockId,
