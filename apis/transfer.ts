@@ -1,9 +1,8 @@
 import { gql } from "graphql-request"
 import request from './api'
 import * as ethers from 'ethers';
-import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryTransferList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryTransferList = (offset: number, pageSize: number) => gql`
 {
   transferEntities(
     first: ${pageSize}
@@ -42,7 +41,7 @@ const queryTransfer = (id: string) => gql`
 }
 `
 
-export const getTransferList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getTransferList = async (offset: number, pageSize: number) => {
   const transferResponse = await request(
     queryTransferList(offset, pageSize)
   )
