@@ -1,8 +1,7 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryBlockList = (offset: number, pageSize: number) => gql`
 {
   blockEntities(
     first: ${pageSize}
@@ -80,7 +79,7 @@ export const searchBlock = async (keyword: string) => {
   return response.blockEntities.nodes
 }
 
-export const getBlockList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getBlockList = async (offset: number, pageSize: number) => {
   const blocks = await request(
     queryBlockList(offset, pageSize)
   )
