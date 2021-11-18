@@ -34,7 +34,7 @@ const NftTransIndex: React.FC<NftTransIndexProps> = () => {
   return (
     <Layout>
       <div className="custom_table">
-        <h1 className="title mt-3 mb-1 ms-4">NFT Extrinsics</h1>
+        <h1 className="title mt-3 mb-1 ms-1">NFT Extrinsics</h1>
         <ListView
           data={data}
           columns={columns}

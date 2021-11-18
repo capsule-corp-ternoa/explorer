@@ -34,7 +34,7 @@ const TransIndex: React.FC<TransIndexProps> = () => {
   return (
     <Layout>
       <div className="custom_table">
-        <h1 className="title mt-3 mb-1 ms-4">Balance Transfers</h1>
+        <h1 className="title mt-3 mb-1 ms-1">Balance Transfers</h1>
         <ListView
           data={data}
           columns={columns}

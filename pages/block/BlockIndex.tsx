@@ -34,7 +34,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
   return (
     <Layout>
       <div className="custom_table">
-        <h1 className="title mt-3 mb-1 ms-4">Blocks</h1>
+        <h1 className="title mt-3 mb-1 ms-1">Blocks</h1>
         <ListView
           data={data}
           columns={columns}
