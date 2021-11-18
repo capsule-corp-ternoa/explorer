@@ -1,9 +1,8 @@
 import { gql } from "graphql-request"
 import request from './api'
 import * as ethers from 'ethers';
-import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryNftTransferList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryNftTransferList = (offset: number, pageSize: number) => gql`
 {
   nftTransferEntities(
     first: ${pageSize}
@@ -91,7 +90,7 @@ export const searchNftTransfer = async (keyword: string) => {
   return response.nftTransferEntities.nodes
 }
 
-export const getNftTransferList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getNftTransferList = async (offset: number, pageSize: number) => {
   const transferResponse = await request(
     queryNftTransferList(offset, pageSize)
   )

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Pagination from 'components/base/Pagination';
 import ListView from 'components/base/ListView';
+import MaxCount from 'components/base/MaxCount';
 import Layout from 'components/base/Layout';
 import usePagination from 'hooks/usePagination';
 import { getNftTransferList } from 'apis/nft-transfer'
@@ -12,25 +13,36 @@ export interface NftTransIndexProps { }
 const NftTransIndex: React.FC<NftTransIndexProps> = () => {
   const [totalCount, setTotalCount] = useState(0)
   const [data, setData] = useState(null)
+  const [size, setSize] = useState(API_PAGE_SIZE)
   const { page } = usePagination()
 
   useEffect(() => {
-    getNftTransferList(page * API_PAGE_SIZE).then(data => {
+    getNftTransferList(page * size, size).then(data => {
       setTotalCount(data.totalCount)
       setData(data.data)
     })
   }, [page])
 
+  const selectCount = (count: number) => {
+    setSize(count);
+    getNftTransferList(page * count, count).then(data => {
+      setTotalCount(data.totalCount)
+      setData(data.data)
+    })
+  }
+
   return (
     <Layout>
-      {/* <h1 className="subTitle">NFT Extrinsics</h1> */}
       <ListView
         title="NFT Extrinsics"
         data={data}
         columns={columns}
         renderCell={render}
         footer={(
-          <Pagination page={page} totalPage={Math.ceil(totalCount / API_PAGE_SIZE)} />
+          <div className="d-flex justify-content-between align-items-center">
+            <MaxCount count={size} onSelectCount={selectCount}/>
+            <Pagination page={page} totalPage={Math.ceil(totalCount / size)} />
+          </div>
         )}
       />
     </Layout>
