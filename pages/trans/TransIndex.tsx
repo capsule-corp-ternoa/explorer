@@ -33,18 +33,20 @@ const TransIndex: React.FC<TransIndexProps> = () => {
 
   return (
     <Layout>
-      <ListView
-        title="Balance Transfers"
-        data={data}
-        columns={columns}
-        renderCell={render}
-        footer={(
-          <div className="d-flex justify-content-between align-items-center">
-            <MaxCount count={size} onSelectCount={selectCount}/>
-            <Pagination page={page} totalPage={Math.ceil(totalCount / size)} />
-          </div>
-        )}
-      />
+      <div className="custom_table">
+        <h1 className="title mt-3 mb-1 ms-4">Balance Transfers</h1>
+        <ListView
+          data={data}
+          columns={columns}
+          renderCell={render}
+          footer={(
+            <div className="d-flex justify-content-between align-items-center">
+              <MaxCount count={size} onSelectCount={selectCount}/>
+              <Pagination page={page} totalPage={Math.ceil(totalCount / size)} />
+            </div>
+          )}
+        />
+      </div>
     </Layout>
   )
 }

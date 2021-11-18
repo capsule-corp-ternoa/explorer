@@ -13,7 +13,6 @@ type Column = {
 }
 
 interface TableProps {
-  title: string
   columns: Column[]
   data: Row[] | null
   renderCell: (data: Row, dataKey: string) => React.ReactNode
@@ -22,7 +21,6 @@ interface TableProps {
 }
 
 const ListView: React.FC<TableProps> = ({
-  title,
   columns,
   data,
   renderCell,
@@ -31,10 +29,6 @@ const ListView: React.FC<TableProps> = ({
 }) => {
   return (
   <>
-  <div className="custom_table">
-    <div className="title mt-4 mb-4 blockTitle full-opacity">
-      {title}
-    </div>
     <table className={clsx('table table-borderless data-table only-desktop full-opacity', className)}>
       <thead>
         <tr>
@@ -98,7 +92,6 @@ const ListView: React.FC<TableProps> = ({
         </div>
       )}
     </div>
-  </div>
   </>
 )}
 
