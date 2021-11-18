@@ -24,8 +24,7 @@ const EventDetail: React.FC<ExtrinsicDetailProps> = () => {
 
   return (
     <Layout back='/event'>
-      <h1 className="subTitle">Event # {id}</h1>
-      <DetailView fields={eventFields} data={data} renderCell={eventRender}/>
+      <DetailView title={"Event # " + (id)} fields={eventFields} data={data} renderCell={eventRender}/>
     </Layout>
   )
 }

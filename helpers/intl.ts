@@ -18,8 +18,8 @@ export default {
       caps: {
         style: 'currency',
         currency: 'USD',
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3
       },
       decimal: {
         minimumFractionDigits: 0,
@@ -34,7 +34,7 @@ export default {
       percentChange: {
         style: 'percent',
         minimumFractionDigits: 0,
-        maximumFractionDigits: 3,
+        maximumFractionDigits: 1,
         signDisplay: 'exceptZero'
       }
     }

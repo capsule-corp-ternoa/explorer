@@ -23,8 +23,9 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
 
   return (
     <Layout>
-      <h1 className="subTitle">Blocks</h1>
+      {/* <h1 className="subTitle">Blocks</h1> */}
       <ListView
+        title="Blocks"
         data={data}
         columns={columns}
         renderCell={render}

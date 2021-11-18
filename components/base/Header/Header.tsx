@@ -3,7 +3,8 @@ import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import Link from 'next/link';
 import { useRouter } from "next/router";
 import style from './Header.module.scss';
-import LogoTernoaScan from 'components/assets/LogoTernoaScan';
+import LogoTernoaExplorer from 'components/assets/LogoTernoaExplorer';
+import Testnet from 'components/assets/Testnet';
 import Hamburger from 'components/assets/Hamburger';
 import Search from 'components/assets/Search';
 import SearchBar from '../SearchBar';
@@ -91,12 +92,15 @@ const Header: React.FC<HeaderProps> = (props) => {
             <div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
                 <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
                     <Link href="/">
-                        <a><LogoTernoaScan className={'w-100'} /></a>
+                        <a><LogoTernoaExplorer className={'w-100'} /></a>
                     </Link>
+                    <Testnet className="mt-3 ms-4"/>
                 </div>
                 <div className="d-block d-md-none col no-padding-vertical">
-                    <div className="flex flex-cont-end" onClick={() => openMenu()}>
-                        <Hamburger className={style.hamburger + " mx-2"} />
+                    <div className="flex flex-cont-end">
+                        <div onClick={() => openMenu()}>
+                            <Hamburger className={style.hamburger + " mx-2"} />
+                        </div>
                     </div>
                 </div>
                 

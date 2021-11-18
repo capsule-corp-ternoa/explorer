@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Copy from 'components/assets/Copy';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const columns = [
@@ -29,11 +30,14 @@ export const render = (record: any, dataKey: string) => {
       )
     case 'hash':
       return (
-        <>
-          <span className="textToken" title={record[dataKey]}>
+        <div className="d-flex">
+          <span className="textToken mt-1" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-        </>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
       )
     case 'age':
       return `${formatSec(record[dataKey])} ago`

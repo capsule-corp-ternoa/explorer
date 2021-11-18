@@ -54,16 +54,15 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         {isFocus &&
         <div className={"search-gradient " + (props.isLarge?style.inputLarge:style.inputMedium)}/>
         }
-        <Search className={style.searchIcon}/>
+        {props.hasButton &&
+        <div
+          className={style.searchButton + " d-none d-lg-flex btn btn-info rounded-pill flex-items-center px-5"}
+          onClick={() => searchAll()}
+        >
+          Search
+        </div>
+        }
       </div>
-      {props.hasButton &&
-      <div
-        className={style.searchButton + " d-none d-lg-flex btn btn-primary rounded-pill flex-items-center px-5"}
-        onClick={() => searchAll()}
-      >
-        Search
-      </div>
-      }
     </div>
   )
 }

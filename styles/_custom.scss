@@ -42,6 +42,18 @@ input[type=number] {
 			border: solid 2px $white;
 		}
 	}
+	&-info {
+		font-family: "Airbnb Cereal App Bold", sans-serif;
+		background-color: $first-blue;
+		transition: all 0.2s;
+		border: solid 3px rgba(5, 22, 62, 0.5);
+		color: white;
+		&:hover {
+			background-color: $second-blue;
+			color: white;
+			border: solid 3px rgba(3, 14, 36, 0.5);
+		}
+	}
 	&-secondary {
 		font-family: "Airbnb Cereal App Bold", sans-serif;
 		font-size: smaller;
@@ -136,12 +148,30 @@ input[type=number] {
 .tag-for-scroll{
 	overflow-y: auto;
 }
-.table > tbody > tr:nth-child(2n+1) > td, .table > tbody > tr:nth-child(2n+1) > th {
-	background-color: $medium-blue;
+
+.table {
+	background: linear-gradient(90deg, #0E1439 0%, #121339 22.4%, #171139 51.56%, #1B1038 72.4%, #1F0E38 100%);
+	border-radius: 20px;
+}
+
+.table > thead > tr {
+	border-bottom: 1px solid rgb(70, 68, 68);
+}
+
+.table > tbody > tr {
+	border-bottom: 1px solid rgb(70, 68, 68);
 
 	&:last-child {
-		background-color: rgba(17, 17, 41, 0.7)!important;
+		border-bottom: 0px solid white;
 	}
+}
+
+#parameter > tbody > tr:nth-child(1) > td:nth-child(1) {
+	border-top-left-radius: 30px;
+}
+
+#parameter > tbody > tr:nth-child(1) > td:nth-child(2) {
+	border-top-right-radius: 30px;
 }
 
 .table > tbody > tr:nth-child(2n) > td {
@@ -222,7 +252,7 @@ input[type=number] {
 	font-family: Airbnb Cereal App Bold;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 30.798px;
+	font-size: 30px;
 	line-height: 40px;
 
 	@media (max-width : 1024px) {
@@ -384,7 +414,7 @@ input[type=number] {
 
 .search-gradient{
 	@media (-webkit-min-device-pixel-ratio:0) {
-		box-shadow: 0px 0px 16px 4px#FF0062;
+		// border: 2px $first-blue solid;
 		position: absolute;
 		width: 100%;
 		margin-left: 5px;
@@ -403,4 +433,22 @@ input[type=number] {
 .no-padding-vertical {
 	padding-left: 0px!important;
 	padding-right: 0px!important;
+}
+
+.custom_table {
+	background: linear-gradient(90deg, #0B4BFE 0%, #B80DEF 99.9%);
+	opacity: 0.75;
+	border-radius: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+
+.blockTitle {
+	line-height: 16px !important;
+}
+
+.full-opacity {
+	opacity: 1;
 }

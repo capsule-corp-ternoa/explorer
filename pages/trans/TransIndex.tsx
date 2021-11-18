@@ -23,8 +23,9 @@ const TransIndex: React.FC<TransIndexProps> = () => {
 
   return (
     <Layout>
-      <h1 className="subTitle">Balance Transfers</h1>
+      {/* <h1 className="subTitle">Balance Transfers</h1> */}
       <ListView
+        title="Balance Transfers"
         data={data}
         columns={columns}
         renderCell={render}

@@ -25,8 +25,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
 
   return (
     <Layout back='/trans'>
-      <h1 className="subTitle">Balance Transfer "{ellipsifyMiddle(id)}"</h1>
-      <DetailView fields={fields} data={data} renderCell={render}/>
+      <DetailView title={"Balance Transfer " + ellipsifyMiddle(id)} fields={fields} data={data} renderCell={render}/>
     </Layout>
   )
 }

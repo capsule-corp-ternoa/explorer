@@ -8,13 +8,12 @@
     z-index: 1000;
     margin: 30px auto;
     margin-bottom: 10px;
-    border: solid 2px transparent;
     @media (min-width: 1280px) { 
-        padding: 30px 80px;
+        padding: 30px 130px;
     }
     padding: 25px 14px;
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-                linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
+                linear-gradient(101deg,#004fff, #cb06ed );
     background-origin: border-box;
     background-clip: content-box, border-box;
     box-shadow: 2px 1000px 1px $black-blue inset;
@@ -26,7 +25,7 @@
     font-family: "Airbnb Cereal App Bold";
     font-style: normal;
     font-weight: bold;
-    font-size: 29.9791px;
+    font-size: 30px;
     line-height: 39px;
     @media (max-width : 1280px) {
         font-size: 20px;
@@ -47,13 +46,19 @@
     }
 }
 .blockButton {
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(90deg, #0B4BFE 0%, #B80DEF 99.9%);
+    opacity: 0.5;
+    border-radius: 16px;
     @media (max-width: 1280px) {
-        // border: solid 3.25px transparent;
-        // background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        //             linear-gradient(101deg,#FF850059, #FF006259, #CB06ED59, #004FFF59 );
-        // background-origin: border-box;
-        // background-clip: content-box, border-box;
-        // box-shadow: 3.25px 1000px 1px $semi-blue inset;
+        border: solid 3.25px transparent;
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+	        linear-gradient(101deg,#0B4BFE, #B80DEF);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        box-shadow: 3.25px 1000px 1px $semi-blue inset;
         font-size: 16px!important;
         padding: 4px 12px!important;
     }

@@ -37,16 +37,16 @@ const Pagination: React.FC<PaginationProps> = ({ page, totalPage }) => {
           </div>
         )}
 
-        <span className="text-large mx-2">Page</span>
-        <span className="text-large me-1">{page + 1}</span>
-        <span className="text-large ms-1">of</span>
-        <span className="text-large mx-2">{totalPage}</span>
+        <span className="text-large mx-2 mt-1">Page</span>
+        <span className="text-large me-1 mt-1">{page + 1}</span>
+        <span className="text-large ms-1 mt-1">of</span>
+        <span className="text-large mx-2 mt-1">{totalPage}</span>
 
         {page < totalPage - 1 ? (
           <Link href={getPaginatedUrl(router.route, page + 2)}>
             <a>
               <div className={clsx("cursor-point", style.paginationButton)}>
-                <RightArrow opacity={1} className="ms-2 cursor-point"/>
+                <RightArrow opacity={1} className="ms-2 mb-1 cursor-point"/>
               </div>
             </a>
           </Link>

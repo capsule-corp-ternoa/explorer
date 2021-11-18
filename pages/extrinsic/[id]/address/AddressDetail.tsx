@@ -179,7 +179,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button className={"btn btn-info rounded-pill px-5 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                         }

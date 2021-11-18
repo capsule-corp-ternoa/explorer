@@ -14,9 +14,9 @@ import {
   renderNftTx,
   renderTransfer
 } from './table'
-import { getNftTransferList } from 'apis/nft-transfer';
+import { getNftTransferList, getNftTransferChart } from 'apis/nft-transfer';
 import { getTransferList } from 'apis/transfer';
-import { ExtrinsicChart, BlockChart } from './Chart';
+import { NFTtransfer, NFTcreation, BlockChart } from './Chart';
 import statData from 'components/data/statast.json'
 import { getExtrinsicCount } from 'apis/extrinsic';
 
@@ -34,9 +34,9 @@ const DetailButton: React.FC<DetailButtonProps> = ({
 }) => (
   <Link href={href}>
     <a>
-      <button className={clsx("btn-transparent rounded-pill d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
-        {label}
-      </button>
+      <div className={clsx("btn-transparent d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
+        <span className="m-auto">{label}</span>
+      </div>
     </a>
   </Link>
 )
@@ -46,6 +46,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
   const [latestBlocks, setLatestBlocks] = useState<any>(null)
   const [nftTransfers, setNftTransfers] = useState<any>(null)
   const [transfers, setTransfers] = useState<any>(null)
+
+  
 
   useEffect(() => {
     const url = 'https://api.coingecko.com/api/v3/simple/price?ids=coin-capsule&vs_currencies=usd&include_24hr_change=true&include_market_cap=true'
@@ -75,10 +77,23 @@ const HomeScan: React.FC<HomeScanProps> = () => {
     getNftTransferList(0, TABLE_ROWS)
       .then(setNftTransfers)
       .catch(() => {})
+    
+    getNftTransferChart()
+      .then(setNftTransfers)
+      .catch(() => {})
 
     getTransferList(0, TABLE_ROWS)
       .then(setTransfers)
       .catch(() => {})
+
+    setInterval(() => {
+      getBlockList(0, TABLE_ROWS).then(res => {
+        setSummary((prev: any) => ({
+          ...prev, block_count: res.totalCount
+        }))
+        setLatestBlocks(res)
+      }).catch(() => {})
+    }, 6000)
   }, [])
 
   return (
@@ -92,11 +107,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
       />
 
       <div className="row">
-        <div className="col-12">
-          <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
-            Latest Blocks
-          </div>
+        <div className="col-12 mb-5">
           <ListView
+            title="Latest Blocks"
             columns={blockColumns}
             renderCell={renderBlock}
             data={latestBlocks && latestBlocks.data}
@@ -105,11 +118,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12">
-          <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
-            NFT Extrinsics
-          </div>
+        <div className="col-12 my-5">
           <ListView
+            title="NFT Extrinsic"
             columns={nftTxColumns}
             renderCell={renderNftTx}
             data={nftTransfers && nftTransfers.data}
@@ -118,11 +129,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             )}
           />
         </div>
-        <div className="col-12">
-          <div className={clsx("title mt-4 mb-3", style.blockTitle)}>
-            Transfers
-          </div>
+        <div className="col-12 mt-5">
           <ListView
+            title="Transfers"
             columns={transferColumns}
             renderCell={renderTransfer}
             data={transfers && transfers.data}
@@ -132,10 +141,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
           />
         </div>
         <div className="col-12 col-md-6 only-desktop only-mobile">
-          <ExtrinsicChart data={statData} className='mt-4' />
+          <NFTtransfer data={statData} className='mt-4' />
         </div>
         <div className="col-12 col-md-6 only-desktop only-mobile">
-          <BlockChart data={statData} className='mt-4' />
+          <NFTcreation data={statData} className='mt-4' />
         </div>
       </div>
     </Layout>

@@ -23,8 +23,9 @@ const EventIndex: React.FC<EventIndexProps> = () => {
 
   return (
     <Layout>
-      <h1 className="subTitle">Event History</h1>
+      {/* <h1 className="subTitle">Event History</h1> */}
       <ListView
+        title="Event History"
         data={data}
         columns={columns}
         renderCell={render}

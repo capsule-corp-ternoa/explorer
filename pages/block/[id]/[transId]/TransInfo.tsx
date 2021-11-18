@@ -4,13 +4,14 @@ import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import ParameterView from 'components/base/ParameterView';
 import { parameterFields, parameterRender, extrinsicFields, extrinsicRender } from 'pages/extrinsic/[id]/table'
-import { getExtrinsic } from 'apis/extrinsic';
+import { getExtrinsic, getExtrinsicParams } from 'apis/extrinsic';
 import { ellipsifyMiddle } from 'helpers/lib';
 
 export interface TransInfoProps {}
 
 const TransInfo: React.FC<TransInfoProps> = () => {
   const [data, setData] = useState<any>(null)
+  const [data1, setData1] = useState<any>(null)
   const router = useRouter()
   const id = router.query.id as string
   const transId = router.query.transId as string
@@ -18,6 +19,9 @@ const TransInfo: React.FC<TransInfoProps> = () => {
   useEffect(() => {
     if (transId) {
       getExtrinsic(transId).then(setData)
+      getExtrinsicParams(transId).then(data => {
+        setData1(data?.args);
+      })
     }
   }, [transId])
 
@@ -28,11 +32,15 @@ const TransInfo: React.FC<TransInfoProps> = () => {
   return (
     <Layout back={`/block/${id}`}>
       <h1 className="subTitle">Extrinsic: {data && ellipsifyMiddle(data.hash)}</h1>
-      <DetailView fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
+      <DetailView title={"Extrinsic: " + (data && ellipsifyMiddle(data.hash))} fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
       { data && data.args_name && 
         <>
           <h1 className="subTitle mt-4">Parameters</h1>
-          <ParameterView fields={parameterFields} data={data} renderCell={parameterRender}/> 
+          <ParameterView 
+            data={data1}
+            columns={parameterFields}
+            renderCell={parameterRender}
+          />
         </>
       }
     </Layout>
