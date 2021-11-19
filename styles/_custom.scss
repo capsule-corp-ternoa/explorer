@@ -100,9 +100,9 @@ input[type=number] {
 		background-color: $semi-blue;
 		background-origin: border-box;
 		background-clip: content-box, border-box;
-		border: solid 3px $white-blue;
+		border: solid 3px $light-blue;
 		&:hover {
-			border: solid 3px $light-blue;
+			border: solid 3px $white-blue;
 		}
 	}
 	&-outline {
@@ -436,8 +436,7 @@ input[type=number] {
 }
 
 .custom_table {
-	background: linear-gradient(90deg, #0B4BFE 0%, #B80DEF 99.9%);
-	opacity: 0.75;
+	background: linear-gradient(90deg, #0b4bfe47 0%, #b80def42 99.9%);
 	border-radius: 20px;
 	padding-left: 30px;
 	padding-right: 30px;
