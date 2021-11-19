@@ -68,7 +68,7 @@ export const renderNftTx = (record: any, dataKey: string) => {
     case 'id':
       return (
         <div className="d-flex">
-          <span className="textToken mt-1">{record[dataKey]}</span>
+          <span className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</span>
           <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
