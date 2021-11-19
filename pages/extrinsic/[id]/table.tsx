@@ -5,6 +5,7 @@ import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
 import Copy from 'components/assets/Copy';
 import JSONPretty from 'react-json-pretty';
+import { FormattedNumber } from 'react-intl';
 
 export const extrinsicFields = [
   { text: 'ID', dataKey: 'id', className: 'text-left' },
@@ -54,7 +55,13 @@ export const extrinsicRender = (record: any, dataKey: string) => {
           </div>
         </div>
       )
-
+    case 'fees':
+      return (
+        <>
+          <FormattedNumber value={record[dataKey]} format='decimal' />
+          &nbsp;CAPS
+        </>
+      )
     case 'signer':
       return (
         <div className="d-flex">
