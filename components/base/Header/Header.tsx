@@ -4,6 +4,12 @@ import Link from 'next/link';
 import { useRouter } from "next/router";
 import style from './Header.module.scss';
 import LogoTernoaExplorer from 'components/assets/LogoTernoaExplorer';
+import Account from 'components/assets/MenuIcons/Account';
+import Block from 'components/assets/MenuIcons/Block';
+import Event from 'components/assets/MenuIcons/Event';
+import NFT from 'components/assets/MenuIcons/NFT';
+import Transaction from 'components/assets/MenuIcons/Transaction';
+import Validator from 'components/assets/MenuIcons/Validator';
 import Testnet from 'components/assets/Testnet';
 import Hamburger from 'components/assets/Hamburger';
 import Search from 'components/assets/Search';
@@ -128,26 +134,26 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 </div>
                             </DropdownToggle>
                             <DropdownMenu className={style.dropdownMenu} right>
-                                <p className={style.dropdownItem}>
+                                <div className={style.dropdownItem}>
                                     <Link href="/block">
-                                        <a>Blocks</a>
+                                        <a><Block className="me-2 mb-1"/> Blocks</a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href="/extrinsic">
-                                        <a>Extrinsics</a>
+                                        <a><Transaction className="me-2 mb-1"/> Extrinsics</a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href="/nft">
-                                        <a>NFT Extrinsics</a>
+                                        <a><NFT className="me-2 mb-1"/> NFT Extrinsics</a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href="/event">
-                                        <a>Events</a>
+                                        <a><Event className="me-2 mb-1"/> Events</a>
                                     </Link>
-                                </p>
+                                </div>
                             </DropdownMenu>
                         </Dropdown>
 
@@ -166,14 +172,14 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 <p className={style.dropdownItem}>
                                     <Link href='/account'>
                                         <a>
-                                            All accounts
+                                        <Account className="me-2 mb-1"/> All accounts
                                         </a>
                                     </Link>
                                 </p>
                                 <p className={style.dropdownItem}>
                                     <Link href='/trans'>
                                         <a>
-                                            Transfers
+                                        <Validator className="me-2 mb-1"/> Transfers
                                         </a>
                                     </Link>
                                 </p>
