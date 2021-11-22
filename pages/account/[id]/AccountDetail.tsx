@@ -50,12 +50,12 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
           </div>
           <div className="ui-switch">
             <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>{ellipsifyMiddle(id)}</div>
-            <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>{data.last_extrinsics.length + ' last ' + (data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic')}</div>
+            <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>{data && data.last_extrinsics.length + ' last ' + (data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic')}</div>
           </div>
         </div>
         { isFirst && <DetailView fields={fields} data={data} renderCell={render} /> }
         { isSecond && data && data.last_extrinsics &&
-          <ListView columns={extrinsicColumns} data={data.last_extrinsics} renderCell={renderExtrinsic} />
+          <ListView columns={extrinsicColumns} data={data && data.last_extrinsics} renderCell={renderExtrinsic} />
         }
       </div>
     </Layout>
