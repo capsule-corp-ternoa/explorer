@@ -136,22 +136,22 @@ const Header: React.FC<HeaderProps> = (props) => {
                             <DropdownMenu className={style.dropdownMenu} right>
                                 <div className={style.dropdownItem}>
                                     <Link href="/block">
-                                        <a><Block className="me-2 mb-1"/> Blocks</a>
+                                        <a><Block className={style.dropdownItem}/></a>
                                     </Link>
                                 </div>
                                 <div className={style.dropdownItem}>
                                     <Link href="/extrinsic">
-                                        <a><Transaction className="me-2 mb-1"/> Extrinsics</a>
+                                        <a><Transaction className={style.dropdownItem}/></a>
                                     </Link>
                                 </div>
                                 <div className={style.dropdownItem}>
                                     <Link href="/nft">
-                                        <a><NFT className="me-2 mb-1"/> NFT Extrinsics</a>
+                                        <a><NFT className={style.dropdownItem}/></a>
                                     </Link>
                                 </div>
                                 <div className={style.dropdownItem}>
                                     <Link href="/event">
-                                        <a><Event className="me-2 mb-1"/> Events</a>
+                                        <a><Event className={style.dropdownItem}/></a>
                                     </Link>
                                 </div>
                             </DropdownMenu>
@@ -169,20 +169,20 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 </div>
                             </DropdownToggle>
                             <DropdownMenu className={style.dropdownMenu} right>
-                                <p className={style.dropdownItem}>
+                                <div className={style.dropdownItem}>
                                     <Link href='/account'>
                                         <a>
-                                        <Account className="me-2 mb-1"/> All accounts
+                                        <Account className={style.dropdownItem}/>
                                         </a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href='/trans'>
                                         <a>
-                                        <Validator className="me-2 mb-1"/> Transfers
+                                        <Validator className={style.dropdownItem}/>
                                         </a>
                                     </Link>
-                                </p>
+                                </div>
                             </DropdownMenu>
                         </Dropdown>
                     </div>

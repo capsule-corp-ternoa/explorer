@@ -74,6 +74,7 @@
     // margin-left: 30px;
 
     .dropdownItem{
+        fill: white;
         cursor: pointer;
         color: white;
         font-family: "Airbnb Cereal App";
@@ -83,6 +84,7 @@
         margin-bottom: 14px;
 
         &:hover {
+            fill: $white-blue;
             color: $white-blue;
             transition: all 150ms ease-out;
         }
