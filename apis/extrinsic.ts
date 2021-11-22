@@ -1,5 +1,6 @@
 import { gql } from "graphql-request"
 import request from './api'
+import * as ethers from 'ethers';
 
 const queryExtrinsicList = (offset: number, pageSize: number) => gql`
 {
@@ -123,7 +124,7 @@ export const getExtrinsic = async (id: string) => {
       hash: data.hash,
       module: data.module,
       call: data.call,
-      fees: data.fees,
+      fees: ethers.utils.formatEther(data.fees),
       description: data.description.description,
       signer: data.signer,
       nonce: data.nonce,

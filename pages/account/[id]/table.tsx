@@ -16,7 +16,7 @@ export const render = (data: any, dataKey: string) => {
       return (
         <>
           <FormattedNumber value={data[dataKey]} format='decimal' />
-          &nbsp;Caps
+          &nbsp;CAPS
         </>
       )
 

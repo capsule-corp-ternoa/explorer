@@ -147,7 +147,7 @@ export const getNftTransfer = async (id: string) => {
       nft_id: data.nft.id,
       extrinsic_id: data.extrinsicId,
       creator: data.nft.creator,
-      fees: data.extrinsic.fees,
+      fees: ethers.utils.formatEther(data.extrinsic.fees),
       uri: data.id
     }
   }
