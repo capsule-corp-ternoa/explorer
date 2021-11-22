@@ -5,7 +5,6 @@ import { FormattedNumber } from 'react-intl';
 
 export const columns = [
   { text: 'Address', dataKey: 'address', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Extrinsics', dataKey: 'extrinsics', className: 'text-left' },
   { text: 'Amount', dataKey: 'amount', className: 'text-left' },
   { text: '', dataKey: 'details', mobileClassName: 'col-12' },
 ]
