@@ -106,7 +106,8 @@ export const getBlock = async (id: string) => {
     return null
   } else {
     const block = blockResponse.blockEntities.nodes[0]
-    const now = Date.now()
+    let now = new Date();
+    let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
     return {
       timestamp: block.timestamp,
@@ -119,7 +120,7 @@ export const getBlock = async (id: string) => {
       runtime_version: block.runtimeVersion,
       author: block.author,
       session_id: block.sessionId,
-      age: (now - new Date(block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(block.timestamp).getTime()) / 1000,
       extrinsic_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: id,

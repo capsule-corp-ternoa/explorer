@@ -140,14 +140,15 @@ export const searchEventbyBlock = async (keyword: string) => {
     queryEventSearchbyBlock(keyword)
   )
   
-  const now = Date.now()
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
     totalCount: response.eventEntities.nodes.length,
     data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
-      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
       hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
       action: item.module + '(' + item.call + ')'
     })))
@@ -159,14 +160,15 @@ export const searchEventbyExtrinsic = async (keyword: string) => {
     queryEventSearchbyExtrinsic(keyword)
   )
   
-  const now = Date.now()
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
     totalCount: response.eventEntities.nodes.length,
     data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
-      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
       hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
       action: item.module + '(' + item.call + ')'
     })))
@@ -178,14 +180,15 @@ export const getEventList = async (offset: number, pageSize: number) => {
     queryEventList(offset, pageSize)
   )
 
-  const now = Date.now()
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
     totalCount: response.eventEntities.totalCount,
     data: await Promise.all<any>(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
-      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
       hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
       action: item.module + '(' + item.call + ')'
     })))
