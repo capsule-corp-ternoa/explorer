@@ -59,7 +59,7 @@ export const extrinsicRender = (record: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-        { record[dataKey] < 1 ?
+        { record[dataKey] < 1 && record[dataKey] === 0 ?
           <>
             {record[dataKey]}
             &nbsp;CAPS 

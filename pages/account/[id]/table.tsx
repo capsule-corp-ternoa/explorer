@@ -15,7 +15,7 @@ export const render = (data: any, dataKey: string) => {
     case 'free_balance':
       return (
         <>
-        { data[dataKey] < 1 ?
+        { data[dataKey] < 1 && data[dataKey] === 0 ?
           <>
             {data[dataKey]}
             &nbsp;CAPS 

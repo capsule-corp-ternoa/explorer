@@ -45,7 +45,7 @@ export const render = (data: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-        { data[dataKey] < 1 ?
+        { data[dataKey] < 1 && data[dataKey] === 0 ?
           <>
             {data[dataKey]}
             &nbsp;CAPS 
@@ -62,7 +62,7 @@ export const render = (data: any, dataKey: string) => {
     case 'amount':
       return (
         <>
-        { data[dataKey] < 1 ?
+        { data[dataKey] < 1 && data[dataKey] === 0 ?
           <>
             {data[dataKey]}
             &nbsp;CAPS 
