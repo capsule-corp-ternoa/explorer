@@ -1,10 +1,7 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
-import { blockColumns } from "pages/home-scan/table"
-import { blockFields } from "pages/block/[id]/table"
 
-const queryEventList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryEventList = (offset: number, pageSize: number) => gql`
 {
   eventEntities(
     first: ${pageSize}
@@ -143,14 +140,15 @@ export const searchEventbyBlock = async (keyword: string) => {
     queryEventSearchbyBlock(keyword)
   )
   
-  const now = Date.now()
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
     totalCount: response.eventEntities.nodes.length,
     data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
-      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
       hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
       action: item.module + '(' + item.call + ')'
     })))
@@ -162,33 +160,35 @@ export const searchEventbyExtrinsic = async (keyword: string) => {
     queryEventSearchbyExtrinsic(keyword)
   )
   
-  const now = Date.now()
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
     totalCount: response.eventEntities.nodes.length,
     data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
-      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
       hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
       action: item.module + '(' + item.call + ')'
     })))
   }
 }
 
-export const getEventList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getEventList = async (offset: number, pageSize: number) => {
   const response = await request(
     queryEventList(offset, pageSize)
   )
 
-  const now = Date.now()
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
     totalCount: response.eventEntities.totalCount,
     data: await Promise.all<any>(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
-      age: (now - new Date(item.block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
       hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
       action: item.module + '(' + item.call + ')'
     })))
@@ -212,7 +212,6 @@ export const getEvent = async (id: string) => {
     return null
   } else {
     const data = extrinsicResponse.eventEntities.nodes[0]
-    // console.log(JSON.parse(data.args_value))
     return {
       id: data.id,
       block_id: data.blockId,

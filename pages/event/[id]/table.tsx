@@ -1,3 +1,5 @@
+var unescapeJs = require('unescape-js');
+
 export const eventFields = [
   { text: 'Block', dataKey: 'block_id', className: 'text-left' },
   { text: 'Referenced Extrinsic', dataKey: 'extrinsic_index', className: 'text-left' },
@@ -9,6 +11,12 @@ export const eventFields = [
 
 export const eventRender = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'description':
+      return (
+        <>
+          <span className="description">{unescapeJs(record[dataKey])}</span>
+        </>
+      )
     default:
       return <span className="textToken">{record[dataKey]}</span>
   }

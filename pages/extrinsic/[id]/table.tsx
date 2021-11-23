@@ -5,6 +5,8 @@ import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
 import Copy from 'components/assets/Copy';
 import JSONPretty from 'react-json-pretty';
+import { FormattedNumber } from 'react-intl';
+var unescapeJs = require('unescape-js');
 
 export const extrinsicFields = [
   { text: 'ID', dataKey: 'id', className: 'text-left' },
@@ -54,7 +56,26 @@ export const extrinsicRender = (record: any, dataKey: string) => {
           </div>
         </div>
       )
-
+    case 'fees':
+      return (
+        <>
+        { record[dataKey] < 1 && record[dataKey] === 0 ?
+          <>
+            {record[dataKey]}
+            &nbsp;CAPS 
+          </>
+          :
+          <>
+            <FormattedNumber value={record[dataKey]} format='decimal' />
+            &nbsp;CAPS
+          </>
+        }
+        </>
+      )
+    case 'description':
+      return (
+        <span className="description">{unescapeJs(record[dataKey])}</span>
+      )
     case 'signer':
       return (
         <div className="d-flex">

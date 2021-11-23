@@ -4,6 +4,12 @@ import Link from 'next/link';
 import { useRouter } from "next/router";
 import style from './Header.module.scss';
 import LogoTernoaExplorer from 'components/assets/LogoTernoaExplorer';
+import Account from 'components/assets/MenuIcons/Account';
+import Block from 'components/assets/MenuIcons/Block';
+import Event from 'components/assets/MenuIcons/Event';
+import NFT from 'components/assets/MenuIcons/NFT';
+import Extrinsic from 'components/assets/MenuIcons/Extrinsic';
+import Transfer from 'components/assets/MenuIcons/Transfer';
 import Testnet from 'components/assets/Testnet';
 import Hamburger from 'components/assets/Hamburger';
 import Search from 'components/assets/Search';
@@ -128,26 +134,26 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 </div>
                             </DropdownToggle>
                             <DropdownMenu className={style.dropdownMenu} right>
-                                <p className={style.dropdownItem}>
+                                <div className={style.dropdownItem}>
                                     <Link href="/block">
-                                        <a>Blocks</a>
+                                        <a><Block className={style.dropdownItem}/></a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href="/extrinsic">
-                                        <a>Extrinsics</a>
+                                        <a><Extrinsic className={style.dropdownItem}/></a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href="/nft">
-                                        <a>NFT Extrinsics</a>
+                                        <a><NFT className={style.dropdownItem}/></a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href="/event">
-                                        <a>Events</a>
+                                        <a><Event className={style.dropdownItem}/></a>
                                     </Link>
-                                </p>
+                                </div>
                             </DropdownMenu>
                         </Dropdown>
 
@@ -163,20 +169,20 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 </div>
                             </DropdownToggle>
                             <DropdownMenu className={style.dropdownMenu} right>
-                                <p className={style.dropdownItem}>
+                                <div className={style.dropdownItem}>
                                     <Link href='/account'>
                                         <a>
-                                            All accounts
+                                        <Account className={style.dropdownItem}/>
                                         </a>
                                     </Link>
-                                </p>
-                                <p className={style.dropdownItem}>
+                                </div>
+                                <div className={style.dropdownItem}>
                                     <Link href='/trans'>
                                         <a>
-                                            Transfers
+                                        <Transfer className={style.dropdownItem}/>
                                         </a>
                                     </Link>
-                                </p>
+                                </div>
                             </DropdownMenu>
                         </Dropdown>
                     </div>

@@ -108,37 +108,43 @@ const HomeScan: React.FC<HomeScanProps> = () => {
 
       <div className="row">
         <div className="col-12 mb-5">
-          <ListView
-            title="Latest Blocks"
-            columns={blockColumns}
-            renderCell={renderBlock}
-            data={latestBlocks && latestBlocks.data}
-            footer={(
-              <DetailButton href='/block' label='Show all Blocks' />
-            )}
-          />
+          <div className="custom_table pb-3">
+          <h1 className="title mt-3 mb-1 ms-1">Latest Blocks</h1>
+            <ListView
+              columns={blockColumns}
+              renderCell={renderBlock}
+              data={latestBlocks && latestBlocks.data}
+              footer={(
+                <DetailButton href='/block' label='Show all Blocks' />
+              )}
+            />
+          </div>
         </div>
         <div className="col-12 my-5">
-          <ListView
-            title="NFT Extrinsic"
-            columns={nftTxColumns}
-            renderCell={renderNftTx}
-            data={nftTransfers && nftTransfers.data}
-            footer={(
-              <DetailButton href='/nft' label='Show all NFT' />
-            )}
-          />
+          <div className="custom_table pb-3">
+            <h1 className="title mt-3 mb-1 ms-1">NFT Extrinsic</h1>
+            <ListView
+              columns={nftTxColumns}
+              renderCell={renderNftTx}
+              data={nftTransfers && nftTransfers.data}
+              footer={(
+                <DetailButton href='/nft' label='Show all NFT' />
+              )}
+            />
+          </div>
         </div>
         <div className="col-12 mt-5">
-          <ListView
-            title="Transfers"
-            columns={transferColumns}
-            renderCell={renderTransfer}
-            data={transfers && transfers.data}
-            footer={(
-              <DetailButton href='/trans' label='Show all Transfers' />
-            )}
-          />
+          <div className="custom_table pb-3">
+            <h1 className="title mt-3 mb-1 ms-1">Transfers</h1>
+            <ListView
+              columns={transferColumns}
+              renderCell={renderTransfer}
+              data={transfers && transfers.data}
+              footer={(
+                <DetailButton href='/trans' label='Show all Transfers' />
+              )}
+            />
+          </div>
         </div>
         <div className="col-12 col-md-6 only-desktop only-mobile">
           <NFTtransfer data={statData} className='mt-4' />

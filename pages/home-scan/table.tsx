@@ -68,7 +68,7 @@ export const renderNftTx = (record: any, dataKey: string) => {
     case 'id':
       return (
         <div className="d-flex">
-          <span className="textToken mt-1">{record[dataKey]}</span>
+          <span className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</span>
           <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
@@ -77,7 +77,7 @@ export const renderNftTx = (record: any, dataKey: string) => {
 
     case 'details':
       return (
-        <Link href={`/nft/${record.id}`}>
+        <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
           <a>
             <button className="btn btn-info rounded-pill px-5 py-2">
               Details

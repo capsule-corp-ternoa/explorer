@@ -5,7 +5,6 @@ import { FormattedNumber } from 'react-intl';
 
 export const columns = [
   { text: 'Address', dataKey: 'address', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Extrinsics', dataKey: 'extrinsics', className: 'text-left' },
   { text: 'Amount', dataKey: 'amount', className: 'text-left' },
   { text: '', dataKey: 'details', mobileClassName: 'col-12' },
 ]
@@ -15,13 +14,18 @@ export const render = (record: any, dataKey: string) => {
     case 'amount':
       return (
         <>
-          <FormattedNumber value={record[dataKey]} format='decimal' />
-          &nbsp;CAPS
+        { record[dataKey] < 1 && record[dataKey] === 0 ?
+          <>
+            {record[dataKey]}
+            &nbsp;CAPS 
+          </>
+          :
+          <>
+            <FormattedNumber value={record[dataKey]} format='decimal' />
+            &nbsp;CAPS
+          </>
+        }
         </>
-      )
-    case 'extrinsics':
-      return (
-        <FormattedNumber value={record[dataKey]} format='decimal' />
       )
     case 'address':
       return (

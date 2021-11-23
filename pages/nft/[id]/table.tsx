@@ -41,12 +41,38 @@ export const render = (data: any, dataKey: string) => {
           <a target='_blank'>{'https://www.secret-nft.com/nft/' + data['nft_id']}</a>
         </Link>
       )
+    
+    case 'fees':
+      return (
+        <>
+        { data[dataKey] < 1 && data[dataKey] === 0 ?
+          <>
+            {data[dataKey]}
+            &nbsp;CAPS 
+          </>
+          :
+          <>
+            <FormattedNumber value={data[dataKey]} format='decimal' />
+            &nbsp;CAPS
+          </>
+        }
+        </>
+      )
 
     case 'amount':
       return (
         <>
-          <FormattedNumber value={data[dataKey]} format='decimal' />
-          &nbsp;Caps
+        { data[dataKey] < 1 && data[dataKey] === 0 ?
+          <>
+            {data[dataKey]}
+            &nbsp;CAPS 
+          </>
+          :
+          <>
+            <FormattedNumber value={data[dataKey]} format='decimal' />
+            &nbsp;CAPS
+          </>
+        }
         </>
       )
 

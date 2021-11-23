@@ -1,8 +1,7 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryBlockList = (offset: number, pageSize: number) => gql`
 {
   blockEntities(
     first: ${pageSize}
@@ -80,7 +79,7 @@ export const searchBlock = async (keyword: string) => {
   return response.blockEntities.nodes
 }
 
-export const getBlockList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getBlockList = async (offset: number, pageSize: number) => {
   const blocks = await request(
     queryBlockList(offset, pageSize)
   )
@@ -107,7 +106,8 @@ export const getBlock = async (id: string) => {
     return null
   } else {
     const block = blockResponse.blockEntities.nodes[0]
-    const now = Date.now()
+    let now = new Date();
+    let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
     return {
       timestamp: block.timestamp,
@@ -120,7 +120,7 @@ export const getBlock = async (id: string) => {
       runtime_version: block.runtimeVersion,
       author: block.author,
       session_id: block.sessionId,
-      age: (now - new Date(block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(block.timestamp).getTime()) / 1000,
       extrinsic_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: id,

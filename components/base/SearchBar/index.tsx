@@ -51,6 +51,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
             if (e.keyCode === 13) searchAll()
           }}
         />
+        <Search className={style.searchIcon}/>
         {isFocus &&
         <div className={"search-gradient " + (props.isLarge?style.inputLarge:style.inputMedium)}/>
         }

@@ -1,9 +1,8 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
 import * as ethers from 'ethers';
 
-const queryAccountList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryAccountList = (offset: number, pageSize: number) => gql`
 {
   accountEntities(
     first: ${pageSize}
@@ -75,7 +74,7 @@ const queryAccountLatestExtrinsic = (signer: string, count: number) => gql`
 }
 `
 
-export const getAccountList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getAccountList = async (offset: number, pageSize: number) => {
   const accounts = await request(
     queryAccountList(offset, pageSize)
   )
@@ -98,7 +97,7 @@ export const getAccountList = async (offset: number, pageSize: number = API_PAGE
     totalCount: accounts.accountEntities.totalCount,
     data: accounts.accountEntities.nodes.map((account: any) => ({
       address: account.id,
-      amount: ethers.utils.formatEther(account.capsAmount),
+      amount: account.capsAmount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(account.capsAmount) / Math.pow(10, account.capsAmount.length - 1)).toFixed(0))*Math.pow(10, account.capsAmount.length - 1) + '') : ethers.utils.formatEther(account.capsAmount),
       extrinsics: count[account.id]
     }))
   }
@@ -128,8 +127,8 @@ export const getAccount = async (id: string, lastExtrinsicCount: number) => {
     const acc = account.accountEntities.nodes[0]
     const data: any = {
       address: acc.id,
-      free_balance: ethers.utils.formatEther(acc.capsAmount),
-      total_balance: ethers.utils.formatEther(acc.capsAmountTotal),
+      free_balance: acc.capsAmount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(acc.capsAmount) / Math.pow(10, acc.capsAmount.length - 1)).toFixed(0))*Math.pow(10, acc.capsAmount.length - 1) + '') : ethers.utils.formatEther(acc.capsAmount),
+      total_balance: acc.capsAmount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(acc.capsAmountTotal) / Math.pow(10, acc.capsAmountTotal.length - 1)).toFixed(0))*Math.pow(10, acc.capsAmountTotal.length - 1) + '') : ethers.utils.formatEther(acc.capsAmountTotal),
       active: acc.capsAmountTotal > 0
     }
 

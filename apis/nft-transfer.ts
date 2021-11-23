@@ -1,9 +1,8 @@
 import { gql } from "graphql-request"
 import request from './api'
 import * as ethers from 'ethers';
-import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryNftTransferList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryNftTransferList = (offset: number, pageSize: number) => gql`
 {
   nftTransferEntities(
     first: ${pageSize}
@@ -91,7 +90,7 @@ export const searchNftTransfer = async (keyword: string) => {
   return response.nftTransferEntities.nodes
 }
 
-export const getNftTransferList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getNftTransferList = async (offset: number, pageSize: number) => {
   const transferResponse = await request(
     queryNftTransferList(offset, pageSize)
   )
@@ -102,7 +101,7 @@ export const getNftTransferList = async (offset: number, pageSize: number = API_
       timestamp: transfer.timestamp,
       from: transfer.from,
       to: transfer.to,
-      amount: ethers.utils.formatEther(transfer.amount),
+      amount: transfer.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(transfer.amount) / Math.pow(10, transfer.amount.length - 1)).toFixed(0))*Math.pow(10, transfer.amount.length - 1) + '') : ethers.utils.formatEther(transfer.amount),
       nft_id: transfer.nft.id,
       extrinsic_id: transfer.extrinsicId,
       creator: transfer.nft.creator,
@@ -121,7 +120,7 @@ export const getNftTransferChart = async () => {
       timestamp: transfer.timestamp,
       from: transfer.from,
       to: transfer.to,
-      amount: ethers.utils.formatEther(transfer.amount),
+      amount: transfer.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(transfer.amount) / Math.pow(10, transfer.amount.length - 1)).toFixed(0))*Math.pow(10, transfer.amount.length - 1) + '') : ethers.utils.formatEther(transfer.amount),
       nft_id: transfer.nft.id,
       extrinsic_id: transfer.extrinsicId,
       creator: transfer.nft.creator,
@@ -143,12 +142,12 @@ export const getNftTransfer = async (id: string) => {
       timestamp: data.timestamp,
       from: data.from,
       to: data.to,
-      amount: ethers.utils.formatEther(data.amount),
+      amount: data.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(data.amount) / Math.pow(10, data.amount.length - 1)).toFixed(0))*Math.pow(10, data.amount.length - 1) + '') : ethers.utils.formatEther(data.amount),
       extrinsic_type: data.typeOfTransaction,
       nft_id: data.nft.id,
       extrinsic_id: data.extrinsicId,
       creator: data.nft.creator,
-      fees: data.extrinsic.fees,
+      fees: data.typeOfTransaction=='creation' ? '10' : data.extrinsic.fees.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(data.extrinsic.fees) / Math.pow(10, data.extrinsic.fees.length - 1)).toFixed(0))*Math.pow(10, data.extrinsic.fees.length - 1) + '') : ethers.utils.formatEther(data.extrinsic.fees),
       uri: data.id
     }
   }

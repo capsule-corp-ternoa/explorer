@@ -74,15 +74,17 @@
     // margin-left: 30px;
 
     .dropdownItem{
+        fill: white;
         cursor: pointer;
         color: white;
         font-family: "Airbnb Cereal App";
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 700;
         line-height: 20px;
         margin-bottom: 14px;
 
         &:hover {
+            fill: $white-blue;
             color: $white-blue;
             transition: all 150ms ease-out;
         }
@@ -102,9 +104,11 @@
     }
 
     .dropdownMenu {
-        background-color: #191939!important;
-        border-radius: 11px;
-  		// transition: all 1000ms ease-out;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08)), linear-gradient(210.96deg, rgba(11, 11, 28, 0.74) 0.01%, rgba(16, 8, 33, 0.5) 42.05%, rgba(11, 11, 28, 0.5) 104.81%);
+        border: 2px solid #0E0E23;
+        box-shadow: -29px 60px 90px rgba(23, 18, 43, 0.3);
+        backdrop-filter: blur(50px);
+        border-radius: 11.3317px;
         padding: 11px 17px;
         margin-top: 8px;
         z-index: 1001;

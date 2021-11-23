@@ -23,8 +23,17 @@ export const render = (record: any, dataKey: string) => {
     case 'amount':
       return (
         <>
-          <FormattedNumber value={record[dataKey]} format='decimal' />
-          &nbsp;Caps
+        { record[dataKey] < 1 && record[dataKey] === 0 ?
+          <>
+            {record[dataKey]}
+            &nbsp;CAPS 
+          </>
+          :
+          <>
+            <FormattedNumber value={record[dataKey]} format='decimal' />
+            &nbsp;CAPS
+          </>
+        }
         </>
       )
 

@@ -8,23 +8,17 @@ type DetailViewField = {
 }
 
 interface DetailViewProps {
-  title: string
   fields: DetailViewField[]
   data: { [dataKey in string]: any } | null
   renderCell: (data: any, dataKey: string) => React.ReactNode
 }
 
 const DetailView: React.FC<DetailViewProps> = ({
-  title,
   fields,
   data,
   renderCell
 }) => (
   <>
-  <div className="custom_table">
-    <div className="title mt-4 mb-4 blockTitle full-opacity">
-      {title}
-    </div>
     <table className="only-desktop table table-borderless mb-3 data-table">
       <tbody className="tbody-detail">
         {fields.map(({ text, dataKey }) => (
@@ -53,7 +47,6 @@ const DetailView: React.FC<DetailViewProps> = ({
         ))}
       </div>
     </div>
-  </div>
   </>
 )
 

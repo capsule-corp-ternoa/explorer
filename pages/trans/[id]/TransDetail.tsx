@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
+import Link from 'next/link';
+import Back from 'components/assets/Back';
 import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import { fields, render } from './table';
@@ -24,8 +26,18 @@ const TransDetail: React.FC<TransDetailProps> = () => {
   }
 
   return (
-    <Layout back='/trans'>
-      <DetailView title={"Balance Transfer " + ellipsifyMiddle(id)} fields={fields} data={data} renderCell={render}/>
+    <Layout>
+      <div className="custom_table pb-3">
+        <div className="d-flex align-items-center my-3">
+          <div className="cursor-point w-fit-content me-5">
+            <Link href={'/trans'}>
+              <a><Back /></a>
+            </Link>
+          </div>
+          <h1 className="title my-2 ms-1">Balance Transfer " {ellipsifyMiddle(id)}"</h1>
+        </div>
+        <DetailView fields={fields} data={data} renderCell={render}/>
+      </div>
     </Layout>
   )
 }

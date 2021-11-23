@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
+import Link from 'next/link';
+import Back from 'components/assets/Back';
 import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import { eventFields, eventRender } from './table'
@@ -23,8 +25,18 @@ const EventDetail: React.FC<ExtrinsicDetailProps> = () => {
   }
 
   return (
-    <Layout back='/event'>
-      <DetailView title={"Event # " + (id)} fields={eventFields} data={data} renderCell={eventRender}/>
+    <Layout>
+      <div className="custom_table pb-3">
+        <div className="d-flex align-items-center my-3">
+          <div className="cursor-point w-fit-content me-5">
+            <Link href={'/event'}>
+              <a><Back /></a>
+            </Link>
+          </div>
+          <h1 className="title my-2 ms-1">Event # {id}</h1>
+        </div>
+        <DetailView fields={eventFields} data={data} renderCell={eventRender}/>
+      </div>
     </Layout>
   )
 }
