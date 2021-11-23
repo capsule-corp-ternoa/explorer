@@ -15,8 +15,17 @@ export const render = (data: any, dataKey: string) => {
     case 'free_balance':
       return (
         <>
-          <FormattedNumber value={data[dataKey]} format='decimal' />
-          &nbsp;CAPS
+        { data[dataKey] < 1 ?
+          <>
+            {data[dataKey]}
+            &nbsp;CAPS 
+          </>
+          :
+          <>
+            <FormattedNumber value={data[dataKey]} format='decimal' />
+            &nbsp;CAPS
+          </>
+        }
         </>
       )
 

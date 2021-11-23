@@ -14,13 +14,18 @@ export const render = (record: any, dataKey: string) => {
     case 'amount':
       return (
         <>
-          <FormattedNumber value={record[dataKey]} format='decimal' />
-          &nbsp;CAPS
+        { record[dataKey] < 1 ?
+          <>
+            {record[dataKey]}
+            &nbsp;CAPS 
+          </>
+          :
+          <>
+            <FormattedNumber value={record[dataKey]} format='decimal' />
+            &nbsp;CAPS
+          </>
+        }
         </>
-      )
-    case 'extrinsics':
-      return (
-        <FormattedNumber value={record[dataKey]} format='decimal' />
       )
     case 'address':
       return (
