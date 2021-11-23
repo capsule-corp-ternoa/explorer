@@ -8,8 +8,8 @@ import Account from 'components/assets/MenuIcons/Account';
 import Block from 'components/assets/MenuIcons/Block';
 import Event from 'components/assets/MenuIcons/Event';
 import NFT from 'components/assets/MenuIcons/NFT';
-import Transaction from 'components/assets/MenuIcons/Transaction';
-import Validator from 'components/assets/MenuIcons/Validator';
+import Extrinsic from 'components/assets/MenuIcons/Extrinsic';
+import Transfer from 'components/assets/MenuIcons/Transfer';
 import Testnet from 'components/assets/Testnet';
 import Hamburger from 'components/assets/Hamburger';
 import Search from 'components/assets/Search';
@@ -141,7 +141,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 </div>
                                 <div className={style.dropdownItem}>
                                     <Link href="/extrinsic">
-                                        <a><Transaction className={style.dropdownItem}/></a>
+                                        <a><Extrinsic className={style.dropdownItem}/></a>
                                     </Link>
                                 </div>
                                 <div className={style.dropdownItem}>
@@ -179,7 +179,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 <div className={style.dropdownItem}>
                                     <Link href='/trans'>
                                         <a>
-                                        <Validator className={style.dropdownItem}/>
+                                        <Transfer className={style.dropdownItem}/>
                                         </a>
                                     </Link>
                                 </div>
