@@ -53,7 +53,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
             </Link>
           </div>
           <div className="ui-switch">
-            <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>Erinxtsic: {data && ellipsifyMiddle(data.hash)}</div>
+            <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>Extrinsic: {data && ellipsifyMiddle(data.hash)}</div>
             <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>Parameters</div>
           </div>
         </div>
