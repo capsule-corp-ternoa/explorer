@@ -77,7 +77,7 @@ export const renderNftTx = (record: any, dataKey: string) => {
 
     case 'details':
       return (
-        <Link href={`/nft/${record.id}`}>
+        <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
           <a>
             <button className="btn btn-info rounded-pill px-5 py-2">
               Details
