@@ -53,6 +53,10 @@ input[type=number] {
 			color: white;
 			border: solid 3px rgba(3, 14, 36, 0.5);
 		}
+		&:active, &:focus, &:focus-visible, &:focus-within {
+			border: solid 2px rgba(0, 79, 255, 0.3) !important;
+			box-shadow: 2px 1000px 1px rgba(0, 79, 255, 0.8) inset !important;
+		}
 	}
 	&-secondary {
 		font-family: "Airbnb Cereal App Bold", sans-serif;
