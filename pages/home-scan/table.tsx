@@ -7,22 +7,26 @@ import { FormattedNumber } from 'react-intl';
 export const blockColumns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
   { text: 'Age', dataKey: 'age', className: 'text-left' },
-  { text: 'Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left' },
-  { text: 'Module Events', dataKey: 'module_events', className: 'text-left' },
+  { text: 'Block Hash', dataKey: 'block_hash', className: 'text-left only-desktop' },
+  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left only-desktop' },
+  { text: 'Module Events', dataKey: 'module_events', className: 'text-left only-desktop' },
   { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
 export const nftTxColumns = [
   { text: 'Name/ID', dataKey: 'nft_id', className: 'text-left' },
-  { text: 'Creator', dataKey: 'creator', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'ID', dataKey: 'id', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Date', dataKey: 'timestamp', className: 'text-left only-desktop' },
+  { text: 'Sender', dataKey: 'from', className: 'text-left only-desktop' },
+  { text: 'Receiver', dataKey: 'to', className: 'text-left only-desktop' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
   { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
 export const transferColumns = [
-  { text: 'From', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'To', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Block', dataKey: 'block_id', className: 'text-left' },
+  { text: 'From', dataKey: 'from', className: 'text-left' },
+  { text: 'To', dataKey: 'to', className: 'text-left only-desktop' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left only-desktop' },
   { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
@@ -32,6 +36,16 @@ export const renderBlock = (record: any, dataKey: string) => {
     case 'signed_extrinsics':
     case 'module_events':
       return record[dataKey]
+    
+    case 'block_hash':
+      return (
+        <div className="d-flex">
+          <span className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</span>
+          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+            <Copy className="cursor-point" />
+          </div>
+        </div>
+      )
 
     case 'age':
       return `${formatSec(record[dataKey])} ago`
@@ -41,7 +55,7 @@ export const renderBlock = (record: any, dataKey: string) => {
       return (
         <Link href={`/block/${record.number}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-5 py-2">
+            <button className="btn btn-info rounded-pill">
               Details
             </button>
           </a>
@@ -52,7 +66,8 @@ export const renderBlock = (record: any, dataKey: string) => {
 
 export const renderNftTx = (record: any, dataKey: string) => {
   switch (dataKey) {
-    case 'creator':
+    case 'from':
+    case 'to':
       return (
         <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
@@ -65,21 +80,19 @@ export const renderNftTx = (record: any, dataKey: string) => {
         </div>
       )
 
-    case 'id':
+    case 'amount':
       return (
-        <div className="d-flex">
-          <span className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
-            <Copy className="cursor-point" />
-          </div>
-        </div>
+        <>
+          <FormattedNumber value={record[dataKey]} format='decimal' />
+          &nbsp;Caps
+        </>
       )
 
     case 'details':
       return (
         <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
           <a>
-            <button className="btn btn-info rounded-pill px-5 py-2">
+            <button className="btn btn-info rounded-pill">
               Details
             </button>
           </a>
@@ -118,7 +131,7 @@ export const renderTransfer = (record: any, dataKey: string) => {
       return (
         <Link href={`/trans/${record.id}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-5 py-2">
+            <button className="btn btn-info rounded-pill">
               Details
             </button>
           </a>
