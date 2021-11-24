@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                     <DownArrow className={style.downArrowItem} />
                                 </div>
                             </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} right>
+                            <DropdownMenu className={style.dropdownMenu} end>
                                 <div className={style.dropdownItem}>
                                     <Link href="/block">
                                         <a><Block className={style.dropdownItem}/></a>
@@ -168,7 +168,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                     <DownArrow className={style.downArrowItem} />
                                 </div>
                             </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} right>
+                            <DropdownMenu className={style.dropdownMenu} end>
                                 <div className={style.dropdownItem}>
                                     <Link href='/account'>
                                         <a>
