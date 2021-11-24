@@ -98,9 +98,13 @@ const Header: React.FC<HeaderProps> = (props) => {
             <div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
                 <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
                     <Link href="/">
-                        <a><LogoTernoaExplorer className={'w-100'} /></a>
+                        <a>
+                            <LogoTernoaExplorer />
+                        </a>
                     </Link>
-                    <Testnet className="mt-3 ms-4"/>
+                    <div className="mt-3 ms-4">
+                        <Testnet />
+                    </div>
                 </div>
                 <div className="d-block d-md-none col no-padding-vertical">
                     <div className="flex flex-cont-end">
