@@ -187,8 +187,18 @@
     }
 
     .gradientBack{
-        background: linear-gradient(
-            90deg, #004FFF 0%, #CB06ED 33.3%, #FF0062 68.16%, #FF8500 99.9%);
+        background: transparent;
+    }
+}
+
+@media (max-width: 768px) {
+    .searchBtn {
+        width: 15%;
+        margin-left: 50px;
+        height: 50px;
+    }
+    .gradientBack{
+        background: transparent;
         filter: blur(13px);
         position: absolute;
         width: 100%;
@@ -197,7 +207,6 @@
         border-radius: 10px;
     }
 }
-
 
 .logoPercent {
     font-size: small;

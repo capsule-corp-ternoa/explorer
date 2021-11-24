@@ -38,11 +38,11 @@
 .inputLarge {
   height: 64px;
   @media (max-width : 768px) {
-    height: 40px;
+    height: 55px;
     padding-left: 20px;
   }
   @media (min-width:769px) and (max-width : 992px) {
-    height: 40px;
+    height: 55px;
     padding-left: 25px;
   }
 }

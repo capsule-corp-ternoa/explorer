@@ -29,7 +29,7 @@ const ListView: React.FC<TableProps> = ({
 }) => {
   return (
   <>
-    <table className={clsx('table table-borderless data-table only-desktop full-opacity', className)}>
+    <table className={clsx('table table-borderless data-table full-opacity', className)}>
       <thead>
         <tr>
           {columns.map((col, key) => (
@@ -68,29 +68,6 @@ const ListView: React.FC<TableProps> = ({
       {footer && (
          footer
         )}
-    </div>
-    <div className={clsx('only-mobile data-table', className)}>
-      {data && data.map((record, rowKey) => (
-        <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
-          <div className='row'>
-            {columns.map(({ dataKey, mobileClassName }, key) => (
-              <div key={key} className={clsx('col col-auto py-2 data-overflow', mobileClassName ?? 'col-6')}>
-                <div className='mobileRowLabel mb-1'>
-                  {columns[key].text}
-                </div>
-                <div className='mobileValue'>
-                  {renderCell(record, dataKey)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-      {footer && (
-        <div className='col col-12 py-3'>
-          {footer}
-        </div>
-      )}
     </div>
   </>
 )}

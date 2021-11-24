@@ -105,7 +105,7 @@ const Summary: React.FC<SummaryProps> = ({
           </div>
         )}
         {!isLaptop && (
-          <div className="flex flex-col mt-4 mb-1 ps-2">
+          <div className="only-desktop flex-col mt-4 mb-1 ps-2">
             <div className="flex-1 flex flex-row">
               <div className="flex-1 flex flex-col">
                 <div className="flex flex-row flex-items-center">
