@@ -1,35 +1,16 @@
 @import "styles/color";
 
 .footer{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 0px auto;
-    width: 1440px;
+    width: 100%;
     padding: 16px 25px;
-    background-color: $black-blue;
-    @media (max-width: 1700px) {
-        width: 1440px;
-    }
-    
-    @media (max-width: 1500px) {
-        width: 1280px;
-    }
-    
-    @media (max-width: 1320px) {
-        width: 1160px;
-    }
-    
-    @media (max-width: 1200px) {
-        width: 980px;
-    }
-    
-    @media (max-width: 1024px) {
-        width: unset;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
 }
 
 .socialLogo{

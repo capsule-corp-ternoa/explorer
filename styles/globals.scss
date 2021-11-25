@@ -65,6 +65,7 @@ a {
 }
 
 .mainContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -72,6 +73,18 @@ a {
   width: 100%;
   overflow: auto;
   background-color: $black-blue;
+}
+
+.ellipse {
+  position: absolute;
+  width: 100%;
+  height: 1284.5px;
+  left: 0px;
+  top: 89px;
+
+  background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+  opacity: 0.3;
+  filter: blur(500px);
 }
 
 .flex {
@@ -284,8 +297,9 @@ a {
 }
 
 .mainBody {
+  position: relative;
   margin: 0px auto;
-  margin-bottom: 70px;
+  margin-bottom: 130px;
   margin-top: 30px;
   width: 1400px;
   
