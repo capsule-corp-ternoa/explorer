@@ -31,7 +31,9 @@ export const render = (record: any, dataKey: string) => {
       return (
         <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken mt-1">{record[dataKey]}</span>
+          <Link href={`/account/${record[dataKey]}`}>
+          <a className="textToken mt-1">{record[dataKey]}</a>
+          </Link>
           <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>

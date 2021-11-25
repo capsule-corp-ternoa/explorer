@@ -502,7 +502,16 @@ input[type=number] {
 }
 
 a {
+	color: #9F9FFF !important;
 	&:hover {
+		text-decoration: underline !important;
+	}
+}
+
+.all {
+	color: white !important;
+    &:hover {
 		color: #9F9FFF !important;
+        text-decoration: none !important;
 	}
 }

@@ -59,6 +59,14 @@ export const blockRender = (data: any, dataKey: string) => {
 
 export const extrinsicRender = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/extrinsic/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'timestamp':
       return (
         <FormattedDate value={record[dataKey]} />

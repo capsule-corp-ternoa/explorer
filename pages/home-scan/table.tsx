@@ -33,6 +33,13 @@ export const transferColumns = [
 export const renderBlock = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'number':
+      return (
+        <>
+          <Link href={`/block/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'signed_extrinsics':
     case 'module_events':
       return record[dataKey]
@@ -40,7 +47,9 @@ export const renderBlock = (record: any, dataKey: string) => {
     case 'block_hash':
       return (
         <div className="d-flex">
-          <span className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</span>
+          <Link href={`/block/${record['number']}`}>
+            <a className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</a>
+          </Link>
           <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
@@ -66,6 +75,12 @@ export const renderBlock = (record: any, dataKey: string) => {
 
 export const renderNftTx = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'nft_id':
+      return (
+        <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
+          <a className="textToken">{record[dataKey]}</a>
+        </Link>
+      )
     case 'from':
     case 'to':
       return (
@@ -106,6 +121,14 @@ export const renderNftTx = (record: any, dataKey: string) => {
 
 export const renderTransfer = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'block_id':
+      return (
+        <>
+          <Link href={`/block/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'amount':
       return (
         <>

@@ -13,6 +13,14 @@ export const columns = [
 
 export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/extrinsic/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'signed':
       return record[dataKey] ? 'Yes' : 'No'
 

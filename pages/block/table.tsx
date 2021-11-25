@@ -15,6 +15,13 @@ export const columns = [
 export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
     case 'number':
+      return (
+        <>
+          <Link href={`/block/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'signed_extrinsics':
     case 'module_events':
       return record[dataKey]
@@ -26,9 +33,11 @@ export const render = (record: any, dataKey: string) => {
       return (
         <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken mt-1" title={record[dataKey]}>
-            {ellipsifyMiddle(record[dataKey])}
-          </span>
+          <Link href={`/block/${record['number']}`}>
+            <a className="textToken mt-1" title={record[dataKey]}>
+              {ellipsifyMiddle(record[dataKey])}
+            </a>
+          </Link>
           <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>

@@ -1,5 +1,6 @@
 import { FormattedNumber } from 'react-intl';
 import Copy from 'components/assets/Copy';
+import Link from 'next/link'
 import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle } from 'helpers/lib';
 
@@ -12,6 +13,14 @@ export const fields = [
 
 export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'block_id':
+      return (
+        <>
+          <Link href={`/block/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'from':
     case 'to':
       return (

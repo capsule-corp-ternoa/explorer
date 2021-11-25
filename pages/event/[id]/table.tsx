@@ -1,3 +1,4 @@
+import Link from 'next/link'
 var unescapeJs = require('unescape-js');
 
 export const eventFields = [
@@ -11,6 +12,14 @@ export const eventFields = [
 
 export const eventRender = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'block_id':
+      return (
+        <>
+          <Link href={`/block/${record[dataKey]}`}>
+            <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'description':
       return (
         <>

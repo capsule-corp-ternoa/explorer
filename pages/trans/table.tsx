@@ -14,6 +14,14 @@ export const columns = [
 
 export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'block_id':
+      return (
+        <>
+          <Link href={`/block/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'amount':
       return (
         <>

@@ -15,6 +15,14 @@ export const columns = [
 
 export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'nft_id':
+      return (
+        <>
+          <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'timestamp':
       return (
         <FormattedTime format='default' value={record[dataKey]} />

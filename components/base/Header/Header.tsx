@@ -119,9 +119,9 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </div>
                 <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
                     <div className={'flex flex-cont-end flex-items-center '}>
-                        <span className={style.navBarItem}>
+                        <span className={style.navBarDash}>
                             <Link href="/">
-                                <a>
+                                <a className={style.navBarDash}>
                                     Dashboard
                                 </a>
                             </Link>

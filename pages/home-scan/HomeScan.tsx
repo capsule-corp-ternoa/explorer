@@ -33,7 +33,7 @@ const DetailButton: React.FC<DetailButtonProps> = ({
   href, label
 }) => (
   <Link href={href}>
-    <a>
+    <a className="all">
       <div className={clsx("btn-transparent d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
         <span className="m-auto">{label}</span>
       </div>
