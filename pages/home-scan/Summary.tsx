@@ -43,12 +43,12 @@ const Summary: React.FC<SummaryProps> = ({
           <div className="d-flex mt-5 justify-content-center">
             <div className={`${style.searchBarInfo} pe-5 border-end`}>
               <div className="d-flex flex-items-center">
-                <div className='pt-2'>
+                <div className=''>
                   <CAPSLogo className={style.Logo}></CAPSLogo>
                 </div>
                 <div className={"d-flex flex-column ms-3"}>
-                  <div className="fs-6 text-opacity-4 text-ellipsis">CAPS price</div>
-                  <div className="d-flex fs-5 fw-bold">
+                  <div className="text-opacity-4 text-ellipsis">CAPS price</div>
+                  <div className="d-flex text-price fw-bold">
                     {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
                     <span className={clsx(
                       style.logoPercent,
@@ -65,12 +65,12 @@ const Summary: React.FC<SummaryProps> = ({
             </div>
               <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
                 <div className="d-flex flex-items-center">
-                  <div className='pt-2'>
+                  <div className=''>
                     <MarketLogo className={style.Logo}></MarketLogo>
                   </div>
                   <div className={`d-flex flex-column ms-3`}>
                     <div className="fs-6 text-opacity-4 text-ellipsis">Market cap</div>
-                    <div className="fs-5 fw-bold">
+                    <div className="text-price fw-bold">
                       {marketCap !== undefined && <FormattedNumber value={marketCap} format='priceDecimal' />}
                     </div>
                   </div>
@@ -78,12 +78,12 @@ const Summary: React.FC<SummaryProps> = ({
               </div>
               <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
                 <div className="d-flex flex-items-center">
-                  <div className='pt-2'>
+                  <div className=''>
                     <ExtrinsicLogo className={style.Logo}></ExtrinsicLogo>
                   </div>
                   <div className={`d-flex flex-column ms-3`}>
                     <div className="fs-6 text-opacity-4 text-ellipsis">Extrinsics</div>
-                    <div className="fs-5 fw-bold">
+                    <div className="text-price fw-bold">
                       {extrinsics != null && <FormattedNumber value={extrinsics} format='decimal' />}
                     </div>
                   </div>
@@ -91,12 +91,12 @@ const Summary: React.FC<SummaryProps> = ({
               </div>
               <div className={`${style.searchBarInfo} ps-5`}>
                 <div className="d-flex flex-items-center">
-                  <div className='pt-2'>
+                  <div className=''>
                     <BlockLogo className={style.Logo}></BlockLogo>
                   </div>
                   <div className={`d-flex flex-column ms-3`}>
                     <div className="fs-6 text-opacity-4 text-ellipsis">Finalized Block</div>
-                    <div className="fs-5 fw-bold">
+                    <div className="text-price fw-bold">
                       {finalizedBlock != null && <FormattedNumber value={finalizedBlock} format='decimal' />}
                     </div>
                   </div>
