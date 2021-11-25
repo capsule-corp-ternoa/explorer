@@ -15,7 +15,7 @@ export const blockColumns = [
 
 export const nftTxColumns = [
   { text: 'Name/ID', dataKey: 'nft_id', className: 'text-left' },
-  { text: 'Date', dataKey: 'timestamp', className: 'text-left only-desktop' },
+  // { text: 'Date', dataKey: 'timestamp', className: 'text-left only-desktop' },
   { text: 'Sender', dataKey: 'from', className: 'text-left only-desktop' },
   { text: 'Receiver', dataKey: 'to', className: 'text-left only-desktop' },
   { text: 'Amount', dataKey: 'amount', className: 'text-left' },
