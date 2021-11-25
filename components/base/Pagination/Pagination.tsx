@@ -21,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, totalPage }) => {
   }
 
   return (
-    <div className={clsx(style.Pagination, "d-flex justify-content-center py-3")}>
+    <div className={clsx(style.Pagination, "d-flex justify-content-center pt-4")}>
       <div className={clsx(style.Pagination__desktop, "justify-content-center py-3")}>
         {page > 0 ? (
           <Link href={getPaginatedUrl(router.route, page)}>

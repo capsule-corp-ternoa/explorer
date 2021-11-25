@@ -51,9 +51,9 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
 
   return (
     <Layout>
-      <div className="custom_table pb-3">
-        <div className="d-flex align-items-center my-3">
-          <div className="cursor-point w-fit-content me-5">
+      <div className="custom_table">
+        <div className="d-flex align-items-center mb-5">
+          <div className="cursor-point w-fit-content me-4">
             <Link href={'/block'}>
               <a><Back /></a>
             </Link>
