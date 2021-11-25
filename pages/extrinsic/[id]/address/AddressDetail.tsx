@@ -55,7 +55,7 @@ const AddressDetail: React.FC<AddressDetailProps> = () => {
                 <div className="mainBody">
                     {isLaptop &&
                     <div className="cursor-point w-fit-content mb-4" onClick={()=>router.back()}>
-                       <Back />
+                       <Back className="back"/>
                     </div>
                     }
                     <h1 className="subTitle subTitleMarginTop2">

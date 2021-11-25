@@ -62,7 +62,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
           <a>
-            <button className="btn btn-info rounded-pill px-5 py-2 text-small text-bold">
+            <button className="btn btn-info rounded-pill px-4 py-1 text-small text-bold">
               Details
             </button>
           </a>

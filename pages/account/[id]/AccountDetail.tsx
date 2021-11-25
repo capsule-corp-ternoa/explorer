@@ -45,7 +45,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
         <div className="d-flex align-items-center mb-5">
           <div className="cursor-point w-fit-content me-4">
             <Link href={'/account'}>
-              <a><Back /></a>
+              <a><Back className="back"/></a>
             </Link>
           </div>
           <div className="ui-switch">

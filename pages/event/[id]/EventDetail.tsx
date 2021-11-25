@@ -30,7 +30,7 @@ const EventDetail: React.FC<ExtrinsicDetailProps> = () => {
         <div className="d-flex align-items-center mb-5">
           <div className="cursor-point w-fit-content me-4">
             <Link href={'/event'}>
-              <a><Back /></a>
+              <a><Back className="back"/></a>
             </Link>
           </div>
           <h1 className="title my-2 ms-1">Event # {id}</h1>

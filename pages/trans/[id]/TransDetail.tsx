@@ -31,7 +31,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
         <div className="d-flex align-items-center mb-5">
           <div className="cursor-point w-fit-content me-4">
             <Link href={'/trans'}>
-              <a><Back /></a>
+              <a><Back className="back"/></a>
             </Link>
           </div>
           <h1 className="title my-2 ms-1">Balance Transfer " {ellipsifyMiddle(id)}"</h1>

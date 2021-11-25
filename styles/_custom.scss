@@ -44,12 +44,13 @@ input[type=number] {
 	}
 	&-info {
 		font-family: "Airbnb Cereal App Bold", sans-serif;
-		background-color: $first-blue;
 		transition: all 0.2s;
-		border: solid 3px rgba(5, 22, 62, 0.5);
 		color: white;
-		@extend .px-5;
-		@extend .py-2;
+		background: rgba(0, 79, 255, 0.8);
+		border: 5px solid rgba(0, 79, 255, 0.3);
+		border-radius: 911.526px;
+		@extend .px-4;
+		@extend .py-1;
 		
 		@media (max-width: 1280px) {
 			padding-top: 0.3rem !important;
@@ -59,14 +60,16 @@ input[type=number] {
 		}
 
 		&:hover {
-			background-color: $second-blue;
 			color: white;
-			border: solid 3px rgba(3, 14, 36, 0.5);
+			background: #004FFF;
+			border: 5px solid rgba(0, 79, 255, 0.3);
+			border-radius: 911.526px;
 		}
 
 		&:active, &:focus, &:focus-visible, &:focus-within {
-			border: solid 2px rgba(0, 79, 255, 0.3) !important;
-			box-shadow: 2px 1000px 1px rgba(0, 79, 255, 0.8) inset !important;
+			background: #004FFF;
+			border: 5px solid rgba(0, 79, 255, 0.3);
+			border-radius: 911.526px;
 		}
 	}
 	&-secondary {
@@ -115,9 +118,8 @@ input[type=number] {
 		background-color: $semi-blue;
 		background-origin: border-box;
 		background-clip: content-box, border-box;
-		border: solid 3px $light-blue;
 		&:hover {
-			border: solid 3px $white-blue;
+			border: solid 2px $white-blue;
 		}
 	}
 	&-outline {
@@ -532,5 +534,13 @@ a {
     &:hover {
 		color: #9F9FFF !important;
         text-decoration: none !important;
+	}
+}
+
+.back {
+	opacity: 0.8;
+	
+	&:hover {
+		opacity: 1;
 	}
 }

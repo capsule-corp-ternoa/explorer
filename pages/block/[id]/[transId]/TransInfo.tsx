@@ -49,7 +49,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
         <div className="d-flex align-items-center mb-5">
           <div className="cursor-point w-fit-content me-4">
             <Link href={`/block/${id}`}>
-              <a><Back /></a>
+              <a><Back className="back"/></a>
             </Link>
           </div>
           <div className="ui-switch">
