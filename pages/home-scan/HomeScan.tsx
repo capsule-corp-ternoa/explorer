@@ -110,7 +110,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
       <div className="row position-relative">
         <div className="col-12 mb-5">
           <div className="custom_table">
-          <h1 className="title1 mb-4 ms-1">Latest Blocks</h1>
+          <h1 className="title1 mb-2 ms-1">Latest Blocks</h1>
             <ListView
               columns={blockColumns}
               renderCell={renderBlock}
@@ -121,9 +121,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             />
           </div>
         </div>
-        <div className="col-12 my-5">
+        <div className={"col-12 " + style.space}>
           <div className="custom_table">
-            <h1 className="title1 mb-4 ms-1">NFT Extrinsic</h1>
+            <h1 className="title1 mb-2 ms-1">NFT Extrinsic</h1>
             <ListView
               columns={nftTxColumns}
               renderCell={renderNftTx}
@@ -134,9 +134,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             />
           </div>
         </div>
-        <div className="col-12 mt-5">
+        <div className="col-12 mt-5 pb-5">
           <div className="custom_table">
-            <h1 className="title1 mb-4 ms-1">Transfers</h1>
+            <h1 className="title1 mb-2 ms-1">Transfers</h1>
             <ListView
               columns={transferColumns}
               renderCell={renderTransfer}

@@ -7,6 +7,14 @@ export const ellipsifyMiddle = (address: string, length: number = 16) => {
   }
 }
 
+export const ellipsifyLast = (address: string, length: number = 6) => {
+  if (address.length < length) {
+    return address
+  } else {
+    return address.slice(0, length) + '...'
+  }
+}
+
 export const formatSec = (sec: number) => {
   const min = Math.floor(sec / 60)
   const hour =  Math.floor(sec / 3600)
