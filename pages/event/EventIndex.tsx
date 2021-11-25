@@ -33,6 +33,7 @@ const EventIndex: React.FC<EventIndexProps> = () => {
 
   return (
     <Layout>
+      <div className="ellipse2"></div>
       <div className="custom_table">
         <h1 className="title mb-4 ms-1">Event History</h1>
         <ListView

@@ -33,6 +33,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
 
   return (
     <Layout>
+      <div className="ellipse2"></div>
       <div className="custom_table">
         <h1 className="title mb-4 ms-1">Blocks</h1>
         <ListView

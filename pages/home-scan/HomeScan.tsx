@@ -98,6 +98,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
 
   return (
     <Layout searchBar={false}>
+      <div className="ellipse1"></div>
       <Summary
         capsPrice={summary.usd}
         marketCap={summary.usd_market_cap}
@@ -106,7 +107,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         finalizedBlock={summary.block_count}
       />
 
-      <div className="row">
+      <div className="row position-relative">
         <div className="col-12 mb-5">
           <div className="custom_table">
           <h1 className="title1 mb-4 ms-1">Latest Blocks</h1>

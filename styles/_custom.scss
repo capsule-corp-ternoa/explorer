@@ -468,6 +468,7 @@ input[type=number] {
 }
 
 .custom_table {
+	position: relative;
 	background: linear-gradient(90deg, #0b4bfe47 0%, #b80def42 99.9%);
 	border-radius: 20px;
 	padding-left: 49px;
@@ -543,4 +544,40 @@ a {
 	&:hover {
 		opacity: 1;
 	}
+}
+
+.ellipse1 {
+	position: absolute;
+	width: 1400px;
+	height: 1000px;
+	left: 0px;
+	top: 89px;
+
+	background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+	opacity: 0.3;
+	filter: blur(500px);
+}
+
+.ellipse2 {
+	position: absolute;
+	width: 1400px;
+	height: 300px;
+	left: 0px;
+	top: 95px;
+
+	background: linear-gradient(90.13deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.9%);
+	opacity: 0.4;
+	filter: blur(500px); 
+}
+
+.ellipse3 {
+	position: absolute;
+	width: 1400px;
+	height: 150px;
+	left: 0px;
+	top: 95px;
+	
+	background: linear-gradient(90.13deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.9%);
+	opacity: 0.4;
+	filter: blur(500px);
 }

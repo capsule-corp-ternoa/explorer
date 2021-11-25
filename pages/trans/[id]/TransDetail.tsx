@@ -27,6 +27,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
 
   return (
     <Layout>
+      <div className="ellipse3"></div>
       <div className="custom_table">
         <div className="d-flex align-items-center mb-5">
           <div className="cursor-point w-fit-content me-4">
