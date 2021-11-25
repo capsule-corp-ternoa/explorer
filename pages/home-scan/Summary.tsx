@@ -52,7 +52,7 @@ const Summary: React.FC<SummaryProps> = ({
                     {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
                     <span className={clsx(
                       style.logoPercent,
-                      'ms-2 mt-2',
+                      'ms-2',
                       {[style.minus]: change24h !== undefined && (change24h < 0)})
                     }>
                       {change24h !== undefined && (

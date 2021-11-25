@@ -206,10 +206,12 @@
 }
 
 .logoPercent {
+    margin-top: 2px;
     font-size: small;
     color: green;
 
     &.minus {
+        margin-top: 2px;
         color: red;
     }
 }

@@ -1,4 +1,4 @@
-export const ellipsifyMiddle = (address: string, length: number = 28) => {
+export const ellipsifyMiddle = (address: string, length: number = 16) => {
   if (address.length < length) {
     return address
   } else {
