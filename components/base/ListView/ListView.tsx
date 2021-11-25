@@ -35,7 +35,7 @@ const ListView: React.FC<TableProps> = ({
           {columns.map((col, key) => (
             <th
               className={clsx(
-                col.className,
+                col.className, 'text-large',
                 {'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
               )}
               key={key}
@@ -52,8 +52,9 @@ const ListView: React.FC<TableProps> = ({
               <td
                 key={key}
                 className={clsx(
-                  'text-large text-opacity',
                   col.className,
+                  'text-opacity', 
+                  'text-medium',
                   { 'ps-4': key === 0, 'd-flex justify-content-start align-items-center pe-4': key === columns.length - 1 }
                 )}
               >

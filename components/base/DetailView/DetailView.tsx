@@ -23,10 +23,10 @@ const DetailView: React.FC<DetailViewProps> = ({
       <tbody className="tbody-detail">
         {fields.map(({ text, dataKey }) => (
           <tr key={dataKey}>
-            <td className="text-large text-opacity">
+            <td className="text-medium text-bold text-opacity">
               {text}
             </td>
-            <td className="text-large text-opacity">
+            <td className="text-medium text-opacity">
               {data && renderCell(data, dataKey)}
             </td>
           </tr>

@@ -36,7 +36,7 @@ const EventView: React.FC<TableProps> = ({
           {columns.map((col, key) => (
             <th
               className={clsx(
-                col.className,
+                col.className, 'text-large',
                 {'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
               )}
               key={key}
@@ -53,7 +53,7 @@ const EventView: React.FC<TableProps> = ({
               <td
                 key={key}
                 className={clsx(
-                  'text-large text-opacity',
+                  'text-medium text-opacity',
                   col.className,
                   { 'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
                 )}

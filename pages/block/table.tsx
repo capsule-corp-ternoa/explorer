@@ -49,7 +49,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={`/block/${record.number}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-5 py-2">
+            <button className="btn btn-info rounded-pill px-5 py-2 text-small text-bold">
               Details
             </button>
           </a>
