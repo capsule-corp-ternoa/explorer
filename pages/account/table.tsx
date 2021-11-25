@@ -14,7 +14,7 @@ export const render = (record: any, dataKey: string) => {
     case 'amount':
       return (
         <>
-        { record[dataKey] < 1 && record[dataKey] === 0 ?
+        { record[dataKey] < 1 && parseFloat(record[dataKey]) !== 0 ?
           <>
             {record[dataKey]}
             &nbsp;CAPS 
