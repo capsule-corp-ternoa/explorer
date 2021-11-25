@@ -170,11 +170,11 @@ input[type=number] {
 }
 
 .table > thead > tr {
-	border-bottom: 1px solid rgb(70, 68, 68);
+	border-bottom: 1px solid #9f9fff17;
 }
 
 .table > tbody > tr {
-	border-bottom: 1px solid rgb(70, 68, 68);
+	border-bottom: 1px solid #9f9fff17;
 
 	&:last-child {
 		border-bottom: 0px solid white;
