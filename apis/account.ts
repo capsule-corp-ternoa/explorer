@@ -97,7 +97,7 @@ export const getAccountList = async (offset: number, pageSize: number) => {
     totalCount: accounts.accountEntities.totalCount,
     data: accounts.accountEntities.nodes.map((account: any) => ({
       address: account.id,
-      amount: account.capsAmount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(account.capsAmount) / Math.pow(10, account.capsAmount.length - 1)).toFixed(0))*Math.pow(10, account.capsAmount.length - 1) + '') : ethers.utils.formatEther(account.capsAmount),
+      amount: ethers.utils.formatEther(account.capsAmount),
       extrinsics: count[account.id]
     }))
   }
@@ -127,8 +127,8 @@ export const getAccount = async (id: string, lastExtrinsicCount: number) => {
     const acc = account.accountEntities.nodes[0]
     const data: any = {
       address: acc.id,
-      free_balance: acc.capsAmount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(acc.capsAmount) / Math.pow(10, acc.capsAmount.length - 1)).toFixed(0))*Math.pow(10, acc.capsAmount.length - 1) + '') : ethers.utils.formatEther(acc.capsAmount),
-      total_balance: acc.capsAmount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(acc.capsAmountTotal) / Math.pow(10, acc.capsAmountTotal.length - 1)).toFixed(0))*Math.pow(10, acc.capsAmountTotal.length - 1) + '') : ethers.utils.formatEther(acc.capsAmountTotal),
+      free_balance: ethers.utils.formatEther(acc.capsAmount),
+      total_balance: ethers.utils.formatEther(acc.capsAmountTotal),
       active: acc.capsAmountTotal > 0
     }
 

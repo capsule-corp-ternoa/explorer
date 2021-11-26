@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import { FormattedTime } from 'react-intl';
+import { FormattedTime, FormattedNumber } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
 import Copy from 'components/assets/Copy';
 import JSONPretty from 'react-json-pretty';
-import { FormattedNumber } from 'react-intl';
 var unescapeJs = require('unescape-js');
 
 export const extrinsicFields = [
@@ -59,17 +58,8 @@ export const extrinsicRender = (record: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-        { record[dataKey] < 1 && parseFloat(record[dataKey]) !== 0 ?
-          <>
-            {record[dataKey]}
-            &nbsp;CAPS 
-          </>
-          :
-          <>
-            <FormattedNumber value={record[dataKey]} format='decimal' />
-            &nbsp;CAPS
-          </>
-        }
+          <FormattedNumber value={record[dataKey]} format='decimal' />
+          &nbsp;CAPS
         </>
       )
     case 'description':

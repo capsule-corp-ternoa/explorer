@@ -45,34 +45,16 @@ export const render = (data: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-        { data[dataKey] < 1 && parseFloat(data[dataKey]) !== 0 ?
-          <>
-            {data[dataKey]}
-            &nbsp;CAPS 
-          </>
-          :
-          <>
-            <FormattedNumber value={data[dataKey]} format='decimal' />
-            &nbsp;CAPS
-          </>
-        }
+          <FormattedNumber value={data[dataKey]} format='decimal' />
+          &nbsp;CAPS
         </>
       )
 
     case 'amount':
       return (
         <>
-        { data[dataKey] < 1 && parseFloat(data[dataKey]) !== 0 ?
-          <>
-            {data[dataKey]}
-            &nbsp;CAPS 
-          </>
-          :
-          <>
-            <FormattedNumber value={data[dataKey]} format='decimal' />
-            &nbsp;CAPS
-          </>
-        }
+          <FormattedNumber value={data[dataKey]} format='decimal' />
+          &nbsp;CAPS
         </>
       )
 
