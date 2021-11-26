@@ -596,3 +596,11 @@ a {
 	opacity: 0.4;
 	filter: blur(500px);
 }
+
+.detail {
+	@extend .cursor-point;
+	opacity: 0.9;
+	&:hover {
+		opacity: 1;
+	}
+}

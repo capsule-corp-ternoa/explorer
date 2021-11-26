@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Check from 'components/assets/Check';
+import Detail from 'components/assets/Detail';
 
 export const columns = [
   { text: 'Extrinsic ID', dataKey: 'id', className: 'text-left' },
@@ -31,9 +32,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={`/extrinsic/${record.id}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-4 py-1 text-small text-bold">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

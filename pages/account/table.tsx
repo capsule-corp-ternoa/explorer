@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import CAPSDark from 'components/assets/CAPSDark';
 import Copy from 'components/assets/Copy';
+import Detail from 'components/assets/Detail';
 import { FormattedNumber } from 'react-intl';
 
 export const columns = [
@@ -44,9 +45,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={`/account/${record.address}`}>
           <a>
-            <button className="btn btn-info rounded-pill text-small text-bold px-4 py-1">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

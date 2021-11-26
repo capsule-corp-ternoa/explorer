@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Copy from 'components/assets/Copy';
 import CAPSDark from 'components/assets/CAPSDark';
+import Detail from 'components/assets/Detail';
 import { FormattedNumber } from 'react-intl';
 import { ellipsifyMiddle } from 'helpers/lib';
 
@@ -47,9 +48,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={`/trans/${record.id}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-4 py-1 text-small text-bold">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

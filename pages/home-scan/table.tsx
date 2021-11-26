@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Copy from 'components/assets/Copy';
+import Detail from 'components/assets/Detail';
 import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle, ellipsifyLast, formatSec } from 'helpers/lib';
 import { FormattedNumber } from 'react-intl';
@@ -64,9 +65,7 @@ export const renderBlock = (record: any, dataKey: string) => {
       return (
         <Link href={`/block/${record.number}`}>
           <a>
-            <button className="btn btn-info rounded-pill text-small text-bold">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )
@@ -107,9 +106,7 @@ export const renderNftTx = (record: any, dataKey: string) => {
       return (
         <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
           <a>
-            <button className="btn btn-info rounded-pill text-small text-bold">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )
@@ -163,9 +160,7 @@ export const renderTransfer = (record: any, dataKey: string) => {
       return (
         <Link href={`/trans/${record.id}`}>
           <a>
-            <button className="btn btn-info rounded-pill text-small text-bold">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import Check from 'components/assets/Check';
+import Detail from 'components/assets/Detail';
 import Copy from 'components/assets/Copy';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
@@ -90,9 +91,7 @@ export const extrinsicRender = (record: any, dataKey: string) => {
       return (
         <Link href={`/block/${record.block_id}/${record.id}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-4 py-1 text-small text-bold">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )
