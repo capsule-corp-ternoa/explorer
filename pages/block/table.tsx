@@ -6,9 +6,9 @@ import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 export const columns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
   { text: 'Age', dataKey: 'age', className: 'text-left' },
-  { text: 'Block Hash', dataKey: 'block_hash', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left' },
-  { text: 'Module Events', dataKey: 'module_events', className: 'text-left' },
+  { text: 'Block Hash', dataKey: 'block_hash', className: 'text-left only-desktop', mobileClassName: 'col-12' },
+  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left  only-desktop' },
+  { text: 'Module Events', dataKey: 'module_events', className: 'text-left  only-desktop' },
   { text: '', dataKey: 'details' },
 ]
 

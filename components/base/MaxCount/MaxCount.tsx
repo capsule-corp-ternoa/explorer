@@ -59,7 +59,7 @@ const MaxCount: React.FC<MaxCountProps> = ({ count, onSelectCount }) => {
   }
 
   return (
-    <div className={clsx(style.MaxCount, "d-flex justify-content-center align-items-center pt-4")}>
+    <div className={clsx(style.MaxCount, "d-flex justify-content-center align-items-center")}>
       <span className="text-large">Show</span>
       <div className={clsx(style.countBtn, "d-flex flex-column btn btn-info rounded-pill mx-2")} onClick={() => onClickList()}>
         <div onClick={() => onClick1(count1)}>
@@ -78,7 +78,7 @@ const MaxCount: React.FC<MaxCountProps> = ({ count, onSelectCount }) => {
           </div>
         }
       </div>
-      <span className="text-large">Records</span>
+      <span className="text-large only-desktop">Records</span>
     </div>
   )
 }
