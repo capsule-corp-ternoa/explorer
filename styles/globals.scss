@@ -344,7 +344,7 @@ a {
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 100px;
-    margin-top: 0px;
+    margin-top: 30px;
   }
 }
 
@@ -447,12 +447,13 @@ a {
 }
 
 .data-table {
-	background-color: #14142e;
-	border-radius: 1.5em;
+  background: linear-gradient(90deg, #0E1439 0%, #121339 35.33%, #171139 81.35%, #1B1038 114.22%, #1F0E38 157.77%);
+  border-radius: 20px;
 }
 
 .data-overflow {
   overflow-wrap: break-word;
+  border-bottom: 1px solid #9f9fff17;
 }
 
 .down {
