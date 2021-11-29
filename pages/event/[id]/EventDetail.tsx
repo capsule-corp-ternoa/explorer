@@ -28,7 +28,7 @@ const EventDetail: React.FC<ExtrinsicDetailProps> = () => {
     <Layout>
       <div className="ellipse3"></div>
       <div className="custom_table">
-        <div className="d-flex align-items-center mb-5">
+        <div className="sub_header">
           <div className="cursor-point w-fit-content me-4 only-desktop">
             <Link href={'/event'}>
               <a><Back className="back"/></a>

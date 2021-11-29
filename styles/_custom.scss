@@ -604,3 +604,13 @@ a {
 		opacity: 1;
 	}
 }
+
+.sub_header {
+	@extend .d-flex;
+	@extend .align-items-center;
+	@extend .mb-5;
+	@media (max-width : 1024px) {
+		justify-content: center;
+		margin-bottom: 1rem !important;
+	}
+}
