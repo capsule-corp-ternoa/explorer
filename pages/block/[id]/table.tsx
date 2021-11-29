@@ -2,33 +2,34 @@ import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import Check from 'components/assets/Check';
+import Detail from 'components/assets/Detail';
 import Copy from 'components/assets/Copy';
-import { ellipsifyMiddle, formatSec } from 'helpers/lib';
+import { ellipsifyMiddle, ellipsifyLast, formatSec } from 'helpers/lib';
 
 export const blockFields = [
-  { text: 'Timestamp', dataKey: 'timestamp', className: 'text-left' },
+  { text: 'Timestamp', dataKey: 'timestamp', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Hash', dataKey: 'block_hash', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Parent Hash', dataKey: 'parent_hash', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'State Root', dataKey: 'state_root', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Extrinsics Root', dataKey: 'extrinsics_root', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Extrinsics', dataKey: 'extrinsics', className: 'text-left' },
-  { text: 'Total Module Events', dataKey: 'module_events', className: 'text-left' },
-  { text: 'Runtime Version', dataKey: 'runtime_version', className: 'text-left' },
-  { text: 'Block Time', dataKey: 'age', className: 'text-left' },
+  { text: 'Extrinsics', dataKey: 'extrinsics', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Total Module Events', dataKey: 'module_events', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Runtime Version', dataKey: 'runtime_version', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Block Time', dataKey: 'age', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const extrinsicColumns = [
   { text: 'Extrinsic ID', dataKey: 'id', className: 'text-left' },
   { text: 'From', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Module', dataKey: 'module', className: 'text-left' },
-  { text: 'Call', dataKey: 'call', className: 'text-left' },
-  { text: 'Success', dataKey: 'success', className: 'text-left' },
+  { text: 'Module', dataKey: 'module', className: 'text-left only-desktop' },
+  { text: 'Call', dataKey: 'call', className: 'text-left only-desktop' },
+  { text: 'Success', dataKey: 'success', className: 'text-left only-desktop' },
   { text: '', dataKey: 'detail' },
 ]
 
 export const eventColumns = [
   { text: 'Event ID', dataKey: 'id', className: 'text-left' },
-  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left only-desktop' },
   { text: 'Time', dataKey: 'age', className: 'text-left' },
   { text: 'Action', dataKey: 'action', className: 'text-left' },
 ]
@@ -59,6 +60,14 @@ export const blockRender = (data: any, dataKey: string) => {
 
 export const extrinsicRender = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/extrinsic/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'timestamp':
       return (
         <FormattedDate value={record[dataKey]} />
@@ -66,13 +75,20 @@ export const extrinsicRender = (record: any, dataKey: string) => {
 
     case 'from':
       return (
-        <div className="d-flex">
-          <CAPSDark className="webIcon me-2" />
-          <span className="textToken mt-1">{record[dataKey]}</span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
-            <Copy className="cursor-point" />
+        <>
+          <div className="only-desktop">
+            <div className="d-flex">
+              <CAPSDark className="webIcon me-2" />
+              <span className="textToken mt-1">{record[dataKey]}</span>
+              <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+                <Copy className="cursor-point" />
+              </div>
+            </div>
           </div>
-        </div>
+          <div className="only-mobile">
+            <span className="textToken mt-1">{ellipsifyLast(record[dataKey])}</span>
+          </div>
+        </>
       )
 
     case 'success':
@@ -82,9 +98,7 @@ export const extrinsicRender = (record: any, dataKey: string) => {
       return (
         <Link href={`/block/${record.block_id}/${record.id}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-5 py-2">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

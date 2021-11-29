@@ -65,6 +65,7 @@ a {
 }
 
 .mainContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -72,6 +73,18 @@ a {
   width: 100%;
   overflow: auto;
   background-color: $black-blue;
+}
+
+.ellipse {
+  position: absolute;
+  width: 100%;
+  height: 1284.5px;
+  left: 0px;
+  top: 89px;
+
+  background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+  opacity: 0.3;
+  filter: blur(500px);
 }
 
 .flex {
@@ -163,6 +176,22 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #FFFFFF;
+  opacity: 0.4;
+}
+
+.text-price {
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  color: #FFFFFF;
 }
 
 .text-left {
@@ -171,6 +200,10 @@ a {
 
 .text-right {
   text-align: right !important;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 .cursor-point {
@@ -284,8 +317,9 @@ a {
 }
 
 .mainBody {
+  position: relative;
   margin: 0px auto;
-  margin-bottom: 70px;
+  margin-bottom: 130px;
   margin-top: 30px;
   width: 1400px;
   
@@ -309,8 +343,8 @@ a {
     width: unset;
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 37px;
-    margin-top: 0px;
+    margin-bottom: 100px;
+    margin-top: 30px;
   }
 }
 
@@ -354,8 +388,8 @@ a {
 }
 
 .mobileView {
-  background-color: $semi-blue;
-  border-radius: 12px;
+  background: linear-gradient(90deg, #0E1439 0%, #121339 35.33%, #171139 81.35%, #1B1038 114.22%, #1F0E38 157.77%);
+  border-radius: 20px;
   padding: 16px;
 }
 
@@ -413,12 +447,13 @@ a {
 }
 
 .data-table {
-	background-color: #14142e;
-	border-radius: 1.5em;
+  background: linear-gradient(90deg, #0E1439 0%, #121339 35.33%, #171139 81.35%, #1B1038 114.22%, #1F0E38 157.77%);
+  border-radius: 20px;
 }
 
 .data-overflow {
   overflow-wrap: break-word;
+  border-bottom: 1px solid #9f9fff17;
 }
 
 .down {

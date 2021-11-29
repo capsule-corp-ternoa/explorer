@@ -51,11 +51,12 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
 
   return (
     <Layout>
-      <div className="custom_table pb-3">
-        <div className="d-flex align-items-center my-3">
-          <div className="cursor-point w-fit-content me-5">
+      <div className="ellipse3"></div>
+      <div className="custom_table">
+        <div className="d-flex align-items-center mb-5">
+          <div className="cursor-point w-fit-content me-4 only-desktop">
             <Link href={'/block'}>
-              <a><Back /></a>
+              <a><Back className="back"/></a>
             </Link>
           </div>
           <div className="ui-switch">

@@ -32,8 +32,9 @@ const Extrinsic: React.FC<ExtrinsicProps> = () => {
   }
   return (
     <Layout>
+      <div className="ellipse2"></div>
       <div className="custom_table">
-        <h1 className="title mt-3 mb-1 ms-1">Extrinsics</h1>
+        <h1 className="title mb-4 ms-1">Extrinsics</h1>
         <ListView
           data={data}
           columns={columns}

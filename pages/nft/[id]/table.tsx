@@ -5,22 +5,22 @@ import Copy from 'components/assets/Copy';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const fields = [
-  { text: 'NFT Id', dataKey: 'nft_id' },
-  { text: 'Type of Extrinsic', dataKey: 'extrinsic_type', className: 'text-left' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
+  { text: 'NFT Id', dataKey: 'nft_id', mobileClassName: 'col-12' },
+  { text: 'Type of Extrinsic', dataKey: 'extrinsic_type', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Sender', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Receiver', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Creator', dataKey: 'creator', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Date', dataKey: 'timestamp', className: 'text-left' },
-  { text: 'Fees', dataKey: 'fees', className: 'text-left' },
+  { text: 'Date', dataKey: 'timestamp', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Fees', dataKey: 'fees', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Content URL', dataKey: 'uri', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const eventColumns = [
-  { text: 'Event ID', dataKey: 'id', className: 'text-left' },
-  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left' },
-  { text: 'Time', dataKey: 'age', className: 'text-left' },
-  { text: 'Action', dataKey: 'action', className: 'text-left' },
+  { text: 'Event ID', dataKey: 'id', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left only-desktop', mobileClassName: 'col-12' },
+  { text: 'Time', dataKey: 'age', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Action', dataKey: 'action', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const render = (data: any, dataKey: string) => {
@@ -45,34 +45,16 @@ export const render = (data: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-        { data[dataKey] < 1 && data[dataKey] === 0 ?
-          <>
-            {data[dataKey]}
-            &nbsp;CAPS 
-          </>
-          :
-          <>
-            <FormattedNumber value={data[dataKey]} format='decimal' />
-            &nbsp;CAPS
-          </>
-        }
+          <FormattedNumber value={data[dataKey]} format='decimal' />
+          &nbsp;CAPS
         </>
       )
 
     case 'amount':
       return (
         <>
-        { data[dataKey] < 1 && data[dataKey] === 0 ?
-          <>
-            {data[dataKey]}
-            &nbsp;CAPS 
-          </>
-          :
-          <>
-            <FormattedNumber value={data[dataKey]} format='decimal' />
-            &nbsp;CAPS
-          </>
-        }
+          <FormattedNumber value={data[dataKey]} format='decimal' />
+          &nbsp;CAPS
         </>
       )
 
@@ -112,7 +94,7 @@ export const eventRender = (record: any, dataKey: string) => {
           <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>

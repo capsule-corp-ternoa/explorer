@@ -98,9 +98,13 @@ const Header: React.FC<HeaderProps> = (props) => {
             <div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
                 <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
                     <Link href="/">
-                        <a><LogoTernoaExplorer className={'w-100'} /></a>
+                        <a>
+                            <LogoTernoaExplorer />
+                        </a>
                     </Link>
-                    <Testnet className="mt-3 ms-4"/>
+                    <div className="mt-3 ms-4">
+                        <Testnet />
+                    </div>
                 </div>
                 <div className="d-block d-md-none col no-padding-vertical">
                     <div className="flex flex-cont-end">
@@ -115,9 +119,9 @@ const Header: React.FC<HeaderProps> = (props) => {
                 </div>
                 <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
                     <div className={'flex flex-cont-end flex-items-center '}>
-                        <span className={style.navBarItem}>
+                        <span className={style.navBarDash}>
                             <Link href="/">
-                                <a>
+                                <a className={style.navBarDash}>
                                     Dashboard
                                 </a>
                             </Link>
@@ -133,7 +137,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                     <DownArrow className={style.downArrowItem} />
                                 </div>
                             </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} right>
+                            <DropdownMenu className={style.dropdownMenu} end>
                                 <div className={style.dropdownItem}>
                                     <Link href="/block">
                                         <a><Block className={style.dropdownItem}/></a>
@@ -168,7 +172,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                     <DownArrow className={style.downArrowItem} />
                                 </div>
                             </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} right>
+                            <DropdownMenu className={style.dropdownMenu} end>
                                 <div className={style.dropdownItem}>
                                     <Link href='/account'>
                                         <a>

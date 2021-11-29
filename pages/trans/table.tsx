@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Copy from 'components/assets/Copy';
 import CAPSDark from 'components/assets/CAPSDark';
+import Detail from 'components/assets/Detail';
 import { FormattedNumber } from 'react-intl';
 import { ellipsifyMiddle } from 'helpers/lib';
 
@@ -14,6 +15,14 @@ export const columns = [
 
 export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'block_id':
+      return (
+        <>
+          <Link href={`/block/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'amount':
       return (
         <>
@@ -39,9 +48,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={`/trans/${record.id}`}>
           <a>
-            <button className="btn btn-info rounded-pill px-5 py-2">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

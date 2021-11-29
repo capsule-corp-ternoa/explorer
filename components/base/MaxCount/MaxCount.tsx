@@ -59,26 +59,26 @@ const MaxCount: React.FC<MaxCountProps> = ({ count, onSelectCount }) => {
   }
 
   return (
-    <div className={clsx(style.MaxCount, "d-flex justify-content-center align-items-center py-3")}>
-      <span>Show</span>
-      <div className="d-flex flex-column btn btn-info rounded-pill px-3 py-1 mx-2" onClick={() => onClickList()}>
+    <div className={clsx(style.MaxCount, "d-flex justify-content-center align-items-center")}>
+      <span className="text-large">Show</span>
+      <div className={clsx(style.countBtn, "d-flex flex-column btn btn-info rounded-pill mx-2")} onClick={() => onClickList()}>
         <div onClick={() => onClick1(count1)}>
-          <span className={clsx(style.count, "me-2")}>{count1}</span>
+          <span className={clsx(style.count, "me-2 text-medium text-bold")}>{count1}</span>
           <UpDown />
         </div>
         {
           isSelectable &&
           <div>
             <div onClick={() => onClick2(count2)}>
-              <span className={clsx(style.count, "me-3")}>{count2}</span>
+              <span className={clsx(style.count, "me-3 text-medium text-bold")}>{count2}</span>
             </div>
             <div onClick={() => onClick3(count3)}>
-              <span className={clsx(style.count, "me-3")}>{count3}</span>
+              <span className={clsx(style.count, "me-3 text-medium text-bold")}>{count3}</span>
             </div>
           </div>
         }
       </div>
-      <span>Records</span>
+      <span className="text-large only-desktop">Records</span>
     </div>
   )
 }

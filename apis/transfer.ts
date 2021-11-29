@@ -53,7 +53,7 @@ export const getTransferList = async (offset: number, pageSize: number) => {
       block_id: transfer.blockId,
       from: transfer.from,
       to: transfer.to,
-      amount: transfer.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(transfer.amount) / Math.pow(10, transfer.amount.length - 1)).toFixed(0))*Math.pow(10, transfer.amount.length - 1) + '') : ethers.utils.formatEther(transfer.amount),
+      amount: ethers.utils.formatEther(transfer.amount),
       currency: transfer.currency,
     }))
   }
@@ -73,7 +73,7 @@ export const getTransfer = async (id: string) => {
       block_id: data.blockId,
       from: data.from,
       to: data.to,
-      amount: data.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(data.amount) / Math.pow(10, data.amount.length - 1)).toFixed(0))*Math.pow(10, data.amount.length - 1) + '') : ethers.utils.formatEther(data.amount),
+      amount: ethers.utils.formatEther(data.amount),
       currency: data.currency,
     }
   }

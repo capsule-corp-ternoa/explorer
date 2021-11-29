@@ -56,18 +56,36 @@
     color: white;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
-    line-height: 23px;
+    font-size: 16px;
+    line-height: 21px;
     cursor: pointer;
     @media (max-width: 1200px) {
-        font-size: 16px;
+        font-size: 15px;
     }
     @media (max-width: 992px) {
         font-size: 14px;
     }
-    // @media (min-width: 992px) {
-    //     width: 500px;
-    // }
+}
+
+.navBarDash {
+    font-family: "Airbnb Cereal App";
+    color: white;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    cursor: pointer;
+    @media (max-width: 1200px) {
+        font-size: 15px;
+    }
+    @media (max-width: 992px) {
+        font-size: 14px;
+    }
+    color: white !important;
+    &:hover {
+		color: #9F9FFF !important;
+        text-decoration: none !important;
+	}
 }
 
 .navBarDropdown {
@@ -100,6 +118,10 @@
 
         .downArrowItem {
             margin-left: 4px;
+            fill: white;
+            // &:hover {
+            //     fill: #9F9FFF !important;
+            // }
         }
     }
 

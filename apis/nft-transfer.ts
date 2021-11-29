@@ -101,7 +101,7 @@ export const getNftTransferList = async (offset: number, pageSize: number) => {
       timestamp: transfer.timestamp,
       from: transfer.from,
       to: transfer.to,
-      amount: transfer.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(transfer.amount) / Math.pow(10, transfer.amount.length - 1)).toFixed(0))*Math.pow(10, transfer.amount.length - 1) + '') : ethers.utils.formatEther(transfer.amount),
+      amount: ethers.utils.formatEther(transfer.amount),
       nft_id: transfer.nft.id,
       extrinsic_id: transfer.extrinsicId,
       creator: transfer.nft.creator,
@@ -120,7 +120,7 @@ export const getNftTransferChart = async () => {
       timestamp: transfer.timestamp,
       from: transfer.from,
       to: transfer.to,
-      amount: transfer.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(transfer.amount) / Math.pow(10, transfer.amount.length - 1)).toFixed(0))*Math.pow(10, transfer.amount.length - 1) + '') : ethers.utils.formatEther(transfer.amount),
+      amount: ethers.utils.formatEther(transfer.amount),
       nft_id: transfer.nft.id,
       extrinsic_id: transfer.extrinsicId,
       creator: transfer.nft.creator,
@@ -142,12 +142,12 @@ export const getNftTransfer = async (id: string) => {
       timestamp: data.timestamp,
       from: data.from,
       to: data.to,
-      amount: data.amount.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(data.amount) / Math.pow(10, data.amount.length - 1)).toFixed(0))*Math.pow(10, data.amount.length - 1) + '') : ethers.utils.formatEther(data.amount),
+      amount: ethers.utils.formatEther(data.amount),
       extrinsic_type: data.typeOfTransaction,
       nft_id: data.nft.id,
       extrinsic_id: data.extrinsicId,
       creator: data.nft.creator,
-      fees: data.typeOfTransaction=='creation' ? '10' : data.extrinsic.fees.length < 19 ? ethers.utils.formatEther(parseInt((parseInt(data.extrinsic.fees) / Math.pow(10, data.extrinsic.fees.length - 1)).toFixed(0))*Math.pow(10, data.extrinsic.fees.length - 1) + '') : ethers.utils.formatEther(data.extrinsic.fees),
+      fees: ethers.utils.formatEther(data.extrinsic.fees),
       uri: data.id
     }
   }

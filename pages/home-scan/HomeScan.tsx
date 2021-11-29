@@ -33,9 +33,9 @@ const DetailButton: React.FC<DetailButtonProps> = ({
   href, label
 }) => (
   <Link href={href}>
-    <a>
-      <div className={clsx("btn-transparent d-flex m-auto px-5 py-2 fs-5", style.blockButton)}>
-        <span className="m-auto">{label}</span>
+    <a className="all">
+      <div className={clsx("btn-transparent d-flex m-auto px-5 py-3", style.blockButton)}>
+        <span className="m-auto text-large text-bold">{label}</span>
       </div>
     </a>
   </Link>
@@ -98,6 +98,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
 
   return (
     <Layout searchBar={false}>
+      <div className="ellipse1"></div>
       <Summary
         capsPrice={summary.usd}
         marketCap={summary.usd_market_cap}
@@ -106,10 +107,10 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         finalizedBlock={summary.block_count}
       />
 
-      <div className="row">
+      <div className="row position-relative">
         <div className="col-12 mb-5">
-          <div className="custom_table pb-3">
-          <h1 className="title mt-3 mb-1 ms-1">Latest Blocks</h1>
+          <div className="custom_table">
+          <h1 className="title1 mb-4 ms-1">Latest Blocks</h1>
             <ListView
               columns={blockColumns}
               renderCell={renderBlock}
@@ -120,9 +121,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             />
           </div>
         </div>
-        <div className="col-12 my-5">
-          <div className="custom_table pb-3">
-            <h1 className="title mt-3 mb-1 ms-1">NFT Extrinsic</h1>
+        <div className={"col-12 " + style.space}>
+          <div className="custom_table">
+            <h1 className="title1 mb-4 ms-1">NFT Extrinsic</h1>
             <ListView
               columns={nftTxColumns}
               renderCell={renderNftTx}
@@ -133,9 +134,9 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             />
           </div>
         </div>
-        <div className="col-12 mt-5">
-          <div className="custom_table pb-3">
-            <h1 className="title mt-3 mb-1 ms-1">Transfers</h1>
+        <div className="col-12 mt-5 pb-5">
+          <div className="custom_table">
+            <h1 className="title1 mb-4 ms-1">Transfers</h1>
             <ListView
               columns={transferColumns}
               renderCell={renderTransfer}

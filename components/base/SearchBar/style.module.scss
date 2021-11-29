@@ -6,35 +6,51 @@
   padding-left: 30px;
   outline: 0;
   color: white;
-  border: solid 2px transparent;
+  border: solid 2.32439px transparent;
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
               linear-gradient(101deg,#004fff, #cb06ed);
   background-origin: border-box;
   background-clip: content-box, border-box;
   box-shadow: 2px 1000px 1px $semi-blue inset;
-  border-radius: 25px;
-  font-size: 16px;
+  border-radius: 46.4878px;
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: 500;
   z-index: 1;
+
+  &:focus {
+    background: linear-gradient(90deg, rgba(13, 8, 31, 0.5) 0%, rgba(8, 7, 21, 0.5) 99.9%);
+    border: 2.32439px solid #004FFF;
+    box-sizing: border-box;
+    border-radius: 46.4878px;
+  }
+
   @media (max-width : 768px) {
     font-size: 12px;
+    line-height: 16px;
   }
   @media (min-width:769px) and (max-width : 992px) {
     font-size: 14px;
+    line-height: 18px;
   }
 }
 
 .inputMedium {
   height: 50px;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .inputLarge {
+  font-size: 18.5951px;
+  line-height: 24px;
   height: 64px;
   @media (max-width : 768px) {
-    height: 40px;
+    height: 55px;
     padding-left: 20px;
   }
   @media (min-width:769px) and (max-width : 992px) {
-    height: 40px;
+    height: 55px;
     padding-left: 25px;
   }
 }
@@ -56,9 +72,15 @@
   position: absolute;
   right: 10px;
   z-index: 1;
-  background-color: #004FFF;
   margin-left: 50px;
   height: 50px;
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  color: #FFFFFF;
   @media (max-width : 768px) {
     right: 20px;
   }
