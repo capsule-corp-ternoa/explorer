@@ -58,7 +58,7 @@ export const extrinsicRender = (record: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-          <FormattedNumber value={record[dataKey]} format='decimal' />
+          <FormattedNumber value={record[dataKey]} format='fees' />
           &nbsp;CAPS
         </>
       )

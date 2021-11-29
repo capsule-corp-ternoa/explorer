@@ -45,7 +45,7 @@ export const render = (data: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-          <FormattedNumber value={data[dataKey]} format='decimal' />
+          <FormattedNumber value={data[dataKey]} format='fees' />
           &nbsp;CAPS
         </>
       )

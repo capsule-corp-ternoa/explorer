@@ -123,7 +123,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         </div>
         <div className={"col-12 " + style.space}>
           <div className="custom_table">
-            <h1 className="title1 mb-4 ms-1">NFT Extrinsic</h1>
+            <h1 className="title1 mb-4 ms-1">NFT Extrinsics</h1>
             <ListView
               columns={nftTxColumns}
               renderCell={renderNftTx}
