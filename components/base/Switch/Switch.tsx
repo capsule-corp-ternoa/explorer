@@ -22,7 +22,7 @@ const Switch: React.FC<SwitchProps> = ({
           <input type='checkbox' />
           <div className={style.switch}>
             {options.map((option, key) => (
-              <div
+              <div key={key}
                 className={clsx(style.switch__btn, selected === key ? style.switch__primary : style.switch__secondary)}
                 onClick={() => onChange(key)}
               >
