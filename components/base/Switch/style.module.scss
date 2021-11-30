@@ -99,3 +99,12 @@
 		}
 	}
 }
+
+@media (min-width : 1024px) {
+	.option-up {
+		display: none;
+	}
+	.option-down {
+		display: none;
+	}
+}
