@@ -141,7 +141,7 @@ export const eventRender = (record: any, dataKey: string) => {
       return `${formatSec(record[dataKey])} ago`
     case 'action':
       return (
-        <span className="textToken">{record[dataKey]}</span>
+        <span className="textToken only-desktop">{record[dataKey]}</span>
       )
     default:
   }
