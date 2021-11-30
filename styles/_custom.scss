@@ -591,6 +591,17 @@ a {
 	background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
 	opacity: 0.3;
 	filter: blur(500px);
+	@media (max-width : 1024px) {
+		position: absolute;
+		width: 403px;
+		height: 1215px;
+		left: -9px;
+		top: 0px;
+
+		background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+		opacity: 0.4;
+		filter: blur(500px);
+	}
 }
 
 .ellipse2 {
@@ -603,6 +614,17 @@ a {
 	background: linear-gradient(90.13deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.9%);
 	opacity: 0.4;
 	filter: blur(500px); 
+	@media (max-width : 1024px) {
+		position: absolute;
+		width: 403px;
+		height: 700px;
+		left: -9px;
+		top: 0px;
+	
+		background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+		opacity: 0.4;
+		filter: blur(500px);
+	}
 }
 
 .ellipse3 {
@@ -615,6 +637,18 @@ a {
 	background: linear-gradient(90.13deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.9%);
 	opacity: 0.4;
 	filter: blur(500px);
+
+	@media (max-width : 1024px) {
+		position: absolute;
+		width: 403px;
+		height: 400px;
+		left: -9px;
+		top: 0px;
+	
+		background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+		opacity: 0.4;
+		filter: blur(500px);
+	}
 }
 
 .detail {
