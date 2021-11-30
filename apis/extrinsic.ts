@@ -116,7 +116,6 @@ export const getExtrinsic = async (id: string) => {
     return null
   } else {
     const data = extrinsicResponse.extrinsicEntities.nodes[0]
-    console.log("ddd", data.fees)
     return {
       id: data.id,
       block_id: data.blockId,

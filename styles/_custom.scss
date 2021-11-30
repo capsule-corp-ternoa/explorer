@@ -498,6 +498,7 @@ input[type=number] {
 }
 
 .ui-switch {
+	position: relative;
 	display: inline-flex;
 	background: linear-gradient(90deg, rgba(11, 75, 254, 0.15) 0%, rgba(184, 13, 239, 0.15) 99.9%);
 	border: 2px solid rgba(14, 14, 35, 0.1);
@@ -511,11 +512,15 @@ input[type=number] {
 	line-height: 18px;
 	color: #FFFFFF;
 	@media (max-width : 1024px) {
+		position: relative;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		margin: 0 auto;
 		border-radius: 25px;
+		width: 50%;
+		max-width: 210px;
+		min-width: 210px;
 	}
 
 	&__btn {
@@ -527,10 +532,25 @@ input[type=number] {
 	&__primary {
 		background-color: #004FFF;
 		border-radius: 21.5px;
+		margin: 2px;
+		text-align: center;
+		@media (max-width : 1024px) {
+			width: 100%;
+		}
 	}
 
 	&__secondary {
 		color:white;
+		text-align: center;
+		@media (max-width : 1024px) {
+			width: 100%;
+		}
+	}
+
+	&__none {
+		@media (max-width : 1024px) {
+			display: none;
+		}
 	}
 }
 
@@ -612,5 +632,19 @@ a {
 	@media (max-width : 1024px) {
 		justify-content: center;
 		margin-bottom: 1rem !important;
+	}
+}
+
+.submenu {
+	@media (max-width : 1024px) {
+		position: absolute;
+    top: -1px;
+    background: linear-gradient( 
+90deg, rgba(11, 75, 254, 0.15) 0%, rgba(184, 13, 239, 0.15) 99.9%);
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 25px;
+		z-index: -1;
 	}
 }
