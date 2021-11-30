@@ -17,7 +17,7 @@
 .switchContainer {
 	@media (max-width : 1024px) {
 		position: relative;
-		width: 10em;
+		width: 100%;
 		height: 4em;
 	}
 	input[type=checkbox] {
@@ -60,10 +60,12 @@
 		background-color: #004FFF;
 		border-radius: 21.5px;
 		margin: 2px;
+		font-weight: bold;
 		text-align: center;
 
 		@media (max-width : 1024px) {
-			width: 15em;
+			width: 100%;
+			min-width: 20em;
 			order: 0;
 		}
 	}
