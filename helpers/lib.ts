@@ -25,16 +25,22 @@ export const formatSec = (sec: number) => {
   if (sec < 0) {
     return '6 seconds'
   } else if (sec < 60) {
-    return `${Math.floor(sec)} seconds`
+    if(sec == 1) return `${Math.floor(sec)} second`
+    else return `${Math.floor(sec)} seconds`
   } else if (min < 60) {
-    return `${min} mins`
+    if(min == 1) return `${min} min`
+    else return `${min} mins`
   } else if (hour < 24) {
-    return `${hour} hours`
+    if(hour == 1) return `${hour} hour`
+    else return `${hour} hours`
   } else if (day < 30) {
-    return `${day} days`
+    if(day == 1) return `${day} day`
+    else return `${day} days`
   } else if (month < 12) {
-    return `${month} months`
+    if(month == 1) return `${month} month`
+    else return `${month} months`
   } else {
-    return `${year} years`
+    if(year == 1) return `${year} year`
+    else return `${year} years`
   }
 }
