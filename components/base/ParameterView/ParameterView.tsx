@@ -37,7 +37,7 @@ const ParameterView: React.FC<TableProps> = ({
               <td
                 key={key}
                 className={clsx(
-                  'text-medium text-opacity',
+                  'text-medium',
                   col.className,
                   { 'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
                 )}
@@ -60,7 +60,7 @@ const ParameterView: React.FC<TableProps> = ({
           <div className='row'>
             {columns.map(({ dataKey, mobileClassName }, key) => (
               <div key={key} className={clsx('col col-auto py-2 data-overflow', mobileClassName ?? 'col-6')}>
-                <div className='mobileRowLabel mb-1'>
+                <div className='mobileRowLabel mb-3'>
                   {columns[key].text}
                 </div>
                 <div className='mobileValue'>

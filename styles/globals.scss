@@ -399,10 +399,12 @@ a {
 }
 
 .mobileRowLabel {
-  font-family: 'Airbnb Cereal App Medium';
-  color: $light-grey;
-  font-size: 14px;
-  line-height: 18px;
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  opacity: 0.8;
 }
 
 .mobileLabel {
@@ -417,7 +419,7 @@ a {
 }
 
 .mobileValue {
-  font-family: Airbnb Cereal App;
+  font-family: "Airbnb Cereal App";
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

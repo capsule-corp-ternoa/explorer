@@ -76,7 +76,7 @@ const EventView: React.FC<TableProps> = ({
           <div className='row'>
             {columns.map(({ dataKey, mobileClassName }, key) => (
               <div key={key} className={clsx('col col-auto py-2 data-overflow', mobileClassName ?? 'col-6')}>
-                <div className='mobileRowLabel mb-1'>
+                <div className='mobileRowLabel mb-3'>
                   {columns[key].text}
                 </div>
                 <div className='mobileValue'>
