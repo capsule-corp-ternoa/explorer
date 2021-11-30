@@ -21,6 +21,7 @@ import DownArrow from 'components/assets/DownArrow';
 
 export interface HeaderProps {
     searchBar?: Boolean
+    back?: string
 }
 
 const Header: React.FC<HeaderProps> = (props) => {

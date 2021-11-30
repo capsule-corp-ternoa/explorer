@@ -25,7 +25,7 @@ const EventDetail: React.FC<ExtrinsicDetailProps> = () => {
   }
 
   return (
-    <Layout>
+    <Layout back='/event'>
       <div className="ellipse3"></div>
       <div className="custom_table">
         <div className="sub_header">

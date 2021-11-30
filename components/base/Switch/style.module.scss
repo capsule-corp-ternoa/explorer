@@ -1,0 +1,85 @@
+
+@mixin switchShadow {
+	display: inline-flex;
+	background: linear-gradient(90deg, rgba(11, 75, 254, 0.15) 0%, rgba(184, 13, 239, 0.15) 99.9%);
+	border: 2px solid rgba(14, 14, 35, 0.1);
+	box-sizing: border-box;
+	backdrop-filter: blur(50px);
+	border-radius: 25px;
+	font-family: Airbnb Cereal App;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 18px;
+	color: #FFFFFF;
+}
+
+.switchContainer {
+	@media (max-width : 1024px) {
+		position: relative;
+		width: 10em;
+		height: 4em;
+	}
+	input[type=checkbox] {
+		display: none;
+		@media (max-width : 1024px) {
+			&:not(:checked) + .switch {
+				.switch__secondary {
+					display: none;
+				}
+			}
+
+			&:checked + .switch {
+				@include switchShadow();
+			}
+		}
+
+		@media (min-width: 1024px) {
+			& + .switch {
+				@include switchShadow();
+			}
+		}
+	}
+}
+.switch {
+	@media (max-width : 1024px) {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		border-radius: 25px;
+	}
+
+	&__btn {
+		padding: 15px 50px 15px 50px;
+		cursor: pointer;
+		font-size: small;
+	}
+
+	&__primary {
+		background-color: #004FFF;
+		border-radius: 21.5px;
+		margin: 2px;
+		text-align: center;
+
+		@media (max-width : 1024px) {
+			width: 15em;
+			order: 0;
+		}
+	}
+
+	&__secondary {
+		color:white;
+		text-align: center;
+		@media (max-width : 1024px) {
+			width: 100%;
+			order: 1;
+		}
+	}
+
+	&__none {
+		@media (max-width : 1024px) {
+			display: none;
+		}
+	}
+}

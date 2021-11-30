@@ -26,7 +26,7 @@ const TransDetail: React.FC<TransDetailProps> = () => {
   }
 
   return (
-    <Layout>
+    <Layout back='/trans'>
       <div className="ellipse3"></div>
       <div className="custom_table">
         <div className="sub_header">
