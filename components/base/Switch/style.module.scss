@@ -27,10 +27,16 @@
 				.switch__secondary {
 					display: none;
 				}
+				.option-up {
+					display: none;
+				}
 			}
 
 			&:checked + .switch {
 				@include switchShadow();
+				.option-down {
+					display: none;
+				}
 			}
 		}
 
@@ -60,6 +66,8 @@
 		background-color: #004FFF;
 		border-radius: 21.5px;
 		margin: 2px;
+		font-size: 14px;
+		line-height: 18px;
 		font-weight: bold;
 		text-align: center;
 
@@ -76,6 +84,12 @@
 		@media (max-width : 1024px) {
 			width: 100%;
 			order: 1;
+			.option-up {
+				display: none;
+			}
+			.option-down {
+				display: none;
+			}
 		}
 	}
 

@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import style from './style.module.scss'
-
+import DownMobile from 'components/assets/DownMobile';
+import UpMobile from 'components/assets/UpMobile';
 interface SwitchProps {
   className?: string
   options: string[]
@@ -26,6 +27,8 @@ const Switch: React.FC<SwitchProps> = ({
                 onClick={() => onChange(key)}
               >
                 {option}
+                <UpMobile className={clsx(style['option-up'], 'ms-3')}/>
+                <DownMobile className={clsx(style['option-down'], 'ms-3')}/>
               </div>
             ))}
           </div>
