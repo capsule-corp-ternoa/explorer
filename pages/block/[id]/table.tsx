@@ -43,7 +43,9 @@ export const blockRender = (data: any, dataKey: string) => {
       return (
         <div className="d-flex">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken mt-1">{data[dataKey]}</span>
+          <span className="textToken mt-1" title={data[dataKey]}>
+            {ellipsifyMiddle(data[dataKey])}
+          </span>
           <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(data[dataKey])}>
             <Copy className="cursor-point" />
           </div>

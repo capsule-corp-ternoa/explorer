@@ -5,17 +5,22 @@ import Back from 'components/assets/Back';
 import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import ListView from 'components/base/ListView';
+import Switch from 'components/base/Switch';
 import { getNftTransfer } from 'apis/nft-transfer';
 import { searchEventbyExtrinsic } from 'apis/event';
 import { fields, render, eventColumns, eventRender } from './table'
 
 export interface NftTransDetailProps {}
 
+enum DetailMode {
+  NFT,
+  Events
+}
+
 const NftTransDetail: React.FC<NftTransDetailProps> = () => {
   const [data, setData] = useState<any>(null)
   const [data1, setData1] = useState<any>(null)
-  const [isFirst, setIsFirst] = useState<boolean>(true)
-  const [isSecond, setIsSecond] = useState<boolean>(false)
+  const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.NFT)
   const router = useRouter()
   const id = router.query.id as string
   const extrinsic_id = router.query.extrinsic as string
@@ -26,38 +31,35 @@ const NftTransDetail: React.FC<NftTransDetailProps> = () => {
       searchEventbyExtrinsic(extrinsic_id).then(setData1)
     }
   }, [id])
-
+ 
   if (!id) {
     return null
   }
 
-  const onSelectFirst = () => {
-    setIsFirst(true)
-    setIsSecond(false)
-  }
-  
-  const onSelectSecond = () => {
-    setIsFirst(false)
-    setIsSecond(true)
-  }
-  
+ 
+
   return (
-    <Layout> 
+    <Layout back='/nft'> 
       <div className="ellipse3"></div>
       <div className="custom_table">
-        <div className="d-flex align-items-center mb-5">
+        <div className="sub_header">
           <div className="cursor-point w-fit-content me-4 only-desktop">
             <Link href={'/nft'}>
               <a><Back className="back"/></a>
             </Link>
           </div>
-          <div className="ui-switch">
-            <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>{data && data.extrinsic_type + ' of NFT ID : ' + data.nft_id}</div>
-            <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>Events</div>
-          </div>
+          <Switch
+            options={[data && (data.extrinsic_type + ' of NFT ID : ' + data.nft_id), 'Events']}
+            selected={detailMode}
+            onChange={setDetailMode}
+          />
         </div>
-        { isFirst && <DetailView fields={fields} data={data} renderCell={render}/> }
-        { isSecond && <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/> }
+        {detailMode === DetailMode.NFT && (
+          <DetailView fields={fields} data={data} renderCell={render}/>
+        )}
+        {detailMode === DetailMode.Events && (
+          <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
+        )}
       </div>
     </Layout>
   )

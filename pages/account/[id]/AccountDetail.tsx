@@ -5,6 +5,7 @@ import Back from 'components/assets/Back';
 import Layout from 'components/base/Layout';
 import ListView from 'components/base/ListView';
 import DetailView from 'components/base/DetailView';
+import Switch from 'components/base/Switch';
 import { fields, render } from './table'
 import { columns as extrinsicColumns, render as renderExtrinsic } from 'pages/extrinsic/table'
 import { getAccount } from 'apis/account';
@@ -12,10 +13,14 @@ import { ellipsifyMiddle } from 'helpers/lib';
 
 export interface AccountDetailProps {}
 
+enum DetailMode {
+  ID,
+  Extrinsic,
+}
+
 const AccountDetail: React.FC<AccountDetailProps> = () => {
   const [data, setData] = useState<any>(null)
-  const [isFirst, setIsFirst] = useState<boolean>(true)
-  const [isSecond, setIsSecond] = useState<boolean>(false)
+  const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.ID)
   const router = useRouter()
   const id = router.query.id as string
 
@@ -29,35 +34,28 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
     return null
   }
 
-  const onSelectFirst = () => {
-    setIsFirst(true)
-    setIsSecond(false)
-  }
-  
-  const onSelectSecond = () => {
-    setIsFirst(false)
-    setIsSecond(true)
-  }
-
   return (
-    <Layout>
+    <Layout back='/account'>
       <div className="ellipse3"></div>
       <div className="custom_table">
-        <div className="d-flex align-items-center mb-5">
+        <div className="sub_header">
           <div className="cursor-point w-fit-content me-4 only-desktop">
             <Link href={'/account'}>
               <a><Back className="back"/></a>
             </Link>
           </div>
-          <div className="ui-switch">
-            <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>{ellipsifyMiddle(id)}</div>
-            { data && data.last_extrinsics && <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>{data.last_extrinsics.length + ' last ' + (data.last_extrinsics.length > 1 ? 'extrinsics' : 'extrinsic')}</div>}
-          </div>
+          <Switch
+            options={[ellipsifyMiddle(id), 'Extrinsic']}
+            selected={detailMode}
+            onChange={setDetailMode}
+          />
         </div>
-        { isFirst && <DetailView fields={fields} data={data} renderCell={render} /> }
-        { isSecond && data && data.last_extrinsics &&
-          <ListView columns={extrinsicColumns} data={data && data.last_extrinsics} renderCell={renderExtrinsic} />
-        }
+          {detailMode === DetailMode.ID && (
+            <DetailView fields={fields} data={data} renderCell={render} />
+          )}
+          {detailMode === DetailMode.Extrinsic && data && data.last_extrinsics && (
+            <ListView columns={extrinsicColumns} data={data && data.last_extrinsics} renderCell={renderExtrinsic} />
+          )}
       </div>
     </Layout>
   )

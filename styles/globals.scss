@@ -399,25 +399,32 @@ a {
 }
 
 .mobileRowLabel {
-  font-family: 'Airbnb Cereal App Medium';
-  color: $light-grey;
-  font-size: 14px;
-  line-height: 18px;
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  opacity: 0.8;
 }
 
 .mobileLabel {
-  font-family: 'Airbnb Cereal App Medium';
-  color: $light-grey;
-  font-size: 14px;
-  line-height: 18px;
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FFFFFF;
+  opacity: 0.8;
   margin-bottom: 5px;
 }
 
 .mobileValue {
-  font-family: 'Airbnb Cereal App Medium';
-  font-weight: 500;
-  color: $light-white;
-  font-size: 16px;
+  font-family: "Airbnb Cereal App";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: #FFFFFF;
 }
 
 .mobileIcon {

@@ -6,6 +6,7 @@ import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import ParameterView from 'components/base/ParameterView';
 import ListView from 'components/base/ListView';
+import Switch from 'components/base/Switch';
 import { eventColumns, eventRender, parameterFields, parameterRender, extrinsicFields, extrinsicRender } from './table'
 import { getExtrinsic, getExtrinsicParams } from 'apis/extrinsic';
 import { searchEventbyExtrinsic } from 'apis/event';
@@ -13,13 +14,17 @@ import { ellipsifyMiddle } from 'helpers/lib';
 
 export interface ExtrinsicDetailProps {}
 
+enum DetailMode {
+  Extrinsic,
+  Parameters,
+  Events
+}
+
 const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
   const [data, setData] = useState<any>(null)
   const [data1, setData1] = useState<any>(null)
   const [data2, setData2] = useState<any>(null)
-  const [isFirst, setIsFirst] = useState<boolean>(true)
-  const [isSecond, setIsSecond] = useState<boolean>(false)
-  const [isThird, setIsThird] = useState<boolean>(false)
+  const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.Extrinsic)
   const router = useRouter()
   const id = router.query.id as string
 
@@ -36,44 +41,32 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
   if (!id) {
     return null
   }
-
-  const onSelectFirst = () => {
-    setIsFirst(true)
-    setIsSecond(false)
-    setIsThird(false)
-  }
   
-  const onSelectSecond = () => {
-    setIsFirst(false)
-    setIsSecond(true)
-    setIsThird(false)
-  }
-  
-  const onSelectThird = () => {
-    setIsFirst(false)
-    setIsSecond(false)
-    setIsThird(true)
-  }
-
   return (
-    <Layout>
+    <Layout back='/extrinsic'>
       <div className="ellipse3"></div>
       <div className="custom_table">
-        <div className="d-flex align-items-center mb-5">
+        <div className="sub_header">
           <div className="cursor-point w-fit-content me-4 only-desktop">
             <Link href={'/extrinsic'}>
               <a><Back className="back"/></a>
             </Link>
           </div>
-          <div className="ui-switch">
-            <div className={"ui-switch__btn " + (isFirst? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectFirst()}>Extrinsic: {data && ellipsifyMiddle(data.hash)}</div>
-            <div className={"ui-switch__btn " + (isSecond? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectSecond()}>Parameters</div>
-            <div className={"ui-switch__btn " + (isThird? 'ui-switch__primary' : 'ui-switch__secondary')} onClick={() => onSelectThird()}>Events</div>
-          </div>
+          <Switch
+            options={[data && ("Extrinsic: " + ellipsifyMiddle(data.hash)), 'Parameters', 'Events']}
+            selected={detailMode}
+            onChange={setDetailMode}
+          />
         </div>
-        { isFirst && <DetailView fields={extrinsicFields} data={data} renderCell={extrinsicRender}/> }
-        { isSecond && <ParameterView data={data2} columns={parameterFields} renderCell={parameterRender} /> }
-        { isThird && <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/> }      
+        {detailMode === DetailMode.Extrinsic && (
+          <DetailView fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
+        )}
+        {detailMode === DetailMode.Parameters && (
+          <ParameterView data={data2} columns={parameterFields} renderCell={parameterRender} />
+        )}
+        {detailMode === DetailMode.Events && (
+          <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
+        )}
       </div>
     </Layout>
   )

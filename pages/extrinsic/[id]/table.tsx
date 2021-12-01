@@ -58,7 +58,7 @@ export const extrinsicRender = (record: any, dataKey: string) => {
     case 'fees':
       return (
         <>
-          <FormattedNumber value={record[dataKey]} format='decimal' />
+          <FormattedNumber value={record[dataKey]} format='fees' />
           &nbsp;CAPS
         </>
       )
@@ -99,7 +99,7 @@ export const parameterRender = (record: any, dataKey: string) => {
     case 'value':
       return (
         <div className="mt-3">
-          <JSONPretty id="json-pretty" data={JSON.parse(record[dataKey])}></JSONPretty>
+          <JSONPretty id="json-pretty" data={JSON.stringify(record[dataKey])}></JSONPretty>
         </div> 
       );
     default:
@@ -141,7 +141,7 @@ export const eventRender = (record: any, dataKey: string) => {
       return `${formatSec(record[dataKey])} ago`
     case 'action':
       return (
-        <span className="textToken">{record[dataKey]}</span>
+        <span className="textToken only-desktop">{record[dataKey]}</span>
       )
     default:
   }

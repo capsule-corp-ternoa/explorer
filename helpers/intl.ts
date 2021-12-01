@@ -22,6 +22,10 @@ export default {
         maximumFractionDigits: 3
       },
       decimal: {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      },
+      fees: {
         minimumFractionDigits: 15,
         maximumFractionDigits: 15
       },

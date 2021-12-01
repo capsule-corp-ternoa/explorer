@@ -6,11 +6,13 @@ import Footer from 'components/base/Footer';
 interface LayoutProps {
   searchBar?: boolean
   children?: React.ReactNode
+  back?: string
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   searchBar,
+  back,
 }) => (
   <>
     <Head>
@@ -19,7 +21,7 @@ const Layout: React.FC<LayoutProps> = ({
       <meta name="description" content="Ternoa scan, by Ternoa." />
     </Head>
     <div className="mainContainer">
-      <Header searchBar={searchBar} />
+      <Header back={back} searchBar={searchBar} />
       <div className="mainBody">
         {children}
       </div>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from "next/router";
 import style from './Header.module.scss';
 import LogoTernoaExplorer from 'components/assets/LogoTernoaExplorer';
+import BackMobile from 'components/assets/BackMobile';
 import Account from 'components/assets/MenuIcons/Account';
 import Block from 'components/assets/MenuIcons/Block';
 import Event from 'components/assets/MenuIcons/Event';
@@ -21,6 +22,7 @@ import DownArrow from 'components/assets/DownArrow';
 
 export interface HeaderProps {
     searchBar?: Boolean
+    back?: string
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -95,7 +97,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <header>
-            <div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
+            { <div className="only-desktop"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
                 <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
                     <Link href="/">
                         <a>
@@ -191,7 +193,210 @@ const Header: React.FC<HeaderProps> = (props) => {
                         </Dropdown>
                     </div>
                 </div>
-            </div>
+            </div></div> }
+            
+            { !props.back && <div className="only-mobile"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
+                <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
+                    <Link href="/">
+                        <a>
+                            <LogoTernoaExplorer />
+                        </a>
+                    </Link>
+                    <div className="mt-3 ms-4">
+                        <Testnet />
+                    </div>
+                </div>
+                <div className="d-block d-md-none col no-padding-vertical">
+                    <div className="flex flex-cont-end">
+                        <div onClick={() => openMenu()}>
+                            <Hamburger className={style.hamburger + " mx-2"} />
+                        </div>
+                    </div>
+                </div>
+                
+                <div className={'no-padding-vertical col-md-5 col-lg-4 ' + style.searchBoxContainer}>
+                    {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
+                </div>
+                <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
+                    <div className={'flex flex-cont-end flex-items-center '}>
+                        <span className={style.navBarDash}>
+                            <Link href="/">
+                                <a className={style.navBarDash}>
+                                    Dashboard
+                                </a>
+                            </Link>
+                        </span>
+                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
+                            <DropdownToggle
+                                className={style.navBarDropdownItem}
+                                id="page-header-user-dropdown"
+                                tag="button"
+                            >
+                                <div className="flex flex-row flex-items-center">
+                                    <span className={style.navBarItem}>Chain</span>
+                                    <DownArrow className={style.downArrowItem} />
+                                </div>
+                            </DropdownToggle>
+                            <DropdownMenu className={style.dropdownMenu} end>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/block">
+                                        <a><Block className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/extrinsic">
+                                        <a><Extrinsic className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/nft">
+                                        <a><NFT className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/event">
+                                        <a><Event className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                            </DropdownMenu>
+                        </Dropdown>
+
+                        <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
+                            <DropdownToggle
+                                className={style.navBarDropdownItem}
+                                id="page-header-user-dropdown"
+                                tag="button"
+                            >
+                                <div className="flex flex-row flex-items-center">
+                                    <span className={style.navBarItem}>Accounts</span>
+                                    <DownArrow className={style.downArrowItem} />
+                                </div>
+                            </DropdownToggle>
+                            <DropdownMenu className={style.dropdownMenu} end>
+                                <div className={style.dropdownItem}>
+                                    <Link href='/account'>
+                                        <a>
+                                        <Account className={style.dropdownItem}/>
+                                        </a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href='/trans'>
+                                        <a>
+                                        <Transfer className={style.dropdownItem}/>
+                                        </a>
+                                    </Link>
+                                </div>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </div>
+                </div>
+            </div></div> }
+            
+            { props.back && <div className="only-mobile"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
+                <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
+                    <Link href={props.back}>
+                        <a>
+                            <BackMobile />
+                        </a>
+                    </Link>
+                    {/* <div className="mt-3 ms-4">
+                        <Testnet />
+                    </div> */}
+                </div>
+                <div className="col flex flex-cont-center no-padding-vertical">
+                    <Link href="/">
+                        <a>
+                            <LogoTernoaExplorer />
+                        </a>
+                    </Link>
+                </div>
+                <div className="d-block d-md-none col no-padding-vertical">
+                    <div className="flex flex-cont-end">
+                        <div onClick={() => openMenu()}>
+                            <Hamburger className={style.hamburger + " mx-2"} />
+                        </div>
+                    </div>
+                </div>
+                
+                <div className={'no-padding-vertical col-md-5 col-lg-4 ' + style.searchBoxContainer}>
+                    {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
+                </div>
+                <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
+                    <div className={'flex flex-cont-end flex-items-center '}>
+                        <span className={style.navBarDash}>
+                            <Link href="/">
+                                <a className={style.navBarDash}>
+                                    Dashboard
+                                </a>
+                            </Link>
+                        </span>
+                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
+                            <DropdownToggle
+                                className={style.navBarDropdownItem}
+                                id="page-header-user-dropdown"
+                                tag="button"
+                            >
+                                <div className="flex flex-row flex-items-center">
+                                    <span className={style.navBarItem}>Chain</span>
+                                    <DownArrow className={style.downArrowItem} />
+                                </div>
+                            </DropdownToggle>
+                            <DropdownMenu className={style.dropdownMenu} end>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/block">
+                                        <a><Block className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/extrinsic">
+                                        <a><Extrinsic className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/nft">
+                                        <a><NFT className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href="/event">
+                                        <a><Event className={style.dropdownItem}/></a>
+                                    </Link>
+                                </div>
+                            </DropdownMenu>
+                        </Dropdown>
+
+                        <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
+                            <DropdownToggle
+                                className={style.navBarDropdownItem}
+                                id="page-header-user-dropdown"
+                                tag="button"
+                            >
+                                <div className="flex flex-row flex-items-center">
+                                    <span className={style.navBarItem}>Accounts</span>
+                                    <DownArrow className={style.downArrowItem} />
+                                </div>
+                            </DropdownToggle>
+                            <DropdownMenu className={style.dropdownMenu} end>
+                                <div className={style.dropdownItem}>
+                                    <Link href='/account'>
+                                        <a>
+                                        <Account className={style.dropdownItem}/>
+                                        </a>
+                                    </Link>
+                                </div>
+                                <div className={style.dropdownItem}>
+                                    <Link href='/trans'>
+                                        <a>
+                                        <Transfer className={style.dropdownItem}/>
+                                        </a>
+                                    </Link>
+                                </div>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </div>
+                </div>
+            </div></div>}
 
             <Modal classNames={{
                 modalAnimationIn: 'mobileMenuAnimationIn',
