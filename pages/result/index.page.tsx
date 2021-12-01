@@ -40,9 +40,15 @@ const SearchResult: React.FC<SearchResultProps> = () => {
           <h1 className="title my-2 ms-1">No result</h1>
         </div>
         <div className={"mainBlock mt-2 mb-5 py-5 flex flex-center " + style.resultBlock}>
-          <span className={style.resultText}>
-            No data was found as a result of your search
-          </span>
+          <div className="only-desktop">
+            <span className={style.resultText}>
+              No data was found as a result of your search
+            </span>
+          </div>
+          <div className={style.resultText + " only-mobile"}>
+            <div className="mb-2">No data was found as a</div>
+            <div className="mt-2">result of your search</div>
+          </div>
         </div>
       </div>
     </Layout>
