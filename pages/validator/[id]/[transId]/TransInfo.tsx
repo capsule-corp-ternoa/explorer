@@ -34,13 +34,13 @@ const TransInfo: React.FC<TransInfoProps> = () => {
             valData = validators[0]
         }
         const transId = router.query.transId as string;
-        const trans = valData.transactions.filter(function(item) {
-            return item.transaction_id == transId;
+        const trans = valData.extrinsics.filter(function(item) {
+            return item.extrinsic_id == transId;
         })
         if (trans.length != 0) {
-            setTransData(trans[0].transaction_detail)
+            setTransData(trans[0].extrinsic_detail)
         } else {
-            setTransData(valData.transactions[0].transaction_detail)
+            setTransData(valData.extrinsics[0].extrinsic_detail)
         }
     }, [router.isReady]);
 

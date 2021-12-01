@@ -184,7 +184,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                         </div>
                     </div>
                     <div>
-                        <span className={"mt-5 mb-3 subTitle2"}>Transactions</span>
+                        <span className={"mt-5 mb-3 subTitle2"}>Extrinsics</span>
                         <Down className="ms-3 mb-1"/>
                     </div>
                     <div className={"mainBlock mt-3"}>
@@ -193,7 +193,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                             <table className="table table-borderless mb-0 webBorderTable2">
                                 <thead> 
                                     <tr className="fs-6 text-grey">
-                                        <th style={{width:"20%"}} className="text-left ps-4p0">Transaction ID</th>
+                                        <th style={{width:"20%"}} className="text-left ps-4p0">Extrinsic ID</th>
                                         <th style={{width:"20%"}} className="text-left">Block</th>
                                         <th style={{width:"20%"}} className="text-left">Module</th>
                                         <th style={{width:"20%"}} className="text-left">Call</th>
@@ -202,11 +202,11 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {valData.transactions != undefined
-                                     && valData.transactions.map((transItem:any,key:any) => {
+                                    {valData.extrinsics != undefined
+                                     && valData.extrinsics.map((transItem:any,key:any) => {
                                         return (
                                     <tr key={key}>
-                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">{transItem.transaction_id}</td>
+                                        <td className="text-large text-opacity fw-bold text-left ps-4p0">{transItem.extrinsic_id}</td>
                                         <td className="text-large text-opacity text-left">{transItem.block}</td>
                                         <td className="text-large text-opacity text-left">{transItem.module}</td>
                                         <td className="text-large text-opacity text-left">{transItem.call}</td>
@@ -214,7 +214,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                             {transItem.success?<Check className="webCheckIcon" />:''}
                                         </td>
                                         <td className="text-right pe-4p0">
-                                            <button onClick={() => goTransInfo(transItem.transaction_id)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
+                                            <button onClick={() => goTransInfo(transItem.extrinsic_id)} className="btn btn-secondary rounded-pill px-4 py-1">Details</button>
                                         </td>
                                     </tr>
                                     )
@@ -222,13 +222,13 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                 </tbody>
                             </table>
                             }
-                            {!isLaptop && valData.transactions != undefined
-                             && valData.transactions.map((transItem:any,key:any) => { return (
+                            {!isLaptop && valData.extrinsics != undefined
+                             && valData.extrinsics.map((transItem:any,key:any) => { return (
                             <div key={key} className={"mobileView " + (key%2==1?"mobileDarkView":"")}>
                                 <div className="flex flex-row mt-2">
                                     <div className="flex-1 flex flex-col">
-                                        <span className="mobileLabel">Transaction ID</span>
-                                        <span className="mobileValue">{transItem.transaction_id}</span>
+                                        <span className="mobileLabel">Extrinsic ID</span>
+                                        <span className="mobileValue">{transItem.extrinsic_id}</span>
                                     </div>
                                     <div className="flex-1 flex flex-col">
                                         <span className="mobileLabel">Block</span>
@@ -252,7 +252,7 @@ const ValidatorDetail: React.FC<ValidatorDetailProps> = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-row mt-4 mb-2">
-                                    <button onClick={() => goTransInfo(transItem.transaction_id)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
+                                    <button onClick={() => goTransInfo(transItem.extrinsic_id)} className={"btn btn-secondary rounded-pill px-4 py-1 mobileDetailButton"}>Details</button>
                                 </div>
                             </div>
                             )})

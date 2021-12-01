@@ -26,15 +26,16 @@ const ListView: React.FC<TableProps> = ({
   renderCell,
   footer,
   className
-}) => (
+}) => {
+  return (
   <>
-    <table className={clsx('table table-borderless data-table only-desktop', className)}>
+    <table className={clsx('table table-borderless data-table full-opacity', className)}>
       <thead>
         <tr>
           {columns.map((col, key) => (
             <th
               className={clsx(
-                col.className,
+                col.className, 'text-large',
                 {'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
               )}
               key={key}
@@ -51,9 +52,10 @@ const ListView: React.FC<TableProps> = ({
               <td
                 key={key}
                 className={clsx(
-                  'text-large text-opacity',
                   col.className,
-                  { 'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
+                  'text-opacity', 
+                  'text-medium',
+                  { 'ps-4': key === 0, 'd-flex justify-content-start align-items-center pe-4': key === columns.length - 1 }
                 )}
               >
                 {renderCell(record, col.dataKey)}
@@ -61,37 +63,14 @@ const ListView: React.FC<TableProps> = ({
             ))}
           </tr>
         ))}
-        {footer && (
-          <tr>
-            <td colSpan={99} className='py-4'>{footer}</td>
-          </tr>
-        )}
       </tbody>
     </table>
-    <div className={clsx('only-mobile data-table', className)}>
-      {data && data.map((record, rowKey) => (
-        <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
-          <div className='row'>
-            {columns.map(({ dataKey, mobileClassName }, key) => (
-              <div key={key} className={clsx('col col-auto py-2', mobileClassName ?? 'col-6')}>
-                <div className='mobileRowLabel mb-1'>
-                  {columns[key].text}
-                </div>
-                <div className='mobileValue'>
-                  {renderCell(record, dataKey)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div>
       {footer && (
-        <div className='col col-12 py-3'>
-          {footer}
-        </div>
-      )}
+         footer
+        )}
     </div>
   </>
-)
+)}
 
 export default ListView

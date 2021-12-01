@@ -1,18 +1,27 @@
 import Link from 'next/link'
 import Check from 'components/assets/Check';
+import Detail from 'components/assets/Detail';
 
 export const columns = [
   { text: 'Extrinsic ID', dataKey: 'id', className: 'text-left' },
   { text: 'Block', dataKey: 'block_id', className: 'text-left' },
-  { text: 'Module', dataKey: 'module' },
-  { text: 'Call', dataKey: 'call' },
-  { text: 'Signed', dataKey: 'signed' },
-  { text: 'Success', dataKey: 'success' },
+  { text: 'Module', dataKey: 'module', className: 'text-left only-desktop' },
+  { text: 'Call', dataKey: 'call', className: 'text-left only-desktop' },
+  { text: 'Signed', dataKey: 'signed', className: 'text-left only-desktop' },
+  { text: 'Success', dataKey: 'success', className: 'text-left only-desktop' },
   { text: '', dataKey: 'detail' },
 ]
 
 export const render = (record: any, dataKey: string) => {
   switch (dataKey) {
+    case 'id':
+      return (
+        <>
+          <Link href={`/extrinsic/${record[dataKey]}`}>
+              <a className="textToken">{record[dataKey]}</a>
+          </Link>
+        </>
+      )
     case 'signed':
       return record[dataKey] ? 'Yes' : 'No'
 
@@ -23,9 +32,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={`/extrinsic/${record.id}`}>
           <a>
-            <button className="btn btn-secondary rounded-pill px-4 py-2">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

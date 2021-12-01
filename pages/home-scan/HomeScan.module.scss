@@ -5,19 +5,18 @@
     flex-direction: column;
     justify-content: space-around;
     width: 100%;
-    z-index: 1001;
+    z-index: 1000;
     margin: 30px auto;
     margin-bottom: 10px;
-    border: solid 2px transparent;
     @media (min-width: 1280px) { 
-        padding: 30px 80px;
+        padding: 30px 130px;
+    }
+    @media (max-width: 1280px) { 
+        margin-top: 0px;
     }
     padding: 25px 14px;
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-                linear-gradient(101deg,#004fff, #cb06ed, #ff0062, #ff8500 );
     background-origin: border-box;
     background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px $black-blue inset;
     border-radius: 10px;
 }
 
@@ -26,7 +25,7 @@
     font-family: "Airbnb Cereal App Bold";
     font-style: normal;
     font-weight: bold;
-    font-size: 29.9791px;
+    font-size: 30px;
     line-height: 39px;
     @media (max-width : 1280px) {
         font-size: 20px;
@@ -39,23 +38,27 @@
 }
 
 .Logo {
-    width: 40px;
-    height: 40px;
+    width: 27px;
+    height: 27px;
     @media (max-width: 1280px) {
         width: 30px;
         height: 30px;
     }
 }
 .blockButton {
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(90deg, #0b4bfe52 0%, #b80def57 99.9%);
+    opacity: 0.5;
+    border-radius: 16px;
+    color: white;
     @media (max-width: 1280px) {
-        // border: solid 3.25px transparent;
-        // background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        //             linear-gradient(101deg,#FF850059, #FF006259, #CB06ED59, #004FFF59 );
-        // background-origin: border-box;
-        // background-clip: content-box, border-box;
-        // box-shadow: 3.25px 1000px 1px $semi-blue inset;
+        border: solid 2px transparent;
+        background: linear-gradient(90deg, #1B3283 0%, #3F278A 99.9%);
+        border-radius: 10px;
         font-size: 16px!important;
-        padding: 4px 12px!important;
+        padding: 10px 12px!important;
     }
 }
 
@@ -182,8 +185,18 @@
     }
 
     .gradientBack{
-        background: linear-gradient(
-            90deg, #004FFF 0%, #CB06ED 33.3%, #FF0062 68.16%, #FF8500 99.9%);
+        background: transparent;
+    }
+}
+
+@media (max-width: 768px) {
+    .searchBtn {
+        width: 15%;
+        margin-left: 50px;
+        height: 50px;
+    }
+    .gradientBack{
+        background: transparent;
         filter: blur(13px);
         position: absolute;
         width: 100%;
@@ -193,12 +206,13 @@
     }
 }
 
-
 .logoPercent {
+    margin-top: 2px;
     font-size: small;
     color: green;
 
     &.minus {
+        margin-top: 2px;
         color: red;
     }
 }
@@ -273,4 +287,13 @@
 	top: 0px;
 	left: 3px;
 	color: white;
+}
+
+.space {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    @media (max-width: 1280px) {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
 }

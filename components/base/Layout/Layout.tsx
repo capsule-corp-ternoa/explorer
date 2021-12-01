@@ -1,9 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
 import Head from 'next/head'
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
-import Back from 'components/assets/Back';
 
 interface LayoutProps {
   searchBar?: boolean
@@ -23,17 +21,8 @@ const Layout: React.FC<LayoutProps> = ({
       <meta name="description" content="Ternoa scan, by Ternoa." />
     </Head>
     <div className="mainContainer">
-      <Header searchBar={searchBar} />
+      <Header back={back} searchBar={searchBar} />
       <div className="mainBody">
-        {back && (
-          <Link href={back}>
-            <a>
-              <div className="cursor-point w-fit-content mb-4">
-                <Back />
-              </div>
-            </a>
-          </Link>
-        )}
         {children}
       </div>
       <Footer/>

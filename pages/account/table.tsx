@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import CAPSDark from 'components/assets/CAPSDark';
+import Copy from 'components/assets/Copy';
+import Detail from 'components/assets/Detail';
 import { FormattedNumber } from 'react-intl';
+import { ellipsifyLast } from 'helpers/lib';
 
 export const columns = [
   { text: 'Address', dataKey: 'address', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Transactions', dataKey: 'transactions', className: 'text-right' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-right' },
+  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
   { text: '', dataKey: 'details', mobileClassName: 'col-12' },
 ]
 
@@ -18,15 +20,25 @@ export const render = (record: any, dataKey: string) => {
           &nbsp;CAPS
         </>
       )
-    case 'transactions':
-      return (
-        <FormattedNumber value={record[dataKey]} format='decimal' />
-      )
     case 'address':
       return (
         <>
-          <CAPSDark className="webIcon me-2" />
-          <span className="textToken">{record[dataKey]}</span>
+          <div className="only-desktop">
+            <div className="d-flex">
+              <CAPSDark className="webIcon me-2" />
+              <Link href={`/account/${record[dataKey]}`}>
+              <a className="textToken mt-1">{record[dataKey]}</a>
+              </Link>
+              <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+                <Copy className="cursor-point" />
+              </div>
+            </div>
+          </div>
+          <div className="only-mobile">
+            <Link href={`/account/${record[dataKey]}`}>
+              <a className="textToken mt-1">{ellipsifyLast(record[dataKey])}</a>
+            </Link>
+          </div>
         </>
       )
     case 'details':
@@ -34,9 +46,7 @@ export const render = (record: any, dataKey: string) => {
       return (
         <Link href={`/account/${record.address}`}>
           <a>
-            <button className="btn btn-secondary rounded-pill px-4 py-2">
-              Details
-            </button>
+            <Detail className="detail"/>
           </a>
         </Link>
       )

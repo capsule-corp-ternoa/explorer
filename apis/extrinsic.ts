@@ -1,8 +1,8 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
+import * as ethers from 'ethers';
 
-const queryExtrinsicList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryExtrinsicList = (offset: number, pageSize: number) => gql`
 {
   extrinsicEntities(
     first: ${pageSize}
@@ -59,7 +59,10 @@ const queryExtrinsic = (id: string) => gql`
       hash
       module
       call
-      description
+      fees
+      description {
+        description
+      }
       signer
       nonce
       signature
@@ -78,7 +81,7 @@ export const searchExtrinsic = async (keyword: string) => {
   return response.extrinsicEntities.nodes
 }
 
-export const getExtrinsicList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getExtrinsicList = async (offset: number, pageSize: number) => {
   const response = await request(
     queryExtrinsicList(offset, pageSize)
   )
@@ -113,22 +116,40 @@ export const getExtrinsic = async (id: string) => {
     return null
   } else {
     const data = extrinsicResponse.extrinsicEntities.nodes[0]
-    // console.log(JSON.parse(data.args_value))
     return {
       id: data.id,
       block_id: data.blockId,
       timestamp: data.timestamp,
-      transaction_index: data.extrinsicIndex,
+      extrinsic_index: data.extrinsicIndex,
       hash: data.hash,
       module: data.module,
       call: data.call,
-      description: data.description,
+      fees: ethers.utils.formatEther(data.fees),
+      description: data.description.description,
       signer: data.signer,
       nonce: data.nonce,
       signature: data.signature,
       success: data.success,
       args_name: data.argsName,
-      args_value: data.artgsValue
+      args_value: data.argsValue
+    }
+  }
+}
+
+export const getExtrinsicParams = async (id: string) => {
+  const extrinsicResponse = await request(
+    queryExtrinsic(id)
+  )
+
+  if (extrinsicResponse.extrinsicEntities.nodes.length === 0) {
+    return null
+  } else {
+    const data = extrinsicResponse.extrinsicEntities.nodes[0]
+    return {
+      args: data.argsName.map((item: string, index: number) => ({
+        name: data.argsName[index],
+        value: data.argsValue[index]
+      }))
     }
   }
 }

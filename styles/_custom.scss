@@ -42,6 +42,36 @@ input[type=number] {
 			border: solid 2px $white;
 		}
 	}
+	&-info {
+		font-family: "Airbnb Cereal App Bold", sans-serif;
+		transition: all 0.2s;
+		color: white;
+		background: rgba(0, 79, 255, 0.8);
+		border: 5px solid rgba(0, 79, 255, 0.3);
+		border-radius: 911.526px;
+		@extend .px-4;
+		@extend .py-1;
+		
+		@media (max-width: 1280px) {
+			padding-top: 0.3rem !important;
+    	padding-bottom: 0.3rem !important;
+			padding-right: 1.5rem !important;
+    	padding-left: 1.5rem !important;
+		}
+
+		&:hover {
+			color: white;
+			background: #004FFF;
+			border: 5px solid rgba(0, 79, 255, 0.3);
+			border-radius: 911.526px;
+		}
+
+		&:active, &:focus, &:focus-visible, &:focus-within {
+			background: #004FFF;
+			border: 5px solid rgba(0, 79, 255, 0.3);
+			border-radius: 911.526px;
+		}
+	}
 	&-secondary {
 		font-family: "Airbnb Cereal App Bold", sans-serif;
 		font-size: smaller;
@@ -88,14 +118,13 @@ input[type=number] {
 		background-color: $semi-blue;
 		background-origin: border-box;
 		background-clip: content-box, border-box;
-		border: solid 3px $white-blue;
 		&:hover {
-			border: solid 3px $light-blue;
+			border: solid 2px $white-blue;
 		}
 	}
 	&-outline {
 		&-primary {
-			font-family: "Airbnb Cereal App Book", sans-serif;
+			font-family: "Airbnb Cereal App", sans-serif;
 			color: $white;;
 			transition: all 0.2s;
 			box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
@@ -111,7 +140,7 @@ input[type=number] {
 			}
 		}
 		&-error {
-			font-family: "Airbnb Cereal App Book", sans-serif;
+			font-family: "Airbnb Cereal App", sans-serif;
 			color: $white;;
 			transition: all 0.2s;
 			box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
@@ -136,12 +165,30 @@ input[type=number] {
 .tag-for-scroll{
 	overflow-y: auto;
 }
-.table > tbody > tr:nth-child(2n+1) > td, .table > tbody > tr:nth-child(2n+1) > th {
-	background-color: $medium-blue;
+
+.table {
+	background: linear-gradient(90deg, #0E1439 0%, #121339 22.4%, #171139 51.56%, #1B1038 72.4%, #1F0E38 100%);
+	border-radius: 20px;
+}
+
+.table > thead > tr {
+	border-bottom: 1px solid #9f9fff17;
+}
+
+.table > tbody > tr {
+	border-bottom: 1px solid #9f9fff17;
 
 	&:last-child {
-		background-color: rgba(17, 17, 41, 0.7)!important;
+		border-bottom: 0px solid white;
 	}
+}
+
+#parameter > tbody > tr:nth-child(1) > td:nth-child(1) {
+	border-top-left-radius: 30px;
+}
+
+#parameter > tbody > tr:nth-child(1) > td:nth-child(2) {
+	border-top-right-radius: 30px;
 }
 
 .table > tbody > tr:nth-child(2n) > td {
@@ -154,8 +201,8 @@ input[type=number] {
 	vertical-align: middle;
 	@media (max-width: 1280px) {
 		height: 50px;
-		font-size: 10px;
-		line-height: 13px;
+		font-size: 14px;
+		line-height: 18px;
 	}
 }
 
@@ -177,15 +224,15 @@ input[type=number] {
 	text-align: center;
 	vertical-align: middle;
 	color: $grey;
-	font-family: Airbnb Cereal App Book;
+	font-family: Airbnb Cereal App;
 	font-style: normal;
 	font-weight: normal;
 	opacity: 0.4;
 	
 	@media (max-width: 1024px) {
 		height: 55px;
-		font-size: 10px;
-		line-height: 13px;
+		font-size: 12px;
+		line-height: 16px;
 	}
 }
 
@@ -218,48 +265,69 @@ input[type=number] {
 	}
 } 
 
+.title1 {
+	font-family: Airbnb Cereal App Bold;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 23px;
+
+	@media (max-width : 1024px) {
+		font-size: 18px;
+		line-height: 23px;
+		padding-bottom: 10px;
+	}
+}
+
 .title {
 	font-family: Airbnb Cereal App Bold;
 	font-style: normal;
 	font-weight: bold;
-	font-size: 30.798px;
-	line-height: 40px;
-
+	font-size: 20px;
+	line-height: 26px;
+	
 	@media (max-width : 1024px) {
-        font-size: 16px;
-		line-height: 20px;
-    }
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 18px;
+		line-height: 23px;
+	}
 }
 
 .text-large {
 	color: white;
-	font-family: Airbnb Cereal App Book;
+	font-family: Airbnb Cereal App;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 16px !important;
 	line-height: 21px;
 }
 
 .text-small {
 	color: white;
-	font-family: Airbnb Cereal App Book;
+	font-family: Airbnb Cereal App;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 12px;
+	font-size: 12px !important;
 	line-height: 16px;
 }
 
 .text-medium {
 	color: white;
-	font-family: Airbnb Cereal App Book;
+	font-family: Airbnb Cereal App;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 14px !important;
 	line-height: 18px;
 }
 
 .text-opacity {
 	opacity: 0.7;
+}
+
+.text-opacity-8 {
+	opacity: 0.8;
 }
 
 .text-opacity-4 {
@@ -383,17 +451,17 @@ input[type=number] {
 }
 
 .search-gradient{
-	background: linear-gradient(
-		90deg, #FF0062);
-	filter: blur(10px);
-	position: absolute;
-	width: 100%;
-	margin-left: 5px;
-	height: 50px;
-	z-index: 0;
-	top: 2px;
-	left: -5px;
-	border-radius: 25px;
+	@media (-webkit-min-device-pixel-ratio:0) {
+		// border: 2px $first-blue solid;
+		position: absolute;
+		width: 100%;
+		margin-left: 5px;
+		height: 50px;
+		z-index: 0;
+		top: 0px;
+		left: -6px;
+		border-radius: 25px;
+	}
 }
 
 .headerNoSearchBar {
@@ -403,4 +471,169 @@ input[type=number] {
 .no-padding-vertical {
 	padding-left: 0px!important;
 	padding-right: 0px!important;
+}
+
+.custom_table {
+	position: relative;
+	background: linear-gradient(90deg, #0b4bfe47 0%, #b80def42 99.9%);
+	border-radius: 20px;
+	padding-left: 49px;
+	padding-right: 49px;
+	padding-top: 35px;
+	padding-bottom: 33px;
+	@media (max-width : 1024px) {
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+}
+
+.blockTitle {
+	line-height: 16px !important;
+}
+
+.full-opacity {
+	opacity: 1;
+}
+
+.rounded-pill {
+	border-radius: 20px !important;
+}
+
+.description {
+	white-space: pre-line;
+}
+
+a {
+	color: #9F9FFF !important;
+	&:hover {
+		text-decoration: underline !important;
+	}
+}
+
+.all {
+	color: white !important;
+    &:hover {
+		color: #9F9FFF !important;
+        text-decoration: none !important;
+	}
+}
+
+.back {
+	opacity: 0.8;
+	
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.ellipse1 {
+	position: absolute;
+	width: 1400px;
+	height: 1000px;
+	left: 0px;
+	top: 89px;
+
+	background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+	opacity: 0.3;
+	filter: blur(500px);
+	@media (max-width : 1024px) {
+		position: absolute;
+		width: 403px;
+		height: 1215px;
+		left: -9px;
+		top: 0px;
+
+		background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+		opacity: 0.4;
+		filter: blur(500px);
+	}
+}
+
+.ellipse2 {
+	position: absolute;
+	width: 1400px;
+	height: 300px;
+	left: 0px;
+	top: 95px;
+
+	background: linear-gradient(90.13deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.9%);
+	opacity: 0.4;
+	filter: blur(500px); 
+	@media (max-width : 1024px) {
+		position: absolute;
+		width: 403px;
+		height: 700px;
+		left: -9px;
+		top: 0px;
+	
+		background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+		opacity: 0.4;
+		filter: blur(500px);
+	}
+}
+
+.ellipse3 {
+	position: absolute;
+	width: 1400px;
+	height: 150px;
+	left: 0px;
+	top: 95px;
+	
+	background: linear-gradient(90.13deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.9%);
+	opacity: 0.4;
+	filter: blur(500px);
+
+	@media (max-width : 1024px) {
+		position: absolute;
+		width: 403px;
+		height: 400px;
+		left: -9px;
+		top: 0px;
+	
+		background: linear-gradient(90.25deg, rgba(13, 75, 254, 0.8) 0.13%, rgba(184, 14, 239, 0.8) 99.71%);
+		opacity: 0.4;
+		filter: blur(500px);
+	}
+}
+
+.detail {
+	@extend .cursor-point;
+	opacity: 0.9;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.sub_header {
+	@extend .d-flex;
+	@extend .align-items-center;
+	@extend .mb-5;
+	@media (max-width : 1024px) {
+		justify-content: center;
+		margin-bottom: 1rem !important;
+	}
+}
+
+.submenu {
+	@media (max-width : 1024px) {
+		position: absolute;
+    top: -1px;
+    background: linear-gradient( 
+90deg, rgba(11, 75, 254, 0.15) 0%, rgba(184, 13, 239, 0.15) 99.9%);
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 25px;
+		z-index: -1;
+	}
+}
+
+.mobile_back {
+	display: none;
+	@media (max-width : 767px) {
+		display: flex;
+		margin-top: 14px;
+	}
 }

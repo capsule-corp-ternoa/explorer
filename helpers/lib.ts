@@ -1,9 +1,17 @@
-export const ellipsifyMiddle = (address: string, length: number = 28) => {
+export const ellipsifyMiddle = (address: string, length: number = 16) => {
   if (address.length < length) {
     return address
   } else {
     const half = Math.floor(length / 2)
     return address.slice(0, half) + '...' + address.slice(-half)
+  }
+}
+
+export const ellipsifyLast = (address: string, length: number = 6) => {
+  if (address.length < length) {
+    return address
+  } else {
+    return address.slice(0, length) + '...'
   }
 }
 
@@ -14,17 +22,25 @@ export const formatSec = (sec: number) => {
   const month = Math.floor(day / 31)
   const year = Math.floor(day / 365)
 
-  if (sec < 60) {
-    return `${sec} seconds`
+  if (sec < 0) {
+    return '6 seconds'
+  } else if (sec < 60) {
+    if(sec == 1) return `${Math.floor(sec)} second`
+    else return `${Math.floor(sec)} seconds`
   } else if (min < 60) {
-    return `${min} mins`
+    if(min == 1) return `${min} min`
+    else return `${min} mins`
   } else if (hour < 24) {
-    return `${hour} hours`
+    if(hour == 1) return `${hour} hour`
+    else return `${hour} hours`
   } else if (day < 30) {
-    return `${day} days`
+    if(day == 1) return `${day} day`
+    else return `${day} days`
   } else if (month < 12) {
-    return `${month} months`
+    if(month == 1) return `${month} month`
+    else return `${month} months`
   } else {
-    return `${year} years`
+    if(year == 1) return `${year} year`
+    else return `${year} years`
   }
 }

@@ -1,8 +1,8 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
+import * as ethers from 'ethers';
 
-const queryTransferList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryTransferList = (offset: number, pageSize: number) => gql`
 {
   transferEntities(
     first: ${pageSize}
@@ -41,7 +41,7 @@ const queryTransfer = (id: string) => gql`
 }
 `
 
-export const getTransferList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getTransferList = async (offset: number, pageSize: number) => {
   const transferResponse = await request(
     queryTransferList(offset, pageSize)
   )
@@ -53,7 +53,7 @@ export const getTransferList = async (offset: number, pageSize: number = API_PAG
       block_id: transfer.blockId,
       from: transfer.from,
       to: transfer.to,
-      amount: transfer.amount,
+      amount: ethers.utils.formatEther(transfer.amount),
       currency: transfer.currency,
     }))
   }
@@ -73,7 +73,7 @@ export const getTransfer = async (id: string) => {
       block_id: data.blockId,
       from: data.from,
       to: data.to,
-      amount: data.amount,
+      amount: ethers.utils.formatEther(data.amount),
       currency: data.currency,
     }
   }

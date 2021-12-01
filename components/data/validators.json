@@ -16,14 +16,14 @@
         "nonce": 111,
         "active": true,
         "current_roles": "validator",
-        "transactions": [
+        "extrinsics": [
             {
-                "transaction_id": "5556906-2",
+                "extrinsic_id": "5556906-2",
                 "block": 5556906,
                 "module": "Stacking",
                 "call": "payout_stackers",
                 "success": true,
-                "transaction_detail": {
+                "extrinsic_detail": {
                 "account": "P2P.ORG/7",
                 "id": 74,
                 "updated_at_block": 0
@@ -47,14 +47,14 @@
         "nonce": 111,
         "active": true,
         "current_roles": "validator",
-        "transactions": [
+        "extrinsics": [
             {
-                "transaction_id": "5556906-2",
+                "extrinsic_id": "5556906-2",
                 "block": 5556906,
                 "module": "Stacking",
                 "call": "payout_stackers",
                 "success": true,
-                "transaction_detail": {
+                "extrinsic_detail": {
                 "account": "P2P.ORG/7",
                 "id": 74,
                 "updated_at_block": 0
@@ -78,14 +78,14 @@
         "nonce": 111,
         "active": true,
         "current_roles": "validator",
-        "transactions": [
+        "extrinsics": [
             {
-                "transaction_id": "5556906-2",
+                "extrinsic_id": "5556906-2",
                 "block": 5556906,
                 "module": "Stacking",
                 "call": "payout_stackers",
                 "success": true,
-                "transaction_detail": {
+                "extrinsic_detail": {
                 "account": "P2P.ORG/7",
                 "id": 74,
                 "updated_at_block": 0
@@ -109,14 +109,14 @@
         "nonce": 111,
         "active": true,
         "current_roles": "validator",
-        "transactions": [
+        "extrinsics": [
             {
-                "transaction_id": "5556906-2",
+                "extrinsic_id": "5556906-2",
                 "block": 5556906,
                 "module": "Stacking",
                 "call": "payout_stackers",
                 "success": true,
-                "transaction_detail": {
+                "extrinsic_detail": {
                 "account": "P2P.ORG/7",
                 "id": 74,
                 "updated_at_block": 0

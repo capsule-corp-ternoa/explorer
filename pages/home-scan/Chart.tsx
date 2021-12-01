@@ -43,7 +43,7 @@ const ChartCheckbox: React.FC<ChartCheckboxProps> = ({
   </div>
 )
 
-export const TransactionChart: React.FC<ChartProps> = ({
+export const NFTtransfer: React.FC<ChartProps> = ({
   data,
   className
 }) => {
@@ -53,17 +53,47 @@ export const TransactionChart: React.FC<ChartProps> = ({
   return (
     <div className={clsx(style.chartBlock, className)}>
       <div className={clsx("flex flex-row flex-items-center flex-between", style.mMinus50)}>
-        <ChartCheckbox
-          checked={totalTrans}
-          onChange={setTotalTrans}
-          label='Total transaction by day'
-        />
-        <ChartCheckbox
-          checked={newAccount}
-          onChange={setNewAccount}
-          className='ms-3'
-          label='New account by day'
-        />
+        <span className={style.chartLabel}>Total NFT transfers by day</span>
+      </div>
+      <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
+        <ComposedChart
+          width={500}
+          height={400}
+          data={data}
+          margin={chartMargin}
+        >
+          <defs>
+            <linearGradient id="blockUV" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#9F9FFF" stopOpacity={0.2}/>
+              <stop offset="95%" stopColor="#EABBFB" stopOpacity={0}/>
+            </linearGradient>
+          </defs>
+          <XAxis tickLine={false} axisLine={false} dataKey="name" style={{color:'white'}} />
+          <YAxis tick={false} tickLine={false} axisLine={false} />
+          <Tooltip />
+          {newAccount && (
+            <Area type="linear" dataKey="uv" stroke="transparent" fill="url(#blockUV)" />
+          )}
+          {totalTrans && (
+            <Bar dataKey="pv" barSize={25} fill="#9F9FFF" radius={[20,20,20,20]} />
+          )}
+        </ComposedChart>
+      </ResponsiveContainer>
+    </div>
+  )
+}
+
+export const NFTcreation: React.FC<ChartProps> = ({
+  data,
+  className
+}) => {
+  const [totalTrans, setTotalTrans] = useState(true)
+  const [newAccount, setNewAccount] = useState(true)
+
+  return (
+    <div className={clsx(style.chartBlock, className)}>
+      <div className={clsx("flex flex-row flex-items-center flex-between", style.mMinus50)}>
+        <span className={style.chartLabel}>Total NFT creation by day</span>
       </div>
       <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
         <ComposedChart
@@ -129,6 +159,7 @@ export const BlockChart: React.FC<ChartProps> = ({
 }
 
 export default {
-  TransactionChart,
+  NFTtransfer,
+  NFTcreation,
   BlockChart
 }

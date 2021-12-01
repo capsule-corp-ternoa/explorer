@@ -1,8 +1,7 @@
 import { gql } from "graphql-request"
 import request from './api'
-import { API_PAGE_SIZE } from 'helpers/constants'
 
-const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql`
+const queryBlockList = (offset: number, pageSize: number) => gql`
 {
   blockEntities(
     first: ${pageSize}
@@ -22,14 +21,6 @@ const queryBlockList = (offset: number, pageSize: number = API_PAGE_SIZE) => gql
         }
       }
     }
-  }
-}
-`
-
-const queryBlockCount = () => gql`
-{
-  blockEntities {
-    totalCount
   }
 }
 `
@@ -82,36 +73,24 @@ const queryBlock = (id: string) => gql`
 `
 
 export const searchBlock = async (keyword: string) => {
-  if (Number(keyword).toString(10) !== keyword) {
-    return []
-  }
-
   const response = await request(
     queryBlockSearch(keyword)
   )
   return response.blockEntities.nodes
 }
 
-export const getBlockCount = async () => {
-  const response = await request(
-    queryBlockCount()
-  )
-  return response.blockEntities.totalCount
-}
-
-export const getBlockList = async (offset: number, pageSize: number = API_PAGE_SIZE) => {
+export const getBlockList = async (offset: number, pageSize: number) => {
   const blocks = await request(
     queryBlockList(offset, pageSize)
   )
-    
-  const now = Date.now()
-
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   return {
     totalCount: blocks.blockEntities.totalCount,
     data: blocks.blockEntities.nodes.map((block: any) => ({
       number: block.number,
       block_hash: block.hash,
-      age: (now - new Date(block.timestamp).getTime()) / 1000,
+      age: (ms - new Date(block.timestamp).getTime()) / 1000,
       signed_extrinsics: block.extrinsicEntitiesByBlockId.totalCount,
       module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0)
     }))
@@ -127,7 +106,8 @@ export const getBlock = async (id: string) => {
     return null
   } else {
     const block = blockResponse.blockEntities.nodes[0]
-    const now = Date.now()
+    let now = new Date();
+    let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
     return {
       timestamp: block.timestamp,
@@ -135,13 +115,13 @@ export const getBlock = async (id: string) => {
       parent_hash: block.parentHash,
       state_root: block.stateRoot,
       extrinsics_root: block.extrinsicsRoot,
-      transactions: block.extrinsicEntitiesByBlockId.totalCount,
+      extrinsics: block.extrinsicEntitiesByBlockId.totalCount,
       module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
       runtime_version: block.runtimeVersion,
       author: block.author,
       session_id: block.sessionId,
-      age: (now - new Date(block.timestamp).getTime()) / 1000,
-      transaction_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
+      age: (ms - new Date(block.timestamp).getTime()) / 1000,
+      extrinsic_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: id,
         from: tx.signer,
