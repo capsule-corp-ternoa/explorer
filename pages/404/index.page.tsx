@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
-import Error from 'components/assets/Error';
+import ErrorDesktop from 'components/assets/ErrorDesktop';
+import ErrorMobile from 'components/assets/ErrorMobile';
 import Layout from 'components/base/Layout';
 import style from './style.module.scss';
 
@@ -28,10 +29,17 @@ const SearchResult: React.FC<SearchResultProps> = () => {
   }, [mediaQuery])
 
   return (
-    <Layout back='/'>
+    <Layout>
       <div className="ellipse3"></div>
-      <div className="d-flex justify-content-center align-items-center">
-        <Error />
+      <div className="only-desktop">
+        <div className="d-flex justify-content-center align-items-center">
+          <ErrorDesktop />
+        </div>
+      </div>
+      <div className="only-mobile">
+        <div className="d-flex justify-content-center align-items-center">
+          <ErrorMobile />
+        </div>
       </div>
       <div className="d-flex flex-column justify-content-center align-items-center mt-5">
         <div className={style.error + " mb-5"}>Error 404 · page not found</div>
@@ -43,7 +51,7 @@ const SearchResult: React.FC<SearchResultProps> = () => {
         <Link href="/">
           <a className={style.return}>
             <div
-              className={style.returnButton + " d-none d-lg-flex btn btn-info rounded-pill flex-items-center px-5"}
+              className={style.returnButton + " d-flex btn btn-info rounded-pill flex-items-center px-5"}
             >
               Return to Dashboard
             </div>

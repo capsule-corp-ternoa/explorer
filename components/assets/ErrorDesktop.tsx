@@ -1,10 +1,10 @@
 import React from 'react';
 
-interface ErrorProps {
+interface ErrorDesktopProps {
   className?: string;
 }
 
-const Error: React.FC<ErrorProps> = ({ className }) => (
+const ErrorDesktop: React.FC<ErrorDesktopProps> = ({ className }) => (
   <svg className={className} width="551" height="456" viewBox="0 0 551 456" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect opacity="0.25" x="61" y="24" width="437" height="393.95" rx="28" fill="url(#paint0_linear_2401_7169)"/>
   <rect x="81.2498" y="48.8521" width="396.711" height="345.166" rx="27" fill="url(#paint1_linear_2401_7169)"/>
@@ -86,4 +86,4 @@ const Error: React.FC<ErrorProps> = ({ className }) => (
   </svg>
 );
 
-export default Error;
+export default ErrorDesktop;
