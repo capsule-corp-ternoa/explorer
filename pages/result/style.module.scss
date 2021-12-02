@@ -1,10 +1,18 @@
 .resultBlock {
-    height: 240px;
+    height: 180px;
 }
 
 .resultText {
-    font-size: 22px;
+    font-family: Airbnb Cereal App;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+    color: #9C9CBA;
+    opacity: 0.6;
     @media (max-width: 768px) {
-        font-size: 16px;
+        font-size: 18px;
+        line-height: 23px;
+        text-align: center;
     }
 }
