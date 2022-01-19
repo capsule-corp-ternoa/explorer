@@ -1,5 +1,5 @@
 import { gql } from "graphql-request"
-import request from './api'
+import { apiIndexer, apiDictionary } from './api'
 import * as ethers from 'ethers';
 
 const queryAccountList = (offset: number, pageSize: number) => gql`
@@ -37,7 +37,7 @@ const queryAccount = (id: string) => gql`
 
 const queryExtrinsicCounts = (signers: string[]) => gql`
 {
-  extrinsicEntities(
+  extrinsics(
     filter: {
       signer: {
         in: [
@@ -55,7 +55,7 @@ const queryExtrinsicCounts = (signers: string[]) => gql`
 
 const queryAccountLatestExtrinsic = (signer: string, count: number) => gql`
 {
-  extrinsicEntities(
+  extrinsics(
     first: ${count}
     orderBy: NONCE_DESC
     filter: {
@@ -75,17 +75,17 @@ const queryAccountLatestExtrinsic = (signer: string, count: number) => gql`
 `
 
 export const getAccountList = async (offset: number, pageSize: number) => {
-  const accounts = await request(
+  const accounts = await apiIndexer(
     queryAccountList(offset, pageSize)
   )
 
-  const extrinsics = await request(
+  const extrinsics = await apiDictionary(
     queryExtrinsicCounts(accounts.accountEntities.nodes.map((acc: any) => acc.id))
   )
 
   const count: any = {}
 
-  extrinsics.extrinsicEntities.nodes.forEach((tx: any) => {
+  extrinsics.extrinsics.nodes.forEach((tx: any) => {
     if (count[tx.signer] === undefined) {
       count[tx.signer] = 1
     } else {
@@ -104,7 +104,7 @@ export const getAccountList = async (offset: number, pageSize: number) => {
 }
 
 export const searchAccount = async (id: string) => {
-  const response = await request(
+  const response = await apiIndexer(
     queryAccount(id)
   )
   return response.accountEntities.nodes
@@ -112,10 +112,10 @@ export const searchAccount = async (id: string) => {
 
 export const getAccount = async (id: string, lastExtrinsicCount: number) => {
   const [account, extrinsics] = await Promise.all([
-    request(
+    apiIndexer(
       queryAccount(id)
     ),
-    request(
+    apiDictionary(
       queryAccountLatestExtrinsic(id, lastExtrinsicCount)
     )
   ])
@@ -132,10 +132,10 @@ export const getAccount = async (id: string, lastExtrinsicCount: number) => {
       active: acc.capsAmountTotal > 0
     }
 
-    if (extrinsics.extrinsicEntities.nodes.length) {
-      const tx = extrinsics.extrinsicEntities.nodes[0]
+    if (extrinsics.extrinsics.nodes.length) {
+      const tx = extrinsics.extrinsics.nodes[0]
       data.nonce = tx.nonce + 1
-      data.last_extrinsics = extrinsics.extrinsicEntities.nodes.map((tx: any) => ({
+      data.last_extrinsics = extrinsics.extrinsics.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: tx.blockId,
         module: tx.module,
