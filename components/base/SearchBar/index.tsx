@@ -48,7 +48,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           onFocus={(e) => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onKeyDown={(e) => {
-            if (e.keyCode === 13) searchAll()
+            if (e.key === 'Enter') searchAll()
           }}
         />
         <div className={style.searchIcon + " cursor-point " + (props.isLarge? "d-none" : "")} onClick={() => searchAll()}>
