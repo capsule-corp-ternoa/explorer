@@ -10,7 +10,7 @@ const queryEventList = (offset: number, pageSize: number) => gql`
       and: [
       ]
     }
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     totalCount
     nodes {

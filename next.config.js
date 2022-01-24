@@ -21,5 +21,6 @@ module.exports = {
   target: 'experimental-serverless-trace',
   env: {
     INDEXER_BASE_URL: process.env.INDEXER_BASE_URL,
+    DICTIONARY_BASE_URL: process.env.DICTIONARY_BASE_URL,
   }
 }

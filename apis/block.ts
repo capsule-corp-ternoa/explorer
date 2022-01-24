@@ -91,8 +91,8 @@ export const getBlockList = async (offset: number, pageSize: number) => {
       number: block.number,
       block_hash: block.hash,
       age: (ms - new Date(block.timestamp).getTime()) / 1000,
-      signed_extrinsics: block.extrinsicsByBlockId.totalCount,
-      module_events: block.extrinsicsByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0)
+      signed_extrinsics: block.extrinsics.totalCount,
+      module_events: block.extrinsics.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0)
     }))
   }
 }
@@ -115,13 +115,13 @@ export const getBlock = async (id: string) => {
       parent_hash: block.parentHash,
       state_root: block.stateRoot,
       extrinsics_root: block.extrinsicsRoot,
-      extrinsics: block.extrinsicsByBlockId.totalCount,
-      module_events: block.extrinsicsByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
+      extrinsics: block.extrinsics.totalCount,
+      module_events: block.extrinsics.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
       runtime_version: block.runtimeVersion,
       author: block.author,
       session_id: block.sessionId,
       age: (ms - new Date(block.timestamp).getTime()) / 1000,
-      extrinsic_detail: block.extrinsicsByBlockId.nodes.map((tx: any) => ({
+      extrinsic_detail: block.extrinsics.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: id,
         from: tx.signer,
