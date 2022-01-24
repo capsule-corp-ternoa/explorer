@@ -17,8 +17,7 @@
     "graphql": "16.0.1",
     "graphql-request": "^3.6.1",
     "meow": "10.1.2",
-    "next": "11.1.2",
-    "node-sass": "^5.0.0",
+    "next": "^12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-intl": "5.21.2",
@@ -27,6 +26,7 @@
     "react-responsive-modal": "^6.1.0",
     "reactstrap": "9.0.1",
     "recharts": "^2.1.6",
+    "sass": "^1.49.0",
     "trim-newlines": "4.0.2",
     "unescape-js": "^1.1.4",
     "via": "0.0.1"
@@ -34,10 +34,6 @@
   "devDependencies": {
     "@types/react": "17.0.11",
     "eslint": "7.32.0",
-    "typescript": "4.3.2"
-  },
-  "engines": {
-    "node": "14.17.1",
-    "npm": "6.14.13"
+    "typescript": "4.5.5"
   }
 }
