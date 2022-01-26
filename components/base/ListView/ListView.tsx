@@ -65,11 +65,7 @@ const ListView: React.FC<TableProps> = ({
         ))}
       </tbody>
     </table>
-    <div>
-      {footer && (
-         footer
-        )}
-    </div>
+    {footer && footer}
   </>
 )}
 

@@ -147,12 +147,12 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             />
           </div>
         </div>
-        <div className="col-12 col-md-6 only-desktop only-mobile">
+        {/* <div className="col-12 col-md-6 only-desktop only-mobile">
           <NFTtransfer data={statData} className='mt-4' />
         </div>
         <div className="col-12 col-md-6 only-desktop only-mobile">
           <NFTcreation data={statData} className='mt-4' />
-        </div>
+        </div> */}
       </div>
     </Layout>
   )
