@@ -47,7 +47,7 @@ const queryEventSearchbyBlock = (keyword: string) => gql`
     filter: {
       blockId: { equalTo: "${keyword}" }
     }
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     nodes {
       id
@@ -74,7 +74,7 @@ const queryEventSearchbyExtrinsic = (keyword: string) => gql`
     filter: {
       extrinsicId: { equalTo: "${keyword}" }
     }
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     nodes {
       id
@@ -102,7 +102,7 @@ const queryEvent = (id: string) => gql`
     filter: {
       id: { equalTo: "${id}" }
     }
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     nodes {
       id
@@ -149,7 +149,7 @@ export const searchEventbyBlock = async (keyword: string) => {
       id: item.id,
       blockId: item.blockId,
       age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
-      hash: (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash,
+      hash: item.extrinsicId ? (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash : "System event",
       action: item.module + '(' + item.call + ')'
     })))
   }
@@ -169,7 +169,7 @@ export const searchEventbyExtrinsic = async (keyword: string) => {
       id: item.id,
       blockId: item.blockId,
       age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
-      hash: (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash,
+      hash: item.extrinsicId ? (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash : "System event",
       action: item.module + '(' + item.call + ')'
     })))
   }
@@ -189,7 +189,7 @@ export const getEventList = async (offset: number, pageSize: number) => {
       id: item.id,
       blockId: item.blockId,
       age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
-      hash: (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash,
+      hash: item.extrinsicId ? (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash : "System event",
       action: item.module + '(' + item.call + ')'
     })))
   }

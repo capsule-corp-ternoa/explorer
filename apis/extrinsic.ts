@@ -124,7 +124,7 @@ export const getExtrinsic = async (id: string) => {
       hash: data.hash,
       module: data.module,
       call: data.call,
-      fees: ethers.utils.formatEther(data.fees),
+      fees: data.fees ? ethers.utils.formatEther(data.fees) : "",
       description: data.description.description,
       signer: data.signer,
       nonce: data.nonce,
