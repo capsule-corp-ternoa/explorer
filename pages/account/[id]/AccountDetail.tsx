@@ -23,7 +23,7 @@ enum DetailMode {
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
   const router = useRouter();
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<any>({});
   const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.ID);
   const [page, setPage] = useState<number>(0);
   const [totalCount, setTotalCount] = useState<number>(0)
@@ -31,7 +31,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   const id = router.query.id as string;
   const offset = page * pageSize
 
-  const getAccountData = async (id : string, page: number, pageSize : number) => {
+  const getAccountData = async (id : string, offset: number, pageSize : number) => {
     try{
       if (!id) throw new Error("Couldn't get data: Unknown id")
       const accountDatas =  await getAccount(id, offset, pageSize)
@@ -41,10 +41,10 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
       console.log(err)
     }
   }
-  const loadNextExtrinsics = () =>{
+  const loadNextDatas = () =>{
     data && data.hasNextPage && setPage(page +1)
   }
-  const loadPreviousExtrinsics = () =>{
+  const loadPreviousDatas = () =>{
     data && data.hasPreviousPage && setPage(page -1)
   }
   const selectCount = (count: number) => {
@@ -53,7 +53,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   }
   
   useEffect(() => {
-    id && getAccountData(id, page, pageSize);
+    id && getAccountData(id, offset, pageSize);
   },[id, page, pageSize]);
   
   if (!id) {
@@ -92,7 +92,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
                 <div className="d-flex justify-content-between align-items-center mt-sm-4">
                   <MaxCount count={pageSize} onSelectCount={selectCount}/>
                   {/* <Pagination page={page} data={data} setPage={setPage} totalPage={Math.ceil(totalCount / pageSize)} /> */}
-                  <Pagination page={page} loadNextDatas={loadNextExtrinsics} loadPreviousDatas={loadPreviousExtrinsics} data={data} totalPage={Math.ceil(totalCount / pageSize)} />
+                  <Pagination page={page} loadNextDatas={loadNextDatas} loadPreviousDatas={loadPreviousDatas} data={data} totalPage={Math.ceil(totalCount / pageSize)} />
                 </div>
               )}
             />

@@ -100,8 +100,8 @@ export const getNftTransferList = async (offset: number, pageSize: number) => {
   )
   return {
     totalCount: transferResponse.nftTransferEntities.totalCount,
-    hasNextPage : transferResponse.nftTransferEntities.hasNextPage,
-    hasPreviousPage : transferResponse.nftTransferEntities.hasPreviousPage,
+    hasNextPage : transferResponse.nftTransferEntities.pageInfo.hasNextPage,
+    hasPreviousPage : transferResponse.nftTransferEntities.pageInfo.hasPreviousPage,
     data: transferResponse.nftTransferEntities.nodes.map((transfer: any) => ({
       id: transfer.id,
       timestamp: transfer.timestamp,

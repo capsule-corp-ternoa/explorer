@@ -52,8 +52,8 @@ export const getTransferList = async (offset: number, pageSize: number) => {
     
   return {
     totalCount: transferResponse.transferEntities.totalCount,
-    hasNextPage : transferResponse.transferEntities.hasNextPage,
-    hasPreviousPage : transferResponse.transferEntities.hasPreviousPage,
+    hasNextPage : transferResponse.transferEntities.pageInfo.hasNextPage,
+    hasPreviousPage : transferResponse.transferEntities.pageInfo.hasPreviousPage,
     data: transferResponse.transferEntities.nodes.map((transfer: any) => ({
       id: transfer.id,
       block_id: transfer.blockId,
