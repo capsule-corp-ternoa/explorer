@@ -1,26 +1,23 @@
-// import { Dispatch} from 'react';
+import { Dispatch} from 'react';
 import LeftArrow from 'components/assets/LeftArrow';
 import RightArrow from 'components/assets/RightArrow';
 import style from './Pagination.module.scss';
 
 export interface PaginationProps {
   page: number
+  setPage: Dispatch<React.SetStateAction<number>>
   data: any
-  loadNextDatas: ()=>void
-  loadPreviousDatas: ()=>void
-  // setPage: Dispatch<React.SetStateAction<number>>
   totalPage: number
 }
 
-// const loadNextExtrinsics = (data : any, page: number, setPage:any ) =>{
-//   data && data.hasNextPage && setPage(page +1)
-// }
+const Pagination: React.FC<PaginationProps> = ({ data, page, totalPage, setPage }) => {
+  const loadNextDatas = () =>{
+    data && data.hasNextPage && setPage(page +1)
+  }
+  const loadPreviousDatas = () =>{
+    data && data.hasPreviousPage && setPage(page -1)
+  }
 
-// const loadPreviousExtrinsics = (data : any, page: number, setPage:any) =>{
-//   data && data.hasPreviousPage && setPage(page -1)
-// }
-
-const Pagination: React.FC<PaginationProps> = ({ data, page, totalPage, loadNextDatas, loadPreviousDatas }) => {
   return (
     <div className="d-flex justify-content-center align-items-center">
       {data && data.hasPreviousPage ? (
@@ -40,7 +37,7 @@ const Pagination: React.FC<PaginationProps> = ({ data, page, totalPage, loadNext
         <span>{totalPage}</span>
       </div>
       {data && data.hasNextPage ? (
-        <div onClick={()=>loadNextDatas()} className={style.button}>
+        <div onClick={loadNextDatas} className={style.button}>
           <RightArrow opacity={1}/>
         </div>
       ) : (

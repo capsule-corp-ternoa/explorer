@@ -41,12 +41,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
       console.log(err)
     }
   }
-  const loadNextDatas = () =>{
-    data && data.hasNextPage && setPage(page +1)
-  }
-  const loadPreviousDatas = () =>{
-    data && data.hasPreviousPage && setPage(page -1)
-  }
+  
   const selectCount = (count: number) => {
     setPage(0)
     setPageSize(count);
@@ -91,8 +86,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
               footer={(
                 <div className="d-flex justify-content-between align-items-center mt-sm-4">
                   <MaxCount count={pageSize} onSelectCount={selectCount}/>
-                  {/* <Pagination page={page} data={data} setPage={setPage} totalPage={Math.ceil(totalCount / pageSize)} /> */}
-                  <Pagination page={page} loadNextDatas={loadNextDatas} loadPreviousDatas={loadPreviousDatas} data={data} totalPage={Math.ceil(totalCount / pageSize)} />
+                  <Pagination page={page} data={data} setPage={setPage} totalPage={Math.ceil(totalCount / pageSize)} />
                 </div>
               )}
             />
