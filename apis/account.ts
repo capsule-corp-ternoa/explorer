@@ -10,6 +10,10 @@ const queryAccountList = (offset: number, pageSize: number) => gql`
     orderBy: CAPS_AMOUNT_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       capsAmount # FREE BALANCE
@@ -101,6 +105,8 @@ export const getAccountList = async (offset: number, pageSize: number) => {
 
   return {
     totalCount: accounts.accountEntities.totalCount,
+    hasNextPage : accounts.accountEntities.pageInfo.hasNextPage,
+    hasPreviousPage : accounts.accountEntities.pageInfo.hasPreviousPage,
     data: accounts.accountEntities.nodes.map((account: any) => ({
       address: account.id,
       amount: ethers.utils.formatEther(account.capsAmount),

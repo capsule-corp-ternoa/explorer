@@ -6,13 +6,13 @@ const queryEventList = (offset: number, pageSize: number) => gql`
   eventEntities(
     first: ${pageSize}
     offset: ${offset}
-    filter: {
-      and: [
-      ]
-    }
     orderBy: CREATED_AT_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       blockId
@@ -185,6 +185,8 @@ export const getEventList = async (offset: number, pageSize: number) => {
   
   return {
     totalCount: response.eventEntities.totalCount,
+    hasNextPage : response.eventEntities.pageInfo.hasNextPage,
+    hasPreviousPage : response.eventEntities.pageInfo.hasPreviousPage,
     data: await Promise.all<any>(response.eventEntities.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,

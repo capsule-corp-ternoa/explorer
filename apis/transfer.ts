@@ -10,6 +10,10 @@ const queryTransferList = (offset: number, pageSize: number) => gql`
     orderBy: TIMESTAMP_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       blockId
@@ -48,6 +52,8 @@ export const getTransferList = async (offset: number, pageSize: number) => {
     
   return {
     totalCount: transferResponse.transferEntities.totalCount,
+    hasNextPage : transferResponse.transferEntities.hasNextPage,
+    hasPreviousPage : transferResponse.transferEntities.hasPreviousPage,
     data: transferResponse.transferEntities.nodes.map((transfer: any) => ({
       id: transfer.id,
       block_id: transfer.blockId,

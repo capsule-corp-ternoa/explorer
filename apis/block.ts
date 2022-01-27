@@ -9,6 +9,10 @@ const queryBlockList = (offset: number, pageSize: number) => gql`
     orderBy: TIMESTAMP_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       number
@@ -87,6 +91,8 @@ export const getBlockList = async (offset: number, pageSize: number) => {
   let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   return {
     totalCount: blocks.blockEntities.totalCount,
+    hasNextPage : blocks.blockEntities.pageInfo.hasNextPage,
+    hasPreviousPage : blocks.blockEntities.pageInfo.hasPreviousPage,
     data: blocks.blockEntities.nodes.map((block: any) => ({
       number: block.number,
       block_hash: block.hash,

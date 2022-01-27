@@ -10,6 +10,10 @@ const queryExtrinsicList = (offset: number, pageSize: number) => gql`
     orderBy: TIMESTAMP_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       blockId
@@ -88,6 +92,8 @@ export const getExtrinsicList = async (offset: number, pageSize: number) => {
 
   return {
     totalCount: response.extrinsicEntities.totalCount,
+    hasNextPage : response.extrinsicEntities.pageInfo.hasNextPage,
+    hasPreviousPage : response.extrinsicEntities.pageInfo.hasPreviousPage,
     data: response.extrinsicEntities.nodes.map((item: any) => ({
       id: item.id,
       block_id: item.blockId,
