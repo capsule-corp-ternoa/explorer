@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { FormattedDate } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import Check from 'components/assets/Check';
+import Close from 'components/assets/Close';
 import Detail from 'components/assets/Detail';
 import Copy from 'components/assets/Copy';
 import { ellipsifyMiddle, ellipsifyLast, formatSec } from 'helpers/lib';
@@ -94,7 +95,7 @@ export const extrinsicRender = (record: any, dataKey: string) => {
       )
 
     case 'success':
-      return record[dataKey] ? <Check className="webCheckIcon" /> : null
+      return record[dataKey] ? <Check className="webCheckIcon" /> : <Close className="webCheckIcon"/>
 
     case 'detail':
       return (

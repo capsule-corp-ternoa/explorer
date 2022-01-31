@@ -1,0 +1,28 @@
+.testnetWrapper{
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    border: 1px solid #14FFC6;
+    border-radius: 20px;
+    background-color: #070714;
+    text-decoration: none !important;
+    color:#14FFC6 !important;
+    font-size: 12px;
+    margin-top:5px;
+    margin-left:15px;
+    div{
+        background: #14FFC6;
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        border-radius: 50px;
+    }
+    &:hover{
+        text-decoration: none !important;
+        background-color: #14FFC6;
+        color: #070714 !important;
+        div{
+            background: #070714 ;
+        }
+    }
+}

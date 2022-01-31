@@ -11,7 +11,7 @@ import Event from 'components/assets/MenuIcons/Event';
 import NFT from 'components/assets/MenuIcons/NFT';
 import Extrinsic from 'components/assets/MenuIcons/Extrinsic';
 import Transfer from 'components/assets/MenuIcons/Transfer';
-import Testnet from 'components/assets/Testnet';
+import Testnet from 'components/assets/Testnet/index';
 import Hamburger from 'components/assets/Hamburger';
 import Search from 'components/assets/Search';
 import SearchBar from '../SearchBar';
@@ -98,13 +98,13 @@ const Header: React.FC<HeaderProps> = (props) => {
     return (
         <header>
             { <div className="only-desktop"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
-                <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
+                <div className="d-flex align-items-center px-0 col col-md-2 col-lg-2">
                     <Link href="/">
                         <a>
                             <LogoTernoaExplorer />
                         </a>
                     </Link>
-                    <div className="mt-3 ms-4">
+                    <div>
                         <Testnet />
                     </div>
                 </div>
@@ -196,13 +196,13 @@ const Header: React.FC<HeaderProps> = (props) => {
             </div></div> }
             
             { !props.back && <div className="only-mobile"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
-                <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
+                <div className={'d-flex align-items-center px-0 col col-md-2 col-lg-2'}>
                     <Link href="/">
                         <a>
                             <LogoTernoaExplorer />
                         </a>
                     </Link>
-                    <div className="mt-3 ms-4">
+                    <div>
                         <Testnet />
                     </div>
                 </div>
