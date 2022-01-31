@@ -13,7 +13,6 @@ import Extrinsic from 'components/assets/MenuIcons/Extrinsic';
 import Transfer from 'components/assets/MenuIcons/Transfer';
 import Testnet from 'components/assets/Testnet/index';
 import Hamburger from 'components/assets/Hamburger';
-import Search from 'components/assets/Search';
 import SearchBar from '../SearchBar';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
@@ -97,307 +96,300 @@ const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <header>
-            { <div className="only-desktop"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
-                <div className="d-flex align-items-center px-0 col col-md-2 col-lg-2">
-                    <Link href="/">
-                        <a>
-                            <LogoTernoaExplorer />
-                        </a>
-                    </Link>
-                    <div>
-                        <Testnet />
+            <div className="only-desktop">
+                <div className={`${style.header} row px-0`}>
+                    <div className="d-flex align-items-center px-0 col col-md-2">
+                        <Link href="/">
+                            <a><LogoTernoaExplorer /></a>
+                        </Link>
+                        <div><Testnet /></div>
                     </div>
-                </div>
-                <div className="d-block d-md-none col no-padding-vertical">
-                    <div className="flex flex-cont-end">
-                        <div onClick={() => openMenu()}>
-                            <Hamburger className={style.hamburger + " mx-2"} />
+                    <div className="d-block d-md-none col px-0">
+                        <div className="d-flex justify-content-end">
+                            <div onClick={() => openMenu()}>
+                                <Hamburger className={`${style.hamburger} mx-2`} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="px-0 col-md-5">
+                        {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
+                    </div>
+                    <div className="d-none d-md-block col-md-3 px-0">
+                        <div className="d-flex justify-content-end align-items-center">
+                            <span className={style.navBarDash}>
+                                <Link href="/">
+                                    <a className={style.navBarDash}>
+                                        Dashboard
+                                    </a>
+                                </Link>
+                            </span>
+                            <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={`${style.navBarDropdown} mx-2 mx-lg-3 mx-xl-4`}>
+                                <DropdownToggle
+                                    className={style.navBarDropdownItem}
+                                    id="page-header-user-dropdown"
+                                    tag="button"
+                                >
+                                    <div className="flex flex-row flex-items-center">
+                                        <span className={style.navBarItem}>Chain</span>
+                                        <DownArrow className={style.downArrowItem} />
+                                    </div>
+                                </DropdownToggle>
+                                <DropdownMenu className={style.dropdownMenu} end>
+                                    <div className={style.dropdownItem}>
+                                        <Link href="/block">
+                                            <a><Block className={style.dropdownItem}/></a>
+                                        </Link>
+                                    </div>
+                                    <div className={style.dropdownItem}>
+                                        <Link href="/extrinsic">
+                                            <a><Extrinsic className={style.dropdownItem}/></a>
+                                        </Link>
+                                    </div>
+                                    <div className={style.dropdownItem}>
+                                        <Link href="/nft">
+                                            <a><NFT className={style.dropdownItem}/></a>
+                                        </Link>
+                                    </div>
+                                    <div className={style.dropdownItem}>
+                                        <Link href="/event">
+                                            <a><Event className={style.dropdownItem}/></a>
+                                        </Link>
+                                    </div>
+                                </DropdownMenu>
+                            </Dropdown>
+
+                            <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
+                                <DropdownToggle
+                                    className={style.navBarDropdownItem}
+                                    id="page-header-user-dropdown"
+                                    tag="button"
+                                >
+                                    <div className="d-flex flex-row align-items-center">
+                                        <span className={style.navBarItem}>Accounts</span>
+                                        <DownArrow className={style.downArrowItem} />
+                                    </div>
+                                </DropdownToggle>
+                                <DropdownMenu className={style.dropdownMenu} end>
+                                    <div className={style.dropdownItem}>
+                                        <Link href='/account'>
+                                            <a>
+                                            <Account className={style.dropdownItem}/>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                    <div className={style.dropdownItem}>
+                                        <Link href='/trans'>
+                                            <a>
+                                            <Transfer className={style.dropdownItem}/>
+                                            </a>
+                                        </Link>
+                                    </div>
+                                </DropdownMenu>
+                            </Dropdown>
                         </div>
                     </div>
                 </div>
-                
-                <div className={'no-padding-vertical col-md-5 col-lg-4 ' + style.searchBoxContainer}>
-                    {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
-                </div>
-                <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
-                    <div className={'flex flex-cont-end flex-items-center '}>
-                        <span className={style.navBarDash}>
+            </div>
+            {!props.back && 
+                <div className="only-mobile">
+                    <div className={`${style.header} row px-0`}>
+                        <div className="d-flex align-items-center px-0 col col-md-2">
                             <Link href="/">
-                                <a className={style.navBarDash}>
-                                    Dashboard
+                                <a><LogoTernoaExplorer /></a>
+                            </Link>
+                            <div><Testnet /></div>
+                        </div>
+                        <div className="d-block d-md-none col px-0">
+                            <div className="d-flex justify-content-end">
+                                <div onClick={() => openMenu()}>
+                                    <Hamburger className={`${style.hamburger} mx-2`} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-4 px-0 mt-4 mt-md-0">
+                            {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
+                        </div>
+                        <div className="d-none d-md-block col-md-3 px-0">
+                            <div className="flex justify-content-end flex-items-center">
+                                <span className={style.navBarDash}>
+                                    <Link href="/">
+                                        <a className={style.navBarDash}>
+                                            Dashboard
+                                        </a>
+                                    </Link>
+                                </span>
+                                <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={`${style.navBarDropdown} mx-2 mx-md-2 mx-lg-3 mx-xl-4`}>
+                                    <DropdownToggle
+                                        className={style.navBarDropdownItem}
+                                        id="page-header-user-dropdown"
+                                        tag="button"
+                                    >
+                                        <div className="flex flex-row flex-items-center">
+                                            <span className={style.navBarItem}>Chain</span>
+                                            <DownArrow className={style.downArrowItem} />
+                                        </div>
+                                    </DropdownToggle>
+                                    <DropdownMenu className={style.dropdownMenu} end>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/block">
+                                                <a><Block className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/extrinsic">
+                                                <a><Extrinsic className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/nft">
+                                                <a><NFT className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/event">
+                                                <a><Event className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                    </DropdownMenu>
+                                </Dropdown>
+
+                                <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
+                                    <DropdownToggle
+                                        className={style.navBarDropdownItem}
+                                        id="page-header-user-dropdown"
+                                        tag="button"
+                                    >
+                                        <div className="flex flex-row flex-items-center">
+                                            <span className={style.navBarItem}>Accounts</span>
+                                            <DownArrow className={style.downArrowItem} />
+                                        </div>
+                                    </DropdownToggle>
+                                    <DropdownMenu className={style.dropdownMenu} end>
+                                        <div className={style.dropdownItem}>
+                                            <Link href='/account'>
+                                                <a>
+                                                <Account className={style.dropdownItem}/>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href='/trans'>
+                                                <a>
+                                                <Transfer className={style.dropdownItem}/>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            }
+            {props.back && 
+                <div className="only-mobile">
+                    <div className={`${style.header} row`}>
+                        <div className="col col-md-1 d-flex justify-content-start">
+                            <Link href={props.back}>
+                                <a>
+                                    <BackMobile />
                                 </a>
                             </Link>
-                        </span>
-                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
-                            <DropdownToggle
-                                className={style.navBarDropdownItem}
-                                id="page-header-user-dropdown"
-                                tag="button"
-                            >
-                                <div className="flex flex-row flex-items-center">
-                                    <span className={style.navBarItem}>Chain</span>
-                                    <DownArrow className={style.downArrowItem} />
+                        </div>
+                        <div className="col d-flex justify-content-center">
+                            <Link href="/">
+                                <a>
+                                    <LogoTernoaExplorer />
+                                </a>
+                            </Link>
+                        </div>
+                        <div className="d-block d-md-none col px-0 mx-0">
+                            <div className="d-flex justify-content-end">
+                                <div onClick={() => openMenu()}>
+                                    <Hamburger className={`${style.hamburger } mx-2`} />
                                 </div>
-                            </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/block">
-                                        <a><Block className={style.dropdownItem}/></a>
+                            </div>
+                        </div>
+                        <div className="col-md-5 col-lg-5 mt-4 mt-md-0 px-0">
+                            {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
+                        </div>
+                        <div className="d-none d-md-block col-md-2 col-lg-3 px-0">
+                            <div className="d-flex justify-content-end align-items-center">
+                                <span className={style.navBarDash}>
+                                    <Link href="/">
+                                        <a className={style.navBarDash}>
+                                            Dashboard
+                                        </a>
                                     </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/extrinsic">
-                                        <a><Extrinsic className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/nft">
-                                        <a><NFT className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/event">
-                                        <a><Event className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                            </DropdownMenu>
-                        </Dropdown>
+                                </span>
+                                <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={`${style.navBarDropdown} mx-2 mx-lg-3 mx-xl-4`}>
+                                    <DropdownToggle
+                                        className={style.navBarDropdownItem}
+                                        id="page-header-user-dropdown"
+                                        tag="button"
+                                    >
+                                        <div className="flex flex-row flex-items-center">
+                                            <span className={style.navBarItem}>Chain</span>
+                                            <DownArrow className={style.downArrowItem} />
+                                        </div>
+                                    </DropdownToggle>
+                                    <DropdownMenu className={style.dropdownMenu} end>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/block">
+                                                <a><Block className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/extrinsic">
+                                                <a><Extrinsic className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/nft">
+                                                <a><NFT className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href="/event">
+                                                <a><Event className={style.dropdownItem}/></a>
+                                            </Link>
+                                        </div>
+                                    </DropdownMenu>
+                                </Dropdown>
 
-                        <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
-                            <DropdownToggle
-                                className={style.navBarDropdownItem}
-                                id="page-header-user-dropdown"
-                                tag="button"
-                            >
-                                <div className="flex flex-row flex-items-center">
-                                    <span className={style.navBarItem}>Accounts</span>
-                                    <DownArrow className={style.downArrowItem} />
-                                </div>
-                            </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
-                                <div className={style.dropdownItem}>
-                                    <Link href='/account'>
-                                        <a>
-                                        <Account className={style.dropdownItem}/>
-                                        </a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href='/trans'>
-                                        <a>
-                                        <Transfer className={style.dropdownItem}/>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </DropdownMenu>
-                        </Dropdown>
-                    </div>
-                </div>
-            </div></div> }
-            
-            { !props.back && <div className="only-mobile"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
-                <div className={'d-flex align-items-center px-0 col col-md-2 col-lg-2'}>
-                    <Link href="/">
-                        <a>
-                            <LogoTernoaExplorer />
-                        </a>
-                    </Link>
-                    <div>
-                        <Testnet />
-                    </div>
-                </div>
-                <div className="d-block d-md-none col no-padding-vertical">
-                    <div className="flex flex-cont-end">
-                        <div onClick={() => openMenu()}>
-                            <Hamburger className={style.hamburger + " mx-2"} />
+                                <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
+                                    <DropdownToggle
+                                        className={style.navBarDropdownItem}
+                                        id="page-header-user-dropdown"
+                                        tag="button"
+                                    >
+                                        <div className="flex flex-row flex-items-center">
+                                            <span className={style.navBarItem}>Accounts</span>
+                                            <DownArrow className={style.downArrowItem} />
+                                        </div>
+                                    </DropdownToggle>
+                                    <DropdownMenu className={style.dropdownMenu} end>
+                                        <div className={style.dropdownItem}>
+                                            <Link href='/account'>
+                                                <a>
+                                                <Account className={style.dropdownItem}/>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                        <div className={style.dropdownItem}>
+                                            <Link href='/trans'>
+                                                <a>
+                                                <Transfer className={style.dropdownItem}/>
+                                                </a>
+                                            </Link>
+                                        </div>
+                                    </DropdownMenu>
+                                </Dropdown>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div className={'no-padding-vertical col-md-5 col-lg-4 ' + style.searchBoxContainer}>
-                    {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
-                </div>
-                <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
-                    <div className={'flex flex-cont-end flex-items-center '}>
-                        <span className={style.navBarDash}>
-                            <Link href="/">
-                                <a className={style.navBarDash}>
-                                    Dashboard
-                                </a>
-                            </Link>
-                        </span>
-                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
-                            <DropdownToggle
-                                className={style.navBarDropdownItem}
-                                id="page-header-user-dropdown"
-                                tag="button"
-                            >
-                                <div className="flex flex-row flex-items-center">
-                                    <span className={style.navBarItem}>Chain</span>
-                                    <DownArrow className={style.downArrowItem} />
-                                </div>
-                            </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/block">
-                                        <a><Block className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/extrinsic">
-                                        <a><Extrinsic className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/nft">
-                                        <a><NFT className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/event">
-                                        <a><Event className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                            </DropdownMenu>
-                        </Dropdown>
-
-                        <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
-                            <DropdownToggle
-                                className={style.navBarDropdownItem}
-                                id="page-header-user-dropdown"
-                                tag="button"
-                            >
-                                <div className="flex flex-row flex-items-center">
-                                    <span className={style.navBarItem}>Accounts</span>
-                                    <DownArrow className={style.downArrowItem} />
-                                </div>
-                            </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
-                                <div className={style.dropdownItem}>
-                                    <Link href='/account'>
-                                        <a>
-                                        <Account className={style.dropdownItem}/>
-                                        </a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href='/trans'>
-                                        <a>
-                                        <Transfer className={style.dropdownItem}/>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </DropdownMenu>
-                        </Dropdown>
-                    </div>
-                </div>
-            </div></div> }
-            
-            { props.back && <div className="only-mobile"><div className={style.header + ' row no-padding-vertical ' + ((props.searchBar || props.searchBar == undefined)? '': ' headerNoSearchBar')}>
-                <div className={'no-padding-vertical col col-md-2 col-lg-2 flex flex-cont-start'}>
-                    <Link href={props.back}>
-                        <a>
-                            <BackMobile />
-                        </a>
-                    </Link>
-                    {/* <div className="mt-3 ms-4">
-                        <Testnet />
-                    </div> */}
-                </div>
-                <div className="col flex flex-cont-center no-padding-vertical">
-                    <Link href="/">
-                        <a>
-                            <LogoTernoaExplorer />
-                        </a>
-                    </Link>
-                </div>
-                <div className="d-block d-md-none col no-padding-vertical">
-                    <div className="flex flex-cont-end">
-                        <div onClick={() => openMenu()}>
-                            <Hamburger className={style.hamburger + " mx-2"} />
-                        </div>
-                    </div>
-                </div>
-                
-                <div className={'no-padding-vertical col-md-5 col-lg-4 ' + style.searchBoxContainer}>
-                    {(props.searchBar || props.searchBar == undefined) && <SearchBar />}
-                </div>
-                <div className={'d-none d-md-block col-md-3 col-lg-3 no-padding-vertical'}>
-                    <div className={'flex flex-cont-end flex-items-center '}>
-                        <span className={style.navBarDash}>
-                            <Link href="/">
-                                <a className={style.navBarDash}>
-                                    Dashboard
-                                </a>
-                            </Link>
-                        </span>
-                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={style.navBarDropdown + ' mx-2 mx-md-2 mx-lg-3 mx-xl-4'}>
-                            <DropdownToggle
-                                className={style.navBarDropdownItem}
-                                id="page-header-user-dropdown"
-                                tag="button"
-                            >
-                                <div className="flex flex-row flex-items-center">
-                                    <span className={style.navBarItem}>Chain</span>
-                                    <DownArrow className={style.downArrowItem} />
-                                </div>
-                            </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/block">
-                                        <a><Block className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/extrinsic">
-                                        <a><Extrinsic className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/nft">
-                                        <a><NFT className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href="/event">
-                                        <a><Event className={style.dropdownItem}/></a>
-                                    </Link>
-                                </div>
-                            </DropdownMenu>
-                        </Dropdown>
-
-                        <Dropdown onMouseOver={overMenu1} onMouseLeave={leaveMenu1} toggle={toggle1} isOpen={menu1} className={style.navBarDropdown}>
-                            <DropdownToggle
-                                className={style.navBarDropdownItem}
-                                id="page-header-user-dropdown"
-                                tag="button"
-                            >
-                                <div className="flex flex-row flex-items-center">
-                                    <span className={style.navBarItem}>Accounts</span>
-                                    <DownArrow className={style.downArrowItem} />
-                                </div>
-                            </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
-                                <div className={style.dropdownItem}>
-                                    <Link href='/account'>
-                                        <a>
-                                        <Account className={style.dropdownItem}/>
-                                        </a>
-                                    </Link>
-                                </div>
-                                <div className={style.dropdownItem}>
-                                    <Link href='/trans'>
-                                        <a>
-                                        <Transfer className={style.dropdownItem}/>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </DropdownMenu>
-                        </Dropdown>
-                    </div>
-                </div>
-            </div></div>}
-
+            }
             <Modal classNames={{
                 modalAnimationIn: 'mobileMenuAnimationIn',
                 modalAnimationOut: 'mobileMenuAnimationOut'
@@ -463,7 +455,6 @@ const Header: React.FC<HeaderProps> = (props) => {
                     </div>
                 </div>
             </Modal>
-
         </header>
     )
 }
