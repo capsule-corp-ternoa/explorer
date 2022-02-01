@@ -1,5 +1,4 @@
 import React from 'react'
-import clsx from 'clsx'
 
 type Row = {
   [dataKey in string]: any
@@ -30,17 +29,11 @@ const EventView: React.FC<TableProps> = ({
   return(
   <>
     <h1 className="subTitle mt-4">Events ()</h1>
-    <table className={clsx('table table-borderless data-table only-desktop', className)}>
+    <table className={`table table-borderless data-table only-desktop ${className}`}>
       <thead>
         <tr>
           {columns.map((col, key) => (
-            <th
-              className={clsx(
-                col.className, 'text-large',
-                {'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
-              )}
-              key={key}
-            >
+            <th className={`${col.className} text-large ${key === 0 && 'ps-4'} ${key === columns.length - 1 && 'pe-4'}`} key={key}>
               {col.text}
             </th>
           ))}
@@ -50,14 +43,7 @@ const EventView: React.FC<TableProps> = ({
         {data && data.map((record, rowKey) => (
           <tr key={rowKey}>
             {columns.map((col, key) => (
-              <td
-                key={key}
-                className={clsx(
-                  'text-medium text-opacity',
-                  col.className,
-                  { 'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
-                )}
-              >
+              <td key={key} className={`text-medium text-opacity ${col.className} ${key === 0 && 'ps-4'} ${key === columns.length - 1 && 'pe-4'}`}>
                 {renderCell(record, col.dataKey)}
               </td>
             ))}
@@ -70,12 +56,12 @@ const EventView: React.FC<TableProps> = ({
         )}
       </tbody>
     </table>
-    <div className={clsx('only-mobile data-table', className)}>
+    <div className={`only-mobile data-table ${className}`}>
       {data && data.map((record, rowKey) => (
-        <div key={rowKey} className={clsx('mobileView py-2', { mobileDarkView: rowKey % 2 === 1 })}>
+        <div key={rowKey} className={`mobileView py-2 ${rowKey % 2 === 1 && "mobileDarkView"}`}>
           <div className='row'>
             {columns.map(({ dataKey, mobileClassName }, key) => (
-              <div key={key} className={clsx('col col-auto py-2 data-overflow', mobileClassName ?? 'col-6')}>
+              <div key={key} className={`col col-auto py-2 data-overflow', ${mobileClassName ?? 'col-6'}`}>
                 <div className='mobileRowLabel mb-3'>
                   {columns[key].text}
                 </div>

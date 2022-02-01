@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { FormattedNumber } from 'react-intl';
-import clsx from 'clsx'
 import { useMediaQuery } from 'react-responsive';
 import SearchBar from 'components/base/SearchBar';
 import CAPSLogo from 'components/assets/CAPSLogo';
@@ -50,11 +49,7 @@ const Summary: React.FC<SummaryProps> = ({
                   <div className="text-opacity-4 text-ellipsis">CAPS price</div>
                   <div className="d-flex text-price fw-bold">
                     {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
-                    <span className={clsx(
-                      style.logoPercent,
-                      'ms-2',
-                      {[style.minus]: change24h !== undefined && (change24h < 0)})
-                    }>
+                    <span className={`${style.logoPercent} ms-2 ${{[style.minus]: change24h !== undefined && (change24h < 0)}}`}>
                       {change24h !== undefined && (
                         <FormattedNumber value={change24h / 100} format='percentChange' />
                       )}
@@ -125,7 +120,7 @@ const Summary: React.FC<SummaryProps> = ({
                     <span className="fs-6 text-opacity-4 text-ellipsis">CAPS price</span>
                     <div className={style.logoSummary}>
                       {capsPrice !== undefined && <FormattedNumber value={capsPrice} />}
-                      <span className={clsx(style.logoPercent, 'ms-2', {[style.minus]: change24h !== undefined && change24h < 0})}>
+                      <span className={`${style.logoPercent} ms-2 ${change24h !== undefined && change24h < 0 && [style.minus]}`}>
                         {change24h !== undefined && (
                           <FormattedNumber value={change24h / 100} format='percentChange' />
                         )}

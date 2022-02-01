@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
-import clsx from 'clsx'
 import style from './HomeScan.module.scss';
 import Layout from 'components/base/Layout';
 import Summary from './Summary';
@@ -34,7 +33,7 @@ const DetailButton: React.FC<DetailButtonProps> = ({
 }) => (
   <Link href={href}>
     <a className="all">
-      <div className={clsx("btn-transparent d-flex m-auto px-5 py-3", style.blockButton)}>
+      <div className={`btn-transparent d-flex m-auto px-5 py-3 ${style.blockButton}`}>
         <span className="m-auto text-large text-bold">{label}</span>
       </div>
     </a>
