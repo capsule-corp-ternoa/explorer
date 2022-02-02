@@ -19,20 +19,28 @@ enum DetailMode {
 
 const TransInfo: React.FC<TransInfoProps> = () => {
   const [data, setData] = useState<any>(null)
-  const [data1, setData1] = useState<any>(null)
+  const [parameter, setParameter] = useState<any>(null)
   const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.Extrinsic)
   const router = useRouter()
   const id = router.query.id as string
   const transId = router.query.transId as string
 
-  useEffect(() => {
-    if (transId) {
-      getExtrinsic(transId).then(setData)
-      getExtrinsicParams(transId).then(data => {
-        setData1(data?.args);
-      })
+  const getTransferDatas = async (transId:string) => {
+    try{
+      if (!id) throw new Error("Couldn't get id: Unknown id")
+      const extrinsic = await getExtrinsic(transId)
+      setData(extrinsic)
+      const etrinsicParams= await getExtrinsicParams(transId)
+      setParameter(etrinsicParams?.args)
+    }catch(err){
+      console.error(err)
     }
+  }
+
+  useEffect(() => {
+    transId && getTransferDatas(transId)
   }, [transId])
+
   
   if (!transId || !id) {
     return null
@@ -59,7 +67,7 @@ const TransInfo: React.FC<TransInfoProps> = () => {
         )}
         {detailMode === DetailMode.Parameters && data && data.args_name && (
           <ParameterView 
-            data={data1}
+            data={parameter}
             columns={parameterFields}
             renderCell={parameterRender}
           />

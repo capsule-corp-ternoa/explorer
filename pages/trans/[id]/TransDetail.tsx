@@ -14,11 +14,19 @@ const TransDetail: React.FC<TransDetailProps> = () => {
   const [data, setData] = useState<any>(null)
   const router = useRouter()
   const id = router.query.id as string
+  
+  const getTransferDatas = async (id:string) => {
+    try{
+      if (!id) throw new Error("Couldn't get id: Unknown id")
+      const transferDatas = await getTransfer(id)
+      setData(transferDatas)
+    }catch(err){
+      console.error(err)
+    }
+  }
 
   useEffect(() => {
-    if (id) {
-      getTransfer(id).then(setData)
-    }
+    id && getTransferDatas(id)
   }, [id])
 
   if (!id) {

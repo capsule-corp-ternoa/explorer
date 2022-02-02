@@ -22,20 +22,28 @@ enum DetailMode {
 
 const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
   const [data, setData] = useState<any>(null)
-  const [data1, setData1] = useState<any>(null)
-  const [data2, setData2] = useState<any>(null)
+  const [eventExtrinsicData, setEventExtrinsicData] = useState<any>(null)
+  const [parameterData, setParameterData] = useState<any>(null)
   const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.Extrinsic)
   const router = useRouter()
   const id = router.query.id as string
 
-  useEffect(() => {
-    if (id) {
-      getExtrinsic(id).then(setData)
-      getExtrinsicParams(id).then(data => {
-        setData2(data?.args);
-      })
-      searchEventbyExtrinsic(id).then(setData1)
+  const getExtrinsicDetail = async (id:string) => {
+    try{
+      if (!id) throw new Error("Couldn't get id: Unknown id")
+      const extrinsicDatas = await getExtrinsic(id)
+      setData(extrinsicDatas)
+      const extrinsicParameter = await getExtrinsicParams(id)
+      setParameterData(extrinsicParameter?.args)
+      const eventExtrinsic = await searchEventbyExtrinsic(id)
+      setEventExtrinsicData(eventExtrinsic)
+    }catch(err){
+      console.error(err)
     }
+  }
+
+  useEffect(() => {
+      id && getExtrinsicDetail(id)
   }, [id])
 
   if (!id) {
@@ -62,10 +70,10 @@ const ExtrinsicDetail: React.FC<ExtrinsicDetailProps> = () => {
           <DetailView fields={extrinsicFields} data={data} renderCell={extrinsicRender}/>
         )}
         {detailMode === DetailMode.Parameters && (
-          <ParameterView data={data2} columns={parameterFields} renderCell={parameterRender} />
+          <ParameterView data={parameterData} columns={parameterFields} renderCell={parameterRender} />
         )}
         {detailMode === DetailMode.Events && (
-          <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
+          <ListView columns={eventColumns} data={eventExtrinsicData && eventExtrinsicData.data} renderCell={eventRender}/>
         )}
       </div>
     </Layout>
