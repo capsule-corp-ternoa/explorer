@@ -1,26 +1,7 @@
-.paginationButton {
-  opacity: 0.8;
-
+.button {
+  cursor: pointer;
+  transition: transform 0.5s;
   &:hover {
-      opacity: 1;
-  }
-
-  &:active {
-      opacity: 0.4;
-  }
-}
-
-.Pagination {
-  padding-top: 25px;
-  @media (max-width : 1024px) {
-    padding-top: 0px;
-  }
-  &__desktop {
-    display: flex;
-  }
-  &__mobile {
-    @media (min-width: 1280px) { 
-      display: none;
-    }
+      transform: scale(1.15);
   }
 }

@@ -14,10 +14,18 @@ const EventDetail: React.FC<ExtrinsicDetailProps> = () => {
   const router = useRouter()
   const id = router.query.id as string
 
-  useEffect(() => {
-    if (id) {
-      getEvent(id).then(setData)
+  const getEventDatas = async (id:string) => {
+    try{
+      if (!id) throw new Error("Couldn't get id: Unknown id")
+      const eventDatas = await getEvent(id)
+      setData(eventDatas)
+    }catch(err){
+      console.error(err)
     }
+  }
+
+  useEffect(() => {
+    id && getEventDatas(id)
   }, [id])
 
   if (!id) {

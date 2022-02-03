@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Check from 'components/assets/Check';
 import Detail from 'components/assets/Detail';
+import Close from 'components/assets/Close';
 
 export const columns = [
   { text: 'Extrinsic ID', dataKey: 'id', className: 'text-left' },
@@ -26,7 +27,7 @@ export const render = (record: any, dataKey: string) => {
       return record[dataKey] ? 'Yes' : 'No'
 
     case 'success':
-      return record[dataKey] && <Check className="webCheckIcon" />
+      return record[dataKey] ? <Check className="webCheckIcon" /> : <Close className="webCheckIcon"/>
 
     case 'detail':
       return (

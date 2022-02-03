@@ -6,7 +6,7 @@ interface BackProps {
 
 const Back: React.FC<BackProps> = ({ className }) => (
   <svg width="46" height="45" className={className} viewBox="0 0 46 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g opacity="0.4">
+    <g opacity="1">
       <rect x="41" y="40" width="36" height="35" rx="17.5" transform="rotate(-180 41 40)" fill="#004FFF"/>
       <rect x="43.5" y="42.5" width="41" height="40" rx="20" transform="rotate(-180 43.5 42.5)" stroke="#004FFF" strokeOpacity="0.3" strokeWidth="5"/>
     </g>

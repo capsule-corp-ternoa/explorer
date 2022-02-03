@@ -10,6 +10,10 @@ const queryAccountList = (offset: number, pageSize: number) => gql`
     orderBy: CAPS_AMOUNT_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       capsAmount # FREE BALANCE
@@ -53,15 +57,21 @@ const queryExtrinsicCounts = (signers: string[]) => gql`
 }
 `
 
-const queryAccountLatestExtrinsic = (signer: string, count: number) => gql`
+const queryAccountExtrinsics = (signer: string, offset: number, pageSize: number) => gql`
 {
   extrinsicEntities(
-    first: ${count}
+    first: ${pageSize}
+    offset: ${offset}
     orderBy: NONCE_DESC
     filter: {
       signer: { equalTo: "${signer}" }
     }
   ) {
+    totalCount,
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       nonce
       id
@@ -95,6 +105,8 @@ export const getAccountList = async (offset: number, pageSize: number) => {
 
   return {
     totalCount: accounts.accountEntities.totalCount,
+    hasNextPage : accounts.accountEntities.pageInfo.hasNextPage,
+    hasPreviousPage : accounts.accountEntities.pageInfo.hasPreviousPage,
     data: accounts.accountEntities.nodes.map((account: any) => ({
       address: account.id,
       amount: ethers.utils.formatEther(account.capsAmount),
@@ -110,16 +122,15 @@ export const searchAccount = async (id: string) => {
   return response.accountEntities.nodes
 }
 
-export const getAccount = async (id: string, lastExtrinsicCount: number) => {
+export const getAccount = async (id: string, offset: number, pageSize: number ) => {
   const [account, extrinsics] = await Promise.all([
     request(
       queryAccount(id)
     ),
     request(
-      queryAccountLatestExtrinsic(id, lastExtrinsicCount)
+      queryAccountExtrinsics(id, offset, pageSize)
     )
   ])
-
 
   if (account.accountEntities.nodes.length === 0) {
     return null
@@ -134,8 +145,11 @@ export const getAccount = async (id: string, lastExtrinsicCount: number) => {
 
     if (extrinsics.extrinsicEntities.nodes.length) {
       const tx = extrinsics.extrinsicEntities.nodes[0]
+      data.totalCount = extrinsics.extrinsicEntities.totalCount,
+      data.hasNextPage = extrinsics.extrinsicEntities.pageInfo.hasNextPage
+      data.hasPreviousPage = extrinsics.extrinsicEntities.pageInfo.hasPreviousPage
       data.nonce = tx.nonce + 1
-      data.last_extrinsics = extrinsics.extrinsicEntities.nodes.map((tx: any) => ({
+      data.extrinsics = extrinsics.extrinsicEntities.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: tx.blockId,
         module: tx.module,

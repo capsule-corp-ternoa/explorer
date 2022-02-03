@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import style from './style.module.scss'
 import DownMobile from 'components/assets/DownMobile';
 import UpMobile from 'components/assets/UpMobile';
@@ -16,19 +15,19 @@ const Switch: React.FC<SwitchProps> = ({
   onChange
 }) => (
   <div>
-    <div className={clsx(style.switchContainer, className)}>
+    <div className={`${style.switchContainer} ${className}`}>
       <div className='p-absolute'>
         <label>
           <input type='checkbox' />
           <div className={style.switch}>
             {options.map((option, key) => (
               <div key={key}
-                className={clsx(style.switch__btn, selected === key ? style.switch__primary : style.switch__secondary)}
+                className={`${style.switch__btn} ${selected === key ? style.switch__primary : style.switch__secondary}`}
                 onClick={() => onChange(key)}
               >
                 {option}
-                <UpMobile className={clsx(style['option-up'], 'ms-3')}/>
-                <DownMobile className={clsx(style['option-down'], 'ms-3')}/>
+                <UpMobile className={`${style['option-up']} ms-2 `}/>
+                <DownMobile className={`${style['option-down']} ms-2 `}/>
               </div>
             ))}
           </div>
