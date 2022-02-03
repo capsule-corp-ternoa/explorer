@@ -51,6 +51,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
       console.log(err)
     }
   }
+
   const getCapsPrice = async () => {
     try{
       const datas = await fetch(coingeckoUrl)
@@ -87,6 +88,14 @@ const HomeScan: React.FC<HomeScanProps> = () => {
       console.error(err)
     }
   }
+  useEffect(()=>{
+    const interval = setInterval(() => {
+      getBlockFinalized(0, TABLE_ROWS)
+    }, 6000)
+    return () =>{
+      clearInterval(interval)
+    }
+  },[latestBlocks])
 
   useEffect(() => {
     setIsLoading(true)
