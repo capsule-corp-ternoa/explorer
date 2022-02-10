@@ -7,7 +7,7 @@ const queryAccountList = (offset: number, pageSize: number) => gql`
   accountEntities(
     first: ${pageSize}
     offset: ${offset}
-    orderBy: CAPS_AMOUNT_DESC
+    orderBy: CAPS_AMOUNT_ROUNDED_DESC
   ) {
     totalCount
     pageInfo {
