@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import React from 'react'
 
 type DetailViewField = {
@@ -36,7 +35,7 @@ const DetailView: React.FC<DetailViewProps> = ({
     <div className="only-mobile mobileView data-table">
       <div className='row'>
         {fields && fields.map(({ text, dataKey, mobileClassName }) => (
-          <div className={clsx('col col-auto py-2 data-overflow', mobileClassName ?? 'col-6')} key={dataKey}>
+          <div className={`col col-auto py-2 data-overflow ${mobileClassName ?? 'col-6'}`} key={dataKey}>
             <div className="mobileLabel">
               {text}
             </div>

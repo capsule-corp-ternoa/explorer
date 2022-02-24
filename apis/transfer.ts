@@ -1,5 +1,5 @@
 import { gql } from "graphql-request"
-import request from './api'
+import { apiIndexer } from './api'
 import * as ethers from 'ethers';
 
 const queryTransferList = (offset: number, pageSize: number) => gql`
@@ -10,6 +10,10 @@ const queryTransferList = (offset: number, pageSize: number) => gql`
     orderBy: TIMESTAMP_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       blockId
@@ -42,12 +46,14 @@ const queryTransfer = (id: string) => gql`
 `
 
 export const getTransferList = async (offset: number, pageSize: number) => {
-  const transferResponse = await request(
+  const transferResponse = await apiIndexer(
     queryTransferList(offset, pageSize)
   )
     
   return {
     totalCount: transferResponse.transferEntities.totalCount,
+    hasNextPage : transferResponse.transferEntities.pageInfo.hasNextPage,
+    hasPreviousPage : transferResponse.transferEntities.pageInfo.hasPreviousPage,
     data: transferResponse.transferEntities.nodes.map((transfer: any) => ({
       id: transfer.id,
       block_id: transfer.blockId,
@@ -60,7 +66,7 @@ export const getTransferList = async (offset: number, pageSize: number) => {
 }
 
 export const getTransfer = async (id: string) => {
-  const transferResponse = await request(
+  const transferResponse = await apiIndexer(
     queryTransfer(id)
   )
 

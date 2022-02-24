@@ -42,5 +42,5 @@ export default {
         signDisplay: 'exceptZero'
       }
     }
-  } as CustomFormats
+  } as unknown as CustomFormats
 }

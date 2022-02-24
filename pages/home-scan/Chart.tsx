@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import style from './HomeScan.module.scss';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, ComposedChart, Bar } from 'recharts';
-import clsx from 'clsx';
 
 const chartMargin = {
   top: 10,
@@ -28,10 +27,10 @@ const ChartCheckbox: React.FC<ChartCheckboxProps> = ({
   onChange,
   className
 }) => (
-  <div className={clsx("cursor-point flex flex-row flex-items-center", className)}>
+  <div className={`cursor-point flex flex-row flex-items-center ${className}`}>
     <label className='d-flex align-items-center'>
       <input
-        className={clsx(style.chartCheckbox, checked ? style.activeChartRect : style.inactiveChartRect)}
+        className={`${style.chartCheckbox} ${checked ? style.activeChartRect : style.inactiveChartRect}`}
         type="checkbox"
         onChange={(e: any) => onChange && onChange(e.target.checked)}
         checked={checked}
@@ -51,8 +50,8 @@ export const NFTtransfer: React.FC<ChartProps> = ({
   const [newAccount, setNewAccount] = useState(true)
 
   return (
-    <div className={clsx(style.chartBlock, className)}>
-      <div className={clsx("flex flex-row flex-items-center flex-between", style.mMinus50)}>
+    <div className={`${style.chartBlock} ${className}`}>
+      <div className={`flex flex-row flex-items-center flex-between ${style.mMinus50}`}>
         <span className={style.chartLabel}>Total NFT transfers by day</span>
       </div>
       <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
@@ -91,8 +90,8 @@ export const NFTcreation: React.FC<ChartProps> = ({
   const [newAccount, setNewAccount] = useState(true)
 
   return (
-    <div className={clsx(style.chartBlock, className)}>
-      <div className={clsx("flex flex-row flex-items-center flex-between", style.mMinus50)}>
+    <div className={`${style.chartBlock} ${className}`}>
+      <div className={`flex flex-row flex-items-center flex-between ${style.mMinus50}`}>
         <span className={style.chartLabel}>Total NFT creation by day</span>
       </div>
       <ResponsiveContainer width="100%" height="80%" className={style.chartView}>
@@ -129,8 +128,8 @@ export const BlockChart: React.FC<ChartProps> = ({
 }) => {
   const [averBlock, setAverBlock] = useState(true)
   return (
-    <div className={clsx(style.chartBlock, className)}>
-      <div className={clsx("flex flex-row flex-items-center flex-between", style.mMinus50)}>
+    <div className={`${style.chartBlock} ${className}`}>
+      <div className={`flex flex-row flex-items-center flex-between ${style.mMinus50}`}>
         <ChartCheckbox onChange={setAverBlock} label='Average block time by day' checked={averBlock} />
       </div>
       <ResponsiveContainer width="100%" height="80%" className={style.chartView}>

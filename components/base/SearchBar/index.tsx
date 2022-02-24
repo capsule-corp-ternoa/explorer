@@ -14,13 +14,11 @@ export interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = (props) => {
   const [keyword, setKeyword] = useState("")
-  const [isFocus, setIsFocus] = useState(false)
   const router = useRouter();
 
   const searchAll = useCallback(() => {
     const searchKey = keyword.trim()
     const noResult = `/result?search=${searchKey}`
-
     if (searchKey.startsWith('0x')) {
       searchExtrinsic(searchKey)
         .then(res => router.push(res.length ? `/extrinsic/${res[0].id}` : noResult))
@@ -37,35 +35,26 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
   }, [keyword])
 
   return (
-    <div className="flex flex-row flex-items-center">
-      <div className="flex flex-1 flex-items-center position-relative">
-        <input
-          type="text"
-          value={keyword}
-          placeholder="Search by address / Txn Hash / Block"
-          className={style.searchInput + " " + (props.isLarge?style.inputLarge:style.inputMedium)}
-          onChange={(e) => setKeyword(e.target.value)}
-          onFocus={(e) => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          onKeyDown={(e) => {
-            if (e.keyCode === 13) searchAll()
-          }}
-        />
-        <div className={style.searchIcon + " cursor-point " + (props.isLarge? "d-none" : "")} onClick={() => searchAll()}>
+    <div className="flex flex-1 flex-items-center position-relative">
+      <input
+        type="text"
+        value={keyword}
+        placeholder="Search by address / Txn Hash / Block"
+        className={`${style.searchInput} ${props.isLarge && style.inputLarge}`}
+        onChange={(e) => setKeyword(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') searchAll()
+        }}
+      />
+      {!props.isLarge &&
+        <div className={style.searchIcon} onClick={() => searchAll()}>
           <Search />
-        </div>
-        {isFocus &&
-        <div className={"search-gradient " + (props.isLarge?style.inputLarge:style.inputMedium)}/>
-        }
-        {props.hasButton &&
-        <div
-          className={style.searchButton + " d-none d-lg-flex btn btn-info rounded-pill flex-items-center px-5"}
-          onClick={() => searchAll()}
-        >
+        </div>}
+      {props.hasButton &&
+        <div className={`${style.searchButton} btn btn-info px-5`} onClick={() => searchAll()} >
           Search
         </div>
-        }
-      </div>
+      }
     </div>
   )
 }

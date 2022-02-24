@@ -1,15 +1,19 @@
 import { gql } from "graphql-request"
-import request from './api'
+import { apiDictionary } from './api'
 import * as ethers from 'ethers';
 
 const queryExtrinsicList = (offset: number, pageSize: number) => gql`
 {
-  extrinsicEntities(
+  extrinsics(
     first: ${pageSize}
     offset: ${offset}
     orderBy: TIMESTAMP_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       blockId
@@ -24,7 +28,7 @@ const queryExtrinsicList = (offset: number, pageSize: number) => gql`
 
 const queryExtrinsicCount  = () => gql`
 {
-  extrinsicEntities {
+  extrinsics {
     totalCount
   }
 }
@@ -32,7 +36,7 @@ const queryExtrinsicCount  = () => gql`
 
 const queryExtrinsicSearch = (keyword: string) => gql`
 {
-  extrinsicEntities(
+  extrinsics(
     filter: {
       hash: { equalTo: "${keyword}" }
     }
@@ -46,7 +50,7 @@ const queryExtrinsicSearch = (keyword: string) => gql`
 
 const queryExtrinsic = (id: string) => gql`
 {
-  extrinsicEntities(
+  extrinsics(
     filter: {
       id: { equalTo: "${id}" }
     }
@@ -75,20 +79,22 @@ const queryExtrinsic = (id: string) => gql`
 `
 
 export const searchExtrinsic = async (keyword: string) => {
-  const response = await request(
+  const response = await apiDictionary(
     queryExtrinsicSearch(keyword)
   )
-  return response.extrinsicEntities.nodes
+  return response.extrinsics.nodes
 }
 
 export const getExtrinsicList = async (offset: number, pageSize: number) => {
-  const response = await request(
+  const response = await apiDictionary(
     queryExtrinsicList(offset, pageSize)
   )
 
   return {
-    totalCount: response.extrinsicEntities.totalCount,
-    data: response.extrinsicEntities.nodes.map((item: any) => ({
+    totalCount: response.extrinsics.totalCount,
+    hasNextPage : response.extrinsics.pageInfo.hasNextPage,
+    hasPreviousPage : response.extrinsics.pageInfo.hasPreviousPage,
+    data: response.extrinsics.nodes.map((item: any) => ({
       id: item.id,
       block_id: item.blockId,
       module: item.module,
@@ -100,22 +106,22 @@ export const getExtrinsicList = async (offset: number, pageSize: number) => {
 }
 
 export const getExtrinsicCount = async () => {
-  const response = await request(
+  const response = await apiDictionary(
     queryExtrinsicCount()
   )
 
-  return response.extrinsicEntities.totalCount
+  return response.extrinsics.totalCount
 }
 
 export const getExtrinsic = async (id: string) => {
-  const extrinsicResponse = await request(
+  const extrinsicResponse = await apiDictionary(
     queryExtrinsic(id)
   )
 
-  if (extrinsicResponse.extrinsicEntities.nodes.length === 0) {
+  if (extrinsicResponse.extrinsics.nodes.length === 0) {
     return null
   } else {
-    const data = extrinsicResponse.extrinsicEntities.nodes[0]
+    const data = extrinsicResponse.extrinsics.nodes[0]
     return {
       id: data.id,
       block_id: data.blockId,
@@ -124,7 +130,7 @@ export const getExtrinsic = async (id: string) => {
       hash: data.hash,
       module: data.module,
       call: data.call,
-      fees: ethers.utils.formatEther(data.fees),
+      fees: data.fees ? ethers.utils.formatEther(data.fees) : "",
       description: data.description.description,
       signer: data.signer,
       nonce: data.nonce,
@@ -137,14 +143,14 @@ export const getExtrinsic = async (id: string) => {
 }
 
 export const getExtrinsicParams = async (id: string) => {
-  const extrinsicResponse = await request(
+  const extrinsicResponse = await apiDictionary(
     queryExtrinsic(id)
   )
 
-  if (extrinsicResponse.extrinsicEntities.nodes.length === 0) {
+  if (extrinsicResponse.extrinsics.nodes.length === 0) {
     return null
   } else {
-    const data = extrinsicResponse.extrinsicEntities.nodes[0]
+    const data = extrinsicResponse.extrinsics.nodes[0]
     return {
       args: data.argsName.map((item: string, index: number) => ({
         name: data.argsName[index],
