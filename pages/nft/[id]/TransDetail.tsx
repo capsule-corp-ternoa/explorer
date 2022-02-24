@@ -19,18 +19,28 @@ enum DetailMode {
 
 const NftTransDetail: React.FC<NftTransDetailProps> = () => {
   const [data, setData] = useState<any>(null)
-  const [data1, setData1] = useState<any>(null)
+  const [eventData, setEventData] = useState<any>(null)
   const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.NFT)
   const router = useRouter()
   const id = router.query.id as string
   const extrinsic_id = router.query.extrinsic as string
 
-  useEffect(() => {
-    if (id) {
-      getNftTransfer(id).then(setData)
-      searchEventbyExtrinsic(extrinsic_id).then(setData1)
+  const getNftTransferDatas = async (id:string, extrinsicId: string) => {
+    try{
+      if (!id) throw new Error("Couldn't get id: Unknown id")
+      const nftTransfer = await getNftTransfer(id)
+      setData(nftTransfer)
+      const eventByExtrinsic = await searchEventbyExtrinsic(extrinsic_id)
+      setEventData(eventByExtrinsic)
+    }catch(err){
+      console.error(err)
     }
+  }
+
+  useEffect(() => {
+    id && getNftTransferDatas(id, extrinsic_id)
   }, [id])
+
  
   if (!id) {
     return null
@@ -58,7 +68,7 @@ const NftTransDetail: React.FC<NftTransDetailProps> = () => {
           <DetailView fields={fields} data={data} renderCell={render}/>
         )}
         {detailMode === DetailMode.Events && (
-          <ListView columns={eventColumns} data={data1 && data1.data} renderCell={eventRender}/>
+          <ListView columns={eventColumns} data={eventData && eventData.data} renderCell={eventRender}/>
         )}
       </div>
     </Layout>

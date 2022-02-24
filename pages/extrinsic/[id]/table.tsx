@@ -3,6 +3,7 @@ import { FormattedTime, FormattedNumber } from 'react-intl';
 import CAPSDark from 'components/assets/CAPSDark';
 import { ellipsifyMiddle, ellipsifyLast, formatSec } from 'helpers/lib';
 import Check from 'components/assets/Check';
+import Close from 'components/assets/Close';
 import Copy from 'components/assets/Copy';
 import JSONPretty from 'react-json-pretty';
 var unescapeJs = require('unescape-js');
@@ -79,7 +80,7 @@ export const extrinsicRender = (record: any, dataKey: string) => {
       )
 
     case 'success':
-      return record[dataKey] ? <Check className="webCheckIcon" /> : null
+      return record[dataKey] ? <Check className="webCheckIcon" /> : <Close className="webCheckIcon"/>
 
     default:
       return record[dataKey]

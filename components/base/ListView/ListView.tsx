@@ -1,5 +1,4 @@
 import React from 'react'
-import clsx from 'clsx'
 
 type Row = {
   [dataKey in string]: any
@@ -29,17 +28,11 @@ const ListView: React.FC<TableProps> = ({
 }) => {
   return (
   <>
-    <table className={clsx('table table-borderless data-table full-opacity', className)}>
+    <table className={`table table-borderless data-table full-opacity ${className}`}>
       <thead>
         <tr>
           {columns.map((col, key) => (
-            <th
-              className={clsx(
-                col.className, 'text-large',
-                {'ps-4': key === 0, 'pe-4': key === columns.length - 1 }
-              )}
-              key={key}
-            >
+            <th className={`${col.className} text-large ${key === 0 && 'ps-4'} ${key === columns.length - 1 && 'pe-4'}`} key={key}>
               {col.text}
             </th>
           ))}
@@ -49,14 +42,7 @@ const ListView: React.FC<TableProps> = ({
         {data && data.map((record, rowKey) => (
           <tr key={rowKey}>
             {columns.map((col, key) => (
-              <td
-                key={key}
-                className={clsx(
-                  col.className,
-                  'text-opacity', 
-                  'text-medium',
-                  { 'ps-4': key === 0, 'd-flex justify-content-start align-items-center pe-4': key === columns.length - 1 }
-                )}
+              <td key={key} className={`${col.className} text-opacity text-medium ${key === 0 && 'ps-4'} ${key === columns.length - 1 && 'd-flex justify-content-start align-items-center pe-4'}`}
               >
                 {renderCell(record, col.dataKey)}
               </td>
@@ -65,11 +51,7 @@ const ListView: React.FC<TableProps> = ({
         ))}
       </tbody>
     </table>
-    <div>
-      {footer && (
-         footer
-        )}
-    </div>
+    {footer && footer}
   </>
 )}
 

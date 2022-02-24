@@ -22,13 +22,24 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   const router = useRouter()
   const id = router.query.id as string
   const [data, setData] = useState<any>(null)
-  const [data1, setData1] = useState<any>(null)
+  const [eventDatas, setEventDatas] = useState<any>(null)
   const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.Block)
+
+  const getBlockDatas = async (id:string) => {
+    try{
+      if (!id) throw new Error("Couldn't get id: Unknown id")
+      const blockDatas = await getBlock(id)
+      setData(blockDatas)
+      const eventDatasByBlock = await searchEventbyBlock(id)
+      setEventDatas(eventDatasByBlock)
+    }catch(err){
+      console.error(err)
+    }
+  }
 
   useEffect(() => {
     if (id) {
-      getBlock(id).then(setData)
-      searchEventbyBlock(id).then(setData1);
+      getBlockDatas(id)
     }
   }, [id])
 
@@ -69,7 +80,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
         {detailMode === DetailMode.Events && (
           <ListView
             columns={eventColumns}
-            data={data1 && data1.data}
+            data={eventDatas && eventDatas.data}
             renderCell={eventRender}
           />
         )}

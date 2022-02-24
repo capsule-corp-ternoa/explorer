@@ -1,5 +1,6 @@
 import { FormattedNumber } from 'react-intl';
 import Check from 'components/assets/Check';
+import Close from 'components/assets/Close';
 
 export const fields = [
   { text: 'Total Balance', dataKey: 'total_balance', className: 'text-left', mobileClassName: 'col-12 col-sm-6' },
@@ -24,7 +25,7 @@ export const render = (data: any, dataKey: string) => {
       return data[dataKey]
 
     case 'active':
-      return data[dataKey] ? <Check className="webCheckIcon" /> : null
+      return data[dataKey] ? <Check className="webCheckIcon" /> : <Close className="webCheckIcon"/>
 
     case 'past_roles':
       return data[dataKey]

@@ -1,5 +1,5 @@
 import { gql } from "graphql-request"
-import request from './api'
+import { apiIndexer, apiDictionary } from './api'
 import * as ethers from 'ethers';
 
 const queryNftTransferList = (offset: number, pageSize: number) => gql`
@@ -10,6 +10,10 @@ const queryNftTransferList = (offset: number, pageSize: number) => gql`
     orderBy: TIMESTAMP_DESC
   ) {
     totalCount
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+    }
     nodes {
       id
       timestamp
@@ -75,27 +79,40 @@ const queryNftTransfer = (id: string) => gql`
         id
         creator
       }
-      extrinsic {
-        fees
-      }
+    }
+  }
+}
+`
+
+const queryExtrinsicFees = (id: string) => gql`
+{
+  extrinsics(
+    filter: {
+      id: { equalTo: "${id}" }
+    }
+  ) {
+    nodes {
+      fees
     }
   }
 }
 `
 
 export const searchNftTransfer = async (keyword: string) => {
-  const response = await request(
+  const response = await apiIndexer(
     queryNftTransferSearch(keyword)
   )
   return response.nftTransferEntities.nodes
 }
 
 export const getNftTransferList = async (offset: number, pageSize: number) => {
-  const transferResponse = await request(
+  const transferResponse = await apiIndexer(
     queryNftTransferList(offset, pageSize)
   )
   return {
     totalCount: transferResponse.nftTransferEntities.totalCount,
+    hasNextPage : transferResponse.nftTransferEntities.pageInfo.hasNextPage,
+    hasPreviousPage : transferResponse.nftTransferEntities.pageInfo.hasPreviousPage,
     data: transferResponse.nftTransferEntities.nodes.map((transfer: any) => ({
       id: transfer.id,
       timestamp: transfer.timestamp,
@@ -110,7 +127,7 @@ export const getNftTransferList = async (offset: number, pageSize: number) => {
 }
 
 export const getNftTransferChart = async () => {
-  const transferResponse = await request(
+  const transferResponse = await apiIndexer(
     queryNftTransferChart("")
   )
   return {
@@ -129,7 +146,7 @@ export const getNftTransferChart = async () => {
 }
 
 export const getNftTransfer = async (id: string) => {
-  const transferResponse = await request(
+  const transferResponse = await apiIndexer(
     queryNftTransfer(id)
   )
 
@@ -137,6 +154,10 @@ export const getNftTransfer = async (id: string) => {
     return null
   } else {
     const data = transferResponse.nftTransferEntities.nodes[0]
+    const extrinsicResponse = await apiDictionary(
+      queryExtrinsicFees(data.extrinsicId)
+    )
+    const dataExtrinsic = extrinsicResponse.extrinsics.nodes.length > 0 ? extrinsicResponse.extrinsics.nodes[0] : null
     return {
       id: data.id,
       timestamp: data.timestamp,
@@ -147,7 +168,7 @@ export const getNftTransfer = async (id: string) => {
       nft_id: data.nft.id,
       extrinsic_id: data.extrinsicId,
       creator: data.nft.creator,
-      fees: ethers.utils.formatEther(data.extrinsic.fees),
+      fees: dataExtrinsic ? ethers.utils.formatEther(dataExtrinsic.fees) : "0",
       uri: data.id
     }
   }
