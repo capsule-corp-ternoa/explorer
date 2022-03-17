@@ -145,11 +145,11 @@ const Header: React.FC<HeaderProps> = (props) => {
                                             <a><Extrinsic className={style.dropdownItem}/></a>
                                         </Link>
                                     </div>
-                                    <div className={style.dropdownItem}>
+                                    {process.env.NEXT_PUBLIC_HIDE_NFT !== "true" && <div className={style.dropdownItem}>
                                         <Link href="/nft">
                                             <a><NFT className={style.dropdownItem}/></a>
                                         </Link>
-                                    </div>
+                                    </div>}
                                     <div className={style.dropdownItem}>
                                         <Link href="/event">
                                             <a><Event className={style.dropdownItem}/></a>
@@ -240,11 +240,11 @@ const Header: React.FC<HeaderProps> = (props) => {
                                                 <a><Extrinsic className={style.dropdownItem}/></a>
                                             </Link>
                                         </div>
-                                        <div className={style.dropdownItem}>
+                                        {process.env.NEXT_PUBLIC_HIDE_NFT !== "true" && <div className={style.dropdownItem}>
                                             <Link href="/nft">
                                                 <a><NFT className={style.dropdownItem}/></a>
                                             </Link>
-                                        </div>
+                                        </div>}
                                         <div className={style.dropdownItem}>
                                             <Link href="/event">
                                                 <a><Event className={style.dropdownItem}/></a>
@@ -344,11 +344,11 @@ const Header: React.FC<HeaderProps> = (props) => {
                                                 <a><Extrinsic className={style.dropdownItem}/></a>
                                             </Link>
                                         </div>
-                                        <div className={style.dropdownItem}>
+                                        {process.env.NEXT_PUBLIC_HIDE_NFT !== "true" && <div className={style.dropdownItem}>
                                             <Link href="/nft">
                                                 <a><NFT className={style.dropdownItem}/></a>
                                             </Link>
-                                        </div>
+                                        </div>}
                                         <div className={style.dropdownItem}>
                                             <Link href="/event">
                                                 <a><Event className={style.dropdownItem}/></a>
@@ -419,12 +419,12 @@ const Header: React.FC<HeaderProps> = (props) => {
                             >
                                 Extrinsics
                             </span>
-                            <span
+                            {process.env.NEXT_PUBLIC_HIDE_NFT !== "true" && <span
                                 className={style.submenuMobile + " " + (router.route == '/nft' ? style.activeSubmenuMobile : '')}
                                 onClick={()=>router.push("/nft")}
                             >
                                 NFT Extrinsics
-                            </span>
+                            </span>}
                             <span
                                 className={style.submenuMobile + " " + (router.route == '/event' ? style.activeSubmenuMobile : '')}
                                 onClick={()=>router.push("/event")}
