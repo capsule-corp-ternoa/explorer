@@ -131,7 +131,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             />
           </div>
         </div>
-        <div className={"col-12 " + style.space}>
+        {process.env.NEXT_PUBLIC_HIDE_NFT !== "true" && <div className={"col-12 " + style.space}>
           <div className="custom_table">
             <h1 className="title1 mb-4 ms-1">NFT Extrinsics</h1>
             <ListView
@@ -143,7 +143,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
               )}
             />
           </div>
-        </div>
+        </div>}
         <div className="col-12 mt-5 pb-5">
           <div className="custom_table">
             <h1 className="title1 mb-4 ms-1">Transfers</h1>
