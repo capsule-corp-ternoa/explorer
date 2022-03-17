@@ -423,7 +423,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 className={style.submenuMobile + " " + (router.route == '/nft' ? style.activeSubmenuMobile : '')}
                                 onClick={()=>router.push("/nft")}
                             >
-                                NFT Extrinsics
+                                NFT Extrinsics 
                             </span>}
                             <span
                                 className={style.submenuMobile + " " + (router.route == '/event' ? style.activeSubmenuMobile : '')}
