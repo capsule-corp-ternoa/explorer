@@ -1,12 +1,12 @@
 import { gql } from "graphql-request"
-import request from './api'
+import { apiDictionary } from './api'
 
 const queryEventList = (offset: number, pageSize: number) => gql`
 {
-  eventEntities(
+  events(
     first: ${pageSize}
     offset: ${offset}
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     totalCount
     pageInfo {
@@ -35,7 +35,7 @@ const queryEventList = (offset: number, pageSize: number) => gql`
 
 const queryEventCount  = () => gql`
 {
-  eventEntities {
+  events {
     totalCount
   }
 }
@@ -43,11 +43,11 @@ const queryEventCount  = () => gql`
 
 const queryEventSearchbyBlock = (keyword: string) => gql`
 {
-  eventEntities(
+  events(
     filter: {
       blockId: { equalTo: "${keyword}" }
     }
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     nodes {
       id
@@ -70,11 +70,11 @@ const queryEventSearchbyBlock = (keyword: string) => gql`
 `
 const queryEventSearchbyExtrinsic = (keyword: string) => gql`
 {
-  eventEntities(
+  events(
     filter: {
       extrinsicId: { equalTo: "${keyword}" }
     }
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     nodes {
       id
@@ -98,11 +98,11 @@ const queryEventSearchbyExtrinsic = (keyword: string) => gql`
 
 const queryEvent = (id: string) => gql`
 {
-  eventEntities(
+  events(
     filter: {
       id: { equalTo: "${id}" }
     }
-    orderBy: CREATED_AT_DESC
+    orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
   ) {
     nodes {
       id
@@ -123,7 +123,7 @@ const queryEvent = (id: string) => gql`
 
 const queryExtrinsic = (id: string) => gql`
 {
-  extrinsicEntities(
+  extrinsics(
     filter: {
       id: { equalTo: "${id}" }
     }
@@ -136,7 +136,7 @@ const queryExtrinsic = (id: string) => gql`
 `
 
 export const searchEventbyBlock = async (keyword: string) => {
-  const response = await request(
+  const response = await apiDictionary(
     queryEventSearchbyBlock(keyword)
   )
   
@@ -144,19 +144,19 @@ export const searchEventbyBlock = async (keyword: string) => {
   let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
-    totalCount: response.eventEntities.nodes.length,
-    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
+    totalCount: response.events.nodes.length,
+    data: await Promise.all(response.events.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
       age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
-      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      hash: item.extrinsicId ? (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash : "System event",
       action: item.module + '(' + item.call + ')'
     })))
   }
 }
 
 export const searchEventbyExtrinsic = async (keyword: string) => {
-  const response = await request(
+  const response = await apiDictionary(
     queryEventSearchbyExtrinsic(keyword)
   )
   
@@ -164,19 +164,19 @@ export const searchEventbyExtrinsic = async (keyword: string) => {
   let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
-    totalCount: response.eventEntities.nodes.length,
-    data: await Promise.all(response.eventEntities.nodes.map(async (item: any) => ({
+    totalCount: response.events.nodes.length,
+    data: await Promise.all(response.events.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
       age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
-      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      hash: item.extrinsicId ? (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash : "System event",
       action: item.module + '(' + item.call + ')'
     })))
   }
 }
 
 export const getEventList = async (offset: number, pageSize: number) => {
-  const response = await request(
+  const response = await apiDictionary(
     queryEventList(offset, pageSize)
   )
 
@@ -184,36 +184,36 @@ export const getEventList = async (offset: number, pageSize: number) => {
   let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
   return {
-    totalCount: response.eventEntities.totalCount,
-    hasNextPage : response.eventEntities.pageInfo.hasNextPage,
-    hasPreviousPage : response.eventEntities.pageInfo.hasPreviousPage,
-    data: await Promise.all<any>(response.eventEntities.nodes.map(async (item: any) => ({
+    totalCount: response.events.totalCount,
+    hasNextPage : response.events.pageInfo.hasNextPage,
+    hasPreviousPage : response.events.pageInfo.hasPreviousPage,
+    data: await Promise.all<any>(response.events.nodes.map(async (item: any) => ({
       id: item.id,
       blockId: item.blockId,
       age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
-      hash: (await request(queryExtrinsic(item.extrinsicId))).extrinsicEntities.nodes[0].hash,
+      hash: item.extrinsicId ? (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash : "System event",
       action: item.module + '(' + item.call + ')'
     })))
   }
 }
 
 export const getEventCount = async () => {
-  const response = await request(
+  const response = await apiDictionary(
     queryEventCount()
   )
 
-  return response.eventEntities.totalCount
+  return response.events.totalCount
 }
 
 export const getEvent = async (id: string) => {
-  const extrinsicResponse = await request(
+  const extrinsicResponse = await apiDictionary(
     queryEvent(id)
   )
 
-  if (extrinsicResponse.eventEntities.nodes.length === 0) {
+  if (extrinsicResponse.events.nodes.length === 0) {
     return null
   } else {
-    const data = extrinsicResponse.eventEntities.nodes[0]
+    const data = extrinsicResponse.events.nodes[0]
     return {
       id: data.id,
       block_id: data.blockId,

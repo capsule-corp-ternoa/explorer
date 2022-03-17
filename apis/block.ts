@@ -1,9 +1,9 @@
 import { gql } from "graphql-request"
-import request from './api'
+import { apiDictionary } from './api'
 
 const queryBlockList = (offset: number, pageSize: number) => gql`
 {
-  blockEntities(
+  blocks(
     first: ${pageSize}
     offset: ${offset}
     orderBy: TIMESTAMP_DESC
@@ -18,7 +18,7 @@ const queryBlockList = (offset: number, pageSize: number) => gql`
       number
       hash
       timestamp
-      extrinsicEntitiesByBlockId {
+      extrinsics {
         totalCount
         nodes {
           nbEvents
@@ -31,7 +31,7 @@ const queryBlockList = (offset: number, pageSize: number) => gql`
 
 const queryBlockSearch = (keyword: string) => gql`
 {
-  blockEntities(
+  blocks(
     filter: {
       number: { equalTo: ${Number(keyword)} }
     }
@@ -45,7 +45,7 @@ const queryBlockSearch = (keyword: string) => gql`
 
 const queryBlock = (id: string) => gql`
 {
-  blockEntities(
+  blocks(
     filter: {
       id: { equalTo: "${id}" }
     }
@@ -60,7 +60,7 @@ const queryBlock = (id: string) => gql`
       sessionId
       author
       runtimeVersion
-      extrinsicEntitiesByBlockId {
+      extrinsics {
         totalCount
         nodes {
           id
@@ -77,41 +77,41 @@ const queryBlock = (id: string) => gql`
 `
 
 export const searchBlock = async (keyword: string) => {
-  const response = await request(
+  const response = await apiDictionary(
     queryBlockSearch(keyword)
   )
-  return response.blockEntities.nodes
+  return response.blocks.nodes
 }
 
 export const getBlockList = async (offset: number, pageSize: number) => {
-  const blocks = await request(
+  const blocks = await apiDictionary(
     queryBlockList(offset, pageSize)
   )
   let now = new Date();
   let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   return {
-    totalCount: blocks.blockEntities.totalCount,
-    hasNextPage : blocks.blockEntities.pageInfo.hasNextPage,
-    hasPreviousPage : blocks.blockEntities.pageInfo.hasPreviousPage,
-    data: blocks.blockEntities.nodes.map((block: any) => ({
+    totalCount: blocks.blocks.totalCount,
+    hasNextPage : blocks.blocks.pageInfo.hasNextPage,
+    hasPreviousPage : blocks.blocks.pageInfo.hasPreviousPage,
+    data: blocks.blocks.nodes.map((block: any) => ({
       number: block.number,
       block_hash: block.hash,
       age: (ms - new Date(block.timestamp).getTime()) / 1000,
-      signed_extrinsics: block.extrinsicEntitiesByBlockId.totalCount,
-      module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0)
+      signed_extrinsics: block.extrinsics.totalCount,
+      module_events: block.extrinsics.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0)
     }))
   }
 }
 
 export const getBlock = async (id: string) => {
-  const blockResponse = await request(
+  const blockResponse = await apiDictionary(
     queryBlock(id)
   )
 
-  if (blockResponse.blockEntities.nodes.length === 0) {
+  if (blockResponse.blocks.nodes.length === 0) {
     return null
   } else {
-    const block = blockResponse.blockEntities.nodes[0]
+    const block = blockResponse.blocks.nodes[0]
     let now = new Date();
     let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
   
@@ -121,13 +121,13 @@ export const getBlock = async (id: string) => {
       parent_hash: block.parentHash,
       state_root: block.stateRoot,
       extrinsics_root: block.extrinsicsRoot,
-      extrinsics: block.extrinsicEntitiesByBlockId.totalCount,
-      module_events: block.extrinsicEntitiesByBlockId.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
+      extrinsics: block.extrinsics.totalCount,
+      module_events: block.extrinsics.nodes.reduce((sum: number, x: any) => sum + x.nbEvents, 0),
       runtime_version: block.runtimeVersion,
       author: block.author,
       session_id: block.sessionId,
       age: (ms - new Date(block.timestamp).getTime()) / 1000,
-      extrinsic_detail: block.extrinsicEntitiesByBlockId.nodes.map((tx: any) => ({
+      extrinsic_detail: block.extrinsics.nodes.map((tx: any) => ({
         id: tx.id,
         block_id: id,
         from: tx.signer,

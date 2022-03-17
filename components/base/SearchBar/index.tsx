@@ -43,7 +43,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
         className={`${style.searchInput} ${props.isLarge && style.inputLarge}`}
         onChange={(e) => setKeyword(e.target.value)}
         onKeyDown={(e) => {
-          if (e.keyCode === 13) searchAll()
+          if (e.key === 'Enter') searchAll()
         }}
       />
       {!props.isLarge &&
@@ -51,7 +51,6 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           <Search />
         </div>}
       {props.hasButton &&
-  
         <div className={`${style.searchButton} btn btn-info px-5`} onClick={() => searchAll()} >
           Search
         </div>
