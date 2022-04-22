@@ -45,7 +45,7 @@ export const render = (record: any, dataKey: string) => {
     default:
       return (
         <Link href={`/account/${record.address}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>

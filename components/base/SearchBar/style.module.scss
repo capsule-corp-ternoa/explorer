@@ -7,10 +7,10 @@
   outline: 0;
   color: white;
   border: solid 2px transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg,#004fff, #cb06ed);
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, rgba(255, 133, 0) 0%, rgba(255, 0, 98) 30%, rgba(203, 6, 237)  55%, rgba(0, 79, 255) 100%);;
   background-origin: border-box;
   background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px $semi-blue inset;
+  box-shadow: 2px 1000px 1px $black-blue inset;
   border-radius: 50px;
   font-family: Airbnb Cereal App;
   font-style: normal;

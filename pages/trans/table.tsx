@@ -67,7 +67,7 @@ export const render = (record: any, dataKey: string) => {
     case 'details':
       return (
         <Link href={`/trans/${record.id}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>

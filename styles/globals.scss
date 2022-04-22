@@ -319,7 +319,7 @@ a {
 .mainBody {
   position: relative;
   margin: 0px auto;
-  margin-bottom: 130px;
+  margin-bottom: 30px;
   margin-top: 30px;
   width: 1400px;
   
@@ -343,8 +343,6 @@ a {
     width: unset;
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 100px;
-    margin-top: 30px;
   }
 }
 
@@ -453,10 +451,10 @@ a {
   padding: 12px 50px !important;
 }
 
-.data-table {
-  background: linear-gradient(90deg, #0E1439 0%, #121339 35.33%, #171139 81.35%, #1B1038 114.22%, #1F0E38 157.77%);
-  border-radius: 20px;
-}
+// .data-table {
+//   background: transparent;
+//   border-radius: 20px;
+// }
 
 .data-overflow {
   overflow-wrap: break-word;

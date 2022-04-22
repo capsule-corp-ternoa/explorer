@@ -49,7 +49,7 @@ export const render = (record: any, dataKey: string) => {
     default:
       return (
         <Link href={`/block/${record.number}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>

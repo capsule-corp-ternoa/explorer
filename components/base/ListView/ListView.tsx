@@ -16,6 +16,7 @@ interface TableProps {
   data: Row[] | null
   renderCell: (data: Row, dataKey: string) => React.ReactNode
   footer?: React.ReactNode
+  button?: React.ReactNode
   className?: string
 }
 
@@ -24,6 +25,7 @@ const ListView: React.FC<TableProps> = ({
   data,
   renderCell,
   footer,
+  button, 
   className
 }) => {
   return (
@@ -42,7 +44,7 @@ const ListView: React.FC<TableProps> = ({
         {data && data.map((record, rowKey) => (
           <tr key={rowKey}>
             {columns.map((col, key) => (
-              <td key={key} className={`${col.className} text-opacity text-medium ${key === 0 && 'ps-4'} ${key === columns.length - 1 && 'd-flex justify-content-start align-items-center pe-4'}`}
+              <td key={key} className={`${col.className} text-white-50 text-medium ${key === 0 && 'ps-4'} ${key === columns.length - 1 && 'd-flex justify-content-start align-items-center pe-4'}`}
               >
                 {renderCell(record, col.dataKey)}
               </td>
@@ -52,6 +54,7 @@ const ListView: React.FC<TableProps> = ({
       </tbody>
     </table>
     {footer && footer}
+    {button && <div className='d-block d-sm-none'>{button}</div>}
   </>
 )}
 

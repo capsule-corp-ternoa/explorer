@@ -25,9 +25,9 @@ const DetailButton: React.FC<DetailButtonProps> = ({
   href, label
 }) => (
   <Link href={href}>
-    <a className="all">
-      <div className={`btn-transparent d-flex m-auto px-5 py-3 ${style.blockButton}`}>
-        <span className="m-auto text-large text-bold">{label}</span>
+    <a className="text-center">
+      <div className="btn-outline-primary px-5 py-2">
+        <span className="text-large text-bold">{label}</span>
       </div>
     </a>
   </Link>
@@ -120,12 +120,17 @@ const HomeScan: React.FC<HomeScanProps> = () => {
       <div className="row position-relative">
         <div className="col-12 mb-5">
           <div className="custom_table">
-          <h1 className="title1 mb-4 ms-1">Latest Blocks</h1>
+            <div className='d-flex mb-4 justify-content-between align-items-center'>
+              <h1 className="title1 p-0 m-0 ps-4">Latest Blocks</h1>
+              <div className='d-none d-sm-block'>
+                <DetailButton href='/block' label='Show all Blocks'/>
+              </div>
+            </div>
             <ListView
               columns={blockColumns}
               renderCell={renderBlock}
               data={latestBlocks && latestBlocks.data}
-              footer={(
+              button={(
                 <DetailButton href='/block' label='Show all Blocks' />
               )}
             />
@@ -133,26 +138,36 @@ const HomeScan: React.FC<HomeScanProps> = () => {
         </div>
         {process.env.NEXT_PUBLIC_HIDE_NFT !== "true" && <div className={"col-12 " + style.space}>
           <div className="custom_table">
-            <h1 className="title1 mb-4 ms-1">NFT Extrinsics</h1>
+            <div className='d-flex mb-4 justify-content-between align-items-center'>
+              <h1 className="title1 p-0 m-0 ps-4">NFT Extrinsics</h1>
+              <div className='d-none d-sm-block'>
+                <DetailButton href='/nft' label='Show all NFT'/>
+              </div>
+            </div>
             <ListView
               columns={nftTxColumns}
               renderCell={renderNftTx}
               data={nftTransfers && nftTransfers.data}
-              footer={(
-                <DetailButton href='/nft' label='Show all NFT' />
+              button={(
+                <DetailButton href='/nft' label='Show all NFT'/>
               )}
             />
           </div>
         </div>}
         <div className="col-12 mt-5 pb-5">
           <div className="custom_table">
-            <h1 className="title1 mb-4 ms-1">Transfers</h1>
+            <div className='d-flex mb-4 justify-content-between align-items-center'>
+              <h1 className="title1 p-0 m-0 ps-4">Transfers</h1>
+              <div className='d-none d-sm-block'>
+                <DetailButton href='/trans' label='Show all Transfers'/>
+              </div>
+            </div>
             <ListView
               columns={transferColumns}
               renderCell={renderTransfer}
               data={transfers && transfers.data}
-              footer={(
-                <DetailButton href='/trans' label='Show all Transfers' />
+              button={(
+                <DetailButton href='/trans' label='Show all Transfers'/>
               )}
             />
           </div>

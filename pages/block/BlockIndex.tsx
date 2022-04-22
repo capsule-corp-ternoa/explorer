@@ -39,7 +39,7 @@ const BlockIndex: React.FC<BlockIndexProps> = () => {
     <Layout>
       <div className="ellipse2"></div>
       <div className="custom_table">
-        <h1 className="title mb-4 ms-1">Blocks</h1>
+        <h1 className="title mb-4 ps-lg-4">Blocks</h1>
         <ListView
           data={data && data.data}
           columns={columns}

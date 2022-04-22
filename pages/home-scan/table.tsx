@@ -64,7 +64,7 @@ export const renderBlock = (record: any, dataKey: string) => {
     default:
       return (
         <Link href={`/block/${record.number}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>
@@ -105,7 +105,7 @@ export const renderNftTx = (record: any, dataKey: string) => {
     case 'details':
       return (
         <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>
@@ -159,7 +159,7 @@ export const renderTransfer = (record: any, dataKey: string) => {
     case 'details':
       return (
         <Link href={`/trans/${record.id}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>
