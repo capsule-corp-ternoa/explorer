@@ -13,7 +13,6 @@ import { getTransferList } from 'apis/transfer';
 import { getExtrinsicCount } from 'apis/extrinsic';
 
 export interface HomeScanProps { }
-
 interface DetailButtonProps {
   href: string
   label: string
