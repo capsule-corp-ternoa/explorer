@@ -3,7 +3,7 @@ import style from './Network.module.scss';
 
 const Network : React.FC = ({}) => {
     const toUpperCase = (word:any) => {return word.charAt(0).toUpperCase() + word.slice(1);}
-    const network = toUpperCase(process.env.NEXT_PUBLIC_ENV)
+    const network = process.env.NEXT_PUBLIC_ENV && toUpperCase(process.env.NEXT_PUBLIC_ENV)
     return(
         <Link href='https://ternoa.com/'>
             <a className={style.wrapper} target="_blank" rel="noreferrer noopener" >
