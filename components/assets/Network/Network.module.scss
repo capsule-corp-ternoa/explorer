@@ -1,23 +1,25 @@
 .wrapper{
     display: flex;
     align-items: center;
-    padding: 5px 20px;
-    margin: 0 10px;
+    padding: 6.5px 20px;
     border-radius: 50px;
     background: linear-gradient(90deg, rgba(13, 75, 254, 0.3) 0%, rgba(120, 36, 245, 0.3) 100%);
     text-decoration: none !important;
+    border: 2px solid #0D4BFE4D;
+    @media (min-width:1190px) {
+        margin: 0 0 0 50px;
+    }
 }
 .title {
     font-size: 12px;
     color: white;
 }
 .connectIndicator {
-    margin: 0 5px 0 10px;
+    margin: 0 10px 0 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    border: solid 1px white;
     .outterIndicator {
         @keyframes indicatorScale {
             0%,

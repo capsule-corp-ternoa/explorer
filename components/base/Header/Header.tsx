@@ -116,7 +116,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 Dashboard
                             </a>
                         </Link>
-                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={`${style.navBarDropdown} mx-2 mx-lg-3 mx-xl-4`}>
+                        <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={`${style.navBarDropdown}`}>
                             <DropdownToggle
                                 className={style.navBarDropdownItem}
                                 id="page-header-user-dropdown"
@@ -127,7 +127,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                     <DownArrow className={style.downArrowItem} />
                                 </div>
                             </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
+                            <DropdownMenu className={style.dropdownMenu}>
                                 <div className={style.dropdownItem}>
                                     <Link href="/block">
                                         <a><Block className={style.dropdownItem}/></a>
@@ -161,7 +161,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                     <DownArrow className={style.downArrowItem} />
                                 </div>
                             </DropdownToggle>
-                            <DropdownMenu className={style.dropdownMenu} end>
+                            <DropdownMenu className={style.dropdownMenu}>
                                 <div className={style.dropdownItem}>
                                     <Link href='/account'>
                                         <a>

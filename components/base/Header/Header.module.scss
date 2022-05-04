@@ -100,9 +100,13 @@
     .navBarDropdownItem {
         background: unset;
         border: unset;
+        padding: 0;
         .downArrowItem {
             margin-left: 4px;
             fill: white;
+        }
+        @media (min-width:1190px) {
+            margin-left: 50px;
         }
     }
 

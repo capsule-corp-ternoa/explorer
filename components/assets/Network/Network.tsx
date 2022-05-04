@@ -7,11 +7,11 @@ const Network : React.FC = ({}) => {
     return(
         <Link href='https://ternoa.com/'>
             <a className={style.wrapper} target="_blank" rel="noreferrer noopener" >
-                <span className={style.title}>{network ? network : "Mainnet"}</span>
                 <div className={style.connectIndicator}>
                     <div className={style.outterIndicator} />
                     <div className={style.innerIndicator} />
                 </div>
+                <div className={style.title}>{network ? network : "Mainnet"}</div>
             </a>
         </Link>
     )
