@@ -51,7 +51,7 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           <Search />
         </div>}
       {props.hasButton &&
-        <div className={`${style.searchButton} btn btn-info px-5`} onClick={() => searchAll()} >
+        <div className={`${style.searchButton}`} onClick={() => searchAll()} >
           Search
         </div>
       }
