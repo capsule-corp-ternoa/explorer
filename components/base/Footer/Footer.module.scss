@@ -18,6 +18,9 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    @media (max-width: 568px){
+        text-align: center;
+    }
 }
 .footerTerms{
     font-size: 12px;

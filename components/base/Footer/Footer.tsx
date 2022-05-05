@@ -35,14 +35,22 @@ const Footer: React.FC<{}> = () => {
                 </div>
                 <Link href="https://www.ternoa.com/">
                     <a className={style.footerTernoa} target="_blank" rel="noreferrer noopener">
-                        Ternoa.com
+                        ternoa.com
                     </a>
                 </Link>
             </div>
             <div/>
             <hr className="d-none d-sm-block text-white-50 w-100" />
-            <div className='d-flex flex-column flex-sm-row justify-content-between align-items-center py-2'>
-                <div className={style.footerCopyright}>© {year} Ternoa Scan. All rights reserved.</div>
+            <div className='d-flex flex-column flex-md-row justify-content-between align-items-center p-2 px-md-0'>
+                <div className={style.footerCopyright}>
+                    © {year} Explorer developed and designed by {" "} 
+                    <Link href="https://www.ternoa.com/">
+                        <a target="_blank" rel="noreferrer noopener">
+                            ternoa.com
+                        </a>
+                    </Link>
+                    . All rights reserved.
+                </div>
                 <div>
                     <Link href="https://ternoahelp.zendesk.com/hc/fr/articles/360019045538-Terms-of-Use">
                         <a className={style.footerTerms} target="_blank" rel="noreferrer noopener">

@@ -36,7 +36,6 @@
         position: absolute;
         width: 14px;
         height: 14px;
-        background: rgba(20, 255, 198, 0.9);
         border-radius: 100%;
         animation: 1.6s ease-in-out 0s infinite normal none running indicatorScale;
     }
@@ -45,7 +44,6 @@
         position: absolute;
         width: 6px;
         height: 6px;
-        border-radius: 100%;
-        background: #14FFC6;
+        border-radius: 100%;        
     }
 }

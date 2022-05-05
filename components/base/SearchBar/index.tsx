@@ -51,9 +51,9 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
           <Search />
         </div>}
       {props.hasButton &&
-        <div className={`${style.searchButton}`} onClick={() => searchAll()} >
+        <button disabled={keyword && keyword.length>1 ? false : true} className={`${style.searchButton}`} onClick={() => searchAll()} >
           Search
-        </div>
+        </button>
       }
     </div>
   )
