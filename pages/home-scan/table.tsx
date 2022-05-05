@@ -9,8 +9,8 @@ export const blockColumns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
   { text: 'Age', dataKey: 'age', className: 'text-left' },
   { text: 'Block Hash', dataKey: 'block_hash', className: 'text-left only-desktop' },
-  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left only-desktop' },
-  { text: 'Module Events', dataKey: 'module_events', className: 'text-left only-desktop' },
+  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-center only-desktop' },
+  { text: 'Module Events', dataKey: 'module_events', className: 'text-center only-desktop' },
   { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
@@ -49,9 +49,9 @@ export const renderBlock = (record: any, dataKey: string) => {
       return (
         <div className="d-flex">
           <Link href={`/block/${record['number']}`}>
-            <a className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</a>
+            <a className="textToken">{ellipsifyMiddle(record[dataKey])}</a>
           </Link>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>

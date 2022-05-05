@@ -8,8 +8,8 @@ export const columns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
   { text: 'Age', dataKey: 'age', className: 'text-left' },
   { text: 'Block Hash', dataKey: 'block_hash', className: 'text-left only-desktop', mobileClassName: 'col-12' },
-  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left  only-desktop' },
-  { text: 'Module Events', dataKey: 'module_events', className: 'text-left  only-desktop' },
+  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-center  only-desktop' },
+  { text: 'Module Events', dataKey: 'module_events', className: 'text-center  only-desktop' },
   { text: '', dataKey: 'details' },
 ]
 
