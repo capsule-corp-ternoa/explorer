@@ -197,7 +197,7 @@ input[type=number] {
 }
 
 .table > tbody > tr > td {
-	height: 65px;
+	height: 55px;
 	text-align: center;
 	vertical-align: middle;
 	@media (max-width: 1280px) {
@@ -221,14 +221,14 @@ input[type=number] {
 }
 
 .table > thead > tr > th {
-	height: 75px;
+	height: 70px;
 	text-align: center;
 	vertical-align: middle;
 	color: $grey;
 	font-family: Airbnb Cereal App;
 	font-style: normal;
 	font-weight: normal;
-	opacity: 0.4;
+	opacity: 0.5;
 
 	@media (max-width: 1024px) {
 		height: 55px;

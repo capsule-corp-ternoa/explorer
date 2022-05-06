@@ -24,19 +24,19 @@ export const render = (record: any, dataKey: string) => {
       return (
         <>
           <div className="only-desktop">
-            <div className="d-flex">
+            <div className="d-flex align-items-center">
               <CAPSDark className="webIcon me-2" />
               <Link href={`/account/${record[dataKey]}`}>
-              <a className="textToken mt-1">{record[dataKey]}</a>
+              <a className="textToken">{record[dataKey]}</a>
               </Link>
-              <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+              <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
                 <Copy className="cursor-point" />
               </div>
             </div>
           </div>
           <div className="only-mobile">
             <Link href={`/account/${record[dataKey]}`}>
-              <a className="textToken mt-1">{ellipsifyLast(record[dataKey])}</a>
+              <a className="textToken">{ellipsifyLast(record[dataKey])}</a>
             </Link>
           </div>
         </>

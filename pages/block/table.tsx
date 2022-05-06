@@ -32,14 +32,14 @@ export const render = (record: any, dataKey: string) => {
 
     case 'block_hash':
       return (
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <CAPSDark className="webIcon me-2" />
           <Link href={`/block/${record['number']}`}>
-            <a className="textToken mt-1" title={record[dataKey]}>
+            <a className="textToken" title={record[dataKey]}>
               {ellipsifyMiddle(record[dataKey])}
             </a>
           </Link>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>
