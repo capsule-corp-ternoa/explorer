@@ -199,7 +199,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </div>
                         </div>
                         {(props.searchBar || props.searchBar == undefined) && 
-                            <div className="col-xl-4 px-0 mt-4 mt-xl-0">
+                            <div className="px-0 mt-4">
                                 <SearchBar />
                             </div>
                         }
@@ -215,7 +215,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </a>
                         </Link>
                         <Link href="/">
-                            <a className={`${style.headerLogo} justify-content-center col`}>
+                            <a className={`${style.headerLogo} justify-content-center col-8`}>
                                 <TernoaLogoIcon />
                                 <span className={style.logo}>ternoa explorer</span>
                             </a>
@@ -228,7 +228,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </div>
                         </div>
                         {(props.searchBar || props.searchBar == undefined) && 
-                            <div className="col-xl-4 px-0 mt-4 mt-xl-0">
+                            <div className="col px-0 mt-4">
                                 <SearchBar />
                             </div>
                         }
