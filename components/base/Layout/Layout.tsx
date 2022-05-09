@@ -24,7 +24,7 @@ const Layout: React.FC<LayoutProps> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="Ternoa Blockchain Explorer, by Ternoa." />
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-QBE0VFBPGS`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -33,7 +33,7 @@ const Layout: React.FC<LayoutProps> = ({
             function gtag(){window.dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-QBE0VFBPGS');
+            gtag('config', ${process.env.NEXT_PUBLIC_GA});
           `}
         </Script>
       </Head>
