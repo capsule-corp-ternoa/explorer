@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                     <div className="d-flex align-items-center">
                         <Link href="/">
                             <a className={style.navBarDash}>
-                                Dashboard
+                                Home
                             </a>
                         </Link>
                         <Dropdown onMouseOver={overMenu} onMouseLeave={leaveMenu} toggle={toggle} isOpen={menu} className={`${style.navBarDropdown}`}>
@@ -245,7 +245,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                         className={style.mobileMenuItem + " " + (router.route == '/' ? style.activeMobileMenuItem : '')}
                         onClick={()=>router.push("/")}
                     >
-                        Dashboard
+                        Home
                     </span>
                     <div>
                         <div className="flex flex-row flex-items-center flex-cont-center" onClick={() => onClickChain()}>

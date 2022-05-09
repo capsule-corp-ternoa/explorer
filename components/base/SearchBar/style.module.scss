@@ -53,6 +53,7 @@
   height: 55px;
   font-family: Airbnb Cereal App;
   font-style: normal;
+  font-weight: bold;
   font-size: 17px;
   text-align: center;
   color: #FFFFFF;
@@ -66,8 +67,6 @@
     padding:0 10%;
   }
   &:hover {
-    transform: scale(1.01);
-    font-weight: bold;
-    border: solid 2px rgba(255, 255, 255, 0.2);
+    background: #0029FF;
   }
 }
