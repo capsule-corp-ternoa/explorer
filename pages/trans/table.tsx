@@ -35,18 +35,18 @@ export const render = (record: any, dataKey: string) => {
       return (
         <>
           <div className="only-desktop">
-            <div className="d-flex">
+            <div className="d-flex align-items-center">
               <CAPSDark className="webIcon me-2" />
-              <span className="textToken mt-1" title={record[dataKey]}>
+              <span className="textToken" title={record[dataKey]}>
                 {ellipsifyMiddle(record[dataKey])}
               </span>
-              <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+              <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
                 <Copy className="cursor-point" />
               </div>
             </div>
           </div>
           <div className="only-mobile">
-            <span className="textToken mt-1" title={record[dataKey]}>
+            <span className="textToken" title={record[dataKey]}>
                 {ellipsifyLast(record[dataKey])}
             </span>
           </div>
@@ -54,12 +54,12 @@ export const render = (record: any, dataKey: string) => {
       )
     case 'to':
       return (
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken mt-1" title={record[dataKey]}>
+          <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>
@@ -67,7 +67,7 @@ export const render = (record: any, dataKey: string) => {
     case 'details':
       return (
         <Link href={`/trans/${record.id}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>

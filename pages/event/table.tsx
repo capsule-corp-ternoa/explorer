@@ -30,11 +30,11 @@ export const render = (record: any, dataKey: string) => {
       )
     case 'hash':
       return (
-        <div className="d-flex">
-          <span className="textToken mt-1" title={record[dataKey]}>
+        <div className="d-flex align-items-center">
+          <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>

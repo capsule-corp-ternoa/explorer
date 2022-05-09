@@ -42,12 +42,12 @@ export const blockRender = (data: any, dataKey: string) => {
     case 'state_root':
     case 'extrinsics_root':
       return (
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken mt-1" title={data[dataKey]}>
+          <span className="textToken" title={data[dataKey]}>
             {ellipsifyMiddle(data[dataKey])}
           </span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(data[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(data[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>
@@ -80,16 +80,16 @@ export const extrinsicRender = (record: any, dataKey: string) => {
       return (
         <>
           <div className="only-desktop">
-            <div className="d-flex">
+            <div className="d-flex align-items-center">
               <CAPSDark className="webIcon me-2" />
-              <span className="textToken mt-1">{record[dataKey]}</span>
-              <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+              <span className="textToken">{record[dataKey]}</span>
+              <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
                 <Copy className="cursor-point" />
               </div>
             </div>
           </div>
           <div className="only-mobile">
-            <span className="textToken mt-1">{ellipsifyLast(record[dataKey])}</span>
+            <span className="textToken">{ellipsifyLast(record[dataKey])}</span>
           </div>
         </>
       )
@@ -123,11 +123,11 @@ export const eventRender = (record: any, dataKey: string) => {
       )
     case 'hash':
       return (
-        <div className="d-flex">
-          <span className="textToken mt-1" title={record[dataKey]}>
+        <div className="d-flex align-items-center">
+          <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>
