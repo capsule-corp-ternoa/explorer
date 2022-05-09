@@ -35,94 +35,91 @@ const Summary: React.FC<SummaryProps> = ({
   }, [mediaQuery])
 
   return (
-    <div className="position-relative">
-      <div className={style.gradientBack}></div>
-      <div className={style.searchForm + " position-relative"}>
-        <SearchBar hasButton={true} isLarge={true} />
-        {isLaptop && (
-          <div className="d-flex mt-5 justify-content-center">
-            <div className={`${style.searchBarInfo} pe-5 border-end`}>
+    <div className={style.searchForm + " position-relative"}>
+      <SearchBar hasButton={true} isLarge={true} />
+      {isLaptop && (
+        <div className="d-flex mt-5 justify-content-center">
+          <div className={`${style.searchBarInfo} pe-5 border-end`}>
+            <div className="d-flex flex-items-center">
+              <div className=''>
+                <CAPSLogo className={style.Logo}></CAPSLogo>
+              </div>
+              <div className={"d-flex flex-column ms-3"}>
+                <div className="text-opacity-4 text-ellipsis">CAPS price</div>
+                  <div className="d-flex text-price fw-bold">
+                  {loading ? (
+                    <span className="spinner-grow spinner-grow-sm mx-1 text-white-50" role="status" aria-hidden="true"></span>
+                    ) : (
+                    <>
+                      {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
+                      <span className={`${style.logoPercent} ms-2 ${{[style.minus]: change24h !== undefined && (change24h < 0)}}`}>
+                        {change24h !== undefined && (
+                          <FormattedNumber value={change24h / 100} format='percentChange' />
+                        )}
+                      </span>
+                    </>
+                    )
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+            <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
               <div className="d-flex flex-items-center">
                 <div className=''>
-                  <CAPSLogo className={style.Logo}></CAPSLogo>
+                  <MarketLogo className={style.Logo}></MarketLogo>
                 </div>
-                <div className={"d-flex flex-column ms-3"}>
-                  <div className="text-opacity-4 text-ellipsis">CAPS price</div>
-                    <div className="d-flex text-price fw-bold">
+                <div className={`d-flex flex-column ms-3`}>
+                  <div className="fs-6 text-opacity-4 text-ellipsis">Market cap</div>
+                    <div className="text-price fw-bold">
                     {loading ? (
                       <span className="spinner-grow spinner-grow-sm mx-1 text-white-50" role="status" aria-hidden="true"></span>
                       ) : (
-                      <>
-                        {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
-                        <span className={`${style.logoPercent} ms-2 ${{[style.minus]: change24h !== undefined && (change24h < 0)}}`}>
-                          {change24h !== undefined && (
-                            <FormattedNumber value={change24h / 100} format='percentChange' />
-                          )}
-                        </span>
-                      </>
+                      marketCap !== undefined && <FormattedNumber value={marketCap} format='priceDecimal' />
                       )
                     }
                   </div>
                 </div>
               </div>
             </div>
-              <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
-                <div className="d-flex flex-items-center">
-                  <div className=''>
-                    <MarketLogo className={style.Logo}></MarketLogo>
+            <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
+              <div className="d-flex flex-items-center">
+                <div className=''>
+                  <ExtrinsicLogo className={style.Logo}></ExtrinsicLogo>
+                </div>
+                <div className={`d-flex flex-column ms-3`}>
+                  <div className="fs-6 text-opacity-4 text-ellipsis">Extrinsics</div>
+                    <div className="text-price fw-bold">
+                    {loading ? (
+                      <span className="spinner-grow spinner-grow-sm mx-1 text-white-50" role="status" aria-hidden="true"></span>
+                      ) : (
+                      extrinsics != null && <FormattedNumber value={extrinsics} format='decimal' />
+                      )
+                    }
                   </div>
-                  <div className={`d-flex flex-column ms-3`}>
-                    <div className="fs-6 text-opacity-4 text-ellipsis">Market cap</div>
-                      <div className="text-price fw-bold">
+                </div>
+              </div>
+            </div>
+            <div className={`${style.searchBarInfo} ps-5`}>
+              <div className="d-flex flex-items-center">
+                <div className=''>
+                  <BlockLogo className={style.Logo}></BlockLogo>
+                </div>
+                <div className={`d-flex flex-column ms-3`}>
+                  <div className="fs-6 text-opacity-4 text-ellipsis">Finalized Block</div>
+                    <div className="text-price fw-bold">
                       {loading ? (
                         <span className="spinner-grow spinner-grow-sm mx-1 text-white-50" role="status" aria-hidden="true"></span>
                         ) : (
-                        marketCap !== undefined && <FormattedNumber value={marketCap} format='priceDecimal' />
+                        finalizedBlock != null && <FormattedNumber value={finalizedBlock} format='decimal' />
                         )
                       }
-                    </div>
                   </div>
                 </div>
               </div>
-              <div className={`${style.searchBarInfo} pe-5 ps-5 border-end`}>
-                <div className="d-flex flex-items-center">
-                  <div className=''>
-                    <ExtrinsicLogo className={style.Logo}></ExtrinsicLogo>
-                  </div>
-                  <div className={`d-flex flex-column ms-3`}>
-                    <div className="fs-6 text-opacity-4 text-ellipsis">Extrinsics</div>
-                      <div className="text-price fw-bold">
-                      {loading ? (
-                        <span className="spinner-grow spinner-grow-sm mx-1 text-white-50" role="status" aria-hidden="true"></span>
-                        ) : (
-                        extrinsics != null && <FormattedNumber value={extrinsics} format='decimal' />
-                        )
-                      }
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={`${style.searchBarInfo} ps-5`}>
-                <div className="d-flex flex-items-center">
-                  <div className=''>
-                    <BlockLogo className={style.Logo}></BlockLogo>
-                  </div>
-                  <div className={`d-flex flex-column ms-3`}>
-                    <div className="fs-6 text-opacity-4 text-ellipsis">Finalized Block</div>
-                      <div className="text-price fw-bold">
-                        {loading ? (
-                          <span className="spinner-grow spinner-grow-sm mx-1 text-white-50" role="status" aria-hidden="true"></span>
-                          ) : (
-                          finalizedBlock != null && <FormattedNumber value={finalizedBlock} format='decimal' />
-                          )
-                        }
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-        )}
-      </div>
+            </div>
+        </div>
+      )}
     </div>
   )
 }

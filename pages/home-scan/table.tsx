@@ -9,8 +9,8 @@ export const blockColumns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
   { text: 'Age', dataKey: 'age', className: 'text-left' },
   { text: 'Block Hash', dataKey: 'block_hash', className: 'text-left only-desktop' },
-  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-left only-desktop' },
-  { text: 'Module Events', dataKey: 'module_events', className: 'text-left only-desktop' },
+  { text: 'Signed Extrinsics', dataKey: 'signed_extrinsics', className: 'text-center only-desktop' },
+  { text: 'Module Events', dataKey: 'module_events', className: 'text-center only-desktop' },
   { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
@@ -47,11 +47,11 @@ export const renderBlock = (record: any, dataKey: string) => {
     
     case 'block_hash':
       return (
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <Link href={`/block/${record['number']}`}>
-            <a className="textToken mt-1">{ellipsifyMiddle(record[dataKey])}</a>
+            <a className="textToken">{ellipsifyMiddle(record[dataKey])}</a>
           </Link>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>
@@ -64,7 +64,7 @@ export const renderBlock = (record: any, dataKey: string) => {
     default:
       return (
         <Link href={`/block/${record.number}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>
@@ -83,12 +83,12 @@ export const renderNftTx = (record: any, dataKey: string) => {
     case 'from':
     case 'to':
       return (
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <CAPSDark className="webIcon me-2" />
-          <span className="textToken mt-1" title={record[dataKey]}>
+          <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-          <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
             <Copy className="cursor-point" />
           </div>
         </div>
@@ -105,7 +105,7 @@ export const renderNftTx = (record: any, dataKey: string) => {
     case 'details':
       return (
         <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>
@@ -139,19 +139,19 @@ export const renderTransfer = (record: any, dataKey: string) => {
       return (
         <div>
           <div className="only-desktop">
-            <div className="d-flex">
+            <div className="d-flex align-items-center">
               <CAPSDark className="webIcon me-2" />
-              <span className="textToken mt-1" title={record[dataKey]}>
+              <span className="textToken" title={record[dataKey]}>
                 {ellipsifyMiddle(record[dataKey])}
               </span>
-              <div className="ms-2 mt-1" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+              <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
                 <Copy className="cursor-point" />
               </div>
             </div>
           </div>
           <div className="only-mobile">
-             <span className="textToken mt-1" title={record[dataKey]}>
-              {ellipsifyLast(record[dataKey])}
+             <span className="textToken" title={record[dataKey]}>
+              {ellipsifyMiddle(record[dataKey])}
             </span>
           </div>
         </div>
@@ -159,7 +159,7 @@ export const renderTransfer = (record: any, dataKey: string) => {
     case 'details':
       return (
         <Link href={`/trans/${record.id}`}>
-          <a>
+          <a className='mx-auto'>
             <Detail className="detail"/>
           </a>
         </Link>

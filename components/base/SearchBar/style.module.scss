@@ -1,45 +1,37 @@
 @import "styles/color";
 
 .searchInput {
+  font-family: Airbnb Cereal App;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+  z-index: 1;
   width: 100%;
   height: 50px;
   padding-left: 20px;
   outline: 0;
-  color: white;
   border: solid 2px transparent;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg,#004fff, #cb06ed);
+  border-radius: 50px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(90deg, rgba(255, 133, 0) 0%, rgba(255, 0, 98) 30%, rgba(203, 6, 237)  55%, rgba(0, 79, 255) 100%);;
   background-origin: border-box;
   background-clip: content-box, border-box;
-  box-shadow: 2px 1000px 1px $semi-blue inset;
-  border-radius: 50px;
-  font-family: Airbnb Cereal App;
-  font-style: normal;
-  font-weight: 500;
-  z-index: 1;
+  box-shadow: 2px 1000px 1px $black-blue inset;
+  &::placeholder{
+    color: #9C9CBA;
+  }
   &:focus {
     background: linear-gradient(90deg, rgba(13, 8, 31, 0.5) 0%, rgba(8, 7, 21, 0.5) 99.9%);
-    border: 2.32439px solid #004FFF;
+    border: 2px solid #004FFF;
     box-sizing: border-box;
-    border-radius: 46.4878px;
-  }
-  @media (max-width : 767px) {
-    font-size: 14px;
+    border-radius: 50px;
   }
 }
 
 .inputLarge {
-  font-size: 18px;
-  height: 64px;
-  padding-left: 20px;
-  &::placeholder{
-    color: rgba(255, 255, 255, 0.5);
-  }
+  height: 65px;
   @media (max-width : 576px) {
     height: 55px;
-    &::placeholder{
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.5);
-    }
   }
 }
 
@@ -51,26 +43,30 @@
 }
 
 .searchButton {
+  display: flex;
+  align-items: center;
   position: absolute;
   background: rgba(0, 79, 255);
-  right: 10px;
-  padding:0;
+  border-radius: 50px;
+  right: 5px;
   z-index: 1;
-  height: 50px;
+  height: 55px;
   font-family: Airbnb Cereal App;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 31px;
+  font-size: 17px;
   text-align: center;
   color: #FFFFFF;
+  padding:0 6.5%;
+  border: solid 2px transparent;
   transition: transform 0.5s;
+  cursor: pointer;
   @media (max-width : 576px) {
-    height: 40px;
+    height: 45px;
     font-size: 15px;
-    line-height: 22px;
+    padding:0 10%;
   }
   &:hover {
-      transform: scale(1.02);
+    background: #0029FF;
   }
 }
