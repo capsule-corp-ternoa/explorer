@@ -52,10 +52,10 @@ const Summary: React.FC<SummaryProps> = ({
                     ) : (
                     <>
                       {capsPrice !== undefined && <FormattedNumber value={capsPrice} format='caps' />}
-                      <span className={`${style.logoPercent} ms-2 ${{[style.minus]: change24h !== undefined && (change24h < 0)}}`}>
-                        {change24h !== undefined && (
-                          <FormattedNumber value={change24h / 100} format='percentChange' />
-                        )}
+                      <span className={`${style.logoPercent} ms-2 ${change24h && change24h < 0 && style.minus}`}>
+                          {change24h && 
+                            <FormattedNumber value={change24h / 100} format='percentChange' />
+                          }
                       </span>
                     </>
                     )
