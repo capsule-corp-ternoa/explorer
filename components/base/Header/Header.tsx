@@ -191,7 +191,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 <span className={style.logo}>ternoa explorer</span>
                             </a>
                         </Link>
-                        <div className="d-block d-xl-none col-2">
+                        <div className="col-2">
                             <div className="d-flex justify-content-end">
                                 <div onClick={() => openMenu()}>
                                     <Hamburger className={`${style.hamburger}`} />
@@ -220,7 +220,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                                 <span className={style.logo}>ternoa explorer</span>
                             </a>
                         </Link>
-                        <div className="d-block d-xl-none col-2 px-0 mx-0">
+                        <div className="col-2 px-0 mx-0">
                             <div className="d-flex justify-content-end">
                                 <div onClick={() => openMenu()}>
                                     <Hamburger className={`${style.hamburger}`} />
