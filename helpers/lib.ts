@@ -15,6 +15,10 @@ export const ellipsifyLast = (address: string, length: number = 6) => {
   }
 }
 
+export const toUpperCase = (word:any) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
 export const formatSec = (sec: number) => {
   const min = Math.floor(sec / 60)
   const hour =  Math.floor(sec / 3600)

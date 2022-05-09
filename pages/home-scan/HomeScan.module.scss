@@ -201,7 +201,9 @@
     color: green;
 
     &.minus {
-        color: red;
+        background: linear-gradient(90deg, #ec0297 0%, #ff204c 70%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 
