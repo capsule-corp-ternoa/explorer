@@ -1,8 +1,8 @@
+import { toUpperCase } from "helpers/lib";
 import Link from "next/link"
 import style from './Network.module.scss';
 
 const Network : React.FC = ({}) => {
-    const toUpperCase = (word:any) => {return word.charAt(0).toUpperCase() + word.slice(1);}
     const network = process.env.NEXT_PUBLIC_ENV ? toUpperCase(process.env.NEXT_PUBLIC_ENV) : "Mainnet"
     return(
         <Link href='https://ternoa.com/'>
