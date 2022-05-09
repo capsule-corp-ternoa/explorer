@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from 'components/base/Header';
 import Footer from 'components/base/Footer';
 import { toUpperCase } from 'helpers/lib';
+import Script from 'next/script';
 
 interface LayoutProps {
   searchBar?: boolean
@@ -22,6 +23,19 @@ const Layout: React.FC<LayoutProps> = ({
         <title>Ternoa Explorer • {network}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="Ternoa Blockchain Explorer, by Ternoa." />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-QBE0VFBPGS`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-QBE0VFBPGS');
+          `}
+        </Script>
       </Head>
       <div className="mainContainer">
         <Header back={back} searchBar={searchBar} />
