@@ -2,6 +2,7 @@
 @mixin switchShadow {
 	display: inline-flex;
 	background: linear-gradient(90deg, rgba(11, 75, 254, 0.15) 0%, rgba(184, 13, 239, 0.15) 99.9%);
+	background-origin: border-box;
 	border: 2px solid rgba(14, 14, 35, 0.1);
 	box-sizing: border-box;
 	backdrop-filter: blur(50px);
@@ -51,6 +52,7 @@
 }
 .switch {
 	@media (max-width : 1024px) {
+		border: solid 3px transparent;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;

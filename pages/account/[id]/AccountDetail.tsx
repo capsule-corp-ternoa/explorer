@@ -6,9 +6,10 @@ import Layout from 'components/base/Layout';
 import ListView from 'components/base/ListView';
 import DetailView from 'components/base/DetailView';
 import Switch from 'components/base/Switch';
-import { fields, render } from './table';
+import { fields, render, eventsListColumns, eventsListRender } from './table';
 import { columns as extrinsicColumns, render as renderExtrinsic } from 'pages/extrinsic/table';
 import { getAccount } from 'apis/account';
+import { getEventsListByAccount } from 'apis/event';
 import { ellipsifyMiddle } from 'helpers/lib';
 import { API_PAGE_SIZE } from 'helpers/constants';
 import MaxCount from 'components/base/MaxCount';
@@ -19,11 +20,15 @@ export interface AccountDetailProps {}
 enum DetailMode {
   ID,
   Extrinsic,
+  Events,
 }
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
   const router = useRouter();
   const [data, setData] = useState<any>({});
+  const [eventsListData, setEventsListData] = useState<any>()
+  const [totalCountEvents, setTotalCountEvents] = useState<number>(0)
+  const [isLoadingEventList, setIsLoadingEventList] = useState<boolean>(false)
   const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.ID);
   const [page, setPage] = useState<number>(0);
   const [totalCount, setTotalCount] = useState<number>(0)
@@ -41,14 +46,29 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
       console.log(err)
     }
   }
-  
+
+  const getEventsDatasByAccount = async (id : string, offset: number, pageSize : number) =>{
+    setIsLoadingEventList(true)
+    try{
+      if (!id) throw new Error("Couldn't get data: Unknown id")
+      const eventsDatas = await getEventsListByAccount(id, offset, pageSize)
+      setEventsListData(eventsDatas),
+      setTotalCountEvents(eventsDatas.totalCount)
+    }catch(err){
+      console.log(err)
+    }finally{
+      setIsLoadingEventList(false)
+    }
+  }
+
   const selectCount = (count: number) => {
     setPage(0)
     setPageSize(count);
   }
   
   useEffect(() => {
-    id && getAccountData(id, offset, pageSize);
+    id && getAccountData(id, offset, pageSize)
+    id && getEventsDatasByAccount(id, offset, pageSize)
   },[id, page, pageSize]);
   
   if (!id) {
@@ -68,7 +88,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
             </Link>
           </div>
           <Switch
-            options={[ellipsifyMiddle(id), 'Extrinsic']}
+            options={[ellipsifyMiddle(id), 'Extrinsic', 'Events']}
             selected={detailMode}
             onChange={setDetailMode}
           />
@@ -91,6 +111,23 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
               )}
             />
           )}
+
+        {detailMode === DetailMode.Events &&
+          eventsListData &&
+          eventsListData.data && (
+            <ListView
+              columns={eventsListColumns}
+              data={ eventsListData && eventsListData.data}
+              renderCell={eventsListRender}
+              footer={(
+                <div className="d-flex justify-content-between align-items-center mt-sm-4"> 
+                  <MaxCount count={pageSize} onSelectCount={selectCount}/>
+                  <Pagination page={page} data={eventsListData} setPage={setPage} totalPage={Math.ceil(totalCountEvents / pageSize)} isLoading={isLoadingEventList}/>
+                </div>
+              )}
+            />
+          )}
+          
       </div>
     </Layout>
   );

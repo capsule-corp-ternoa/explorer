@@ -8,14 +8,16 @@ export interface PaginationProps {
   setPage: Dispatch<React.SetStateAction<number>>
   data: any
   totalPage: number
+  isLoading?:boolean
 }
 
-const Pagination: React.FC<PaginationProps> = ({ data, page, totalPage, setPage }) => {
+const Pagination: React.FC<PaginationProps> = ({ data, page, totalPage, setPage, isLoading }) => {
+  //console.log(isLoading)
   const loadNextDatas = () =>{
-    data && data.hasNextPage && setPage(page +1)
+    (!isLoading || undefined) && data && data.hasNextPage && setPage(page +1) // undefinded ?? ou pas 
   }
   const loadPreviousDatas = () =>{
-    data && data.hasPreviousPage && setPage(page -1)
+    !isLoading && data && data.hasPreviousPage && setPage(page -1)
   }
 
   return (
