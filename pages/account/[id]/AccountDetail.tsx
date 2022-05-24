@@ -31,6 +31,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   const [txData, setTxData] = useState<any>({});
   const [txPage, setTxPage] = useState<number>(0);
   const [totalTxCount, setTotalTxCount] = useState<number>(0)
+  const [isLoadingTx, setIsLoadingTx] = useState<boolean>(false)
   const [pageSize, setPageSize] = useState<number>(API_PAGE_SIZE)
   const txOffset = txPage * pageSize
   
@@ -42,6 +43,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   const eventsOffset = eventsPage * eventsPageSize
 
   const getAccountData = async (id : string, offset: number, pageSize : number) => {
+    setIsLoadingTx(true)
     try{
       if (!id) throw new Error("Couldn't get data: Unknown id")
       const accountDatas =  await getAccount(id, offset, pageSize)
@@ -49,6 +51,8 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
       setTotalTxCount(accountDatas.totalCount)
     }catch(err){
       console.log(err)
+    }finally{
+      setIsLoadingTx(false)
     }
   }
 
@@ -129,7 +133,7 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
             footer={
               <div className="d-flex justify-content-between align-items-center mt-sm-4">
                 <MaxCount count={pageSize} onSelectCount={selectCount}/>
-                <Pagination page={txPage} data={txData} setPage={setTxPage} totalPage={Math.ceil(totalTxCount / pageSize)} />
+                <Pagination page={txPage} data={txData} setPage={setTxPage} totalPage={Math.ceil(totalTxCount / pageSize)}/>
               </div>
             }
           />
