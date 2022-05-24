@@ -9,15 +9,15 @@ import Detail from 'components/assets/Detail';
 export const fields = [
   { text: 'Total Balance', dataKey: 'total_balance', className: 'text-left', mobileClassName: 'col-12 col-sm-6' },
   { text: 'Free Balance', dataKey: 'free_balance', className: 'text-left', mobileClassName: 'col-12 col-sm-6' },
-  { text: 'Nonce', dataKey: 'nonce', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'Nonce', dataKey: 'totalCount', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Active', dataKey: 'active', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Past Roles', dataKey: 'past_roles', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const eventsListColumns = [
   { text: 'Event ID', dataKey: 'id', className: 'text-left only-desktop' },
-  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left only-desktop' },
-  { text: 'Time', dataKey: 'age', className: 'text-left' },
+  { text: 'Extrinsic Hash', dataKey: 'hash', className: 'text-left only-desktop ' },
+  { text: 'Age', dataKey: 'age', className: 'text-left' },
   { text: 'Action', dataKey: 'action', className: 'text-left' },
   { text: '', dataKey: 'details' },
 ]
@@ -33,7 +33,7 @@ export const render = (data: any, dataKey: string) => {
         </>
       )
 
-    case 'nonce':
+    case 'totalCount':
       return data[dataKey]
 
     case 'active':
@@ -74,7 +74,7 @@ export const eventsListRender = (record: any, dataKey: string) => {
     case 'details':
         return (
           <Link href={`/event/${record.id}`}>
-            <a className='mx-auto'>
+            <a className='mx-auto align-self-center'>
               <Detail className="detail"/>
             </a>
           </Link>

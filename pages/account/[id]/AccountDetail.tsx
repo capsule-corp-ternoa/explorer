@@ -25,23 +25,28 @@ enum DetailMode {
 
 const AccountDetail: React.FC<AccountDetailProps> = () => {
   const router = useRouter();
-  const [data, setData] = useState<any>({});
+  const id = router.query.id as string;
+  const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.ID);
+  
+  const [txData, setTxData] = useState<any>({});
+  const [txPage, setTxPage] = useState<number>(0);
+  const [totalTxCount, setTotalTxCount] = useState<number>(0)
+  const [pageSize, setPageSize] = useState<number>(API_PAGE_SIZE)
+  const txOffset = txPage * pageSize
+  
   const [eventsListData, setEventsListData] = useState<any>()
+  const [eventsPage, setEventsPage] = useState<number>(0);
   const [totalCountEvents, setTotalCountEvents] = useState<number>(0)
   const [isLoadingEventList, setIsLoadingEventList] = useState<boolean>(false)
-  const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.ID);
-  const [page, setPage] = useState<number>(0);
-  const [totalCount, setTotalCount] = useState<number>(0)
-  const [pageSize, setPageSize] = useState<number>(API_PAGE_SIZE)
-  const id = router.query.id as string;
-  const offset = page * pageSize
+  const [eventsPageSize, setEventsPageSize] = useState<number>(API_PAGE_SIZE)
+  const eventsOffset = eventsPage * eventsPageSize
 
   const getAccountData = async (id : string, offset: number, pageSize : number) => {
     try{
       if (!id) throw new Error("Couldn't get data: Unknown id")
       const accountDatas =  await getAccount(id, offset, pageSize)
-      setData(accountDatas), 
-      setTotalCount(accountDatas.totalCount)
+      setTxData(accountDatas), 
+      setTotalTxCount(accountDatas.totalCount)
     }catch(err){
       console.log(err)
     }
@@ -62,19 +67,35 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
   }
 
   const selectCount = (count: number) => {
-    setPage(0)
+    setTxPage(0) 
     setPageSize(count);
   }
+
+  const selectEventsCount = (count: number) => {
+    setEventsPage(0) 
+    setEventsPageSize(count);
+  }
   
+  useEffect(()=>{
+    setDetailMode(DetailMode.ID)
+  }, [id])
+
   useEffect(() => {
-    id && getAccountData(id, offset, pageSize)
-    id && getEventsDatasByAccount(id, offset, pageSize)
-  },[id, page, pageSize]);
+    selectCount(API_PAGE_SIZE)
+    selectEventsCount(API_PAGE_SIZE)
+    id && getAccountData(id, txOffset, pageSize)
+    id && getEventsDatasByAccount(id, eventsOffset, eventsPageSize)
+  }, [detailMode]);
+
+  useEffect(() => {
+    id && getAccountData(id, txOffset, pageSize)
+    id && getEventsDatasByAccount(id, eventsOffset, eventsPageSize)
+  }, [id, txPage, pageSize, eventsPage, eventsPageSize]);
   
   if (!id) {
     return null;
   }
-
+  
   return (
     <Layout back="/account">
       <div className="ellipse3"></div>
@@ -93,41 +114,42 @@ const AccountDetail: React.FC<AccountDetailProps> = () => {
             onChange={setDetailMode}
           />
         </div>
-        {detailMode === DetailMode.ID && (
-          <DetailView fields={fields} data={data} renderCell={render} />
-        )}
+
+        {detailMode === DetailMode.ID &&
+          <DetailView fields={fields} data={txData} renderCell={render} />
+        }
+
         {detailMode === DetailMode.Extrinsic &&
-          data &&
-          data.extrinsics && (
-            <ListView
-              columns={extrinsicColumns}
-              data={data && data.extrinsics}
-              renderCell={renderExtrinsic}
-              footer={(
-                <div className="d-flex justify-content-between align-items-center mt-sm-4">
-                  <MaxCount count={pageSize} onSelectCount={selectCount}/>
-                  <Pagination page={page} data={data} setPage={setPage} totalPage={Math.ceil(totalCount / pageSize)} />
-                </div>
-              )}
-            />
-          )}
+          txData &&
+          txData.extrinsics &&
+          <ListView
+            columns={extrinsicColumns}
+            data={txData && txData.extrinsics}
+            renderCell={renderExtrinsic}
+            footer={
+              <div className="d-flex justify-content-between align-items-center mt-sm-4">
+                <MaxCount count={pageSize} onSelectCount={selectCount}/>
+                <Pagination page={txPage} data={txData} setPage={setTxPage} totalPage={Math.ceil(totalTxCount / pageSize)} />
+              </div>
+            }
+          />
+        }
 
         {detailMode === DetailMode.Events &&
           eventsListData &&
-          eventsListData.data && (
-            <ListView
-              columns={eventsListColumns}
-              data={ eventsListData && eventsListData.data}
-              renderCell={eventsListRender}
-              footer={(
-                <div className="d-flex justify-content-between align-items-center mt-sm-4"> 
-                  <MaxCount count={pageSize} onSelectCount={selectCount}/>
-                  <Pagination page={page} data={eventsListData} setPage={setPage} totalPage={Math.ceil(totalCountEvents / pageSize)} isLoading={isLoadingEventList}/>
-                </div>
-              )}
-            />
-          )}
-          
+          eventsListData.data &&
+          <ListView
+            columns={eventsListColumns}
+            data={ eventsListData && eventsListData.data}
+            renderCell={eventsListRender}
+            footer={
+              <div className="d-flex justify-content-between align-items-center mt-sm-4"> 
+                <MaxCount count={eventsPageSize} onSelectCount={selectEventsCount}/>
+                <Pagination page={eventsPage} data={eventsListData} setPage={setEventsPage} totalPage={Math.ceil(totalCountEvents / eventsPageSize)} isLoading={isLoadingEventList}/>
+              </div>
+            }
+          />
+        } 
       </div>
     </Layout>
   );
