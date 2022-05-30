@@ -33,6 +33,39 @@ const queryEventList = (offset: number, pageSize: number) => gql`
 }
 `
 
+const queryEventsListByAccount = (id: string, offset: number, pageSize: number) => gql`
+  {
+    events(
+      first: ${pageSize}
+      offset: ${offset}
+      orderBy: [BLOCK_HEIGHT_DESC, EVENT_INDEX_DESC]
+      filter: {
+        and: [
+          { argsValue: { contains: "${id}"  } }
+        ]
+      }
+    ) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+      }
+      nodes {
+        nodeId
+        id
+        module
+        call
+        blockId
+        eventIndex
+        extrinsicId
+        block {
+          timestamp
+        }
+      }
+    }
+  }
+`
+
 const queryEventCount  = () => gql`
 {
   events {
@@ -178,6 +211,28 @@ export const searchEventbyExtrinsic = async (keyword: string) => {
 export const getEventList = async (offset: number, pageSize: number) => {
   const response = await apiDictionary(
     queryEventList(offset, pageSize)
+  )
+
+  let now = new Date();
+  let ms = now.getTime()+ (now.getTimezoneOffset() * 60000);
+  
+  return {
+    totalCount: response.events.totalCount,
+    hasNextPage : response.events.pageInfo.hasNextPage,
+    hasPreviousPage : response.events.pageInfo.hasPreviousPage,
+    data: await Promise.all<any>(response.events.nodes.map(async (item: any) => ({
+      id: item.id,
+      blockId: item.blockId,
+      age: (ms - new Date(item.block.timestamp).getTime()) / 1000,
+      hash: item.extrinsicId ? (await apiDictionary(queryExtrinsic(item.extrinsicId))).extrinsics.nodes[0].hash : "System event",
+      action: item.module + '(' + item.call + ')'
+    })))
+  }
+}
+
+export const getEventsListByAccount = async (id: string, offset: number, pageSize: number) => {
+  const response = await apiDictionary(
+    queryEventsListByAccount(id, offset, pageSize)
   )
 
   let now = new Date();
