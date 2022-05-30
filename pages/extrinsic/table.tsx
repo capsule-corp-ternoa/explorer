@@ -4,13 +4,13 @@ import Detail from 'components/assets/Detail';
 import Close from 'components/assets/Close';
 
 export const columns = [
-  { text: 'Extrinsic ID', dataKey: 'id', className: 'text-left' },
-  { text: 'Block', dataKey: 'block_id', className: 'text-left' },
-  { text: 'Module', dataKey: 'module', className: 'text-left only-desktop' },
+  { text: 'ID', dataKey: 'id', className: 'text-left' },
+  { text: 'Block', dataKey: 'block_id', className: 'text-left only-desktop' },
+  { text: 'Module', dataKey: 'module', className: 'text-left ' },
   { text: 'Call', dataKey: 'call', className: 'text-left only-desktop' },
   { text: 'Signed', dataKey: 'signed', className: 'text-left only-desktop' },
   { text: 'Success', dataKey: 'success', className: 'text-left only-desktop' },
-  { text: '', dataKey: 'detail' },
+  { text: '', dataKey: 'detail'},
 ]
 
 export const render = (record: any, dataKey: string) => {
@@ -32,7 +32,7 @@ export const render = (record: any, dataKey: string) => {
     case 'detail':
       return (
         <Link href={`/extrinsic/${record.id}`}>
-          <a>
+          <a className="align-self-center">
             <Detail className="detail"/>
           </a>
         </Link>
