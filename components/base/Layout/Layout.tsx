@@ -16,7 +16,11 @@ const Layout: React.FC<LayoutProps> = ({
   searchBar,
   back,
 }) => {
-  const network = process.env.NEXT_PUBLIC_ENV ? toUpperCase(process.env.NEXT_PUBLIC_ENV) : "Mainnet"
+  const network =
+    process.env.NEXT_PUBLIC_INDEXER_BASE_URL &&
+    process.env.NEXT_PUBLIC_INDEXER_BASE_URL.includes('alphanet')
+      ? 'Alphanet'
+      : 'Mainnet';
   return(
     <>
       <Head>
