@@ -45,3 +45,9 @@ export function middleEllipsis(s: string, n: number = 10): string {
 export function formatCaps(n: number | string): string {
   return new Intl.NumberFormat('en-US').format(Number(n))
 }
+
+const NUMBER_OF_DECIMALS = 18
+
+export const formatBalance = (balance: string, decimals = 3) => {
+  return String(Number(balance.slice(0, -(NUMBER_OF_DECIMALS - decimals))) / Math.pow(10, decimals))
+}

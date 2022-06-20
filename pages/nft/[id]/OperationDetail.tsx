@@ -6,47 +6,48 @@ import Layout from 'components/base/Layout';
 import DetailView from 'components/base/DetailView';
 import ListView from 'components/base/ListView';
 import Switch from 'components/base/Switch';
-import { getNftTransfer } from 'apis/nft-transfer';
+import { getNftOperation } from 'apis/nfts';
 import { searchEventbyExtrinsic } from 'apis/event';
-import { fields, render, eventColumns, eventRender } from './table'
+import { INftOperation } from 'interfaces/api';
 
-export interface NftTransDetailProps {}
+import { fields, render, eventColumns, eventRender } from './table'
 
 enum DetailMode {
   NFT,
   Events
 }
 
-const NftTransDetail: React.FC<NftTransDetailProps> = () => {
-  const [data, setData] = useState<any>(null)
+const NftOperationDetail: React.FC = () => {
+  const [data, setData] = useState<INftOperation | null>(null)
   const [eventData, setEventData] = useState<any>(null)
   const [detailMode, setDetailMode] = useState<DetailMode>(DetailMode.NFT)
   const router = useRouter()
   const id = router.query.id as string
   const extrinsic_id = router.query.extrinsic as string
 
-  const getNftTransferDatas = async (id:string, extrinsicId: string) => {
-    try{
-      if (!id) throw new Error("Couldn't get id: Unknown id")
-      const nftTransfer = await getNftTransfer(id)
-      setData(nftTransfer)
-      const eventByExtrinsic = await searchEventbyExtrinsic(extrinsic_id)
-      setEventData(eventByExtrinsic)
-    }catch(err){
-      console.error(err)
-    }
-  }
-
   useEffect(() => {
-    id && getNftTransferDatas(id, extrinsic_id)
-  }, [id])
+    let shouldUpdate = true;
+    const getNft = async (id:string, extrinsicId: string) => {
+      try{
+        const nftOperation = await getNftOperation(id)
+        setData(nftOperation)
+        const eventByExtrinsic = await searchEventbyExtrinsic(extrinsicId)
+        setEventData(eventByExtrinsic)
+      }catch(err){
+        console.error(err)
+      }
+    }
+
+    if (id) getNft(id, extrinsic_id);
+    return () => {
+      shouldUpdate = false;
+    };
+  }, [id, extrinsic_id]);
 
  
   if (!id) {
     return null
   }
-
- 
 
   return (
     <Layout back='/nft'> 
@@ -59,7 +60,7 @@ const NftTransDetail: React.FC<NftTransDetailProps> = () => {
             </Link>
           </div>
           <Switch
-            options={[data && (data.extrinsic_type + ' of NFT ID : ' + data.nft_id), 'Events']}
+            options={[data ? `${data.typeOfTransaction} NFT ID : ${data.nftId}` : `NFT not found`, 'Events']}
             selected={detailMode}
             onChange={setDetailMode}
           />
@@ -75,4 +76,4 @@ const NftTransDetail: React.FC<NftTransDetailProps> = () => {
   )
 }
 
-export default NftTransDetail;
+export default NftOperationDetail;

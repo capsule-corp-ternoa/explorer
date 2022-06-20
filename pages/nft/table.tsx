@@ -6,11 +6,11 @@ import { FormattedTime, FormattedNumber } from 'react-intl';
 import { ellipsifyMiddle } from 'helpers/lib';
 
 export const columns = [
-  { text: 'Name/ID', dataKey: 'nft_id', className: 'text-left' },
+  { text: 'Name/ID', dataKey: 'nftId', className: 'text-left' },
   { text: 'Date', dataKey: 'timestamp', className: 'text-left only-desktop' },
   { text: 'Sender', dataKey: 'from', className: 'text-left only-desktop', mobileClassName: 'col-12' },
   { text: 'Receiver', dataKey: 'to', className: 'text-left only-desktop', mobileClassName: 'col-12' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
+  { text: 'Operation', dataKey: 'typeOfTransaction', className: 'text-left' },
   { text: '', dataKey: 'details', mobileClassName: 'col-12' },
 ]
 
@@ -29,12 +29,9 @@ export const render = (record: any, dataKey: string) => {
         <FormattedTime format='default' value={record[dataKey]} />
       )
 
-    case 'amount':
+    case 'typeOfTransaction':
       return (
-        <>
-          <FormattedNumber value={record[dataKey]} format='decimal' />
-          &nbsp;CAPS
-        </>
+        <div>{record.typeOfTransaction}</div>
       )
 
     case 'from':
@@ -52,7 +49,7 @@ export const render = (record: any, dataKey: string) => {
       )
     case 'details':
       return (
-        <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
+        <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsicId']}}}>
           <a className='mx-auto'>
             <Detail className="detail"/>
           </a>

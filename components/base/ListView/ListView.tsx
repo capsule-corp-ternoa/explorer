@@ -1,3 +1,4 @@
+import { INftOperation } from 'interfaces/api'
 import React from 'react'
 
 type Row = {
@@ -11,23 +12,23 @@ type Column = {
   mobileClassName?: string
 }
 
-interface TableProps {
+interface TableProps<T> {
   columns: Column[]
-  data: Row[] | null
-  renderCell: (data: Row, dataKey: string) => React.ReactNode
+  data: T[] | null
+  renderCell: (data: T, dataKey: string) => React.ReactNode
   footer?: React.ReactNode
   button?: React.ReactNode
   className?: string
 }
 
-const ListView: React.FC<TableProps> = ({
+function ListView<T>({
   columns,
   data,
   renderCell,
   footer,
   button, 
   className
-}) => {
+}: TableProps<T>) {
   return (
   <>
     <table className={`table table-borderless data-table full-opacity ${className}`}>

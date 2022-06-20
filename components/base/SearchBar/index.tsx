@@ -5,7 +5,7 @@ import Search from 'components/assets/Search';
 import { searchAccount } from 'apis/account';
 import { searchExtrinsic } from 'apis/extrinsic';
 import { searchBlock } from 'apis/block';
-import { searchNftTransfer } from 'apis/nft-transfer';
+import { searchNftIdOperations } from 'apis/nfts';
 
 export interface SearchBarProps {
   hasButton?: Boolean
@@ -29,8 +29,8 @@ const SearchBar: React.FC<SearchBarProps> = (props) => {
       searchBlock(searchKey)
         .then(res => router.push(res.length ? `/block/${res[0].number}` : noResult))
     } else {
-      searchNftTransfer(searchKey)
-        .then(res => router.push(res.length ? `/nft/${res[0].number}` : noResult))
+      searchNftIdOperations(searchKey)
+        .then(res => router.push(res.length ? `/nft/${res[0].id}` : noResult))
     }
   }, [keyword])
 

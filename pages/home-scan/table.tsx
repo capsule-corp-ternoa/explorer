@@ -2,8 +2,9 @@ import Link from 'next/link'
 import Copy from 'components/assets/Copy';
 import Detail from 'components/assets/Detail';
 import CAPSDark from 'components/assets/CAPSDark';
-import { ellipsifyMiddle, ellipsifyLast, formatSec } from 'helpers/lib';
+import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 import { FormattedNumber } from 'react-intl';
+import { INftOperation } from 'interfaces/api';
 
 export const blockColumns = [
   { text: 'Number', dataKey: 'number', className: 'text-left' },
@@ -14,12 +15,12 @@ export const blockColumns = [
   { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
-export const nftTxColumns = [
-  { text: 'Name/ID', dataKey: 'nft_id', className: 'text-left' },
+export const nftOperationsColumns = [
+  { text: 'Name/ID', dataKey: 'nftId', className: 'text-left' },
   // { text: 'Date', dataKey: 'timestamp', className: 'text-left only-desktop' },
   { text: 'Sender', dataKey: 'from', className: 'text-left only-desktop' },
   { text: 'Receiver', dataKey: 'to', className: 'text-left only-desktop' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-left' },
+  { text: 'Operation', dataKey: 'typeOfTransaction', className: 'text-left' },
   { text: '', dataKey: 'details', className: 'text-left' },
 ]
 
@@ -72,14 +73,22 @@ export const renderBlock = (record: any, dataKey: string) => {
   }
 }
 
-export const renderNftTx = (record: any, dataKey: string) => {
+export const renderNftOperation = (
+  record: INftOperation,
+  dataKey: string
+) => {
   switch (dataKey) {
-    case 'nft_id':
+    case 'nftId':
       return (
-        <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
+        <Link
+          href={{
+            pathname: `/nft/${record.id}`,
+            query: { extrinsic: record.extrinsicId },
+          }}
+        >
           <a className="textToken">{record[dataKey]}</a>
         </Link>
-      )
+      );
     case 'from':
     case 'to':
       return (
@@ -88,33 +97,36 @@ export const renderNftTx = (record: any, dataKey: string) => {
           <span className="textToken" title={record[dataKey]}>
             {ellipsifyMiddle(record[dataKey])}
           </span>
-          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
+          <div
+            className="ms-2"
+            onClick={() => navigator.clipboard.writeText(record[dataKey])}
+          >
             <Copy className="cursor-point" />
           </div>
         </div>
-      )
+      );
 
-    case 'amount':
-      return (
-        <>
-          <FormattedNumber value={record[dataKey]} format='decimal' />
-          &nbsp;Caps
-        </>
-      )
+    case 'typeOfTransaction':
+      return <div>{record.typeOfTransaction}</div>;
 
     case 'details':
       return (
-        <Link href={{pathname: `/nft/${record.id}`, query: {extrinsic: record['extrinsic_id']}}}>
-          <a className='mx-auto'>
-            <Detail className="detail"/>
+        <Link
+          href={{
+            pathname: `/nft/${record.id}`,
+            query: { extrinsic: record.extrinsicId },
+          }}
+        >
+          <a className="mx-auto">
+            <Detail className="detail" />
           </a>
         </Link>
-      )
+      );
 
     default:
-      return record[dataKey]
+      return;
   }
-}
+};
 
 export const renderTransfer = (record: any, dataKey: string) => {
   switch (dataKey) {
@@ -172,9 +184,9 @@ export const renderTransfer = (record: any, dataKey: string) => {
 
 export default {
   blockColumns,
-  nftTxColumns,
+  nftOperationsColumns,
   transferColumns,
   renderBlock,
-  renderNftTx,
+  renderNftOperation,
   renderTransfer
 }

@@ -5,12 +5,13 @@ import Layout from 'components/base/Layout';
 import Summary from './Summary';
 import ListView from 'components/base/ListView';
 import { getBlockList } from 'apis/block';
-import { blockColumns, nftTxColumns, transferColumns, renderBlock, renderNftTx, renderTransfer } from './table'
-import { getNftTransferList, getNftTransferChart } from 'apis/nft-transfer';
+import { blockColumns, nftOperationsColumns, transferColumns, renderBlock, renderNftOperation, renderTransfer } from './table'
+import { getNftOperationsList } from 'apis/nfts';
 import { getTransferList } from 'apis/transfer';
 // import { NFTtransfer, NFTcreation, BlockChart } from './Chart';
 // import statData from 'components/data/statast.json'
 import { getExtrinsicCount } from 'apis/extrinsic';
+import { INftOperation } from 'interfaces/api';
 
 export interface HomeScanProps { }
 interface DetailButtonProps {
@@ -36,7 +37,7 @@ const HomeScan: React.FC<HomeScanProps> = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [summary, setSummary] = useState<any>({})
   const [latestBlocks, setLatestBlocks] = useState<any>(null)
-  const [nftTransfers, setNftTransfers] = useState<any>(null)
+  const [nftOperations, setNftOperations] = useState<INftOperation[]>([])
   const [transfers, setTransfers] = useState<any>(null)
   const coingeckoUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=coin-capsule&vs_currencies=usd&include_24hr_change=true&include_market_cap=true'
 
@@ -79,8 +80,8 @@ const HomeScan: React.FC<HomeScanProps> = () => {
 
   const getTransfers = async (n : number, rows : number) => {
     try{
-      const nftsTransfers = await getNftTransferList(n, rows)
-      setNftTransfers(nftsTransfers)
+      const { data } = await getNftOperationsList(n, rows)
+      setNftOperations(data)
       const transfersList = await  getTransferList(n, rows)
       setTransfers(transfersList)
     }catch(err){
@@ -135,24 +136,24 @@ const HomeScan: React.FC<HomeScanProps> = () => {
             />
           </div>
         </div>
-        {process.env.NEXT_PUBLIC_HIDE_NFT !== "true" && <div className={"col-12 " + style.space}>
+        <div className={"col-12 " + style.space}>
           <div className="custom_table">
             <div className='d-flex mb-4 justify-content-between align-items-center'>
-              <h1 className="title1 p-0 m-0 ps-4">NFT Extrinsics</h1>
+              <h1 className="title1 p-0 m-0 ps-4">NFT Operations</h1>
               <div className='d-none d-sm-block'>
                 <DetailButton href='/nft' label='Show all NFT'/>
               </div>
             </div>
             <ListView
-              columns={nftTxColumns}
-              renderCell={renderNftTx}
-              data={nftTransfers && nftTransfers.data}
+              columns={nftOperationsColumns}
+              renderCell={renderNftOperation}
+              data={nftOperations}
               button={(
-                <DetailButton href='/nft' label='Show all NFT'/>
+                <DetailButton href='/nft' label='Show all NFTs operations'/>
               )}
             />
           </div>
-        </div>}
+        </div>
         <div className="col-12 mt-5 pb-5">
           <div className="custom_table">
             <div className='d-flex mb-4 justify-content-between align-items-center'>
