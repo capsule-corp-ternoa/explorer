@@ -50,16 +50,21 @@ export const render = (data: any, dataKey: string) => {
     case 'from':
     case 'creator':
       return (
-        <div className="d-flex align-items-center">
-          <CAPSDark className="webIcon me-2" />
-          <span className="textToken" title={data[dataKey]}>
-            {ellipsifyMiddle(data[dataKey])}
-          </span>
-          <div className="ms-2" onClick={()=>navigator.clipboard.writeText(data[dataKey])}>
-            <Copy className="cursor-point" />
+        data[dataKey] && (
+          <div className="d-flex align-items-center">
+            <CAPSDark className="webIcon me-2" />
+            <span className="textToken" title={data[dataKey]}>
+              {ellipsifyMiddle(data[dataKey])}
+            </span>
+            <div
+              className="ms-2"
+              onClick={() => navigator.clipboard.writeText(data[dataKey])}
+            >
+              <Copy className="cursor-point" />
+            </div>
           </div>
-        </div>
-      )
+        )
+      );
 
     default:
       return data[dataKey]
