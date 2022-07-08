@@ -26,8 +26,8 @@ export default {
         maximumFractionDigits: 0
       },
       fees: {
-        minimumFractionDigits: 15,
-        maximumFractionDigits: 15
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3
       },
       priceDecimal: {
         style: 'currency',

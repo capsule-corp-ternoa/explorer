@@ -1,1 +1,1 @@
-export { default } from "./TransDetail";
+export { default } from "./OperationDetail";

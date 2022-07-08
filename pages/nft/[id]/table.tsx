@@ -5,15 +5,13 @@ import Copy from 'components/assets/Copy';
 import { ellipsifyMiddle, formatSec } from 'helpers/lib';
 
 export const fields = [
-  { text: 'NFT Id', dataKey: 'nft_id', mobileClassName: 'col-12' },
-  { text: 'Type of Extrinsic', dataKey: 'extrinsic_type', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Amount', dataKey: 'amount', className: 'text-left', mobileClassName: 'col-12' },
+  { text: 'NFT Id', dataKey: 'nftId', mobileClassName: 'col-12' },
+  { text: 'Operation', dataKey: 'typeOfTransaction', className: 'text-left' },
   { text: 'Sender', dataKey: 'from', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Receiver', dataKey: 'to', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Creator', dataKey: 'creator', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Date', dataKey: 'timestamp', className: 'text-left', mobileClassName: 'col-12' },
   { text: 'Fees', dataKey: 'fees', className: 'text-left', mobileClassName: 'col-12' },
-  { text: 'Content URL', dataKey: 'uri', className: 'text-left', mobileClassName: 'col-12' },
 ]
 
 export const eventColumns = [
@@ -34,13 +32,6 @@ export const render = (data: any, dataKey: string) => {
       return (
         <span className="textToken">{data[dataKey]}</span>
       )
-
-    case 'uri':
-      return (
-        <Link href={'https://www.secret-nft.com/nft/' + data['nft_id']}>
-          <a target='_blank'>{'https://www.secret-nft.com/nft/' + data['nft_id']}</a>
-        </Link>
-      )
     
     case 'fees':
       return (
@@ -50,12 +41,9 @@ export const render = (data: any, dataKey: string) => {
         </>
       )
 
-    case 'amount':
+    case 'typeOfTransaction':
       return (
-        <>
-          <FormattedNumber value={data[dataKey]} format='decimal' />
-          &nbsp;CAPS
-        </>
+        <div>{data.typeOfTransaction}</div>
       )
 
     case 'to':
