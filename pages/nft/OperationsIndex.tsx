@@ -54,7 +54,7 @@ const NftOperationsIndex: React.FC = () => {
     <Layout>
       <div className="ellipse2"></div>
       <div className="custom_table">
-        <h1 className="title mb-4 ps-lg-4">NFT Extrinsics</h1>
+        <h1 className="title mb-4 ps-lg-4">NFT Operations</h1>
         <ListView
           data={data}
           columns={columns}
