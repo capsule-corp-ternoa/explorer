@@ -92,18 +92,20 @@ export const renderNftOperation = (
     case 'from':
     case 'to':
       return (
-        <div className="d-flex align-items-center">
-          <CAPSDark className="webIcon me-2" />
-          <span className="textToken" title={record[dataKey]}>
-            {ellipsifyMiddle(record[dataKey])}
-          </span>
-          <div
-            className="ms-2"
-            onClick={() => navigator.clipboard.writeText(record[dataKey])}
-          >
-            <Copy className="cursor-point" />
+        record[dataKey] && (
+          <div className="d-flex align-items-center">
+            <CAPSDark className="webIcon me-2" />
+            <span className="textToken" title={record[dataKey]}>
+              {ellipsifyMiddle(record[dataKey])}
+            </span>
+            <div
+              className="ms-2"
+              onClick={() => navigator.clipboard.writeText(record[dataKey])}
+            >
+              <Copy className="cursor-point" />
+            </div>
           </div>
-        </div>
+        )
       );
 
     case 'typeOfTransaction':
@@ -149,25 +151,30 @@ export const renderTransfer = (record: any, dataKey: string) => {
     case 'from':
     case 'to':
       return (
-        <div>
-          <div className="only-desktop">
-            <div className="d-flex align-items-center">
-              <CAPSDark className="webIcon me-2" />
+        record[dataKey] && (
+          <div>
+            <div className="only-desktop">
+              <div className="d-flex align-items-center">
+                <CAPSDark className="webIcon me-2" />
+                <span className="textToken" title={record[dataKey]}>
+                  {ellipsifyMiddle(record[dataKey])}
+                </span>
+                <div
+                  className="ms-2"
+                  onClick={() => navigator.clipboard.writeText(record[dataKey])}
+                >
+                  <Copy className="cursor-point" />
+                </div>
+              </div>
+            </div>
+            <div className="only-mobile">
               <span className="textToken" title={record[dataKey]}>
                 {ellipsifyMiddle(record[dataKey])}
               </span>
-              <div className="ms-2" onClick={()=>navigator.clipboard.writeText(record[dataKey])}>
-                <Copy className="cursor-point" />
-              </div>
             </div>
           </div>
-          <div className="only-mobile">
-             <span className="textToken" title={record[dataKey]}>
-              {ellipsifyMiddle(record[dataKey])}
-            </span>
-          </div>
-        </div>
-      )
+        )
+      );
     case 'details':
       return (
         <Link href={`/trans/${record.id}`}>
