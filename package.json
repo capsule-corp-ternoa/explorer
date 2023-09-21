@@ -13,7 +13,7 @@
     "bootstrap": "5.2.0",
     "bootstrap-select": "^1.13.18",
     "ethers": "5.7.0",
-    "graphql": "16.6.0",
+    "graphql": "16.8.1",
     "graphql-request": "^4.3.0",
     "next": "^12.2.5",
     "react": "18.2.0",
